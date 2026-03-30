@@ -16,6 +16,11 @@
 <meta name="twitter:description" content="Live scores, full schedule, and where to watch every Yankees game.">
 <link rel="canonical" href="https://whatchannelaretheyankeeson.com">
 <link rel="icon" type="image/png" href="Images/Extra Yankee Logos/Yankees channel logo.png">
+<link rel="apple-touch-icon" sizes="180x180" href="Images/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="192x192" href="Images/icon-192.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Yankees">
 <link href="https://fonts.googleapis.com/css2?family=Special+Elite&family=Oswald:wght@400;500;600;700&family=Bebas+Neue&family=Teko:wght@400;500;600;700&display=swap" rel="stylesheet">
 <!-- Google AdSense — replace ca-pub-XXXXXXX with your publisher ID -->
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2736588621894448" crossorigin="anonymous"></script>
@@ -1030,6 +1035,12 @@ body {
 }
 
 .lu-name { flex: 1; font-size: 0.8rem; font-weight: 500; color: var(--cream); letter-spacing: 1px; }
+.lu-name a, .pitcher-name a, .lg-stats-table a, .ys-player-name a {
+  color: inherit; text-decoration: none; border-bottom: 1px dotted rgba(255,255,255,0.18); transition: color 0.2s, border-color 0.2s;
+}
+.lu-name a:hover, .pitcher-name a:hover, .lg-stats-table a:hover, .ys-player-name a:hover {
+  color: var(--gold); border-bottom-color: var(--gold);
+}
 .lu-pos { font-family: 'Bebas Neue', sans-serif; font-size: 0.7rem; color: var(--cream-dim); letter-spacing: 2px; width: 28px; text-align: center; }
 .lu-avg { font-family: 'Special Elite', monospace; font-size: 0.68rem; color: var(--gold); width: 38px; text-align: right; }
 
@@ -2204,9 +2215,7 @@ body::before {
   </div>
 
   <!-- LIVE SCORE BAR (fallback when scoreboard not showing) -->
-  <div class="live-score-bar" id="live-bar">
-    <span class="no-live-msg" id="no-live">NO GAME IN PROGRESS</span>
-  </div>
+  <div class="live-score-bar" id="live-bar" style="display:none;"></div>
 
   <!-- NEXT GAME CARD (rendered by JS) -->
   <div id="next-game-section"></div>
@@ -2611,8 +2620,10 @@ async function checkLiveScore() {
             <img class="live-team-logo" src="${teamLogo(hId)}" alt="" onerror="this.style.display='none'"/>
           </div>`;
       } else {
-        bar.innerHTML = '<span class="no-live-msg">NO GAME IN PROGRESS</span>';
+        bar.style.display = 'none';
+        return;
       }
+      bar.style.display = '';
       return;
     }
 
@@ -2624,6 +2635,7 @@ async function checkLiveScore() {
     const inn = ls?.currentInning || '?';
     const half = ls?.isTopInning ? 'TOP' : 'BOT';
 
+    bar.style.display = '';
     bar.innerHTML = `
       <div class="live-dot"></div>
       <span class="live-label">LIVE</span>
@@ -2638,7 +2650,7 @@ async function checkLiveScore() {
         <span class="live-inning">${half} ${inn}</span>
       </div>`;
   } catch(e) {
-    bar.innerHTML = '<span class="no-live-msg">NO GAME IN PROGRESS</span>';
+    bar.style.display = 'none';
   }
 }
 
@@ -2697,6 +2709,15 @@ function updateLoadMoreBtn() {
 function getFallbackGames() {
   const opps = [{id:111,name:'Boston Red Sox'},{id:111,name:'Boston Red Sox'},{id:111,name:'Boston Red Sox'},{id:141,name:'Toronto Blue Jays'},{id:141,name:'Toronto Blue Jays'},{id:141,name:'Toronto Blue Jays'},{id:139,name:'Tampa Bay Rays'}];
   return opps.map((o,i)=>{const gd=addDays(today(),i);gd.setHours(19,5,0,0);const h=i<3;return{gamePk:700000+i,gameDate:gd.toISOString(),status:{detailedState:'Scheduled'},teams:{away:{team:{id:h?o.id:YANKEES_ID,name:h?o.name:'New York Yankees'}},home:{team:{id:h?YANKEES_ID:o.id,name:h?'New York Yankees':o.name}}},broadcasts:[{type:'TV',name:'YES Network'}],seriesGameNumber:(i%3)+1,gamesInSeries:3};});
+}
+
+// Baseball Reference player link helper
+function bbrefLink(fullName, displayText) {
+  if (!fullName || fullName === 'TBD' || fullName === 'Player' || fullName === 'Pitcher') return displayText || fullName || '';
+  const display = displayText || fullName;
+  // Build search URL — Baseball Reference search handles finding the exact player
+  const q = encodeURIComponent(fullName);
+  return `<a href="https://www.baseball-reference.com/search/search.fcgi?search=${q}" target="_blank" rel="noopener" title="View ${fullName} on Baseball Reference">${display}</a>`;
 }
 
 function getNetworkLogoHTML(name) {
@@ -3014,7 +3035,7 @@ function renderMatchup(yP,oP,opp){
   if(!yP&&!oP) return '<div class="pitcher-tbd-msg">Probable pitchers not yet announced.</div>';
   const s=(p,lbl,cls)=>{
     if(!p) return `<div class="pitcher-panel ${cls}"><div class="pitcher-photo" style="display:flex;align-items:center;justify-content:center;font-size:1.3rem">&#9918;</div><div class="pitcher-name" style="font-style:italic;color:#777">TBD</div><div class="pitcher-detail">${lbl}</div></div>`;
-    return `<div class="pitcher-panel ${cls}"><div class="pitcher-photo"><img src="https://img.mlbstatic.com/mlb-photos/image/upload/w_213,d_people:generic:headshot:silo:current.png/v1/people/${p.id}/headshot/silo/current" alt="${p.fullName}" onerror="this.parentElement.innerHTML='&#9918;'"/></div><div class="pitcher-name">${p.fullName.toUpperCase()}</div><div class="pitcher-detail">${lbl} &middot; #${p.jerseyNumber||'--'}</div></div>`;
+    return `<div class="pitcher-panel ${cls}"><div class="pitcher-photo"><img src="https://img.mlbstatic.com/mlb-photos/image/upload/w_213,d_people:generic:headshot:silo:current.png/v1/people/${p.id}/headshot/silo/current" alt="${p.fullName}" onerror="this.parentElement.innerHTML='&#9918;'"/></div><div class="pitcher-name">${bbrefLink(p.fullName, p.fullName.toUpperCase())}</div><div class="pitcher-detail">${lbl} &middot; #${p.jerseyNumber||'--'}</div></div>`;
   };
   return `<div class="matchup-board">${s(yP,'YANKEES','home-side')}<div class="vs-divider">VS</div>${s(oP,opp.name.split(' ').pop().toUpperCase(),'away-side')}</div>`;
 }
@@ -3028,7 +3049,7 @@ async function fetchLineup(game,idx){
     if(!order.length)return;
     const el=document.getElementById(`lineup-area-${idx}`);if(!el)return;
     let h='<div class="lineup-grid"><div class="lineup-header-label">YANKEES BATTING ORDER</div>';
-    order.forEach((pid,i)=>{const p=players[`ID${pid}`]||{};h+=`<div class="lu-row"><div class="lu-order">${i+1}</div><div class="lu-name">${(p.person?.fullName||'Player').toUpperCase()}</div><div class="lu-pos">${p.position?.abbreviation||'--'}</div><div class="lu-avg">${p.seasonStats?.batting?.avg||'---'}</div></div>`;});
+    order.forEach((pid,i)=>{const p=players[`ID${pid}`]||{};const pName=p.person?.fullName||'Player';h+=`<div class="lu-row"><div class="lu-order">${i+1}</div><div class="lu-name">${bbrefLink(pName, pName.toUpperCase())}</div><div class="lu-pos">${p.position?.abbreviation||'--'}</div><div class="lu-avg">${p.seasonStats?.batting?.avg||'---'}</div></div>`;});
     h+=`<div class="lu-timestamp">Official lineup \u00B7 ${new Date().toLocaleTimeString('en-US',{timeZone:'America/New_York',hour:'numeric',minute:'2-digit'})} ET</div></div>`;
     el.innerHTML=h;
   }catch(e){}
@@ -3232,7 +3253,7 @@ async function fetchLastGameRecap() {
         const name = p.person?.fullName || 'Player';
         const pos = p.position?.abbreviation || '--';
         t += `<tr>
-          <td>${name.toUpperCase()} <span style="color:var(--cream-dim);font-size:0.65rem;">${pos}</span></td>
+          <td>${bbrefLink(name, name.toUpperCase())} <span style="color:var(--cream-dim);font-size:0.65rem;">${pos}</span></td>
           <td>${s.atBats??'-'}</td><td>${s.runs??'-'}</td><td>${s.hits??'-'}</td>
           <td>${s.rbi??'-'}</td><td>${s.baseOnBalls??'-'}</td><td>${s.strikeOuts??'-'}</td>
           <td style="color:var(--gold);">${s.avg??p.seasonStats?.batting?.avg??'---'}</td>
@@ -3269,7 +3290,7 @@ async function fetchLastGameRecap() {
         else if (s.holds && Number(s.holds) > 0) note = ' (H)';
 
         t += `<tr>
-          <td>${name.toUpperCase()}<span style="color:var(--gold);font-size:0.65rem;">${note}</span></td>
+          <td>${bbrefLink(name, name.toUpperCase())}<span style="color:var(--gold);font-size:0.65rem;">${note}</span></td>
           <td>${s.inningsPitched??'-'}</td><td>${s.hits??'-'}</td><td>${s.runs??'-'}</td>
           <td>${s.earnedRuns??'-'}</td><td>${s.baseOnBalls??'-'}</td><td>${s.strikeOuts??'-'}</td>
           <td style="color:var(--gold);">${s.era??p.seasonStats?.pitching?.era??'---'}</td>
@@ -3447,8 +3468,8 @@ async function updateScoreboard() {
           </div>
           <div class="ys-inning-indicator">${halfLabel} ${currentInning}</div>
           <div class="ys-atbat-info">
-            <div><span class="ys-player-label">P: </span><span class="ys-player-name">${pitcherName.toUpperCase()}</span></div>
-            <div><span class="ys-player-label">AB: </span><span class="ys-player-name">${batterName.toUpperCase()}</span></div>
+            <div><span class="ys-player-label">P: </span><span class="ys-player-name">${bbrefLink(pitcher?.fullName || pitcherName, pitcherName.toUpperCase())}</span></div>
+            <div><span class="ys-player-label">AB: </span><span class="ys-player-name">${bbrefLink(batter?.fullName || batterName, batterName.toUpperCase())}</span></div>
           </div>
         </div>`;
       } else {
