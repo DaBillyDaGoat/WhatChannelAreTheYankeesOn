@@ -1,0 +1,3555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What Channel Are The Yankees On? | WhatChannelAreTheYankeesOn.com</title>
+<meta name="description" content="Find out what channel the New York Yankees are on tonight. Live scores, full schedule, pitching matchups, lineups, and where to watch every Yankees game.">
+<meta name="keywords" content="Yankees, what channel, Yankees game tonight, YES Network, Yankees schedule, MLB, New York Yankees, where to watch Yankees">
+<meta property="og:title" content="What Channel Are The Yankees On?">
+<meta property="og:description" content="Live scores, full schedule, and where to watch every New York Yankees game.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://whatchannelaretheyankeeson.com">
+<meta property="og:image" content="Images/NYY.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="What Channel Are The Yankees On?">
+<meta name="twitter:description" content="Live scores, full schedule, and where to watch every Yankees game.">
+<link rel="canonical" href="https://whatchannelaretheyankeeson.com">
+<link rel="icon" type="image/png" href="Images/NYY.png">
+<link href="https://fonts.googleapis.com/css2?family=Special+Elite&family=Oswald:wght@400;500;600;700&family=Bebas+Neue&display=swap" rel="stylesheet">
+<!-- Google AdSense — replace ca-pub-XXXXXXX with your publisher ID -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
+<style>
+/* ========== RESET ========== */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --navy: #0C2340;
+  --navy-deep: #081a30;
+  --navy-mid: #0f2d4a;
+  --navy-panel: #0a1e38;
+  --navy-cell: #071828;
+  --pinstripe: rgba(255,255,255,0.025);
+  --gold: #C4A44A;
+  --gold-bright: #d4b45a;
+  --gold-dim: #8a7030;
+  --bulb: #ffcc33;
+  --bulb-glow: #ffaa00;
+  --bulb-dim: #664400;
+  --cream: #e8dcc8;
+  --cream-dim: #9a9080;
+  --chalk: #c8bca8;
+  --red-light: #ff4444;
+  --white: #f0ece4;
+  --cell-border: rgba(255,255,255,0.08);
+  --frame-color: #1a2a44;
+  --frame-outer: #0a1520;
+  --shadow-inset: inset 0 2px 6px rgba(0,0,0,0.5);
+}
+
+body {
+  font-family: 'Oswald', sans-serif;
+  background: #050d18;
+  color: var(--cream);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ========== YANKEE STADIUM FRIEZE ========== */
+.frieze-wrapper {
+  max-width: 940px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.frieze {
+  height: 80px;
+  position: relative;
+  background: var(--navy-deep);
+  background-image: url('Images/frieze.png');
+  background-size: auto 100%;
+  background-repeat: repeat-x;
+  background-position: center;
+  border-bottom: 3px solid var(--gold-dim);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.4);
+}
+
+/* ========== MAIN BOARD ========== */
+.scoreboard-outer {
+  max-width: 940px;
+  margin: 0 auto;
+  padding: 0 10px 20px;
+}
+
+.scoreboard-frame {
+  background:
+    /* Pinstripe texture */
+    repeating-linear-gradient(90deg, var(--pinstripe) 0px, var(--pinstripe) 1px, transparent 1px, transparent 40px),
+    /* Subtle vertical depth */
+    linear-gradient(180deg, var(--navy-mid) 0%, var(--navy) 10%, var(--navy-deep) 90%, #060e1a 100%);
+  border: 4px solid var(--frame-color);
+  border-top: none;
+  border-radius: 0 0 6px 6px;
+  box-shadow:
+    inset 0 0 50px rgba(0,0,0,0.3),
+    0 0 0 2px var(--frame-outer),
+    0 8px 40px rgba(0,0,0,0.6);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Pinstripe overlay on entire board */
+.scoreboard-frame::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: repeating-linear-gradient(90deg, rgba(255,255,255,0.012) 0px, rgba(255,255,255,0.012) 1px, transparent 1px, transparent 28px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Gold trim line at very top */
+.gold-trim {
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--gold) 15%, var(--gold-bright) 50%, var(--gold) 85%, transparent);
+  box-shadow: 0 0 12px rgba(196,164,74,0.3);
+}
+
+/* ========== HEADER ========== */
+.board-header {
+  text-align: center;
+  padding: 28px 20px 20px;
+  position: relative;
+  z-index: 1;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+}
+
+.logo-wrap {
+  display: inline-block;
+  margin-bottom: 12px;
+  position: relative;
+}
+
+.logo-wrap img {
+  width: 110px;
+  height: auto;
+  filter: drop-shadow(0 0 25px rgba(255,255,255,0.35)) drop-shadow(0 0 50px rgba(196,164,74,0.15)) brightness(1.15);
+}
+
+.board-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(1.4rem, 4vw, 2.4rem);
+  letter-spacing: 8px;
+  color: var(--white);
+  text-shadow: 0 0 12px rgba(255,255,255,0.15), 0 2px 4px rgba(0,0,0,0.5);
+}
+
+.board-title .dash { color: var(--gold); }
+
+.board-subtitle {
+  font-family: 'Special Elite', monospace;
+  font-size: 0.72rem;
+  letter-spacing: 4px;
+  color: var(--cream-dim);
+  margin-top: 4px;
+}
+
+/* ========== LIVE SCORE / NOW PLAYING ========== */
+.live-score-bar {
+  background: linear-gradient(180deg, rgba(0,0,0,0.3), rgba(0,0,0,0.15));
+  border-top: 1px solid rgba(255,255,255,0.04);
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+  padding: 14px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  position: relative;
+  z-index: 1;
+}
+
+.live-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--red-light);
+  box-shadow: 0 0 6px var(--red-light), 0 0 12px rgba(255,0,0,0.3);
+  animation: pulse-live 1.5s ease-in-out infinite;
+  flex-shrink: 0;
+}
+
+@keyframes pulse-live {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+.live-label {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 0.85rem;
+  letter-spacing: 3px;
+  color: var(--red-light);
+  text-shadow: 0 0 8px rgba(255,0,0,0.2);
+}
+
+.live-score-content {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.live-team-logo {
+  width: 32px; height: 32px;
+  object-fit: contain;
+}
+
+.live-team-abbr {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.1rem;
+  letter-spacing: 2px;
+  color: var(--cream);
+}
+
+.live-score-num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.8rem;
+  color: var(--bulb);
+  text-shadow: 0 0 10px rgba(255,204,51,0.5);
+  min-width: 28px;
+  text-align: center;
+  background: rgba(0,0,0,0.3);
+  border: 1px solid var(--cell-border);
+  border-radius: 3px;
+  padding: 0 6px;
+  line-height: 1.4;
+  box-shadow: var(--shadow-inset);
+}
+
+.live-at {
+  font-family: 'Special Elite', monospace;
+  font-size: 0.8rem;
+  color: var(--cream-dim);
+}
+
+.live-inning {
+  font-family: 'Special Elite', monospace;
+  font-size: 0.78rem;
+  color: var(--gold);
+  letter-spacing: 1px;
+  margin-left: 8px;
+}
+
+.no-live-msg {
+  font-family: 'Special Elite', monospace;
+  font-size: 0.78rem;
+  color: var(--cream-dim);
+  letter-spacing: 2px;
+}
+
+/* ========== STANDINGS — FENWAY GREEN MONSTER STYLE ========== */
+.standings-section {
+  padding: 16px 12px 12px;
+  position: relative;
+  z-index: 1;
+}
+
+.section-label {
+  font-family: 'Special Elite', monospace;
+  font-size: 0.62rem;
+  letter-spacing: 4px;
+  color: var(--cream-dim);
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+.monster-board {
+  max-width: 700px;
+  margin: 0 auto;
+  background:
+    /* Concrete/painted wall texture */
+    repeating-linear-gradient(0deg, rgba(0,0,0,0.02) 0px, rgba(0,0,0,0.02) 1px, transparent 1px, transparent 6px),
+    repeating-linear-gradient(90deg, rgba(0,0,0,0.015) 0px, rgba(0,0,0,0.015) 1px, transparent 1px, transparent 8px),
+    linear-gradient(175deg, #2a5038, #234530 30%, #1e3d28 60%, #1a3522);
+  border: 4px solid #1a3020;
+  border-radius: 4px;
+  padding: 16px 20px 14px;
+  box-shadow:
+    inset 0 2px 10px rgba(0,0,0,0.35),
+    inset 0 0 30px rgba(0,0,0,0.15),
+    0 4px 20px rgba(0,0,0,0.4);
+  position: relative;
+}
+
+/* Outer white border like the Fenway board */
+.monster-board::before {
+  content: '';
+  position: absolute;
+  top: 4px; left: 4px; right: 4px; bottom: 4px;
+  border: 2px solid rgba(255,255,255,0.18);
+  border-radius: 2px;
+  pointer-events: none;
+}
+
+.monster-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.5rem;
+  letter-spacing: 6px;
+  color: #f0f0e8;
+  text-align: center;
+  text-shadow: 1px 2px 3px rgba(0,0,0,0.4);
+  margin-bottom: 4px;
+}
+
+.monster-header {
+  display: grid;
+  grid-template-columns: 2fr 50px 50px 60px 60px;
+  padding: 4px 8px;
+  margin-bottom: 2px;
+}
+
+.monster-header span {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 0.85rem;
+  letter-spacing: 2px;
+  color: rgba(255,255,255,0.6);
+  text-align: center;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+}
+
+.monster-header span:first-child { text-align: left; }
+
+.monster-row {
+  display: grid;
+  grid-template-columns: 2fr 50px 50px 60px 60px;
+  align-items: center;
+  padding: 6px 8px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  transition: background 0.2s;
+}
+
+.monster-row:last-child { border-bottom: none; }
+
+.monster-row:hover { background: rgba(255,255,255,0.03); }
+
+.monster-row.highlight {
+  background: rgba(255,255,200,0.04);
+}
+
+.monster-team {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.15rem;
+  letter-spacing: 3px;
+  color: #f0f0e8;
+  text-shadow: 1px 2px 3px rgba(0,0,0,0.4);
+}
+
+.monster-row.highlight .monster-team {
+  color: #ffd;
+  text-shadow: 0 0 6px rgba(255,255,200,0.2), 1px 2px 3px rgba(0,0,0,0.4);
+}
+
+/* Individual number tiles — like the metal plates slid into the board */
+.monster-num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.05rem;
+  letter-spacing: 1px;
+  color: #f0f0e8;
+  text-align: center;
+  text-shadow: 1px 2px 2px rgba(0,0,0,0.4);
+  background: rgba(0,0,0,0.15);
+  border-radius: 2px;
+  padding: 3px 0;
+  margin: 0 2px;
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.25);
+}
+
+.monster-gb {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.05rem;
+  color: #f0f0e8;
+  text-align: center;
+  text-shadow: 1px 2px 2px rgba(0,0,0,0.4);
+  background: rgba(0,0,0,0.15);
+  border-radius: 2px;
+  padding: 3px 0;
+  margin: 0 2px;
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.25);
+}
+
+.monster-l10 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 0.9rem;
+  color: #d0d0c8;
+  text-align: center;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+  background: rgba(0,0,0,0.12);
+  border-radius: 2px;
+  padding: 3px 0;
+  margin: 0 2px;
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.2);
+}
+
+.monster-l10-hot { color: #90ee90; }
+.monster-l10-cold { color: #ff9999; }
+
+/* ========== DIVIDER ========== */
+.pinstripe-divider {
+  height: 12px;
+  background:
+    repeating-linear-gradient(90deg, rgba(255,255,255,0.02) 0px, rgba(255,255,255,0.02) 1px, transparent 1px, transparent 12px);
+  border-top: 1px solid rgba(255,255,255,0.03);
+  border-bottom: 1px solid rgba(255,255,255,0.03);
+  position: relative;
+  z-index: 1;
+}
+
+/* ========== GAME ROWS ========== */
+.games-section {
+  padding: 10px 12px;
+  position: relative;
+  z-index: 1;
+}
+
+.game-row {
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), transparent 30%, transparent 70%, rgba(0,0,0,0.1));
+  background-color: var(--navy-cell);
+  border: 1px solid var(--cell-border);
+  border-left: 3px solid var(--gold-dim);
+  border-radius: 3px;
+  margin-bottom: 10px;
+  box-shadow: var(--shadow-inset), 0 2px 8px rgba(0,0,0,0.25);
+  overflow: hidden;
+  position: relative;
+  transition: box-shadow 0.3s, border-color 0.3s;
+}
+
+.game-row:hover {
+  box-shadow: var(--shadow-inset), 0 2px 12px rgba(0,0,0,0.3), 0 0 20px rgba(196,164,74,0.06);
+  border-left-color: var(--gold);
+}
+
+/* Next game badge */
+.next-game-badge {
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  background: linear-gradient(135deg, rgba(196,164,74,0.2), rgba(196,164,74,0.08));
+  border: 1px solid rgba(196,164,74,0.3);
+  border-radius: 3px;
+  padding: 3px 10px;
+  z-index: 2;
+}
+
+.next-game-badge .ng-label {
+  font-family: 'Special Elite', monospace;
+  font-size: 0.55rem;
+  letter-spacing: 2px;
+  color: var(--gold);
+  display: block;
+  text-align: center;
+}
+
+.next-game-badge .ng-time {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 0.85rem;
+  letter-spacing: 2px;
+  color: var(--bulb);
+  text-shadow: 0 0 6px rgba(255,204,51,0.4);
+  text-align: center;
+  display: block;
+}
+
+/* The matchup line: AWAY logo - @ - HOME logo */
+.matchup-line {
+  display: flex;
+  align-items: center;
+  padding: 14px 16px;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.team-cell {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 1;
+  min-width: 120px;
+}
+
+.team-cell.away-cell { justify-content: flex-end; text-align: right; }
+.team-cell.home-cell { justify-content: flex-start; text-align: left; }
+
+.team-logo-box {
+  width: 48px; height: 48px;
+  background: rgba(0,0,0,0.25);
+  border: 1px solid var(--cell-border);
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: var(--shadow-inset);
+  overflow: hidden;
+}
+
+.team-logo-box img {
+  width: 40px; height: 40px;
+  object-fit: contain;
+}
+
+.team-name-block .t-name {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1rem;
+  letter-spacing: 2px;
+  color: var(--cream);
+  line-height: 1.2;
+}
+
+.team-name-block .t-role {
+  font-family: 'Special Elite', monospace;
+  font-size: 0.55rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.t-role.away-tag { color: var(--cream-dim); }
+.t-role.home-tag { color: var(--gold); }
+
+.at-symbol {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.4rem;
+  color: var(--gold);
+  text-shadow: 0 0 8px rgba(196,164,74,0.3);
+  flex-shrink: 0;
+  width: 36px;
+  text-align: center;
+}
+
+/* Game meta below matchup */
+.game-meta {
+  padding: 0 16px 10px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.game-datetime-cell {
+  font-family: 'Special Elite', monospace;
+  font-size: 0.78rem;
+  color: var(--cream-dim);
+  letter-spacing: 1px;
+}
+
+.series-cell {
+  font-family: 'Special Elite', monospace;
+  font-size: 0.65rem;
+  color: var(--gold-dim);
+  letter-spacing: 1px;
+}
+
+.tag {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 0.65rem;
+  letter-spacing: 3px;
+  padding: 2px 8px;
+  border-radius: 2px;
+  border: 1px solid;
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.3);
+}
+
+.tag-postponed {
+  background: rgba(255,50,50,0.15);
+  border-color: rgba(255,50,50,0.3);
+  color: var(--red-light);
+  animation: blink-red 2s ease-in-out infinite;
+}
+
+.tag-delayed {
+  background: rgba(255,150,50,0.1);
+  border-color: rgba(255,150,50,0.2);
+  color: #ff9933;
+}
+
+@keyframes blink-red {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+/* ========== WEATHER STRIP ========== */
+.weather-strip {
+  padding: 0 16px 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.weather-tag {
+  font-family: 'Special Elite', monospace;
+  font-size: 0.58rem;
+  letter-spacing: 3px;
+  color: var(--cream-dim);
+}
+
+.weather-data {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(0,0,0,0.2);
+  border: 1px solid var(--cell-border);
+  border-radius: 2px;
+  padding: 3px 10px;
+  box-shadow: var(--shadow-inset);
+}
+
+.weather-icon { font-size: 1rem; }
+.weather-temp { font-family: 'Bebas Neue', sans-serif; font-size: 0.95rem; color: var(--cream); letter-spacing: 1px; }
+.rain-prob { font-family: 'Special Elite', monospace; font-size: 0.72rem; color: #66aadd; }
+
+/* ========== GAME DETAILS TOGGLE ========== */
+.details-toggle {
+  display: flex;
+  border-top: 1px solid rgba(255,255,255,0.04);
+  background: rgba(0,0,0,0.12);
+}
+
+.details-btn {
+  flex: 1;
+  background: none;
+  border: none;
+  color: var(--cream-dim);
+  font-family: 'Special Elite', monospace;
+  font-size: 0.68rem;
+  letter-spacing: 2px;
+  padding: 10px 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.details-btn:hover { background: rgba(196,164,74,0.04); color: var(--cream); }
+.details-btn.active { background: rgba(196,164,74,0.06); color: var(--gold); text-shadow: 0 0 6px rgba(196,164,74,0.25); }
+
+.details-btn::before {
+  content: '';
+  display: inline-block;
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.08);
+  margin-right: 6px;
+  vertical-align: middle;
+}
+
+.details-btn.active::before {
+  background: var(--bulb);
+  box-shadow: 0 0 4px var(--bulb), 0 0 10px rgba(255,204,51,0.3);
+}
+
+.details-arrow {
+  display: inline-block;
+  transition: transform 0.3s;
+  margin-left: 4px;
+  font-size: 0.55rem;
+}
+
+.details-btn.active .details-arrow { transform: rotate(180deg); }
+
+/* ========== UNIFIED PANEL ========== */
+.game-panel {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease;
+  background: rgba(0,0,0,0.15);
+}
+
+.game-panel.open { max-height: 2000px; }
+.panel-inner { padding: 0 16px 14px; }
+
+/* Section dividers within the panel */
+.panel-section-label {
+  font-family: 'Special Elite', monospace;
+  font-size: 0.55rem;
+  letter-spacing: 3px;
+  color: var(--gold-dim);
+  text-transform: uppercase;
+  padding: 14px 0 6px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.panel-section-label::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(196,164,74,0.2), transparent);
+}
+
+/* Broadcast */
+.bcast-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 7px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.03);
+}
+
+.bcast-row:last-child { border-bottom: none; }
+
+.bcast-logo {
+  width: 40px; height: 26px;
+  background: rgba(0,0,0,0.25);
+  border: 1px solid var(--cell-border);
+  border-radius: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: var(--shadow-inset);
+}
+
+.bcast-logo .bfallback {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 0.48rem;
+  letter-spacing: 1px;
+  color: var(--cream-dim);
+}
+
+.bcast-name {
+  flex: 1;
+  font-family: 'Oswald', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 400;
+  color: var(--cream);
+}
+
+.watch-link {
+  font-family: 'Special Elite', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 1px;
+  padding: 3px 10px;
+  border-radius: 2px;
+  background: rgba(0,0,0,0.25);
+  color: var(--gold);
+  border: 1px solid rgba(196,164,74,0.2);
+  text-decoration: none;
+  transition: all 0.2s;
+  white-space: nowrap;
+  box-shadow: var(--shadow-inset);
+}
+
+.watch-link:hover {
+  background: rgba(196,164,74,0.1);
+  border-color: rgba(196,164,74,0.35);
+  text-decoration: none;
+  text-shadow: 0 0 4px rgba(196,164,74,0.3);
+}
+
+.radio-divider {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 0 2px;
+  border-top: 1px dashed rgba(255,255,255,0.05);
+  margin-top: 4px;
+}
+
+/* Pitching matchup */
+.matchup-board {
+  display: flex;
+  align-items: stretch;
+  border-radius: 3px;
+  overflow: hidden;
+  border: 1px solid var(--cell-border);
+  box-shadow: var(--shadow-inset);
+}
+
+.pitcher-panel {
+  flex: 1;
+  padding: 14px 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 5px;
+}
+
+.pitcher-panel.home-side { background: linear-gradient(180deg, rgba(12,35,64,0.5), rgba(12,35,64,0.2)); }
+.pitcher-panel.away-side { background: rgba(0,0,0,0.15); }
+
+.vs-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  flex-shrink: 0;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.3rem;
+  color: var(--gold);
+  background: rgba(0,0,0,0.3);
+  text-shadow: 0 0 8px rgba(196,164,74,0.4);
+  border-left: 1px solid var(--cell-border);
+  border-right: 1px solid var(--cell-border);
+}
+
+.pitcher-photo {
+  width: 56px; height: 56px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: rgba(0,0,0,0.25);
+  border: 2px solid var(--cell-border);
+  box-shadow: var(--shadow-inset);
+}
+
+.pitcher-photo img { width: 100%; height: 100%; object-fit: cover; }
+
+.pitcher-name {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 0.9rem;
+  letter-spacing: 2px;
+  color: var(--cream);
+}
+
+.pitcher-detail {
+  font-family: 'Special Elite', monospace;
+  font-size: 0.65rem;
+  color: var(--cream-dim);
+  letter-spacing: 1px;
+}
+
+.pitcher-tbd-msg {
+  font-family: 'Special Elite', monospace;
+  color: var(--cream-dim);
+  font-size: 0.78rem;
+  padding: 18px;
+  text-align: center;
+  letter-spacing: 1px;
+}
+
+/* Lineup */
+.lineup-header-label {
+  font-family: 'Special Elite', monospace;
+  font-size: 0.58rem;
+  letter-spacing: 4px;
+  color: var(--cream-dim);
+  margin-bottom: 8px;
+}
+
+.lu-row {
+  display: flex;
+  align-items: center;
+  padding: 4px 4px;
+  border-bottom: 1px solid rgba(255,255,255,0.025);
+  gap: 8px;
+}
+
+.lu-order {
+  width: 22px; height: 22px;
+  background: rgba(0,0,0,0.25);
+  border: 1px solid var(--cell-border);
+  border-radius: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 0.78rem;
+  color: var(--bulb);
+  text-shadow: 0 0 4px rgba(255,204,51,0.25);
+  flex-shrink: 0;
+  box-shadow: var(--shadow-inset);
+}
+
+.lu-name { flex: 1; font-size: 0.8rem; font-weight: 500; color: var(--cream); letter-spacing: 1px; }
+.lu-pos { font-family: 'Bebas Neue', sans-serif; font-size: 0.7rem; color: var(--cream-dim); letter-spacing: 2px; width: 28px; text-align: center; }
+.lu-avg { font-family: 'Special Elite', monospace; font-size: 0.68rem; color: var(--gold); width: 38px; text-align: right; }
+
+.lu-row-blank .lu-name,
+.lu-row-blank .lu-pos,
+.lu-row-blank .lu-avg { color: rgba(255,255,255,0.12); }
+
+.lu-note {
+  font-family: 'Special Elite', monospace;
+  font-size: 0.72rem;
+  color: var(--cream-dim);
+  padding: 14px 0;
+  text-align: center;
+  letter-spacing: 1px;
+}
+
+.lu-timestamp {
+  font-family: 'Special Elite', monospace;
+  font-size: 0.58rem;
+  color: #555;
+  margin-top: 6px;
+  text-align: right;
+  letter-spacing: 1px;
+}
+
+/* ========== ADD ALL TO CALENDAR ========== */
+.cal-all-section {
+  padding: 10px 16px;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.cal-all-btn {
+  font-family: 'Special Elite', monospace;
+  font-size: 0.75rem;
+  letter-spacing: 2px;
+  padding: 10px 28px;
+  border-radius: 3px;
+  background: linear-gradient(180deg, rgba(196,164,74,0.12), rgba(196,164,74,0.04));
+  color: var(--gold);
+  border: 1px solid rgba(196,164,74,0.25);
+  cursor: pointer;
+  transition: all 0.25s;
+  box-shadow: var(--shadow-inset);
+}
+
+.cal-all-btn:hover {
+  background: linear-gradient(180deg, rgba(196,164,74,0.2), rgba(196,164,74,0.08));
+  border-color: rgba(196,164,74,0.45);
+  text-shadow: 0 0 6px rgba(196,164,74,0.3);
+  box-shadow: var(--shadow-inset), 0 0 12px rgba(196,164,74,0.1);
+}
+
+/* ========== SERIES GROUP ========== */
+.series-group {
+  margin-bottom: 6px;
+}
+
+.series-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px 6px;
+}
+
+.series-header-line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(196,164,74,0.2), transparent);
+}
+
+.series-header-text {
+  font-family: 'Special Elite', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 3px;
+  color: var(--gold-dim);
+  white-space: nowrap;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+}
+
+/* ========== AD SLOT ========== */
+.ad-divider {
+  padding: 10px 16px;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.ad-slot {
+  max-width: 728px;
+  min-height: 90px;
+  margin: 0 auto;
+  background: rgba(0,0,0,0.08);
+  border: 1px solid rgba(255,255,255,0.03);
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.ad-slot ins {
+  display: block;
+  width: 100%;
+}
+
+/* Subtle label above ad */
+.ad-label {
+  font-family: 'Special Elite', monospace;
+  font-size: 0.45rem;
+  letter-spacing: 3px;
+  color: rgba(255,255,255,0.12);
+  text-align: center;
+  margin-bottom: 3px;
+}
+
+@media (max-width: 640px) {
+  .ad-slot { min-height: 60px; }
+}
+
+/* ========== LOAD MORE ========== */
+.load-more-section {
+  padding: 8px 16px 14px;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.load-more-btn {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1rem;
+  letter-spacing: 4px;
+  padding: 10px 40px;
+  border-radius: 3px;
+  background: rgba(0,0,0,0.2);
+  color: var(--cream-dim);
+  border: 1px solid var(--cell-border);
+  cursor: pointer;
+  transition: all 0.25s;
+  box-shadow: var(--shadow-inset);
+}
+
+.load-more-btn:hover {
+  color: var(--gold);
+  border-color: rgba(196,164,74,0.3);
+  background: rgba(196,164,74,0.05);
+}
+
+.load-more-btn:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+
+/* ========== FOOTER ========== */
+.board-footer {
+  padding: 12px 16px;
+  border-top: 1px solid rgba(255,255,255,0.04);
+  background: rgba(0,0,0,0.1);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  position: relative;
+  z-index: 1;
+}
+
+.footer-stamp {
+  font-family: 'Special Elite', monospace;
+  font-size: 0.6rem;
+  color: var(--cream-dim);
+  letter-spacing: 1px;
+  opacity: 0.7;
+}
+
+.footer-controls { display: flex; gap: 8px; }
+
+.footer-about {
+  width: 100%;
+  text-align: center;
+  margin-top: 10px;
+  font-family: 'Special Elite', monospace;
+  font-size: 0.55rem;
+  color: rgba(154,142,122,0.5);
+  letter-spacing: 1px;
+  line-height: 1.8;
+}
+.footer-link {
+  color: var(--gold-dim);
+  text-decoration: none;
+  margin-left: 8px;
+  opacity: 0.7;
+}
+.footer-link:hover { opacity: 1; text-decoration: underline; }
+
+.board-btn {
+  font-family: 'Special Elite', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 1px;
+  padding: 5px 12px;
+  border-radius: 2px;
+  background: rgba(0,0,0,0.2);
+  color: var(--cream-dim);
+  border: 1px solid var(--cell-border);
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: var(--shadow-inset);
+}
+
+.board-btn:hover { border-color: var(--gold); color: var(--gold); }
+
+.attribution-line {
+  width: 100%;
+  text-align: center;
+  font-family: 'Special Elite', monospace;
+  font-size: 0.5rem;
+  color: #444;
+  letter-spacing: 2px;
+  margin-top: 4px;
+}
+
+/* ========== LOADING ========== */
+.loading-msg {
+  text-align: center;
+  padding: 50px 20px;
+  font-family: 'Special Elite', monospace;
+  font-size: 0.85rem;
+  color: var(--cream-dim);
+  letter-spacing: 3px;
+}
+
+.ldot {
+  display: inline-block;
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--gold);
+  box-shadow: 0 0 4px var(--gold);
+  margin: 0 3px;
+  animation: pdot 1.4s ease-in-out infinite;
+}
+
+.ldot:nth-child(2) { animation-delay: 0.2s; }
+.ldot:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes pdot {
+  0%, 80%, 100% { opacity: 0.2; transform: scale(0.7); }
+  40% { opacity: 1; transform: scale(1.2); }
+}
+
+/* ========== LIGHT MODE ========== */
+.light-mode body, .light-mode { background: #d4cec0; }
+.light-mode .scoreboard-frame {
+  background: linear-gradient(180deg, #e8e0d0, #ddd6c6 10%, #d4cec0 90%, #c8c2b4);
+  border-color: #a09080;
+  box-shadow: inset 0 0 30px rgba(0,0,0,0.08), 0 0 0 2px #8a7a6a, 0 8px 30px rgba(0,0,0,0.2);
+}
+.light-mode .scoreboard-frame::before { background: repeating-linear-gradient(90deg, rgba(12,35,64,0.02) 0px, rgba(12,35,64,0.02) 1px, transparent 1px, transparent 28px); }
+.light-mode .frieze { background: #2a3a50; }
+.light-mode { --navy-cell: rgba(0,0,0,0.04); --cell-border: rgba(0,0,0,0.08); --cream: #1a1008; --cream-dim: #5a4a3a; }
+.light-mode .board-title { text-shadow: 0 1px 2px rgba(0,0,0,0.15); }
+.light-mode .logo-wrap img { filter: drop-shadow(0 2px 8px rgba(0,0,0,0.25)); }
+.light-mode .gold-trim { background: linear-gradient(90deg, transparent, #a08030 15%, #b0903a 50%, #a08030 85%, transparent); }
+.light-mode .live-score-bar { background: rgba(0,0,0,0.03); }
+.light-mode .game-panel { background: rgba(0,0,0,0.03); }
+.light-mode .game-row { background-color: rgba(255,255,255,0.3); }
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 640px) {
+  .scoreboard-outer { padding: 0 4px 16px; }
+  .frieze { height: 36px; }
+  .board-header { padding: 20px 12px 14px; }
+  .logo-wrap img { width: 80px; }
+  .board-title { letter-spacing: 4px; }
+  .frieze { height: 50px; }
+  .monster-board { padding: 12px 12px 10px; }
+  .monster-title { font-size: 1.2rem; letter-spacing: 4px; }
+  .monster-header { grid-template-columns: 2fr 40px 40px 50px 50px; }
+  .monster-row { grid-template-columns: 2fr 40px 40px 50px 50px; padding: 5px 6px; }
+  .monster-team { font-size: 0.95rem; letter-spacing: 2px; }
+  .monster-num, .monster-gb { font-size: 0.9rem; }
+  .monster-l10 { font-size: 0.75rem; }
+  .standing-cell { padding: 8px 3px; }
+  .standing-cell .team-abbr { font-size: 0.9rem; }
+  .matchup-line { padding: 12px; gap: 6px; }
+  .team-logo-box { width: 40px; height: 40px; }
+  .team-logo-box img { width: 34px; height: 34px; }
+  .team-name-block .t-name { font-size: 0.85rem; }
+  .at-symbol { font-size: 1.1rem; width: 28px; }
+  .details-btn { font-size: 0.58rem; letter-spacing: 1px; padding: 8px 3px; }
+  .details-btn::before { width: 4px; height: 4px; margin-right: 3px; }
+  .panel-inner { padding: 0 10px 12px; }
+  .panel-section-label { font-size: 0.5rem; letter-spacing: 2px; }
+  .matchup-board { flex-direction: column; }
+  .vs-divider { width: 100%; height: 28px; border-left: none; border-right: none; border-top: 1px solid var(--cell-border); border-bottom: 1px solid var(--cell-border); }
+  .board-footer { flex-direction: column; align-items: flex-start; }
+  .live-score-content { gap: 8px; flex-wrap: wrap; justify-content: center; }
+  .next-game-badge { position: static; margin: 0 0 4px auto; display: inline-block; }
+}
+</style>
+</head>
+<body>
+
+<!-- YANKEE STADIUM FRIEZE -->
+<div class="frieze-wrapper">
+<div class="frieze"></div>
+</div>
+
+<div class="scoreboard-outer">
+<div class="scoreboard-frame">
+  <div class="gold-trim"></div>
+
+  <!-- HEADER -->
+  <div class="board-header">
+    <div class="logo-wrap">
+      <img src="Images/NYY.png" alt="Yankees" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/New_York_Yankees_Logo.svg/800px-New_York_Yankees_Logo.svg.png'" />
+    </div>
+    <div class="board-title">WHAT CHANNEL ARE THE YANKEES ON<span class="dash">?</span></div>
+    <div class="board-subtitle" id="season-sub"></div>
+    <div class="board-subtitle" style="margin-top:2px;letter-spacing:2px;font-size:0.6rem;color:var(--gold-dim);">WHATCHANNELARETHEYANKEESON.COM</div>
+  </div>
+
+  <!-- LIVE SCORE BAR -->
+  <div class="live-score-bar" id="live-bar">
+    <span class="no-live-msg" id="no-live">NO GAME IN PROGRESS</span>
+  </div>
+
+  <!-- NEXT GAME (rendered by JS) -->
+  <div id="next-game-section"></div>
+
+  <!-- STANDINGS — FENWAY GREEN MONSTER -->
+  <div class="standings-section">
+    <div class="monster-board">
+      <div class="monster-title">AL EAST</div>
+      <div class="monster-header">
+        <span></span><span>W</span><span>L</span><span>GB</span><span>L10</span>
+      </div>
+      <div id="standings-body"></div>
+    </div>
+  </div>
+
+  <div class="pinstripe-divider"></div>
+
+  <!-- REMAINING GAMES -->
+  <div class="games-section" id="games-section">
+    <div class="loading-msg"><span class="ldot"></span><span class="ldot"></span><span class="ldot"></span><br><br>LOADING SCHEDULE</div>
+  </div>
+
+  <!-- ADD ALL TO CALENDAR -->
+  <div class="cal-all-section">
+    <button class="cal-all-btn" onclick="downloadAllICS()">&#x1F4C5; ADD ALL GAMES TO CALENDAR</button>
+  </div>
+
+  <!-- LOAD MORE -->
+  <div class="load-more-section">
+    <button class="load-more-btn" id="load-more-btn" onclick="loadMore()">LOAD MORE GAMES &#x25BC;</button>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="board-footer">
+    <div class="footer-stamp">UPDATED: <span id="last-updated">--</span></div>
+    <div class="footer-controls">
+      <button class="board-btn" onclick="refreshAll()">&#x27f3; REFRESH</button>
+      <button class="board-btn" id="theme-btn" onclick="toggleTheme()">&#x2600; LIGHT</button>
+    </div>
+    <div class="attribution-line">SCHEDULE VIA MLB STATS API &middot; WEATHER VIA OPEN-METEO</div>
+    <div class="footer-about">
+      <span>WhatChannelAreTheYankeesOn.com is an independent fan site. Not affiliated with the New York Yankees or Major League Baseball.</span>
+      <a href="privacy.html" class="footer-link">Privacy Policy</a>
+    </div>
+  </div>
+
+</div>
+</div>
+
+<script>
+// ========== CONSTANTS ==========
+const YANKEES_ID = 147;
+const LOGO_BASE = 'Images/';
+const AL_EAST_IDS = {147:'NYY',111:'BOS',139:'TB',141:'TOR',110:'BAL'};
+
+// MLB team ID -> logo filename abbreviation
+const TEAM_ABBR = {
+  108:'LAA',109:'ARI',110:'BAL',111:'BOS',112:'CHC',113:'CIN',114:'CLE',
+  115:'COL',116:'DET',117:'HOU',118:'KC',119:'LAD',120:'WSH',121:'NYM',
+  133:'OAK',134:'PIT',135:'SD',136:'SEA',137:'SF',138:'STL',139:'TB',
+  140:'TEX',141:'TOR',142:'MIN',143:'PHI',144:'ATL',145:'CWS',146:'MIA',
+  147:'NYY',158:'MIL',
+};
+
+const BROADCAST_LINKS = {
+  'YES':'https://www.yesnetwork.com/live','YES Network':'https://www.yesnetwork.com/live',
+  'ESPN':'https://www.espn.com/watch','ESPN2':'https://www.espn.com/watch','ESPN+':'https://www.espn.com/watch',
+  'Apple TV+':'https://tv.apple.com','Peacock':'https://www.peacocktv.com','MLB.TV':'https://www.mlb.tv',
+  'FS1':'https://www.foxsports.com/live','FOX':'https://www.foxsports.com/live',
+  'TBS':'https://www.tbs.com/watchtbs','YouTube TV':'https://tv.youtube.com',
+  'NBC':'https://www.nbc.com/live','Amazon Prime Video':'https://www.amazon.com/gp/video',
+};
+const WMO = {0:'☀️',1:'🌤️',2:'⛅',3:'☁️',45:'🌫️',48:'🌫️',51:'🌦️',53:'🌦️',55:'🌧️',61:'🌧️',63:'🌧️',65:'🌧️',71:'❄️',73:'❄️',75:'❄️',80:'🌧️',81:'🌧️',82:'⛈️',95:'⛈️',96:'⛈️',99:'⛈️'};
+
+let weatherData = null, allGames = [], seriesDisplayCount = 5, nextGameDate = null;
+
+function today() { return new Date(); }
+function fmtDate(d) { return d.toISOString().split('T')[0]; }
+function addDays(d, n) { const r = new Date(d); r.setDate(r.getDate() + n); return r; }
+
+function teamLogo(teamId) {
+  const abbr = TEAM_ABBR[teamId];
+  if (abbr) return LOGO_BASE + abbr + '.png';
+  return `https://www.mlbstatic.com/team-logos/${teamId}.svg`;
+}
+
+function formatGameTime(dateStr) {
+  const d = new Date(dateStr);
+  const p = new Intl.DateTimeFormat('en-US',{weekday:'short',month:'short',day:'numeric',hour:'numeric',minute:'2-digit',hour12:true,timeZone:'America/New_York'}).formatToParts(d);
+  const g = t => p.find(x=>x.type===t)?.value||'';
+  return `${g('weekday').toUpperCase()} ${g('month').toUpperCase()} ${g('day')} \u00B7 ${g('hour')}:${g('minute')} ${g('dayPeriod').toUpperCase()} ET`;
+}
+
+function getGameHourET(dateStr) {
+  return parseInt(new Intl.DateTimeFormat('en-US',{hour:'numeric',hour12:false,timeZone:'America/New_York'}).format(new Date(dateStr)));
+}
+
+document.getElementById('season-sub').textContent = today().getFullYear() + ' REGULAR SEASON';
+
+// ========== THEME ==========
+function toggleTheme() {
+  document.body.classList.toggle('light-mode');
+  const l = document.body.classList.contains('light-mode');
+  document.getElementById('theme-btn').innerHTML = l ? '&#x263E; DARK' : '&#x2600; LIGHT';
+  localStorage.setItem('yt2',l?'l':'d');
+}
+if(localStorage.getItem('yt2')==='l'){document.body.classList.add('light-mode');document.getElementById('theme-btn').innerHTML='&#x263E; DARK';}
+
+async function fetchJSON(url) { const r = await fetch(url); if(!r.ok) throw new Error(r.status); return r.json(); }
+
+// ========== WEATHER ==========
+async function fetchWeather() {
+  try {
+    weatherData = await fetchJSON(`https://api.open-meteo.com/v1/forecast?latitude=40.8296&longitude=-73.9262&hourly=temperature_2m,precipitation_probability,weathercode&timezone=America/New_York&start_date=${fmtDate(today())}&end_date=${fmtDate(addDays(today(),14))}&temperature_unit=fahrenheit`);
+  } catch(e) { weatherData = null; }
+}
+
+function getWx(dateStr) {
+  if(!weatherData?.hourly) return null;
+  const h = getGameHourET(dateStr);
+  const ds = new Date(dateStr).toLocaleDateString('en-CA',{timeZone:'America/New_York'});
+  const t = `${ds}T${String(h).padStart(2,'0')}:00`;
+  const i = weatherData.hourly.time.indexOf(t);
+  if(i===-1) return null;
+  return { temp:Math.round(weatherData.hourly.temperature_2m[i]), precip:weatherData.hourly.precipitation_probability[i], icon:WMO[weatherData.hourly.weathercode[i]]||'🌡️' };
+}
+
+// ========== STANDINGS ==========
+async function fetchStandings() {
+  let teams;
+  try {
+    const data = await fetchJSON(`https://statsapi.mlb.com/api/v1/standings?leagueId=103&season=${today().getFullYear()}&standingsTypes=regularSeason&hydrate=team`);
+    const ae = data.records.find(r=>r.division?.id===201);
+    if(ae) {
+      // teamRecords come sorted by divisionRank from the API
+      teams = ae.teamRecords.map((t,i)=>{
+        // Extract last 10 from records.splitRecords or calculate from records
+        let l10w='-', l10l='-';
+        const splits = t.records?.splitRecords;
+        if(splits) {
+          const last10 = splits.find(s=>s.type==='lastTen');
+          if(last10){ l10w=last10.wins; l10l=last10.losses; }
+        }
+        return {
+          id: t.team.id,
+          abbr: AL_EAST_IDS[t.team.id]||'???',
+          w: t.wins,
+          l: t.losses,
+          gb: t.gamesBack,
+          rank: t.divisionRank || (i+1),
+          l10w, l10l
+        };
+      });
+      // Sort by division rank ascending (1st place first)
+      teams.sort((a,b)=> Number(a.rank) - Number(b.rank));
+    } else { teams = null; }
+  } catch(e) { teams = null; }
+
+  if(!teams) teams = [147,110,141,139,111].map((id,i)=>({id,abbr:AL_EAST_IDS[id],w:0,l:0,gb:'-',rank:i+1,l10w:'-',l10l:'-'}));
+
+  const container = document.getElementById('standings-body');
+  container.innerHTML = teams.map(t=>{
+    const hl = t.id===YANKEES_ID ? 'highlight' : '';
+    const gbText = !t.gb||t.gb==='-'||t.gb==='0'||t.gb===0 ? '\u2014' : t.gb;
+    const l10str = t.l10w==='-' ? '\u2014' : `${t.l10w}-${t.l10l}`;
+    let l10cls = '';
+    if(t.l10w!=='-') {
+      const w=Number(t.l10w), lo=Number(t.l10l);
+      if(w>=7) l10cls='monster-l10-hot';
+      else if(lo>=7) l10cls='monster-l10-cold';
+    }
+    return `<div class="monster-row ${hl}">
+      <span class="monster-team">${t.abbr}</span>
+      <span class="monster-num">${t.w}</span>
+      <span class="monster-num">${t.l}</span>
+      <span class="monster-gb">${gbText}</span>
+      <span class="monster-l10 ${l10cls}">${l10str}</span>
+    </div>`;
+  }).join('');
+}
+
+// ========== LIVE SCORE ==========
+async function checkLiveScore() {
+  const bar = document.getElementById('live-bar');
+  try {
+    const data = await fetchJSON(`https://statsapi.mlb.com/api/v1/schedule?teamId=${YANKEES_ID}&sportId=1&date=${fmtDate(today())}&hydrate=linescore`);
+    let liveGame = null;
+    for(const d of (data.dates||[])) for(const g of (d.games||[])) {
+      const st = g.status?.abstractGameState;
+      if(st === 'Live' || st === 'In Progress') { liveGame = g; break; }
+    }
+    if(!liveGame) {
+      // Check for Final games today
+      let finalGame = null;
+      for(const d of (data.dates||[])) for(const g of (d.games||[])) {
+        if(g.status?.abstractGameState === 'Final') finalGame = g;
+      }
+      if(finalGame) {
+        const ls = finalGame.linescore;
+        const aId = finalGame.teams.away.team.id;
+        const hId = finalGame.teams.home.team.id;
+        const aR = ls?.teams?.away?.runs ?? finalGame.teams.away.score ?? '-';
+        const hR = ls?.teams?.home?.runs ?? finalGame.teams.home.score ?? '-';
+        bar.innerHTML = `
+          <span class="no-live-msg" style="color:var(--cream-dim)">FINAL</span>
+          <div class="live-score-content">
+            <img class="live-team-logo" src="${teamLogo(aId)}" alt="" onerror="this.style.display='none'"/>
+            <span class="live-team-abbr">${TEAM_ABBR[aId]||'AWY'}</span>
+            <span class="live-score-num">${aR}</span>
+            <span class="live-at">@</span>
+            <span class="live-score-num">${hR}</span>
+            <span class="live-team-abbr">${TEAM_ABBR[hId]||'HME'}</span>
+            <img class="live-team-logo" src="${teamLogo(hId)}" alt="" onerror="this.style.display='none'"/>
+          </div>`;
+      } else {
+        bar.innerHTML = '<span class="no-live-msg">NO GAME IN PROGRESS</span>';
+      }
+      return;
+    }
+
+    const ls = liveGame.linescore;
+    const aId = liveGame.teams.away.team.id;
+    const hId = liveGame.teams.home.team.id;
+    const aR = ls?.teams?.away?.runs ?? 0;
+    const hR = ls?.teams?.home?.runs ?? 0;
+    const inn = ls?.currentInning || '?';
+    const half = ls?.isTopInning ? 'TOP' : 'BOT';
+
+    bar.innerHTML = `
+      <div class="live-dot"></div>
+      <span class="live-label">LIVE</span>
+      <div class="live-score-content">
+        <img class="live-team-logo" src="${teamLogo(aId)}" alt="" onerror="this.style.display='none'"/>
+        <span class="live-team-abbr">${TEAM_ABBR[aId]||'AWY'}</span>
+        <span class="live-score-num">${aR}</span>
+        <span class="live-at">@</span>
+        <span class="live-score-num">${hR}</span>
+        <span class="live-team-abbr">${TEAM_ABBR[hId]||'HME'}</span>
+        <img class="live-team-logo" src="${teamLogo(hId)}" alt="" onerror="this.style.display='none'"/>
+        <span class="live-inning">${half} ${inn}</span>
+      </div>`;
+  } catch(e) {
+    bar.innerHTML = '<span class="no-live-msg">NO GAME IN PROGRESS</span>';
+  }
+}
+
+// ========== SCHEDULE ==========
+let fullSeasonLoaded = false;
+
+async function fetchSchedule() {
+  try {
+    const url = `https://statsapi.mlb.com/api/v1/schedule?teamId=${YANKEES_ID}&sportId=1&gameType=R&startDate=${fmtDate(today())}&endDate=${fmtDate(addDays(today(),14))}&hydrate=broadcasts,probablePitcher,linescore`;
+    const data = await fetchJSON(url);
+    allGames = [];
+    for(const d of (data.dates||[])) for(const g of (d.games||[])) allGames.push(g);
+    if(!allGames.length) throw new Error('empty');
+  } catch(e) { allGames = getFallbackGames(); }
+  seriesDisplayCount = 5;
+  renderGames();
+}
+
+async function loadMore() {
+  if(!fullSeasonLoaded) {
+    const btn = document.getElementById('load-more-btn');
+    btn.textContent = 'LOADING...';
+    btn.disabled = true;
+    try {
+      const endOfYear = `${today().getFullYear()}-12-31`;
+      const url = `https://statsapi.mlb.com/api/v1/schedule?teamId=${YANKEES_ID}&sportId=1&gameType=R&startDate=${fmtDate(today())}&endDate=${endOfYear}&hydrate=broadcasts,probablePitcher`;
+      const data = await fetchJSON(url);
+      allGames = [];
+      for(const d of (data.dates||[])) for(const g of (d.games||[])) allGames.push(g);
+      fullSeasonLoaded = true;
+    } catch(e) {}
+    btn.disabled = false;
+  }
+  const totalSeries = groupBySeries(allGames).length;
+  seriesDisplayCount = Math.min(seriesDisplayCount + 5, totalSeries);
+  renderGames();
+  updateLoadMoreBtn();
+}
+
+function updateLoadMoreBtn() {
+  const totalSeries = groupBySeries(allGames).length;
+  const btn = document.getElementById('load-more-btn');
+  if(seriesDisplayCount >= totalSeries && fullSeasonLoaded) {
+    btn.textContent = 'ALL SERIES LOADED';
+    btn.disabled = true;
+  } else if(!fullSeasonLoaded) {
+    btn.innerHTML = 'LOAD FULL SEASON &#x25BC;';
+    btn.disabled = false;
+  } else {
+    const rem = totalSeries - seriesDisplayCount;
+    btn.innerHTML = `LOAD MORE (${rem} SERIES REMAINING) &#x25BC;`;
+    btn.disabled = false;
+  }
+}
+
+function getFallbackGames() {
+  const opps = [{id:111,name:'Boston Red Sox'},{id:111,name:'Boston Red Sox'},{id:111,name:'Boston Red Sox'},{id:141,name:'Toronto Blue Jays'},{id:141,name:'Toronto Blue Jays'},{id:141,name:'Toronto Blue Jays'},{id:139,name:'Tampa Bay Rays'}];
+  return opps.map((o,i)=>{const gd=addDays(today(),i);gd.setHours(19,5,0,0);const h=i<3;return{gamePk:700000+i,gameDate:gd.toISOString(),status:{detailedState:'Scheduled'},teams:{away:{team:{id:h?o.id:YANKEES_ID,name:h?o.name:'New York Yankees'}},home:{team:{id:h?YANKEES_ID:o.id,name:h?'New York Yankees':o.name}}},broadcasts:[{type:'TV',name:'YES Network'}],seriesGameNumber:(i%3)+1,gamesInSeries:3};});
+}
+
+function buildGameCard(game, idx, isNextGame) {
+  const awayTeam = game.teams.away.team;
+  const homeTeam = game.teams.home.team;
+  const isHome = homeTeam.id === YANKEES_ID;
+  const status = game.status?.detailedState||'';
+  const isPPD = status.toLowerCase().includes('postponed');
+  const isDLY = status.toLowerCase().includes('delay');
+  const sn = game.seriesGameNumber, st = game.gamesInSeries;
+  const oppName = isHome ? awayTeam.name : homeTeam.name;
+  const seriesText = sn&&st ? `GAME ${sn} OF ${st} VS ${oppName.split(' ').pop().toUpperCase()}` : '';
+  const wx = isHome ? getWx(game.gameDate) : null;
+  const tvB = (game.broadcasts||[]).filter(b=>b.type==='TV'||b.type==='National');
+  const yankP = isHome ? game.teams?.home?.probablePitcher : game.teams?.away?.probablePitcher;
+  const oppP = isHome ? game.teams?.away?.probablePitcher : game.teams?.home?.probablePitcher;
+
+  return `
+  <div class="game-row" id="game-${idx}">
+    ${isNextGame ? `<div class="next-game-badge"><span class="ng-label">NEXT GAME</span><span class="ng-time" id="ng-countdown">--</span></div>` : ''}
+    <div class="matchup-line">
+      <div class="team-cell away-cell">
+        <div class="team-name-block">
+          <div class="t-name">${awayTeam.name.toUpperCase()}</div>
+          <div class="t-role away-tag">AWAY</div>
+        </div>
+        <div class="team-logo-box">
+          <img src="${teamLogo(awayTeam.id)}" alt="${awayTeam.name}" onerror="this.src='https://www.mlbstatic.com/team-logos/${awayTeam.id}.svg'" />
+        </div>
+      </div>
+      <div class="at-symbol">@</div>
+      <div class="team-cell home-cell">
+        <div class="team-logo-box">
+          <img src="${teamLogo(homeTeam.id)}" alt="${homeTeam.name}" onerror="this.src='https://www.mlbstatic.com/team-logos/${homeTeam.id}.svg'" />
+        </div>
+        <div class="team-name-block">
+          <div class="t-name">${homeTeam.name.toUpperCase()}</div>
+          <div class="t-role home-tag">HOME</div>
+        </div>
+      </div>
+    </div>
+    <div class="game-meta">
+      <span class="game-datetime-cell">${formatGameTime(game.gameDate)}</span>
+      ${seriesText?`<span class="series-cell">${seriesText}</span>`:''}
+      ${isPPD?'<span class="tag tag-postponed">PPD</span>':''}
+      ${isDLY?'<span class="tag tag-delayed">DLY</span>':''}
+    </div>
+    ${wx?`<div class="weather-strip"><span class="weather-tag">STADIUM WX</span><div class="weather-data"><span class="weather-icon">${wx.icon}</span><span class="weather-temp">${wx.temp}&deg;F</span><span class="rain-prob">&#x1F4A7; ${wx.precip}%</span></div></div>`:''}
+    <div class="details-toggle">
+      <button class="details-btn" onclick="togglePanel(${idx})">GAME DETAILS <span class="details-arrow">&#x25BC;</span></button>
+    </div>
+    <div class="game-panel" id="panel-${idx}">
+      <div class="panel-inner">
+        <div class="panel-section-label">Watch &middot; Stream &middot; Listen</div>
+        ${tvB.length?tvB.map(b=>`<div class="bcast-row"><div class="bcast-logo"><span class="bfallback">${b.name.substring(0,4).toUpperCase()}</span></div><span class="bcast-name">${b.name}</span>${getBLink(b.name)?`<a href="${getBLink(b.name)}" target="_blank" class="watch-link">WATCH</a>`:''}</div>`).join(''):'<div class="bcast-row"><span class="bcast-name" style="color:#666">Broadcast TBD</span></div>'}
+        <div class="radio-divider"><span style="font-size:1.1rem">&#x1F4FB;</span><span class="bcast-name">Yankees Radio</span><a href="https://www.mlb.com/yankees/fans/radio" target="_blank" class="watch-link">LISTEN</a></div>
+
+        <div class="panel-section-label">Pitching Matchup</div>
+        ${renderMatchup(yankP,oppP,isHome?awayTeam:homeTeam)}
+
+        <div class="panel-section-label">Starting Lineup</div>
+        <div id="lineup-area-${idx}">
+          <div class="lu-note">Lineups typically posted ~3 hrs before first pitch</div>
+          <div class="lineup-grid">
+            <div class="lineup-header-label">YANKEES BATTING ORDER</div>
+            ${[1,2,3,4,5,6,7,8,9].map(n=>`<div class="lu-row lu-row-blank"><div class="lu-order">${n}</div><div class="lu-name">---</div><div class="lu-pos">--</div><div class="lu-avg">---</div></div>`).join('')}
+          </div>
+          <div class="lu-timestamp">Last checked: ${new Date().toLocaleTimeString('en-US',{timeZone:'America/New_York',hour:'numeric',minute:'2-digit'})} ET</div>
+        </div>
+      </div>
+    </div>
+  </div>`;
+}
+
+// Group games into series by opponent + consecutive dates
+function groupBySeries(games) {
+  const series = [];
+  let current = null;
+  for(const g of games) {
+    const isHome = g.teams.home.team.id === YANKEES_ID;
+    const opp = isHome ? g.teams.away.team : g.teams.home.team;
+    const oppId = opp.id;
+    const atHome = isHome;
+    // Same series = same opponent + same home/away
+    if(current && current.oppId === oppId && current.atHome === atHome) {
+      current.games.push(g);
+    } else {
+      current = { oppId, oppName: opp.name, atHome, games: [g] };
+      series.push(current);
+    }
+  }
+  return series;
+}
+
+function adSlotHTML(idx) {
+  return `<div class="ad-divider">
+    <div class="ad-label">ADVERTISEMENT</div>
+    <div class="ad-slot">
+      <ins class="adsbygoogle"
+        style="display:block"
+        data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+        data-ad-slot="XXXXXXXXXX"
+        data-ad-format="horizontal"
+        data-full-width-responsive="true"></ins>
+    </div>
+  </div>`;
+}
+
+function renderGames() {
+  const nextSec = document.getElementById('next-game-section');
+  const sec = document.getElementById('games-section');
+  if(!allGames.length){
+    nextSec.innerHTML = '';
+    sec.innerHTML='<div class="loading-msg">NO UPCOMING GAMES</div>';
+    return;
+  }
+
+  // Find next future game for countdown
+  const now = new Date();
+  let nextIdx = -1;
+  for(let i=0;i<allGames.length;i++) { if(new Date(allGames[i].gameDate)>now){nextIdx=i;nextGameDate=new Date(allGames[i].gameDate);break;} }
+  if(nextIdx===-1) nextIdx = 0;
+
+  // Render next game above standings
+  nextSec.innerHTML = '<div style="padding:10px 12px;">' + buildGameCard(allGames[nextIdx], nextIdx, true) + '</div>';
+
+  // Group all games into series
+  const allSeriesGroups = groupBySeries(allGames);
+  const visibleSeries = allSeriesGroups.slice(0, seriesDisplayCount);
+
+  // Flatten visible series to find which game indices are shown
+  const visibleGames = new Set();
+  visibleSeries.forEach(s => s.games.forEach(g => visibleGames.add(g)));
+
+  let html = '';
+  visibleSeries.forEach((series, sIdx) => {
+    const loc = series.atHome ? 'HOME' : 'AWAY';
+    const oppShort = series.oppName.split(' ').pop().toUpperCase();
+    const dateRange = formatSeriesDateRange(series.games);
+
+    html += `<div class="series-group">`;
+    html += `<div class="series-header">
+      <div class="series-header-line"></div>
+      <span class="series-header-text">${series.games.length}-GAME SERIES VS ${oppShort} &middot; ${loc} &middot; ${dateRange}</span>
+      <div class="series-header-line"></div>
+    </div>`;
+
+    series.games.forEach(game => {
+      const realIdx = allGames.indexOf(game);
+      if(realIdx === nextIdx) return; // already shown above standings
+      html += buildGameCard(game, realIdx, false);
+    });
+
+    html += `</div>`;
+
+    // Insert ad after each series except the last visible one
+    if(sIdx < visibleSeries.length - 1) {
+      html += adSlotHTML(sIdx);
+    }
+  });
+
+  sec.innerHTML = html;
+
+  // Push ads to AdSense
+  try {
+    const adEls = document.querySelectorAll('.ad-slot ins.adsbygoogle');
+    adEls.forEach(el => {
+      if(!el.dataset.adsbygoogleDone) {
+        (window.adsbygoogle = window.adsbygoogle || []).push({});
+        el.dataset.adsbygoogleDone = '1';
+      }
+    });
+  } catch(e) {}
+
+  // Fetch lineups for visible games
+  visibleSeries.forEach(s => s.games.forEach(g => {
+    const idx = allGames.indexOf(g);
+    fetchLineup(g, idx);
+  }));
+
+  updateLoadMoreBtn();
+}
+
+function formatSeriesDateRange(games) {
+  if(!games.length) return '';
+  const first = new Date(games[0].gameDate);
+  const last = new Date(games[games.length-1].gameDate);
+  const fmtShort = d => {
+    const p = new Intl.DateTimeFormat('en-US',{month:'short',day:'numeric',timeZone:'America/New_York'}).formatToParts(d);
+    const g = t => p.find(x=>x.type===t)?.value||'';
+    return `${g('month').toUpperCase()} ${g('day')}`;
+  };
+  if(games.length === 1) return fmtShort(first);
+  return `${fmtShort(first)}–${fmtShort(last)}`;
+}
+
+function getBLink(n){if(!n)return'';const u=n.toUpperCase();for(const[k,v]of Object.entries(BROADCAST_LINKS)){if(u.includes(k.toUpperCase()))return v;}return'https://www.mlb.tv';}
+
+function renderMatchup(yP,oP,opp){
+  if(!yP&&!oP) return '<div class="pitcher-tbd-msg">Probable pitchers not yet announced.</div>';
+  const s=(p,lbl,cls)=>{
+    if(!p) return `<div class="pitcher-panel ${cls}"><div class="pitcher-photo" style="display:flex;align-items:center;justify-content:center;font-size:1.3rem">&#9918;</div><div class="pitcher-name" style="font-style:italic;color:#777">TBD</div><div class="pitcher-detail">${lbl}</div></div>`;
+    return `<div class="pitcher-panel ${cls}"><div class="pitcher-photo"><img src="https://img.mlbstatic.com/mlb-photos/image/upload/w_213,d_people:generic:headshot:silo:current.png/v1/people/${p.id}/headshot/silo/current" alt="${p.fullName}" onerror="this.parentElement.innerHTML='&#9918;'"/></div><div class="pitcher-name">${p.fullName.toUpperCase()}</div><div class="pitcher-detail">${lbl} &middot; #${p.jerseyNumber||'--'}</div></div>`;
+  };
+  return `<div class="matchup-board">${s(yP,'YANKEES','home-side')}<div class="vs-divider">VS</div>${s(oP,opp.name.split(' ').pop().toUpperCase(),'away-side')}</div>`;
+}
+
+async function fetchLineup(game,idx){
+  try{
+    const data=await fetchJSON(`https://statsapi.mlb.com/api/v1.1/game/${game.gamePk}/feed/live`);
+    const isH=game.teams.home.team.id===YANKEES_ID;
+    const td=data?.liveData?.boxscore?.teams?.[isH?'home':'away'];
+    if(!td)return;const order=td.battingOrder||[];const players=td.players||{};
+    if(!order.length)return;
+    const el=document.getElementById(`lineup-area-${idx}`);if(!el)return;
+    let h='<div class="lineup-grid"><div class="lineup-header-label">YANKEES BATTING ORDER</div>';
+    order.forEach((pid,i)=>{const p=players[`ID${pid}`]||{};h+=`<div class="lu-row"><div class="lu-order">${i+1}</div><div class="lu-name">${(p.person?.fullName||'Player').toUpperCase()}</div><div class="lu-pos">${p.position?.abbreviation||'--'}</div><div class="lu-avg">${p.seasonStats?.batting?.avg||'---'}</div></div>`;});
+    h+=`<div class="lu-timestamp">Official lineup · ${new Date().toLocaleTimeString('en-US',{timeZone:'America/New_York',hour:'numeric',minute:'2-digit'})} ET</div></div>`;
+    el.innerHTML=h;
+  }catch(e){}
+}
+
+// ========== UNIFIED PANEL TOGGLE ==========
+function togglePanel(idx){
+  const panel=document.getElementById(`panel-${idx}`);
+  const card=document.getElementById(`game-${idx}`);
+  const btn=card.querySelector('.details-btn');
+  if(panel.classList.contains('open')){
+    panel.classList.remove('open');
+    btn.classList.remove('active');
+  } else {
+    panel.classList.add('open');
+    btn.classList.add('active');
+  }
+}
+
+// ========== ADD ALL TO CALENDAR ==========
+function downloadAllICS(){
+  // Get all games from visible series
+  const visibleSeriesGames = groupBySeries(allGames).slice(0, seriesDisplayCount).flatMap(s=>s.games);
+  const events = visibleSeriesGames.map(g=>{
+    const s=new Date(g.gameDate);
+    const e=new Date(s.getTime()+3.5*36e5);
+    const alarm=new Date(s.getTime()-15*6e4);
+    const f=d=>d.toISOString().replace(/[-:]/g,'').replace(/\.\d{3}/,'');
+    const isH=g.teams.home.team.id===YANKEES_ID;
+    const loc=isH?'Yankee Stadium, 1 E 161st St, Bronx, NY 10451':g.teams.home.team.name+' Ballpark';
+    const aP=g.teams?.away?.probablePitcher?.fullName||'TBD';
+    const hP=g.teams?.home?.probablePitcher?.fullName||'TBD';
+    return `BEGIN:VEVENT\r\nDTSTART:${f(s)}\r\nDTEND:${f(e)}\r\nSUMMARY:${g.teams.away.team.name} @ ${g.teams.home.team.name}\r\nDESCRIPTION:${aP} vs ${hP}\r\nLOCATION:${loc}\r\nBEGIN:VALARM\r\nTRIGGER:-PT15M\r\nACTION:DISPLAY\r\nDESCRIPTION:Yankees game in 15 minutes!\r\nEND:VALARM\r\nEND:VEVENT`;
+  }).join('\r\n');
+
+  const ics=`BEGIN:VCALENDAR\r\nVERSION:2.0\r\nPRODID:-//Yankees Dashboard//EN\r\n${events}\r\nEND:VCALENDAR`;
+  const a=document.createElement('a');
+  a.href=URL.createObjectURL(new Blob([ics],{type:'text/calendar'}));
+  a.download='yankees-schedule.ics';
+  a.click();
+}
+
+// ========== NEXT GAME COUNTDOWN ==========
+function updateNextGameCountdown(){
+  const el=document.getElementById('ng-countdown');
+  if(!el||!nextGameDate)return;
+  const diff=nextGameDate-new Date();
+  if(diff<=0){el.textContent='NOW';return;}
+  const d=Math.floor(diff/864e5);
+  const h=Math.floor((diff%864e5)/36e5);
+  const m=Math.floor((diff%36e5)/6e4);
+  const s=Math.floor((diff%6e4)/1000);
+  let t='';
+  if(d>0)t+=d+'D ';
+  t+=String(h).padStart(2,'0')+'H '+String(m).padStart(2,'0')+'M '+String(s).padStart(2,'0')+'S';
+  el.textContent=t;
+}
+
+// ========== INIT ==========
+async function refreshAll(){
+  document.getElementById('games-section').innerHTML='<div class="loading-msg"><span class="ldot"></span><span class="ldot"></span><span class="ldot"></span><br><br>LOADING SCHEDULE</div>';
+  await Promise.all([fetchWeather(),fetchStandings(),fetchSchedule(),checkLiveScore()]);
+  document.getElementById('last-updated').textContent=new Date().toLocaleString('en-US',{timeZone:'America/New_York',hour:'numeric',minute:'2-digit',second:'2-digit',month:'short',day:'numeric'});
+  updateNextGameCountdown();
+}
+
+refreshAll();
+setInterval(updateNextGameCountdown,1000);
+setInterval(checkLiveScore,30000); // refresh live score every 30s
+</script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What Channel Are The Yankees On? | WhatChannelAreTheYankeesOn.com</title>
+<meta name="description" content="Find out what channel the New York Yankees are on tonight. Live scores, full schedule, pitching matchups, lineups, and where to watch every Yankees game.">
+<meta name="keywords" content="Yankees, what channel, Yankees game tonight, YES Network, Yankees schedule, MLB, New York Yankees, where to watch Yankees">
+<meta property="og:title" content="What Channel Are The Yankees On?">
+<meta property="og:description" content="Live scores, full schedule, and where to watch every New York Yankees game.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://whatchannelaretheyankeeson.com">
+<meta property="og:image" content="Images/NYY.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="What Channel Are The Yankees On?">
+<meta name="twitter:description" content="Live scores, full schedule, and where to watch every Yankees game.">
+<link rel="canonical" href="https://whatchannelaretheyankeeson.com">
+<link rel="icon" type="image/png" href="Images/NYY.png">
+<link href="https://fonts.googleapis.com/css2?family=Special+Elite&family=Oswald:wght@400;500;600;700&family=Bebas+Neue&display=swap" rel="stylesheet">
+<!-- Google AdSense â replace ca-pub-XXXXXXX with your publisher ID -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
+<style>
+/* ========== RESET ========== */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --navy: #0C2340;
+  --navy-deep: #081a30;
+  --navy-mid: #0f2d4a;
+  --navy-panel: #0a1e38;
+  --navy-cell: #071828;
+  --pinstripe: rgba(255,255,255,0.025);
+  --gold: #C4A44A;
+  --gold-bright: #d4b45a;
+  --gold-dim: #8a7030;
+  --bulb: #ffcc33;
+  --bulb-glow: #ffaa00;
+  --bulb-dim: #664400;
+  --cream: #e8dcc8;
+  --cream-dim: #9a9080;
+  --chalk: #c8bca8;
+  --red-light: #ff4444;
+  --white: #f0ece4;
+  --cell-border: rgba(255,255,255,0.08);
+  --frame-color: #1a2a44;
+  --frame-outer: #0a1520;
+  --shadow-inset: inset 0 2px 6px rgba(0,0,0,0.5);
+}
+
+body {
+  font-family: 'Oswald', sans-serif;
+  background: #050d18;
+  color: var(--cream);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ========== YANKEE STADIUM FRIEZE ========== */
+.frieze-wrapper {
+  max-width: 940px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.frieze {
+  height: 80px;
+  position: relative;
+  background: var(--navy-deep);
+  background-image: url('Images/frieze.png');
+  background-size: auto 100%;
+  background-repeat: repeat-x;
+  background-position: center;
+  border-bottom: 3px solid var(--gold-dim);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.4);
+}
+
+/* ========== MAIN BOARD ========== */
+.scoreboard-outer {
+  max-width: 940px;
+  margin: 0 auto;
+  padding: 0 10px 20px;
+}
+
+.scoreboard-frame {
+  background:
+    /* Pinstripe texture */
+    repeating-linear-gradient(90deg, var(--pinstripe) 0px, var(--pinstripe) 1px, transparent 1px, transparent 40px),
+    /* Subtle vertical depth */
+    linear-gradient(180deg, var(--navy-mid) 0%, var(--navy) 10%, var(--navy-deep) 90%, #060e1a 100%);
+  border: 4px solid var(--frame-color);
+  border-top: none;
+  border-radius: 0 0 6px 6px;
+  box-shadow:
+    inset 0 0 50px rgba(0,0,0,0.3),
+    0 0 0 2px var(--frame-outer),
+    0 8px 40px rgba(0,0,0,0.6);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Pinstripe overlay on entire board */
+.scoreboard-frame::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: repeating-linear-gradient(90deg, rgba(255,255,255,0.012) 0px, rgba(255,255,255,0.012) 1px, transparent 1px, transparent 28px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Gold trim line at very top */
+.gold-trim {
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--gold) 15%, var(--gold-bright) 50%, var(--gold) 85%, transparent);
+  box-shadow: 0 0 12px rgba(196,164,74,0.3);
+}
+
+/* ========== HEADER ========== */
+.board-header {
+  text-align: center;
+  padding: 28px 20px 20px;
+  position: relative;
+  z-index: 1;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+}
+
+.logo-wrap {
+  display: inline-block;
+  margin-bottom: 12px;
+  position: relative;
+}
+
+.logo-wrap img {
+  width: 110px;
+  height: auto;
+  filter: drop-shadow(0 0 25px rgba(255,255,255,0.35)) drop-shadow(0 0 50px rgba(196,164,74,0.15)) brightness(1.15);
+}
+
+.board-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(1.4rem, 4vw, 2.4rem);
+  letter-spacing: 8px;
+  color: var(--white);
+  text-shadow: 0 0 12px rgba(255,255,255,0.15), 0 2px 4px rgba(0,0,0,0.5);
+}
+
+.board-title .dash { color: var(--gold); }
+
+.board-subtitle {
+  font-family: 'Special Elite', monospace;
+  font-size: 0.72rem;
+  letter-spacing: 4px;
+  color: var(--cream-dim);
+  margin-top: 4px;
+}
+
+/* ========== LIVE SCORE / NOW PLAYING ========== */
+.live-score-bar {
+  background: linear-gradient(180deg, rgba(0,0,0,0.3), rgba(0,0,0,0.15));
+  border-top: 1px solid rgba(255,255,255,0.04);
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+  padding: 14px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  position: relative;
+  z-index: 1;
+}
+
+.live-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--red-light);
+  box-shadow: 0 0 6px var(--red-light), 0 0 12px rgba(255,0,0,0.3);
+  animation: pulse-live 1.5s ease-in-out infinite;
+  flex-shrink: 0;
+}
+
+@keyframes pulse-live {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+.live-label {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 0.85rem;
+  letter-spacing: 3px;
+  color: var(--red-light);
+  text-shadow: 0 0 8px rgba(255,0,0,0.2);
+}
+
+.live-score-content {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.live-team-logo {
+  width: 32px; height: 32px;
+  object-fit: contain;
+}
+
+.live-team-abbr {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.1rem;
+  letter-spacing: 2px;
+  color: var(--cream);
+}
+
+.live-score-num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.8rem;
+  color: var(--bulb);
+  text-shadow: 0 0 10px rgba(255,204,51,0.5);
+  min-width: 28px;
+  text-align: center;
+  background: rgba(0,0,0,0.3);
+  border: 1px solid var(--cell-border);
+  border-radius: 3px;
+  padding: 0 6px;
+  line-height: 1.4;
+  box-shadow: var(--shadow-inset);
+}
+
+.live-at {
+  font-family: 'Special Elite', monospace;
+  font-size: 0.8rem;
+  color: var(--cream-dim);
+}
+
+.live-inning {
+  font-family: 'Special Elite', monospace;
+  font-size: 0.78rem;
+  color: var(--gold);
+  letter-spacing: 1px;
+  margin-left: 8px;
+}
+
+.no-live-msg {
+  font-family: 'Special Elite', monospace;
+  font-size: 0.78rem;
+  color: var(--cream-dim);
+  letter-spacing: 2px;
+}
+
+/* ========== STANDINGS â FENWAY GREEN MONSTER STYLE ========== */
+.standings-section {
+  padding: 16px 12px 12px;
+  position: relative;
+  z-index: 1;
+}
+
+.section-label {
+  font-family: 'Special Elite', monospace;
+  font-size: 0.62rem;
+  letter-spacing: 4px;
+  color: var(--cream-dim);
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+.monster-board {
+  max-width: 700px;
+  margin: 0 auto;
+  background:
+    /* Concrete/painted wall texture */
+    repeating-linear-gradient(0deg, rgba(0,0,0,0.02) 0px, rgba(0,0,0,0.02) 1px, transparent 1px, transparent 6px),
+    repeating-linear-gradient(90deg, rgba(0,0,0,0.015) 0px, rgba(0,0,0,0.015) 1px, transparent 1px, transparent 8px),
+    linear-gradient(175deg, #2a5038, #234530 30%, #1e3d28 60%, #1a3522);
+  border: 4px solid #1a3020;
+  border-radius: 4px;
+  padding: 16px 20px 14px;
+  box-shadow:
+    inset 0 2px 10px rgba(0,0,0,0.35),
+    inset 0 0 30px rgba(0,0,0,0.15),
+    0 4px 20px rgba(0,0,0,0.4);
+  position: relative;
+}
+
+/* Outer white border like the Fenway board */
+.monster-board::before {
+  content: '';
+  position: absolute;
+  top: 4px; left: 4px; right: 4px; bottom: 4px;
+  border: 2px solid rgba(255,255,255,0.18);
+  border-radius: 2px;
+  pointer-events: none;
+}
+
+.monster-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.5rem;
+  letter-spacing: 6px;
+  color: #f0f0e8;
+  text-align: center;
+  text-shadow: 1px 2px 3px rgba(0,0,0,0.4);
+  margin-bottom: 4px;
+}
+
+.monster-header {
+  display: grid;
+  grid-template-columns: 2fr 50px 50px 60px 60px;
+  padding: 4px 8px;
+  margin-bottom: 2px;
+}
+
+.monster-header span {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 0.85rem;
+  letter-spacing: 2px;
+  color: rgba(255,255,255,0.6);
+  text-align: center;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+}
+
+.monster-header span:first-child { text-align: left; }
+
+.monster-row {
+  display: grid;
+  grid-template-columns: 2fr 50px 50px 60px 60px;
+  align-items: center;
+  padding: 6px 8px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  transition: background 0.2s;
+}
+
+.monster-row:last-child { border-bottom: none; }
+
+.monster-row:hover { background: rgba(255,255,255,0.03); }
+
+.monster-row.highlight {
+  background: rgba(255,255,200,0.04);
+}
+
+.monster-team {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.15rem;
+  letter-spacing: 3px;
+  color: #f0f0e8;
+  text-shadow: 1px 2px 3px rgba(0,0,0,0.4);
+}
+
+.monster-row.highlight .monster-team {
+  color: #ffd;
+  text-shadow: 0 0 6px rgba(255,255,200,0.2), 1px 2px 3px rgba(0,0,0,0.4);
+}
+
+/* Individual number tiles â like the metal plates slid into the board */
+.monster-num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.05rem;
+  letter-spacing: 1px;
+  color: #f0f0e8;
+  text-align: center;
+  text-shadow: 1px 2px 2px rgba(0,0,0,0.4);
+  background: rgba(0,0,0,0.15);
+  border-radius: 2px;
+  padding: 3px 0;
+  margin: 0 2px;
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.25);
+}
+
+.monster-gb {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.05rem;
+  color: #f0f0e8;
+  text-align: center;
+  text-shadow: 1px 2px 2px rgba(0,0,0,0.4);
+  background: rgba(0,0,0,0.15);
+  border-radius: 2px;
+  padding: 3px 0;
+  margin: 0 2px;
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.25);
+}
+
+.monster-l10 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 0.9rem;
+  color: #d0d0c8;
+  text-align: center;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+  background: rgba(0,0,0,0.12);
+  border-radius: 2px;
+  padding: 3px 0;
+  margin: 0 2px;
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.2);
+}
+
+.monster-l10-hot { color: #90ee90; }
+.monster-l10-cold { color: #ff9999; }
+
+/* ========== DIVIDER ========== */
+.pinstripe-divider {
+  height: 12px;
+  background:
+    repeating-linear-gradient(90deg, rgba(255,255,255,0.02) 0px, rgba(255,255,255,0.02) 1px, transparent 1px, transparent 12px);
+  border-top: 1px solid rgba(255,255,255,0.03);
+  border-bottom: 1px solid rgba(255,255,255,0.03);
+  position: relative;
+  z-index: 1;
+}
+
+/* ========== GAME ROWS ========== */
+.games-section {
+  padding: 10px 12px;
+  position: relative;
+  z-index: 1;
+}
+
+.game-row {
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), transparent 30%, transparent 70%, rgba(0,0,0,0.1));
+  background-color: var(--navy-cell);
+  border: 1px solid var(--cell-border);
+  border-left: 3px solid var(--gold-dim);
+  border-radius: 3px;
+  margin-bottom: 10px;
+  box-shadow: var(--shadow-inset), 0 2px 8px rgba(0,0,0,0.25);
+  overflow: hidden;
+  position: relative;
+  transition: box-shadow 0.3s, border-color 0.3s;
+}
+
+.game-row:hover {
+  box-shadow: var(--shadow-inset), 0 2px 12px rgba(0,0,0,0.3), 0 0 20px rgba(196,164,74,0.06);
+  border-left-color: var(--gold);
+}
+
+/* Next game badge */
+.next-game-badge {
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  background: linear-gradient(135deg, rgba(196,164,74,0.2), rgba(196,164,74,0.08));
+  border: 1px solid rgba(196,164,74,0.3);
+  border-radius: 3px;
+  padding: 3px 10px;
+  z-index: 2;
+}
+
+.next-game-badge .ng-label {
+  font-family: 'Special Elite', monospace;
+  font-size: 0.55rem;
+  letter-spacing: 2px;
+  color: var(--gold);
+  display: block;
+  text-align: center;
+}
+
+.next-game-badge .ng-time {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 0.85rem;
+  letter-spacing: 2px;
+  color: var(--bulb);
+  text-shadow: 0 0 6px rgba(255,204,51,0.4);
+  text-align: center;
+  display: block;
+}
+
+/* The matchup line: AWAY logo - @ - HOME logo */
+.matchup-line {
+  display: flex;
+  align-items: center;
+  padding: 14px 16px;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.team-cell {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 1;
+  min-width: 120px;
+}
+
+.team-cell.away-cell { justify-content: flex-end; text-align: right; }
+.team-cell.home-cell { justify-content: flex-start; text-align: left; }
+
+.team-logo-box {
+  width: 48px; height: 48px;
+  background: rgba(0,0,0,0.25);
+  border: 1px solid var(--cell-border);
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: var(--shadow-inset);
+  overflow: hidden;
+}
+
+.team-logo-box img {
+  width: 40px; height: 40px;
+  object-fit: contain;
+}
+
+.team-name-block .t-name {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1rem;
+  letter-spacing: 2px;
+  color: var(--cream);
+  line-height: 1.2;
+}
+
+.team-name-block .t-role {
+  font-family: 'Special Elite', monospace;
+  font-size: 0.55rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.t-role.away-tag { color: var(--cream-dim); }
+.t-role.home-tag { color: var(--gold); }
+
+.at-symbol {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.4rem;
+  color: var(--gold);
+  text-shadow: 0 0 8px rgba(196,164,74,0.3);
+  flex-shrink: 0;
+  width: 36px;
+  text-align: center;
+}
+
+/* Game meta below matchup */
+.game-meta {
+  padding: 0 16px 10px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.game-datetime-cell {
+  font-family: 'Special Elite', monospace;
+  font-size: 0.78rem;
+  color: var(--cream-dim);
+  letter-spacing: 1px;
+}
+
+.series-cell {
+  font-family: 'Special Elite', monospace;
+  font-size: 0.65rem;
+  color: var(--gold-dim);
+  letter-spacing: 1px;
+}
+
+.tag {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 0.65rem;
+  letter-spacing: 3px;
+  padding: 2px 8px;
+  border-radius: 2px;
+  border: 1px solid;
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.3);
+}
+
+.tag-postponed {
+  background: rgba(255,50,50,0.15);
+  border-color: rgba(255,50,50,0.3);
+  color: var(--red-light);
+  animation: blink-red 2s ease-in-out infinite;
+}
+
+.tag-delayed {
+  background: rgba(255,150,50,0.1);
+  border-color: rgba(255,150,50,0.2);
+  color: #ff9933;
+}
+
+@keyframes blink-red {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+/* ========== WEATHER STRIP ========== */
+.weather-strip {
+  padding: 0 16px 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.weather-tag {
+  font-family: 'Special Elite', monospace;
+  font-size: 0.58rem;
+  letter-spacing: 3px;
+  color: var(--cream-dim);
+}
+
+.weather-data {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(0,0,0,0.2);
+  border: 1px solid var(--cell-border);
+  border-radius: 2px;
+  padding: 3px 10px;
+  box-shadow: var(--shadow-inset);
+}
+
+.weather-icon { font-size: 1rem; }
+.weather-temp { font-family: 'Bebas Neue', sans-serif; font-size: 0.95rem; color: var(--cream); letter-spacing: 1px; }
+.rain-prob { font-family: 'Special Elite', monospace; font-size: 0.72rem; color: #66aadd; }
+
+/* ========== GAME DETAILS TOGGLE ========== */
+.details-toggle {
+  display: flex;
+  border-top: 1px solid rgba(255,255,255,0.04);
+  background: rgba(0,0,0,0.12);
+}
+
+.details-btn {
+  flex: 1;
+  background: none;
+  border: none;
+  color: var(--cream-dim);
+  font-family: 'Special Elite', monospace;
+  font-size: 0.68rem;
+  letter-spacing: 2px;
+  padding: 10px 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.details-btn:hover { background: rgba(196,164,74,0.04); color: var(--cream); }
+.details-btn.active { background: rgba(196,164,74,0.06); color: var(--gold); text-shadow: 0 0 6px rgba(196,164,74,0.25); }
+
+.details-btn::before {
+  content: '';
+  display: inline-block;
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.08);
+  margin-right: 6px;
+  vertical-align: middle;
+}
+
+.details-btn.active::before {
+  background: var(--bulb);
+  box-shadow: 0 0 4px var(--bulb), 0 0 10px rgba(255,204,51,0.3);
+}
+
+.details-arrow {
+  display: inline-block;
+  transition: transform 0.3s;
+  margin-left: 4px;
+  font-size: 0.55rem;
+}
+
+.details-btn.active .details-arrow { transform: rotate(180deg); }
+
+/* ========== UNIFIED PANEL ========== */
+.game-panel {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease;
+  background: rgba(0,0,0,0.15);
+}
+
+.game-panel.open { max-height: 2000px; }
+.panel-inner { padding: 0 16px 14px; }
+
+/* Section dividers within the panel */
+.panel-section-label {
+  font-family: 'Special Elite', monospace;
+  font-size: 0.55rem;
+  letter-spacing: 3px;
+  color: var(--gold-dim);
+  text-transform: uppercase;
+  padding: 14px 0 6px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.panel-section-label::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(196,164,74,0.2), transparent);
+}
+
+/* Broadcast */
+.bcast-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 7px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.03);
+}
+
+.bcast-row:last-child { border-bottom: none; }
+
+.bcast-logo {
+  width: 40px; height: 26px;
+  background: rgba(0,0,0,0.25);
+  border: 1px solid var(--cell-border);
+  border-radius: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: var(--shadow-inset);
+}
+
+.bcast-logo .bfallback {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 0.48rem;
+  letter-spacing: 1px;
+  color: var(--cream-dim);
+}
+
+.bcast-name {
+  flex: 1;
+  font-family: 'Oswald', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 400;
+  color: var(--cream);
+}
+
+.watch-link {
+  font-family: 'Special Elite', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 1px;
+  padding: 3px 10px;
+  border-radius: 2px;
+  background: rgba(0,0,0,0.25);
+  color: var(--gold);
+  border: 1px solid rgba(196,164,74,0.2);
+  text-decoration: none;
+  transition: all 0.2s;
+  white-space: nowrap;
+  box-shadow: var(--shadow-inset);
+}
+
+.watch-link:hover {
+  background: rgba(196,164,74,0.1);
+  border-color: rgba(196,164,74,0.35);
+  text-decoration: none;
+  text-shadow: 0 0 4px rgba(196,164,74,0.3);
+}
+
+.radio-divider {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 0 2px;
+  border-top: 1px dashed rgba(255,255,255,0.05);
+  margin-top: 4px;
+}
+
+/* Pitching matchup */
+.matchup-board {
+  display: flex;
+  align-items: stretch;
+  border-radius: 3px;
+  overflow: hidden;
+  border: 1px solid var(--cell-border);
+  box-shadow: var(--shadow-inset);
+}
+
+.pitcher-panel {
+  flex: 1;
+  padding: 14px 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 5px;
+}
+
+.pitcher-panel.home-side { background: linear-gradient(180deg, rgba(12,35,64,0.5), rgba(12,35,64,0.2)); }
+.pitcher-panel.away-side { background: rgba(0,0,0,0.15); }
+
+.vs-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  flex-shrink: 0;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.3rem;
+  color: var(--gold);
+  background: rgba(0,0,0,0.3);
+  text-shadow: 0 0 8px rgba(196,164,74,0.4);
+  border-left: 1px solid var(--cell-border);
+  border-right: 1px solid var(--cell-border);
+}
+
+.pitcher-photo {
+  width: 56px; height: 56px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: rgba(0,0,0,0.25);
+  border: 2px solid var(--cell-border);
+  box-shadow: var(--shadow-inset);
+}
+
+.pitcher-photo img { width: 100%; height: 100%; object-fit: cover; }
+
+.pitcher-name {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 0.9rem;
+  letter-spacing: 2px;
+  color: var(--cream);
+}
+
+.pitcher-detail {
+  font-family: 'Special Elite', monospace;
+  font-size: 0.65rem;
+  color: var(--cream-dim);
+  letter-spacing: 1px;
+}
+
+.pitcher-tbd-msg {
+  font-family: 'Special Elite', monospace;
+  color: var(--cream-dim);
+  font-size: 0.78rem;
+  padding: 18px;
+  text-align: center;
+  letter-spacing: 1px;
+}
+
+/* Lineup */
+.lineup-header-label {
+  font-family: 'Special Elite', monospace;
+  font-size: 0.58rem;
+  letter-spacing: 4px;
+  color: var(--cream-dim);
+  margin-bottom: 8px;
+}
+
+.lu-row {
+  display: flex;
+  align-items: center;
+  padding: 4px 4px;
+  border-bottom: 1px solid rgba(255,255,255,0.025);
+  gap: 8px;
+}
+
+.lu-order {
+  width: 22px; height: 22px;
+  background: rgba(0,0,0,0.25);
+  border: 1px solid var(--cell-border);
+  border-radius: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 0.78rem;
+  color: var(--bulb);
+  text-shadow: 0 0 4px rgba(255,204,51,0.25);
+  flex-shrink: 0;
+  box-shadow: var(--shadow-inset);
+}
+
+.lu-name { flex: 1; font-size: 0.8rem; font-weight: 500; color: var(--cream); letter-spacing: 1px; }
+.lu-pos { font-family: 'Bebas Neue', sans-serif; font-size: 0.7rem; color: var(--cream-dim); letter-spacing: 2px; width: 28px; text-align: center; }
+.lu-avg { font-family: 'Special Elite', monospace; font-size: 0.68rem; color: var(--gold); width: 38px; text-align: right; }
+
+.lu-row-blank .lu-name,
+.lu-row-blank .lu-pos,
+.lu-row-blank .lu-avg { color: rgba(255,255,255,0.12); }
+
+.lu-note {
+  font-family: 'Special Elite', monospace;
+  font-size: 0.72rem;
+  color: var(--cream-dim);
+  padding: 14px 0;
+  text-align: center;
+  letter-spacing: 1px;
+}
+
+.lu-timestamp {
+  font-family: 'Special Elite', monospace;
+  font-size: 0.58rem;
+  color: #555;
+  margin-top: 6px;
+  text-align: right;
+  letter-spacing: 1px;
+}
+
+/* ========== ADD ALL TO CALENDAR ========== */
+.cal-all-section {
+  padding: 10px 16px;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.cal-all-btn {
+  font-family: 'Special Elite', monospace;
+  font-size: 0.75rem;
+  letter-spacing: 2px;
+  padding: 10px 28px;
+  border-radius: 3px;
+  background: linear-gradient(180deg, rgba(196,164,74,0.12), rgba(196,164,74,0.04));
+  color: var(--gold);
+  border: 1px solid rgba(196,164,74,0.25);
+  cursor: pointer;
+  transition: all 0.25s;
+  box-shadow: var(--shadow-inset);
+}
+
+.cal-all-btn:hover {
+  background: linear-gradient(180deg, rgba(196,164,74,0.2), rgba(196,164,74,0.08));
+  border-color: rgba(196,164,74,0.45);
+  text-shadow: 0 0 6px rgba(196,164,74,0.3);
+  box-shadow: var(--shadow-inset), 0 0 12px rgba(196,164,74,0.1);
+}
+
+/* ========== SERIES GROUP ========== */
+.series-group {
+  margin-bottom: 6px;
+}
+
+.series-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px 6px;
+}
+
+.series-header-line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(196,164,74,0.2), transparent);
+}
+
+.series-header-text {
+  font-family: 'Special Elite', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 3px;
+  color: var(--gold-dim);
+  white-space: nowrap;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+}
+
+/* ========== AD SLOT ========== */
+.ad-divider {
+  padding: 10px 16px;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.ad-slot {
+  max-width: 728px;
+  min-height: 90px;
+  margin: 0 auto;
+  background: rgba(0,0,0,0.08);
+  border: 1px solid rgba(255,255,255,0.03);
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.ad-slot ins {
+  display: block;
+  width: 100%;
+}
+
+/* Subtle label above ad */
+.ad-label {
+  font-family: 'Special Elite', monospace;
+  font-size: 0.45rem;
+  letter-spacing: 3px;
+  color: rgba(255,255,255,0.12);
+  text-align: center;
+  margin-bottom: 3px;
+}
+
+@media (max-width: 640px) {
+  .ad-slot { min-height: 60px; }
+}
+
+/* ========== LOAD MORE ========== */
+.load-more-section {
+  padding: 8px 16px 14px;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.load-more-btn {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1rem;
+  letter-spacing: 4px;
+  padding: 10px 40px;
+  border-radius: 3px;
+  background: rgba(0,0,0,0.2);
+  color: var(--cream-dim);
+  border: 1px solid var(--cell-border);
+  cursor: pointer;
+  transition: all 0.25s;
+  box-shadow: var(--shadow-inset);
+}
+
+.load-more-btn:hover {
+  color: var(--gold);
+  border-color: rgba(196,164,74,0.3);
+  background: rgba(196,164,74,0.05);
+}
+
+.load-more-btn:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+
+/* ========== FOOTER ========== */
+.board-footer {
+  padding: 12px 16px;
+  border-top: 1px solid rgba(255,255,255,0.04);
+  background: rgba(0,0,0,0.1);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  position: relative;
+  z-index: 1;
+}
+
+.footer-stamp {
+  font-family: 'Special Elite', monospace;
+  font-size: 0.6rem;
+  color: var(--cream-dim);
+  letter-spacing: 1px;
+  opacity: 0.7;
+}
+
+.footer-controls { display: flex; gap: 8px; }
+
+.footer-about {
+  width: 100%;
+  text-align: center;
+  margin-top: 10px;
+  font-family: 'Special Elite', monospace;
+  font-size: 0.55rem;
+  color: rgba(154,142,122,0.5);
+  letter-spacing: 1px;
+  line-height: 1.8;
+}
+.footer-link {
+  color: var(--gold-dim);
+  text-decoration: none;
+  margin-left: 8px;
+  opacity: 0.7;
+}
+.footer-link:hover { opacity: 1; text-decoration: underline; }
+
+.board-btn {
+  font-family: 'Special Elite', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 1px;
+  padding: 5px 12px;
+  border-radius: 2px;
+  background: rgba(0,0,0,0.2);
+  color: var(--cream-dim);
+  border: 1px solid var(--cell-border);
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: var(--shadow-inset);
+}
+
+.board-btn:hover { border-color: var(--gold); color: var(--gold); }
+
+.attribution-line {
+  width: 100%;
+  text-align: center;
+  font-family: 'Special Elite', monospace;
+  font-size: 0.5rem;
+  color: #444;
+  letter-spacing: 2px;
+  margin-top: 4px;
+}
+
+/* ========== LOADING ========== */
+.loading-msg {
+  text-align: center;
+  padding: 50px 20px;
+  font-family: 'Special Elite', monospace;
+  font-size: 0.85rem;
+  color: var(--cream-dim);
+  letter-spacing: 3px;
+}
+
+.ldot {
+  display: inline-block;
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--gold);
+  box-shadow: 0 0 4px var(--gold);
+  margin: 0 3px;
+  animation: pdot 1.4s ease-in-out infinite;
+}
+
+.ldot:nth-child(2) { animation-delay: 0.2s; }
+.ldot:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes pdot {
+  0%, 80%, 100% { opacity: 0.2; transform: scale(0.7); }
+  40% { opacity: 1; transform: scale(1.2); }
+}
+
+/* ========== LIGHT MODE ========== */
+.light-mode body, .light-mode { background: #d4cec0; }
+.light-mode .scoreboard-frame {
+  background: linear-gradient(180deg, #e8e0d0, #ddd6c6 10%, #d4cec0 90%, #c8c2b4);
+  border-color: #a09080;
+  box-shadow: inset 0 0 30px rgba(0,0,0,0.08), 0 0 0 2px #8a7a6a, 0 8px 30px rgba(0,0,0,0.2);
+}
+.light-mode .scoreboard-frame::before { background: repeating-linear-gradient(90deg, rgba(12,35,64,0.02) 0px, rgba(12,35,64,0.02) 1px, transparent 1px, transparent 28px); }
+.light-mode .frieze { background: #2a3a50; }
+.light-mode { --navy-cell: rgba(0,0,0,0.04); --cell-border: rgba(0,0,0,0.08); --cream: #1a1008; --cream-dim: #5a4a3a; }
+.light-mode .board-title { text-shadow: 0 1px 2px rgba(0,0,0,0.15); }
+.light-mode .logo-wrap img { filter: drop-shadow(0 2px 8px rgba(0,0,0,0.25)); }
+.light-mode .gold-trim { background: linear-gradient(90deg, transparent, #a08030 15%, #b0903a 50%, #a08030 85%, transparent); }
+.light-mode .live-score-bar { background: rgba(0,0,0,0.03); }
+.light-mode .game-panel { background: rgba(0,0,0,0.03); }
+.light-mode .game-row { background-color: rgba(255,255,255,0.3); }
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 640px) {
+  .scoreboard-outer { padding: 0 4px 16px; }
+  .frieze { height: 36px; }
+  .board-header { padding: 20px 12px 14px; }
+  .logo-wrap img { width: 80px; }
+  .board-title { letter-spacing: 4px; }
+  .frieze { height: 50px; }
+  .monster-board { padding: 12px 12px 10px; }
+  .monster-title { font-size: 1.2rem; letter-spacing: 4px; }
+  .monster-header { grid-template-columns: 2fr 40px 40px 50px 50px; }
+  .monster-row { grid-template-columns: 2fr 40px 40px 50px 50px; padding: 5px 6px; }
+  .monster-team { font-size: 0.95rem; letter-spacing: 2px; }
+  .monster-num, .monster-gb { font-size: 0.9rem; }
+  .monster-l10 { font-size: 0.75rem; }
+  .standing-cell { padding: 8px 3px; }
+  .standing-cell .team-abbr { font-size: 0.9rem; }
+  .matchup-line { padding: 12px; gap: 6px; }
+  .team-logo-box { width: 40px; height: 40px; }
+  .team-logo-box img { width: 34px; height: 34px; }
+  .team-name-block .t-name { font-size: 0.85rem; }
+  .at-symbol { font-size: 1.1rem; width: 28px; }
+  .details-btn { font-size: 0.58rem; letter-spacing: 1px; padding: 8px 3px; }
+  .details-btn::before { width: 4px; height: 4px; margin-right: 3px; }
+  .panel-inner { padding: 0 10px 12px; }
+  .panel-section-label { font-size: 0.5rem; letter-spacing: 2px; }
+  .matchup-board { flex-direction: column; }
+  .vs-divider { width: 100%; height: 28px; border-left: none; border-right: none; border-top: 1px solid var(--cell-border); border-bottom: 1px solid var(--cell-border); }
+  .board-footer { flex-direction: column; align-items: flex-start; }
+  .live-score-content { gap: 8px; flex-wrap: wrap; justify-content: center; }
+  .next-game-badge { position: static; margin: 0 0 4px auto; display: inline-block; }
+}
+</style>
+</head>
+<body>
+
+<!-- YANKEE STADIUM FRIEZE -->
+<div class="frieze-wrapper">
+<div class="frieze"></div>
+</div>
+
+<div class="scoreboard-outer">
+<div class="scoreboard-frame">
+  <div class="gold-trim"></div>
+
+  <!-- HEADER -->
+  <div class="board-header">
+    <div class="logo-wrap">
+      <img src="Images/NYY.png" alt="Yankees" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/New_York_Yankees_Logo.svg/800px-New_York_Yankees_Logo.svg.png'" />
+    </div>
+    <div class="board-title">WHAT CHANNEL ARE THE YANKEES ON<span class="dash">?</span></div>
+    <div class="board-subtitle" id="season-sub"></div>
+    <div class="board-subtitle" style="margin-top:2px;letter-spacing:2px;font-size:0.6rem;color:var(--gold-dim);">WHATCHANNELARETHEYANKEESON.COM</div>
+  </div>
+
+  <!-- LIVE SCORE BAR -->
+  <div class="live-score-bar" id="live-bar">
+    <span class="no-live-msg" id="no-live">NO GAME IN PROGRESS</span>
+  </div>
+
+  <!-- NEXT GAME (rendered by JS) -->
+  <div id="next-game-section"></div>
+
+  <!-- STANDINGS â FENWAY GREEN MONSTER -->
+  <div class="standings-section">
+    <div class="monster-board">
+      <div class="monster-title">AL EAST</div>
+      <div class="monster-header">
+        <span></span><span>W</span><span>L</span><span>GB</span><span>L10</span>
+      </div>
+      <div id="standings-body"></div>
+    </div>
+  </div>
+
+  <div class="pinstripe-divider"></div>
+
+  <!-- REMAINING GAMES -->
+  <div class="games-section" id="games-section">
+    <div class="loading-msg"><span class="ldot"></span><span class="ldot"></span><span class="ldot"></span><br><br>LOADING SCHEDULE</div>
+  </div>
+
+  <!-- ADD ALL TO CALENDAR -->
+  <div class="cal-all-section">
+    <button class="cal-all-btn" onclick="downloadAllICS()">&#x1F4C5; ADD ALL GAMES TO CALENDAR</button>
+  </div>
+
+  <!-- LOAD MORE -->
+  <div class="load-more-section">
+    <button class="load-more-btn" id="load-more-btn" onclick="loadMore()">LOAD MORE GAMES &#x25BC;</button>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="board-footer">
+    <div class="footer-stamp">UPDATED: <span id="last-updated">--</span></div>
+    <div class="footer-controls">
+      <button class="board-btn" onclick="refreshAll()">&#x27f3; REFRESH</button>
+      <button class="board-btn" id="theme-btn" onclick="toggleTheme()">&#x2600; LIGHT</button>
+    </div>
+    <div class="attribution-line">SCHEDULE VIA MLB STATS API &middot; WEATHER VIA OPEN-METEO</div>
+    <div class="footer-about">
+      <span>WhatChannelAreTheYankeesOn.com is an independent fan site. Not affiliated with the New York Yankees or Major League Baseball.</span>
+      <a href="privacy.html" class="footer-link">Privacy Policy</a>
+    </div>
+  </div>
+
+</div>
+</div>
+
+<script>
+// ========== CONSTANTS ==========
+const YANKEES_ID = 147;
+const LOGO_BASE = 'Images/';
+const AL_EAST_IDS = {147:'NYY',111:'BOS',139:'TB',141:'TOR',110:'BAL'};
+
+// MLB team ID -> logo filename abbreviation
+const TEAM_ABBR = {
+  108:'LAA',109:'ARI',110:'BAL',111:'BOS',112:'CHC',113:'CIN',114:'CLE',
+  115:'COL',116:'DET',117:'HOU',118:'KC',119:'LAD',120:'WSH',121:'NYM',
+  133:'OAK',134:'PIT',135:'SD',136:'SEA',137:'SF',138:'STL',139:'TB',
+  140:'TEX',141:'TOR',142:'MIN',143:'PHI',144:'ATL',145:'CWS',146:'MIA',
+  147:'NYY',158:'MIL',
+};
+
+const BROADCAST_LINKS = {
+  'YES':'https://www.yesnetwork.com/live','YES Network':'https://www.yesnetwork.com/live',
+  'ESPN':'https://www.espn.com/watch','ESPN2':'https://www.espn.com/watch','ESPN+':'https://www.espn.com/watch',
+  'Apple TV+':'https://tv.apple.com','Peacock':'https://www.peacocktv.com','MLB.TV':'https://www.mlb.tv',
+  'FS1':'https://www.foxsports.com/live','FOX':'https://www.foxsports.com/live',
+  'TBS':'https://www.tbs.com/watchtbs','YouTube TV':'https://tv.youtube.com',
+  'NBC':'https://www.nbc.com/live','Amazon Prime Video':'https://www.amazon.com/gp/video',
+};
+const WMO = {0:'âï¸',1:'ð¤ï¸',2:'â',3:'âï¸',45:'ð«ï¸',48:'ð«ï¸',51:'ð¦ï¸',53:'ð¦ï¸',55:'ð§ï¸',61:'ð§ï¸',63:'ð§ï¸',65:'ð§ï¸',71:'âï¸',73:'âï¸',75:'âï¸',80:'ð§ï¸',81:'ð§ï¸',82:'âï¸',95:'âï¸',96:'âï¸',99:'âï¸'};
+
+let weatherData = null, allGames = [], seriesDisplayCount = 5, nextGameDate = null;
+
+function today() { return new Date(); }
+function fmtDate(d) { return d.toISOString().split('T')[0]; }
+function addDays(d, n) { const r = new Date(d); r.setDate(r.getDate() + n); return r; }
+
+function teamLogo(teamId) {
+  const abbr = TEAM_ABBR[teamId];
+  if (abbr) return LOGO_BASE + abbr + '.png';
+  return `https://www.mlbstatic.com/team-logos/${teamId}.svg`;
+}
+
+function formatGameTime(dateStr) {
+  const d = new Date(dateStr);
+  const p = new Intl.DateTimeFormat('en-US',{weekday:'short',month:'short',day:'numeric',hour:'numeric',minute:'2-digit',hour12:true,timeZone:'America/New_York'}).formatToParts(d);
+  const g = t => p.find(x=>x.type===t)?.value||'';
+  return `${g('weekday').toUpperCase()} ${g('month').toUpperCase()} ${g('day')} \u00B7 ${g('hour')}:${g('minute')} ${g('dayPeriod').toUpperCase()} ET`;
+}
+
+function getGameHourET(dateStr) {
+  return parseInt(new Intl.DateTimeFormat('en-US',{hour:'numeric',hour12:false,timeZone:'America/New_York'}).format(new Date(dateStr)));
+}
+
+document.getElementById('season-sub').textContent = today().getFullYear() + ' REGULAR SEASON';
+
+// ========== THEME ==========
+function toggleTheme() {
+  document.body.classList.toggle('light-mode');
+  const l = document.body.classList.contains('light-mode');
+  document.getElementById('theme-btn').innerHTML = l ? '&#x263E; DARK' : '&#x2600; LIGHT';
+  localStorage.setItem('yt2',l?'l':'d');
+}
+if(localStorage.getItem('yt2')==='l'){document.body.classList.add('light-mode');document.getElementById('theme-btn').innerHTML='&#x263E; DARK';}
+
+async function fetchJSON(url) { const r = await fetch(url); if(!r.ok) throw new Error(r.status); return r.json(); }
+
+// ========== WEATHER ==========
+async function fetchWeather() {
+  try {
+    weatherData = await fetchJSON(`https://api.open-meteo.com/v1/forecast?latitude=40.8296&longitude=-73.9262&hourly=temperature_2m,precipitation_probability,weathercode&timezone=America/New_York&start_date=${fmtDate(today())}&end_date=${fmtDate(addDays(today(),14))}&temperature_unit=fahrenheit`);
+  } catch(e) { weatherData = null; }
+}
+
+function getWx(dateStr) {
+  if(!weatherData?.hourly) return null;
+  const h = getGameHourET(dateStr);
+  const ds = new Date(dateStr).toLocaleDateString('en-CA',{timeZone:'America/New_York'});
+  const t = `${ds}T${String(h).padStart(2,'0')}:00`;
+  const i = weatherData.hourly.time.indexOf(t);
+  if(i===-1) return null;
+  return { temp:Math.round(weatherData.hourly.temperature_2m[i]), precip:weatherData.hourly.precipitation_probability[i], icon:WMO[weatherData.hourly.weathercode[i]]||'ð¡ï¸' };
+}
+
+// ========== STANDINGS ==========
+async function fetchStandings() {
+  let teams;
+  try {
+    const data = await fetchJSON(`https://statsapi.mlb.com/api/v1/standings?leagueId=103&season=${today().getFullYear()}&standingsTypes=regularSeason&hydrate=team`);
+    const ae = data.records.find(r=>r.division?.id===201);
+    if(ae) {
+      // teamRecords come sorted by divisionRank from the API
+      teams = ae.teamRecords.map((t,i)=>{
+        // Extract last 10 from records.splitRecords or calculate from records
+        let l10w='-', l10l='-';
+        const splits = t.records?.splitRecords;
+        if(splits) {
+          const last10 = splits.find(s=>s.type==='lastTen');
+          if(last10){ l10w=last10.wins; l10l=last10.losses; }
+        }
+        return {
+          id: t.team.id,
+          abbr: AL_EAST_IDS[t.team.id]||'???',
+          w: t.wins,
+          l: t.losses,
+          gb: t.gamesBack,
+          rank: t.divisionRank || (i+1),
+          l10w, l10l
+        };
+      });
+      // Sort by division rank ascending (1st place first)
+      teams.sort((a,b)=> Number(a.rank) - Number(b.rank));
+    } else { teams = null; }
+  } catch(e) { teams = null; }
+
+  if(!teams) teams = [147,110,141,139,111].map((id,i)=>({id,abbr:AL_EAST_IDS[id],w:0,l:0,gb:'-',rank:i+1,l10w:'-',l10l:'-'}));
+
+  const container = document.getElementById('standings-body');
+  container.innerHTML = teams.map(t=>{
+    const hl = t.id===YANKEES_ID ? 'highlight' : '';
+    const gbText = !t.gb||t.gb==='-'||t.gb==='0'||t.gb===0 ? '\u2014' : t.gb;
+    const l10str = t.l10w==='-' ? '\u2014' : `${t.l10w}-${t.l10l}`;
+    let l10cls = '';
+    if(t.l10w!=='-') {
+      const w=Number(t.l10w), lo=Number(t.l10l);
+      if(w>=7) l10cls='monster-l10-hot';
+      else if(lo>=7) l10cls='monster-l10-cold';
+    }
+    return `<div class="monster-row ${hl}">
+      <span class="monster-team">${t.abbr}</span>
+      <span class="monster-num">${t.w}</span>
+      <span class="monster-num">${t.l}</span>
+      <span class="monster-gb">${gbText}</span>
+      <span class="monster-l10 ${l10cls}">${l10str}</span>
+    </div>`;
+  }).join('');
+}
+
+// ========== LIVE SCORE ==========
+async function checkLiveScore() {
+  const bar = document.getElementById('live-bar');
+  try {
+    const data = await fetchJSON(`https://statsapi.mlb.com/api/v1/schedule?teamId=${YANKEES_ID}&sportId=1&date=${fmtDate(today())}&hydrate=linescore`);
+    let liveGame = null;
+    for(const d of (data.dates||[])) for(const g of (d.games||[])) {
+      const st = g.status?.abstractGameState;
+      if(st === 'Live' || st === 'In Progress') { liveGame = g; break; }
+    }
+    if(!liveGame) {
+      // Check for Final games today
+      let finalGame = null;
+      for(const d of (data.dates||[])) for(const g of (d.games||[])) {
+        if(g.status?.abstractGameState === 'Final') finalGame = g;
+      }
+      if(finalGame) {
+        const ls = finalGame.linescore;
+        const aId = finalGame.teams.away.team.id;
+        const hId = finalGame.teams.home.team.id;
+        const aR = ls?.teams?.away?.runs ?? finalGame.teams.away.score ?? '-';
+        const hR = ls?.teams?.home?.runs ?? finalGame.teams.home.score ?? '-';
+        bar.innerHTML = `
+          <span class="no-live-msg" style="color:var(--cream-dim)">FINAL</span>
+          <div class="live-score-content">
+            <img class="live-team-logo" src="${teamLogo(aId)}" alt="" onerror="this.style.display='none'"/>
+            <span class="live-team-abbr">${TEAM_ABBR[aId]||'AWY'}</span>
+            <span class="live-score-num">${aR}</span>
+            <span class="live-at">@</span>
+            <span class="live-score-num">${hR}</span>
+            <span class="live-team-abbr">${TEAM_ABBR[hId]||'HME'}</span>
+            <img class="live-team-logo" src="${teamLogo(hId)}" alt="" onerror="this.style.display='none'"/>
+          </div>`;
+      } else {
+        bar.innerHTML = '<span class="no-live-msg">NO GAME IN PROGRESS</span>';
+      }
+      return;
+    }
+
+    const ls = liveGame.linescore;
+    const aId = liveGame.teams.away.team.id;
+    const hId = liveGame.teams.home.team.id;
+    const aR = ls?.teams?.away?.runs ?? 0;
+    const hR = ls?.teams?.home?.runs ?? 0;
+    const inn = ls?.currentInning || '?';
+    const half = ls?.isTopInning ? 'TOP' : 'BOT';
+
+    bar.innerHTML = `
+      <div class="live-dot"></div>
+      <span class="live-label">LIVE</span>
+      <div class="live-score-content">
+        <img class="live-team-logo" src="${teamLogo(aId)}" alt="" onerror="this.style.display='none'"/>
+        <span class="live-team-abbr">${TEAM_ABBR[aId]||'AWY'}</span>
+        <span class="live-score-num">${aR}</span>
+        <span class="live-at">@</span>
+        <span class="live-score-num">${hR}</span>
+        <span class="live-team-abbr">${TEAM_ABBR[hId]||'HME'}</span>
+        <img class="live-team-logo" src="${teamLogo(hId)}" alt="" onerror="this.style.display='none'"/>
+        <span class="live-inning">${half} ${inn}</span>
+      </div>`;
+  } catch(e) {
+    bar.innerHTML = '<span class="no-live-msg">NO GAME IN PROGRESS</span>';
+  }
+}
+
+// ========== SCHEDULE ==========
+let fullSeasonLoaded = false;
+
+async function fetchSchedule() {
+  try {
+    const url = `https://statsapi.mlb.com/api/v1/schedule?teamId=${YANKEES_ID}&sportId=1&gameType=R&startDate=${fmtDate(today())}&endDate=${fmtDate(addDays(today(),14))}&hydrate=broadcasts,probablePitcher,linescore`;
+    const data = await fetchJSON(url);
+    allGames = [];
+    for(const d of (data.dates||[])) for(const g of (d.games||[])) allGames.push(g);
+    if(!allGames.length) throw new Error('empty');
+  } catch(e) { allGames = getFallbackGames(); }
+  seriesDisplayCount = 5;
+  renderGames();
+}
+
+async function loadMore() {
+  if(!fullSeasonLoaded) {
+    const btn = document.getElementById('load-more-btn');
+    btn.textContent = 'LOADING...';
+    btn.disabled = true;
+    try {
+      const endOfYear = `${today().getFullYear()}-12-31`;
+      const url = `https://statsapi.mlb.com/api/v1/schedule?teamId=${YANKEES_ID}&sportId=1&gameType=R&startDate=${fmtDate(today())}&endDate=${endOfYear}&hydrate=broadcasts,probablePitcher`;
+      const data = await fetchJSON(url);
+      allGames = [];
+      for(const d of (data.dates||[])) for(const g of (d.games||[])) allGames.push(g);
+      fullSeasonLoaded = true;
+    } catch(e) {}
+    btn.disabled = false;
+  }
+  const totalSeries = groupBySeries(allGames).length;
+  seriesDisplayCount = Math.min(seriesDisplayCount + 5, totalSeries);
+  renderGames();
+  updateLoadMoreBtn();
+}
+
+function updateLoadMoreBtn() {
+  const totalSeries = groupBySeries(allGames).length;
+  const btn = document.getElementById('load-more-btn');
+  if(seriesDisplayCount >= totalSeries && fullSeasonLoaded) {
+    btn.textContent = 'ALL SERIES LOADED';
+    btn.disabled = true;
+  } else if(!fullSeasonLoaded) {
+    btn.innerHTML = 'LOAD FULL SEASON &#x25BC;';
+    btn.disabled = false;
+  } else {
+    const rem = totalSeries - seriesDisplayCount;
+    btn.innerHTML = `LOAD MORE (${rem} SERIES REMAINING) &#x25BC;`;
+    btn.disabled = false;
+  }
+}
+
+function getFallbackGames() {
+  const opps = [{id:111,name:'Boston Red Sox'},{id:111,name:'Boston Red Sox'},{id:111,name:'Boston Red Sox'},{id:141,name:'Toronto Blue Jays'},{id:141,name:'Toronto Blue Jays'},{id:141,name:'Toronto Blue Jays'},{id:139,name:'Tampa Bay Rays'}];
+  return opps.map((o,i)=>{const gd=addDays(today(),i);gd.setHours(19,5,0,0);const h=i<3;return{gamePk:700000+i,gameDate:gd.toISOString(),status:{detailedState:'Scheduled'},teams:{away:{team:{id:h?o.id:YANKEES_ID,name:h?o.name:'New York Yankees'}},home:{team:{id:h?YANKEES_ID:o.id,name:h?'New York Yankees':o.name}}},broadcasts:[{type:'TV',name:'YES Network'}],seriesGameNumber:(i%3)+1,gamesInSeries:3};});
+}
+
+function buildGameCard(game, idx, isNextGame) {
+  const awayTeam = game.teams.away.team;
+  const homeTeam = game.teams.home.team;
+  const isHome = homeTeam.id === YANKEES_ID;
+  const status = game.status?.detailedState||'';
+  const isPPD = status.toLowerCase().includes('postponed');
+  const isDLY = status.toLowerCase().includes('delay');
+  const sn = game.seriesGameNumber, st = game.gamesInSeries;
+  const oppName = isHome ? awayTeam.name : homeTeam.name;
+  const seriesText = sn&&st ? `GAME ${sn} OF ${st} VS ${oppName.split(' ').pop().toUpperCase()}` : '';
+  const wx = isHome ? getWx(game.gameDate) : null;
+  const tvB = (game.broadcasts||[]).filter(b=>b.type==='TV'||b.type==='National');
+  const yankP = isHome ? game.teams?.home?.probablePitcher : game.teams?.away?.probablePitcher;
+  const oppP = isHome ? game.teams?.away?.probablePitcher : game.teams?.home?.probablePitcher;
+
+  return `
+  <div class="game-row" id="game-${idx}">
+    ${isNextGame ? `<div class="next-game-badge"><span class="ng-label">NEXT GAME</span><span class="ng-time" id="ng-countdown">--</span></div>` : ''}
+    <div class="matchup-line">
+      <div class="team-cell away-cell">
+        <div class="team-name-block">
+          <div class="t-name">${awayTeam.name.toUpperCase()}</div>
+          <div class="t-role away-tag">AWAY</div>
+        </div>
+        <div class="team-logo-box">
+          <img src="${teamLogo(awayTeam.id)}" alt="${awayTeam.name}" onerror="this.src='https://www.mlbstatic.com/team-logos/${awayTeam.id}.svg'" />
+        </div>
+      </div>
+      <div class="at-symbol">@</div>
+      <div class="team-cell home-cell">
+        <div class="team-logo-box">
+          <img src="${teamLogo(homeTeam.id)}" alt="${homeTeam.name}" onerror="this.src='https://www.mlbstatic.com/team-logos/${homeTeam.id}.svg'" />
+        </div>
+        <div class="team-name-block">
+          <div class="t-name">${homeTeam.name.toUpperCase()}</div>
+          <div class="t-role home-tag">HOME</div>
+        </div>
+      </div>
+    </div>
+    <div class="game-meta">
+      <span class="game-datetime-cell">${formatGameTime(game.gameDate)}</span>
+      ${seriesText?`<span class="series-cell">${seriesText}</span>`:''}
+      ${isPPD?'<span class="tag tag-postponed">PPD</span>':''}
+      ${isDLY?'<span class="tag tag-delayed">DLY</span>':''}
+    </div>
+    ${wx?`<div class="weather-strip"><span class="weather-tag">STADIUM WX</span><div class="weather-data"><span class="weather-icon">${wx.icon}</span><span class="weather-temp">${wx.temp}&deg;F</span><span class="rain-prob">&#x1F4A7; ${wx.precip}%</span></div></div>`:''}
+    <div class="details-toggle">
+      <button class="details-btn" onclick="togglePanel(${idx})">GAME DETAILS <span class="details-arrow">&#x25BC;</span></button>
+    </div>
+    <div class="game-panel" id="panel-${idx}">
+      <div class="panel-inner">
+        <div class="panel-section-label">Watch &middot; Stream &middot; Listen</div>
+        ${tvB.length?tvB.map(b=>`<div class="bcast-row"><div class="bcast-logo"><span class="bfallback">${b.name.substring(0,4).toUpperCase()}</span></div><span class="bcast-name">${b.name}</span>${getBLink(b.name)?`<a href="${getBLink(b.name)}" target="_blank" class="watch-link">WATCH</a>`:''}</div>`).join(''):'<div class="bcast-row"><span class="bcast-name" style="color:#666">Broadcast TBD</span></div>'}
+        <div class="radio-divider"><span style="font-size:1.1rem">&#x1F4FB;</span><span class="bcast-name">Yankees Radio</span><a href="https://www.mlb.com/yankees/fans/radio" target="_blank" class="watch-link">LISTEN</a></div>
+
+        <div class="panel-section-label">Pitching Matchup</div>
+        ${renderMatchup(yankP,oppP,isHome?awayTeam:homeTeam)}
+
+        <div class="panel-section-label">Starting Lineup</div>
+        <div id="lineup-area-${idx}">
+          <div class="lu-note">Lineups typically posted ~3 hrs before first pitch</div>
+          <div class="lineup-grid">
+            <div class="lineup-header-label">YANKEES BATTING ORDER</div>
+            ${[1,2,3,4,5,6,7,8,9].map(n=>`<div class="lu-row lu-row-blank"><div class="lu-order">${n}</div><div class="lu-name">---</div><div class="lu-pos">--</div><div class="lu-avg">---</div></div>`).join('')}
+          </div>
+          <div class="lu-timestamp">Last checked: ${new Date().toLocaleTimeString('en-US',{timeZone:'America/New_York',hour:'numeric',minute:'2-digit'})} ET</div>
+        </div>
+      </div>
+    </div>
+  </div>`;
+}
+
+// Group games into series by opponent + consecutive dates
+function groupBySeries(games) {
+  const series = [];
+  let current = null;
+  for(const g of games) {
+    const isHome = g.teams.home.team.id === YANKEES_ID;
+    const opp = isHome ? g.teams.away.team : g.teams.home.team;
+    const oppId = opp.id;
+    const atHome = isHome;
+    // Same series = same opponent + same home/away
+    if(current && current.oppId === oppId && current.atHome === atHome) {
+      current.games.push(g);
+    } else {
+      current = { oppId, oppName: opp.name, atHome, games: [g] };
+      series.push(current);
+    }
+  }
+  return series;
+}
+
+function adSlotHTML(idx) {
+  return `<div class="ad-divider">
+    <div class="ad-label">ADVERTISEMENT</div>
+    <div class="ad-slot">
+      <ins class="adsbygoogle"
+        style="display:block"
+        data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+        data-ad-slot="XXXXXXXXXX"
+        data-ad-format="horizontal"
+        data-full-width-responsive="true"></ins>
+    </div>
+  </div>`;
+}
+
+function renderGames() {
+  const nextSec = document.getElementById('next-game-section');
+  const sec = document.getElementById('games-section');
+  if(!allGames.length){
+    nextSec.innerHTML = '';
+    sec.innerHTML='<div class="loading-msg">NO UPCOMING GAMES</div>';
+    return;
+  }
+
+  // Find next future game for countdown
+  const now = new Date();
+  let nextIdx = -1;
+  for(let i=0;i<allGames.length;i++) { if(new Date(allGames[i].gameDate)>now){nextIdx=i;nextGameDate=new Date(allGames[i].gameDate);break;} }
+  if(nextIdx===-1) nextIdx = 0;
+
+  // Render next game above standings
+  nextSec.innerHTML = '<div style="padding:10px 12px;">' + buildGameCard(allGames[nextIdx], nextIdx, true) + '</div>';
+
+  // Group all games into series
+  const allSeriesGroups = groupBySeries(allGames);
+  const visibleSeries = allSeriesGroups.slice(0, seriesDisplayCount);
+
+  // Flatten visible series to find which game indices are shown
+  const visibleGames = new Set();
+  visibleSeries.forEach(s => s.games.forEach(g => visibleGames.add(g)));
+
+  let html = '';
+  visibleSeries.forEach((series, sIdx) => {
+    const loc = series.atHome ? 'HOME' : 'AWAY';
+    const oppShort = series.oppName.split(' ').pop().toUpperCase();
+    const dateRange = formatSeriesDateRange(series.games);
+
+    html += `<div class="series-group">`;
+    html += `<div class="series-header">
+      <div class="series-header-line"></div>
+      <span class="series-header-text">${series.games.length}-GAME SERIES VS ${oppShort} &middot; ${loc} &middot; ${dateRange}</span>
+      <div class="series-header-line"></div>
+    </div>`;
+
+    series.games.forEach(game => {
+      const realIdx = allGames.indexOf(game);
+      if(realIdx === nextIdx) return; // already shown above standings
+      html += buildGameCard(game, realIdx, false);
+    });
+
+    html += `</div>`;
+
+    // Insert ad after each series except the last visible one
+    if(sIdx < visibleSeries.length - 1) {
+      html += adSlotHTML(sIdx);
+    }
+  });
+
+  sec.innerHTML = html;
+
+  // Push ads to AdSense
+  try {
+    const adEls = document.querySelectorAll('.ad-slot ins.adsbygoogle');
+    adEls.forEach(el => {
+      if(!el.dataset.adsbygoogleDone) {
+        (window.adsbygoogle = window.adsbygoogle || []).push({});
+        el.dataset.adsbygoogleDone = '1';
+      }
+    });
+  } catch(e) {}
+
+  // Fetch lineups for visible games
+  visibleSeries.forEach(s => s.games.forEach(g => {
+    const idx = allGames.indexOf(g);
+    fetchLineup(g, idx);
+  }));
+
+  updateLoadMoreBtn();
+}
+
+function formatSeriesDateRange(games) {
+  if(!games.length) return '';
+  const first = new Date(games[0].gameDate);
+  const last = new Date(games[games.length-1].gameDate);
+  const fmtShort = d => {
+    const p = new Intl.DateTimeFormat('en-US',{month:'short',day:'numeric',timeZone:'America/New_York'}).formatToParts(d);
+    const g = t => p.find(x=>x.type===t)?.value||'';
+    return `${g('month').toUpperCase()} ${g('day')}`;
+  };
+  if(games.length === 1) return fmtShort(first);
+  return `${fmtShort(first)}\u2013${fmtShort(last)}`;
+}
+
+function getBLink(n){if(!n)return'';const u=n.toUpperCase();for(const[k,v]of Object.entries(BROADCAST_LINKS)){if(u.includes(k.toUpperCase()))return v;}return'https://www.mlb.tv';}
+
+function renderMatchup(yP,oP,opp){
+  if(!yP&&!oP) return '<div class="pitcher-tbd-msg">Probable pitchers not yet announced.</div>';
+  const s=(p,lbl,cls)=>{
+    if(!p) return `<div class="pitcher-panel ${cls}"><div class="pitcher-photo" style="display:flex;align-items:center;justify-content:center;font-size:1.3rem">&#9918;</div><div class="pitcher-name" style="font-style:italic;color:#777">TBD</div><div class="pitcher-detail">${lbl}</div></div>`;
+    return `<div class="pitcher-panel ${cls}"><div class="pitcher-photo"><img src="https://img.mlbstatic.com/mlb-photos/image/upload/w_213,d_people:generic:headshot:silo:current.png/v1/people/${p.id}/headshot/silo/current" alt="${p.fullName}" onerror="this.parentElement.innerHTML='&#9918;'"/></div><div class="pitcher-name">${p.fullName.toUpperCase()}</div><div class="pitcher-detail">${lbl} &middot; #${p.jerseyNumber||'--'}</div></div>`;
+  };
+  return `<div class="matchup-board">${s(yP,'YANKEES','home-side')}<div class="vs-divider">VS</div>${s(oP,opp.name.split(' ').pop().toUpperCase(),'away-side')}</div>`;
+}
+
+async function fetchLineup(game,idx){
+  try{
+    const data=await fetchJSON(`https://statsapi.mlb.com/api/v1.1/game/${game.gamePk}/feed/live`);
+    const isH=game.teams.home.team.id===YANKEES_ID;
+    const td=data?.liveData?.boxscore?.teams?.[isH?'home':'away'];
+    if(!td)return;const order=td.battingOrder||[];const players=td.players||{};
+    if(!order.length)return;
+    const el=document.getElementById(`lineup-area-${idx}`);if(!el)return;
+    let h='<div class="lineup-grid"><div class="lineup-header-label">YANKEES BATTING ORDER</div>';
+    order.forEach((pid,i)=>{const p=players[`ID${pid}`]||{};h+=`<div class="lu-row"><div class="lu-order">${i+1}</div><div class="lu-name">${(p.person?.fullName||'Player').toUpperCase()}</div><div class="lu-pos">${p.position?.abbreviation||'--'}</div><div class="lu-avg">${p.seasonStats?.batting?.avg||'---'}</div></div>`;});
+    h+=`<div class="lu-timestamp">Official lineup \u00B7 ${new Date().toLocaleTimeString('en-US',{timeZone:'America/New_York',hour:'numeric',minute:'2-digit'})} ET</div></div>`;
+    el.innerHTML=h;
+  }catch(e){}
+}
+
+// ========== UNIFIED PANEL TOGGLE ==========
+function togglePanel(idx){
+  const panel=document.getElementById(`panel-${idx}`);
+  const card=document.getElementById(`game-${idx}`);
+  const btn=card.querySelector('.details-btn');
+  if(panel.classList.contains('open')){
+    panel.classList.remove('open');
+    btn.classList.remove('active');
+  } else {
+    panel.classList.add('open');
+    btn.classList.add('active');
+  }
+}
+
+// ========== ADD ALL TO CALENDAR ==========
+function downloadAllICS(){
+  // Get all games from visible series
+  const visibleSeriesGames = groupBySeries(allGames).slice(0, seriesDisplayCount).flatMap(s=>s.games);
+  const events = visibleSeriesGames.map(g=>{
+    const s=new Date(g.gameDate);
+    const e=new Date(s.getTime()+3.5*36e5);
+    const alarm=new Date(s.getTime()-15*6e4);
+    const f=d=>d.toISOString().replace(/[-:]/g,'').replace(/\.\d{3}/,'');
+    const isH=g.teams.home.team.id===YANKEES_ID;
+    const loc=isH?'Yankee Stadium, 1 E 161st St, Bronx, NY 10451':g.teams.home.team.name+' Ballpark';
+    const aP=g.teams?.away?.probablePitcher?.fullName||'TBD';
+    const hP=g.teams?.home?.probablePitcher?.fullName||'TBD';
+    return `BEGIN:VEVENT\r\nDTSTART:${f(s)}\r\nDTEND:${f(e)}\r\nSUMMARY:${g.teams.away.team.name} @ ${g.teams.home.team.name}\r\nDESCRIPTION:${aP} vs ${hP}\r\nLOCATION:${loc}\r\nBEGIN:VALARM\r\nTRIGGER:-PT15M\r\nACTION:DISPLAY\r\nDESCRIPTION:Yankees game in 15 minutes!\r\nEND:VALARM\r\nEND:VEVENT`;
+  }).join('\r\n');
+
+  const ics=`BEGIN:VCALENDAR\r\nVERSION:2.0\r\nPRODID:-//Yankees Dashboard//EN\r\n${events}\r\nEND:VCALENDAR`;
+  const a=document.createElement('a');
+  a.href=URL.createObjectURL(new Blob([ics],{type:'text/calendar'}));
+  a.download='yankees-schedule.ics';
+  a.click();
+}
+
+// ========== NEXT GAME COUNTDOWN ==========
+function updateNextGameCountdown(){
+  const el=document.getElementById('ng-countdown');
+  if(!el||!nextGameDate)return;
+  const diff=nextGameDate-new Date();
+  if(diff<=0){el.textContent='NOW';return;}
+  const d=Math.floor(diff/864e5);
+  const h=Math.floor((diff%864e5)/36e5);
+  const m=Math.floor((diff%36e5)/6e4);
+  const s=Math.floor((diff%6e4)/1000);
+  let t='';
+  if(d>0)t+=d+'D ';
+  t+=String(h).padStart(2,'0')+'H '+String(m).padStart(2,'0')+'M '+String(s).padStart(2,'0')+'S';
+  el.textContent=t;
+}
+
+// ========== INIT ==========
+async function refreshAll(){
+  document.getElementById('games-section').innerHTML='<div class="loading-msg"><span class="ldot"></span><span class="ldot"></span><span class="ldot"></span><br><br>LOADING SCHEDULE</div>';
+  await Promise.all([fetchWeather(),fetchStandings(),fetchSchedule(),checkLiveScore()]);
+  document.getElementById('last-updated').textContent=new Date().toLocaleString('en-US',{timeZone:'America/New_York',hour:'numeric',minute:'2-digit',second:'2-digit',month:'short',day:'numeric'});
+  updateNextGameCountdown();
+}
+
+refreshAll();
+setInterval(updateNextGameCountdown,1000);
+setInterval(checkLiveScore,30000); // refresh live score every 30s
+</script>
+</body>
+</html>
+
