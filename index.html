@@ -2607,6 +2607,7 @@ async function checkLiveScore() {
         const hId = finalGame.teams.home.team.id;
         const aR = ls?.teams?.away?.runs ?? finalGame.teams.away.score ?? '-';
         const hR = ls?.teams?.home?.runs ?? finalGame.teams.home.score ?? '-';
+        bar.style.display = '';
         bar.innerHTML = `
           <span class="no-live-msg" style="color:var(--cream-dim)">FINAL</span>
           <div class="live-score-content">
@@ -2622,7 +2623,6 @@ async function checkLiveScore() {
         bar.style.display = 'none';
         return;
       }
-      bar.style.display = '';
       return;
     }
 
