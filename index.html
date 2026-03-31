@@ -1829,7 +1829,7 @@ body {
   transform: translate(-50%, -50%);
   width: 120%;
   height: 120%;
-  background: radial-gradient(ellipse at center, rgba(255,255,255,0.6) 0%, rgba(255,255,255,0.45) 40%, rgba(255,255,255,0.2) 65%, transparent 80%);
+  background: radial-gradient(ellipse at center, rgba(255,255,255,0.7) 0%, rgba(255,255,255,0.5) 40%, rgba(255,255,255,0.25) 65%, transparent 80%);
   border-radius: 50%;
   z-index: 0;
   pointer-events: none;
@@ -2330,18 +2330,18 @@ const BROADCAST_LINKS = {
 };
 
 const CHANNEL_LOGOS = {
-  'YES Network':'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 40%22%3E%3Crect fill=%22%23000033%22 width=%22100%22 height=%2240%22/%3E%3Ctext x=%2250%22 y=%2228%22 font-family=%22Arial%22 font-size=%2220%22 fill=%22%23FFFF00%22 text-anchor=%22middle%22 font-weight=%22bold%22%3EYES%3C/text%3E%3C/svg%3E',
-  'ESPN':'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 40%22%3E%3Crect fill=%22%23003366%22 width=%22100%22 height=%2240%22/%3E%3Ctext x=%2250%22 y=%2228%22 font-family=%22Arial%22 font-size=%2216%22 fill=%22%23FFFFFF%22 text-anchor=%22middle%22 font-weight=%22bold%22%3ESPN%3C/text%3E%3C/svg%3E',
-  'ESPN2':'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 40%22%3E%3Crect fill=%22%23FF6600%22 width=%22100%22 height=%2240%22/%3E%3Ctext x=%2250%22 y=%2228%22 font-family=%22Arial%22 font-size=%2216%22 fill=%22%23FFFFFF%22 text-anchor=%22middle%22 font-weight=%22bold%22%3ESPN2%3C/text%3E%3C/svg%3E',
-  'FOX':'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 40%22%3E%3Crect fill=%22%236600CC%22 width=%22100%22 height=%2240%22/%3E%3Ctext x=%2250%22 y=%2228%22 font-family=%22Arial%22 font-size=%2218%22 fill=%22%23FFFFFF%22 text-anchor=%22middle%22 font-weight=%22bold%22%3EFOX%3C/text%3E%3C/svg%3E',
-  'Apple TV+':'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 40%22%3E%3Crect fill=%22%23000000%22 width=%22100%22 height=%2240%22/%3E%3Ctext x=%2250%22 y=%2228%22 font-family=%22Arial%22 font-size=%2214%22 fill=%22%23555555%22 text-anchor=%22middle%22 font-weight=%22bold%22%3EAPPLE%3C/text%3E%3C/svg%3E',
-  'Amazon Prime Video':'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 40%22%3E%3Crect fill=%22%23146EB4%22 width=%22100%22 height=%2240%22/%3E%3Ctext x=%2250%22 y=%2228%22 font-family=%22Arial%22 font-size=%2214%22 fill=%22%23FFFFFF%22 text-anchor=%22middle%22 font-weight=%22bold%22%3EPRIME%3C/text%3E%3C/svg%3E',
-  'Peacock':'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 40%22%3E%3Crect fill=%22%23563D7C%22 width=%22100%22 height=%2240%22/%3E%3Ctext x=%2250%22 y=%2228%22 font-family=%22Arial%22 font-size=%2214%22 fill=%22%23FFFFFF%22 text-anchor=%22middle%22 font-weight=%22bold%22%3EPEACOCK%3C/text%3E%3C/svg%3E',
-  'FS1':'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 40%22%3E%3Crect fill=%22%23000000%22 width=%22100%22 height=%2240%22/%3E%3Ctext x=%2250%22 y=%2228%22 font-family=%22Arial%22 font-size=%2216%22 fill=%22%23FFFFFF%22 text-anchor=%22middle%22 font-weight=%22bold%22%3EFS1%3C/text%3E%3C/svg%3E',
-  'TBS':'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 40%22%3E%3Crect fill=%22%23000000%22 width=%22100%22 height=%2240%22/%3E%3Ctext x=%2250%22 y=%2228%22 font-family=%22Arial%22 font-size=%2218%22 fill=%22%23CC0000%22 text-anchor=%22middle%22 font-weight=%22bold%22%3ETBS%3C/text%3E%3C/svg%3E',
-  'NBC':'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 40%22%3E%3Crect fill=%22%23FFD700%22 width=%22100%22 height=%2240%22/%3E%3Ctext x=%2250%22 y=%2228%22 font-family=%22Arial%22 font-size=%2216%22 fill=%22%23000000%22 text-anchor=%22middle%22 font-weight=%22bold%22%3ENBC%3C/text%3E%3C/svg%3E',
-  'MLB Network':'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 40%22%3E%3Crect fill=%22%23002D72%22 width=%22100%22 height=%2240%22 rx=%224%22/%3E%3Ctext x=%2250%22 y=%2228%22 font-family=%22Arial%22 font-size=%2212%22 fill=%22%23FFFFFF%22 text-anchor=%22middle%22 font-weight=%22bold%22%3EMLB NET%3C/text%3E%3C/svg%3E',
-  'WFAN':'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 40%22%3E%3Crect fill=%22%23003087%22 width=%22100%22 height=%2240%22 rx=%224%22/%3E%3Ctext x=%2250%22 y=%2228%22 font-family=%22Arial%22 font-size=%2214%22 fill=%22%23FFFFFF%22 text-anchor=%22middle%22 font-weight=%22bold%22%3EWFAN%3C/text%3E%3C/svg%3E',
+  'YES Network':'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 120 48%22%3E%3Crect fill=%22%23003366%22 width=%22120%22 height=%2248%22 rx=%226%22/%3E%3Ctext x=%2260%22 y=%2233%22 font-family=%22Arial,sans-serif%22 font-size=%2224%22 fill=%22%23FFDD00%22 text-anchor=%22middle%22 font-weight=%22bold%22 letter-spacing=%222%22%3EYES%3C/text%3E%3C/svg%3E',
+  'ESPN':'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 120 48%22%3E%3Crect fill=%22%23CC0000%22 width=%22120%22 height=%2248%22 rx=%226%22/%3E%3Ctext x=%2260%22 y=%2233%22 font-family=%22Arial,sans-serif%22 font-size=%2222%22 fill=%22%23FFFFFF%22 text-anchor=%22middle%22 font-weight=%22bold%22 letter-spacing=%221%22%3ESPN%3C/text%3E%3C/svg%3E',
+  'ESPN2':'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 120 48%22%3E%3Crect fill=%22%23CC0000%22 width=%22120%22 height=%2248%22 rx=%226%22/%3E%3Ctext x=%2260%22 y=%2233%22 font-family=%22Arial,sans-serif%22 font-size=%2220%22 fill=%22%23FFFFFF%22 text-anchor=%22middle%22 font-weight=%22bold%22 letter-spacing=%221%22%3ESPN2%3C/text%3E%3C/svg%3E',
+  'FOX':'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 120 48%22%3E%3Crect fill=%22%23003F87%22 width=%22120%22 height=%2248%22 rx=%226%22/%3E%3Ctext x=%2260%22 y=%2233%22 font-family=%22Arial,sans-serif%22 font-size=%2224%22 fill=%22%23FFFFFF%22 text-anchor=%22middle%22 font-weight=%22bold%22 letter-spacing=%223%22%3EFOX%3C/text%3E%3C/svg%3E',
+  'FS1':'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 120 48%22%3E%3Crect fill=%22%23000000%22 width=%22120%22 height=%2248%22 rx=%226%22/%3E%3Ctext x=%2260%22 y=%2233%22 font-family=%22Arial,sans-serif%22 font-size=%2224%22 fill=%22%23FFFFFF%22 text-anchor=%22middle%22 font-weight=%22bold%22 letter-spacing=%222%22%3EFS%3Ctspan fill=%22%230066CC%22%3E1%3C/tspan%3E%3C/text%3E%3C/svg%3E',
+  'TBS':'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 120 48%22%3E%3Crect fill=%22%23F0F0F0%22 width=%22120%22 height=%2248%22 rx=%226%22/%3E%3Ctext x=%2260%22 y=%2234%22 font-family=%22Arial,sans-serif%22 font-size=%2226%22 fill=%22%23003087%22 text-anchor=%22middle%22 font-weight=%22bold%22 letter-spacing=%222%22%3Etbs%3C/text%3E%3C/svg%3E',
+  'NBC':'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 120 48%22%3E%3Crect fill=%22%23F7B500%22 width=%22120%22 height=%2248%22 rx=%226%22/%3E%3Ctext x=%2260%22 y=%2233%22 font-family=%22Arial,sans-serif%22 font-size=%2224%22 fill=%22%23000000%22 text-anchor=%22middle%22 font-weight=%22bold%22 letter-spacing=%223%22%3ENBC%3C/text%3E%3C/svg%3E',
+  'MLB Network':'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 120 48%22%3E%3Crect fill=%22%23002D72%22 width=%22120%22 height=%2248%22 rx=%226%22/%3E%3Ctext x=%2260%22 y=%2228%22 font-family=%22Arial,sans-serif%22 font-size=%2218%22 fill=%22%23FFFFFF%22 text-anchor=%22middle%22 font-weight=%22bold%22 letter-spacing=%222%22%3EMLBN%3C/text%3E%3Ctext x=%2260%22 y=%2242%22 font-family=%22Arial,sans-serif%22 font-size=%229%22 fill=%22%23E31837%22 text-anchor=%22middle%22 letter-spacing=%221%22%3ENETWORK%3C/text%3E%3C/svg%3E',
+  'Apple TV+':'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 120 48%22%3E%3Crect fill=%22%23000000%22 width=%22120%22 height=%2248%22 rx=%226%22/%3E%3Ctext x=%2260%22 y=%2224%22 font-family=%22Arial,sans-serif%22 font-size=%2211%22 fill=%22%23999999%22 text-anchor=%22middle%22%3EApple%3C/text%3E%3Ctext x=%2260%22 y=%2241%22 font-family=%22Arial,sans-serif%22 font-size=%2218%22 fill=%22%23FFFFFF%22 text-anchor=%22middle%22 font-weight=%22bold%22%3Etv+%3C/text%3E%3C/svg%3E',
+  'Amazon Prime Video':'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 120 48%22%3E%3Crect fill=%22%2300050D%22 width=%22120%22 height=%2248%22 rx=%226%22/%3E%3Ctext x=%2260%22 y=%2226%22 font-family=%22Arial,sans-serif%22 font-size=%2215%22 fill=%22%2300A8E1%22 text-anchor=%22middle%22 font-weight=%22bold%22 letter-spacing=%222%22%3Eprime%3C/text%3E%3Ctext x=%2260%22 y=%2241%22 font-family=%22Arial,sans-serif%22 font-size=%229%22 fill=%22%2300A8E1%22 text-anchor=%22middle%22 letter-spacing=%221%22%3Evideo%3C/text%3E%3C/svg%3E',
+  'Peacock':'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 120 48%22%3E%3Crect fill=%22%23000000%22 width=%22120%22 height=%2248%22 rx=%226%22/%3E%3Crect x=%2210%22 y=%2238%22 width=%2218%22 height=%224%22 fill=%22%23E40046%22/%3E%3Crect x=%2228%22 y=%2238%22 width=%2218%22 height=%224%22 fill=%22%23FF7800%22/%3E%3Crect x=%2246%22 y=%2238%22 width=%2218%22 height=%224%22 fill=%22%23FFCC00%22/%3E%3Crect x=%2264%22 y=%2238%22 width=%2218%22 height=%224%22 fill=%22%2300B140%22/%3E%3Crect x=%2282%22 y=%2238%22 width=%2218%22 height=%224%22 fill=%22%230066FF%22/%3E%3Ctext x=%2260%22 y=%2231%22 font-family=%22Arial,sans-serif%22 font-size=%2214%22 fill=%22%23FFFFFF%22 text-anchor=%22middle%22 font-weight=%22bold%22 letter-spacing=%222%22%3EPEACOCK%3C/text%3E%3C/svg%3E',
+  'WFAN':'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 120 48%22%3E%3Crect fill=%22%23003087%22 width=%22120%22 height=%2248%22 rx=%226%22/%3E%3Ctext x=%2260%22 y=%2228%22 font-family=%22Arial,sans-serif%22 font-size=%2220%22 fill=%22%23FFFFFF%22 text-anchor=%22middle%22 font-weight=%22bold%22 letter-spacing=%222%22%3EWFAN%3C/text%3E%3Ctext x=%2260%22 y=%2242%22 font-family=%22Arial,sans-serif%22 font-size=%2210%22 fill=%22%23AACCFF%22 text-anchor=%22middle%22 letter-spacing=%221%22%3E660/101.9%3C/text%3E%3C/svg%3E',
 };
 
 const WMO = {0:'☀️',1:'🌤️',2:'⛅',3:'☁️',45:'🌫️',48:'🌫️',51:'🌦️',53:'🌦️',55:'🌧️',61:'🌧️',63:'🌧️',65:'🌧️',71:'❄️',73:'❄️',75:'❄️',80:'🌧️',81:'🌧️',82:'⛈️',95:'⛈️',96:'⛈️',99:'⛈️'};
@@ -2737,7 +2737,7 @@ function buildGameCard(game, idx, isNextGame) {
   const sn = game.seriesGameNumber, st = game.gamesInSeries;
   const oppName = isHome ? awayTeam.name : homeTeam.name;
   const seriesText = sn&&st ? `GAME ${sn} OF ${st} VS ${oppName.split(' ').pop().toUpperCase()}` : '';
-  const wx = isHome ? getWx(game.gameDate) : null;
+  const wx = getWx(game.gameDate);
   const tvB = (game.broadcasts||[]).filter(b=>b.type==='TV'||b.type==='National');
   // Filter: only show Yankees broadcasts (YES) + national broadcasts
   const yankeesBroadcasts = tvB.filter(b => {
@@ -2761,7 +2761,7 @@ function buildGameCard(game, idx, isNextGame) {
 
   // Weather chart expandable (only for home games with weather data)
   let wxChartHTML = '';
-  if (isHome && weatherData?.hourly) {
+  if (weatherData?.hourly) {
     const gameHour = getGameHourET(game.gameDate);
     const ds = new Date(game.gameDate).toLocaleDateString('en-CA',{timeZone:'America/New_York'});
     let hourCols = '';
