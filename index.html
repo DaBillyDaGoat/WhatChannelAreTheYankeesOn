@@ -181,95 +181,6 @@ body {
 }
 
 /* ========== LIVE SCORE / NOW PLAYING ========== */
-.live-score-bar {
-  background: linear-gradient(180deg, rgba(0,0,0,0.3), rgba(0,0,0,0.15));
-  border-top: 1px solid rgba(255,255,255,0.04);
-  border-bottom: 1px solid rgba(255,255,255,0.04);
-  padding: 14px 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 16px;
-  position: relative;
-  z-index: 1;
-}
-
-.live-dot {
-  width: 8px; height: 8px;
-  border-radius: 50%;
-  background: var(--red-light);
-  box-shadow: 0 0 6px var(--red-light), 0 0 12px rgba(255,0,0,0.3);
-  animation: pulse-live 1.5s ease-in-out infinite;
-  flex-shrink: 0;
-}
-
-@keyframes pulse-live {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.4; }
-}
-
-.live-label {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 0.85rem;
-  letter-spacing: 3px;
-  color: var(--red-light);
-  text-shadow: 0 0 8px rgba(255,0,0,0.2);
-}
-
-.live-score-content {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.live-team-logo {
-  width: 32px; height: 32px;
-  object-fit: contain;
-  filter: brightness(1.1) drop-shadow(0 0 3px rgba(255,255,255,0.2));
-}
-
-.live-team-abbr {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 1.1rem;
-  letter-spacing: 2px;
-  color: var(--cream);
-}
-
-.live-score-num {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 1.8rem;
-  color: var(--bulb);
-  text-shadow: 0 0 10px rgba(255,204,51,0.5);
-  min-width: 28px;
-  text-align: center;
-  background: rgba(0,0,0,0.3);
-  border: 1px solid var(--cell-border);
-  border-radius: 3px;
-  padding: 0 6px;
-  line-height: 1.4;
-  box-shadow: var(--shadow-inset);
-}
-
-.live-at {
-  font-family: 'Special Elite', monospace;
-  font-size: 0.8rem;
-  color: var(--cream-dim);
-}
-
-.live-inning {
-  font-family: 'Special Elite', monospace;
-  font-size: 0.78rem;
-  color: var(--gold);
-  letter-spacing: 1px;
-  margin-left: 8px;
-}
-
-.no-live-msg {
-  font-family: 'Special Elite', monospace;
-  font-size: 0.78rem;
-  color: var(--cream-dim);
-  letter-spacing: 2px;
-}
 
 /* ========== STANDINGS — FENWAY GREEN MONSTER STYLE ========== */
 .standings-section {
@@ -1067,48 +978,42 @@ body {
 }
 
 /* ========== YANKEE STADIUM SCOREBOARD ========== */
-.ys-scoreboard-wrap {
-  padding: 14px 12px 8px;
+.ys-scoreboard {
+  background: linear-gradient(180deg, #1a1a2e 0%, #0d1117 100%);
+  border: 2px solid #333;
+  border-radius: 8px;
+  padding: 12px 16px;
+  margin: 0 auto 16px;
+  max-width: 900px;
+  box-shadow: inset 0 0 30px rgba(0,0,0,0.5), 0 4px 20px rgba(0,0,0,0.4);
   position: relative;
   z-index: 1;
 }
 
-.ys-scoreboard {
-  max-width: 800px;
-  margin: 0 auto;
-  background: #0a0a0a;
-  border: 4px solid var(--navy);
-  border-radius: 6px;
-  overflow: hidden;
-  box-shadow: 0 6px 30px rgba(0,0,0,0.6), inset 0 0 40px rgba(0,0,0,0.5);
-  position: relative;
-}
-
-/* Frieze-style header bar */
 .ys-header {
-  background: var(--navy);
-  padding: 8px 16px;
   text-align: center;
-  border-bottom: 3px solid rgba(255,255,255,0.15);
-  position: relative;
-}
-
-.ys-header::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, var(--gold) 20%, var(--gold-bright) 50%, var(--gold) 80%, transparent);
-}
-
-.ys-header-title {
-  font-family: 'Special Elite', monospace;
+  font-family: 'Bebas Neue', sans-serif;
   font-size: 0.65rem;
-  letter-spacing: 4px;
-  color: rgba(255,255,255,0.5);
+  letter-spacing: 8px;
+  color: #C4A44A;
+  margin-bottom: 10px;
+  text-transform: uppercase;
 }
+
+/* Countdown mode */
+.ys-countdown { text-align: center; font-family: 'Bebas Neue', sans-serif; }
+.ys-countdown .ys-teams { font-size: 1rem; color: #e8dcc8; letter-spacing: 2px; margin-bottom: 4px; }
+.ys-countdown .ys-timer { font-size: 1.8rem; color: #FFB800; letter-spacing: 4px; text-shadow: 0 0 10px rgba(255,184,0,0.3); }
+.ys-countdown .ys-label { font-size: 0.55rem; color: #888; letter-spacing: 4px; margin-top: 4px; }
+
+/* Bases indicator */
+.ys-bases { display: flex; justify-content: center; margin: 6px 0; }
+.ys-diamond { position: relative; width: 44px; height: 44px; }
+.ys-base { position: absolute; width: 10px; height: 10px; border: 1.5px solid #555; background: transparent; }
+.ys-base.occupied { background: #FFB800; border-color: #FFB800; box-shadow: 0 0 6px rgba(255,184,0,0.5); }
+.ys-base.first  { right: 2px; top: 50%; transform: rotate(45deg) translateY(-50%); }
+.ys-base.second { left: 50%; top: 2px; transform: rotate(45deg) translateX(-50%); }
+.ys-base.third  { left: 2px; top: 50%; transform: rotate(45deg) translateY(-50%); }
 
 /* BSO + At Bat strip */
 .ys-atbat-strip {
@@ -2115,7 +2020,7 @@ body::before {
 .light-mode .board-title { text-shadow: 0 1px 2px rgba(0,0,0,0.15); }
 .light-mode .logo-wrap img { filter: drop-shadow(0 2px 8px rgba(0,0,0,0.25)); }
 .light-mode .gold-trim { background: linear-gradient(90deg, transparent, #a08030 15%, #b0903a 50%, #a08030 85%, transparent); }
-.light-mode .live-score-bar { background: rgba(0,0,0,0.03); }
+.light-mode .ys-scoreboard { background: linear-gradient(180deg, #e8eaf0 0%, #f0f2f8 100%); border-color: #ccc; }
 .light-mode .game-panel { background: rgba(0,0,0,0.03); }
 .light-mode .game-row { background-color: rgba(255,255,255,0.3); }
 
@@ -2203,19 +2108,12 @@ body::before {
   </div>
 
   <!-- YANKEE STADIUM SCOREBOARD -->
-  <div class="ys-scoreboard-wrap" id="ys-scoreboard-wrap" style="display:none;">
-    <div class="ys-scoreboard" id="ys-scoreboard">
-      <div class="ys-header">
-        <div class="ys-header-title">YANKEE STADIUM SCOREBOARD</div>
-      </div>
-      <div id="ys-content">
-        <!-- Populated by JS -->
-      </div>
+  <div class="ys-scoreboard" id="live-bar" style="display:none;">
+    <div class="ys-header">YANKEE STADIUM SCOREBOARD</div>
+    <div class="ys-content" id="ys-content">
+      <!-- Dynamically filled by JS -->
     </div>
   </div>
-
-  <!-- LIVE SCORE BAR (fallback when scoreboard not showing) -->
-  <div class="live-score-bar" id="live-bar" style="display:none;"></div>
 
   <!-- NEXT GAME CARD (rendered by JS) -->
   <div id="next-game-section"></div>
@@ -2590,74 +2488,6 @@ function goToDivision(idx) {
   updateStandingsDots();
 }
 
-// ========== LIVE SCORE ==========
-async function checkLiveScore() {
-  const bar = document.getElementById('live-bar');
-  try {
-    const data = await fetchJSON(`https://statsapi.mlb.com/api/v1/schedule?teamId=${YANKEES_ID}&sportId=1&date=${fmtDate(today())}&hydrate=linescore`);
-    let liveGame = null;
-    for(const d of (data.dates||[])) for(const g of (d.games||[])) {
-      const st = g.status?.abstractGameState;
-      if(st === 'Live' || st === 'In Progress') { liveGame = g; break; }
-    }
-    if(!liveGame) {
-      // Check for Final games today
-      let finalGame = null;
-      for(const d of (data.dates||[])) for(const g of (d.games||[])) {
-        if(g.status?.abstractGameState === 'Final') finalGame = g;
-      }
-      if(finalGame) {
-        const ls = finalGame.linescore;
-        const aId = finalGame.teams.away.team.id;
-        const hId = finalGame.teams.home.team.id;
-        const aR = ls?.teams?.away?.runs ?? finalGame.teams.away.score ?? '-';
-        const hR = ls?.teams?.home?.runs ?? finalGame.teams.home.score ?? '-';
-        bar.innerHTML = `
-          <span class="no-live-msg" style="color:var(--cream-dim)">FINAL</span>
-          <div class="live-score-content">
-            <img class="live-team-logo" src="${teamLogo(aId)}" alt="" onerror="this.style.display='none'"/>
-            <span class="live-team-abbr">${TEAM_ABBR[aId]||'AWY'}</span>
-            <span class="live-score-num">${aR}</span>
-            <span class="live-at">@</span>
-            <span class="live-score-num">${hR}</span>
-            <span class="live-team-abbr">${TEAM_ABBR[hId]||'HME'}</span>
-            <img class="live-team-logo" src="${teamLogo(hId)}" alt="" onerror="this.style.display='none'"/>
-          </div>`;
-      } else {
-        bar.style.display = 'none';
-        return;
-      }
-      bar.style.display = '';
-      return;
-    }
-
-    const ls = liveGame.linescore;
-    const aId = liveGame.teams.away.team.id;
-    const hId = liveGame.teams.home.team.id;
-    const aR = ls?.teams?.away?.runs ?? 0;
-    const hR = ls?.teams?.home?.runs ?? 0;
-    const inn = ls?.currentInning || '?';
-    const half = ls?.isTopInning ? 'TOP' : 'BOT';
-
-    bar.style.display = '';
-    bar.innerHTML = `
-      <div class="live-dot"></div>
-      <span class="live-label">LIVE</span>
-      <div class="live-score-content">
-        <img class="live-team-logo" src="${teamLogo(aId)}" alt="" onerror="this.style.display='none'"/>
-        <span class="live-team-abbr">${TEAM_ABBR[aId]||'AWY'}</span>
-        <span class="live-score-num">${aR}</span>
-        <span class="live-at">@</span>
-        <span class="live-score-num">${hR}</span>
-        <span class="live-team-abbr">${TEAM_ABBR[hId]||'HME'}</span>
-        <img class="live-team-logo" src="${teamLogo(hId)}" alt="" onerror="this.style.display='none'"/>
-        <span class="live-inning">${half} ${inn}</span>
-      </div>`;
-  } catch(e) {
-    bar.style.display = 'none';
-  }
-}
-
 // ========== SCHEDULE ==========
 let fullSeasonLoaded = false;
 
@@ -2743,13 +2573,25 @@ function buildGameCard(game, idx, isNextGame) {
   const seriesText = sn&&st ? `GAME ${sn} OF ${st} VS ${oppName.split(' ').pop().toUpperCase()}` : '';
   const wx = getWx(game.gameDate);
   const tvB = (game.broadcasts||[]).filter(b=>b.type==='TV'||b.type==='National');
-  // Filter: only show Yankees broadcasts (YES) + national broadcasts
+  // Filter: YES first, then national/streaming — exclude opponent RSNs entirely
   const yankeesBroadcasts = tvB.filter(b => {
     const u = b.name.toUpperCase();
     return u.includes('YES') || u.includes('ESPN') || u.includes('FOX') || u.includes('FS1') ||
            u.includes('TBS') || u.includes('NBC') || u.includes('MLB NETWORK') ||
            u.includes('APPLE') || u.includes('AMAZON') || u.includes('PRIME') ||
            u.includes('PEACOCK') || b.type==='National';
+  }).filter(b => {
+    const u = b.name.toUpperCase();
+    return !u.includes('NBCS') && !u.includes('NESN') && !u.includes('SNY') &&
+           !u.includes('MASN') && !u.includes('BALLY') && !u.includes('ROOT') &&
+           !u.includes('MARQUEE') && !u.includes('ATT SPORTS');
+  }).sort((a, b) => {
+    // YES always first
+    const aYes = a.name.toUpperCase().includes('YES');
+    const bYes = b.name.toUpperCase().includes('YES');
+    if (aYes && !bYes) return -1;
+    if (!aYes && bYes) return 1;
+    return 0;
   });
   const radioB = (game.broadcasts||[]).filter(b=>b.type==='FM'||b.type==='AM'||b.name?.toUpperCase().includes('WFAN'));
   const yankP = isHome ? game.teams?.home?.probablePitcher : game.teams?.away?.probablePitcher;
@@ -3125,17 +2967,27 @@ function buildSpecialEventCard(evt) {
 // ========== NEXT GAME COUNTDOWN ==========
 function updateNextGameCountdown(){
   const el=document.getElementById('ng-countdown');
-  if(!el||!nextGameDate)return;
-  const diff=nextGameDate-new Date();
-  if(diff<=0){el.textContent='NOW';return;}
-  const d=Math.floor(diff/864e5);
-  const h=Math.floor((diff%864e5)/36e5);
-  const m=Math.floor((diff%36e5)/6e4);
-  const s=Math.floor((diff%6e4)/1000);
-  let t='';
-  if(d>0)t+=d+'D ';
-  t+=String(h).padStart(2,'0')+'H '+String(m).padStart(2,'0')+'M '+String(s).padStart(2,'0')+'S';
-  el.textContent=t;
+  if(el&&nextGameDate){
+    const diff=nextGameDate-new Date();
+    if(diff<=0){el.textContent='NOW';}
+    else{
+      const d=Math.floor(diff/864e5),h=Math.floor((diff%864e5)/36e5),m=Math.floor((diff%36e5)/6e4),s=Math.floor((diff%6e4)/1000);
+      let t='';if(d>0)t+=d+'D ';
+      t+=String(h).padStart(2,'0')+'H '+String(m).padStart(2,'0')+'M '+String(s).padStart(2,'0')+'S';
+      el.textContent=t;
+    }
+  }
+  // Also tick the scoreboard countdown timer
+  const ysEl=document.getElementById('ys-countdown-timer');
+  if(ysEl){
+    const gt=new Date(ysEl.dataset.gametime);
+    const diff=gt-new Date();
+    if(diff<=0){ysEl.textContent='NOW';}
+    else{
+      const h=Math.floor(diff/36e5),m=Math.floor((diff%36e5)/6e4),s=Math.floor((diff%6e4)/1000);
+      ysEl.textContent=String(h).padStart(2,'0')+':'+String(m).padStart(2,'0')+':'+String(s).padStart(2,'0');
+    }
+  }
 }
 
 // ========== LAST GAME RECAP ==========
@@ -3146,9 +2998,9 @@ async function fetchLastGameRecap() {
   const board = document.getElementById('last-game-board');
 
   try {
-    // Search the last 7 days for the most recent Final game
+    // Search the last 10 days for the most recent Final game
     const endDate = fmtDate(today());
-    const startDate = fmtDate(addDays(today(), -7));
+    const startDate = fmtDate(addDays(today(), -10));
     const data = await fetchJSON(`https://statsapi.mlb.com/api/v1/schedule?teamId=${YANKEES_ID}&sportId=1&startDate=${startDate}&endDate=${endDate}&hydrate=linescore`);
 
     let lastFinal = null;
@@ -3338,63 +3190,43 @@ function toggleLastGame() {
 let scoreboardGames = []; // today's games that should show on scoreboard
 
 async function updateScoreboard() {
-  const wrap = document.getElementById('ys-scoreboard-wrap');
+  const wrap = document.getElementById('live-bar');
   const content = document.getElementById('ys-content');
-  const liveBar = document.getElementById('live-bar');
   const now = new Date();
   const nowET = new Date(now.toLocaleString('en-US', {timeZone: 'America/New_York'}));
 
   try {
-    // Fetch today's schedule with live data
     const todayStr = fmtDate(today());
     const data = await fetchJSON(`https://statsapi.mlb.com/api/v1/schedule?teamId=${YANKEES_ID}&sportId=1&date=${todayStr}&hydrate=linescore,probablePitcher`);
-
     scoreboardGames = [];
-    for (const d of (data.dates || [])) {
-      for (const g of (d.games || [])) {
-        scoreboardGames.push(g);
-      }
-    }
+    for (const d of (data.dates || [])) for (const g of (d.games || [])) scoreboardGames.push(g);
   } catch(e) {
     scoreboardGames = [];
   }
 
-  const lgWrap = document.getElementById('last-game-wrap');
-
   if (!scoreboardGames.length) {
     wrap.style.display = 'none';
-    liveBar.style.display = '';
-    if (lgWrap) lgWrap.style.display = lastGameData ? '' : 'none';
     return;
   }
 
-  // Filter games that should show on scoreboard:
-  // Show 1hr before first pitch through 5hrs after last pitch
+  // Show scoreboard within 90 min of first pitch (pre/live) or 90 min after game ends (~3hr game + 1.5hr)
   const visibleGames = scoreboardGames.filter(g => {
-    const gameTime = new Date(g.gameDate);
-    const gameTimeET = new Date(gameTime.toLocaleString('en-US', {timeZone: 'America/New_York'}));
+    const gameTimeET = new Date(new Date(g.gameDate).toLocaleString('en-US', {timeZone:'America/New_York'}));
     const state = g.status?.abstractGameState || '';
-    const hoursBefore = (gameTimeET - nowET) / 36e5;
-    const hoursAfter = (nowET - gameTimeET) / 36e5;
-
-    // Show if: live, or within 1hr before, or Final within 5hrs after start
+    const minsBefore = (gameTimeET - nowET) / 6e4;
+    const minsAfterStart = (nowET - gameTimeET) / 6e4;
     if (state === 'Live' || state === 'In Progress') return true;
-    if (state === 'Final' && hoursAfter <= 8) return true; // ~5hrs after end (~3hr game + 5hr)
-    if (state !== 'Final' && hoursBefore <= 1 && hoursBefore >= -8) return true;
+    if (state === 'Final' && minsAfterStart <= 270) return true; // ~4.5hr after start
+    if (state !== 'Final' && minsBefore <= 90 && minsBefore >= -270) return true;
     return false;
   });
 
   if (!visibleGames.length) {
     wrap.style.display = 'none';
-    liveBar.style.display = '';
-    if (lgWrap) lgWrap.style.display = lastGameData ? '' : 'none';
     return;
   }
 
-  // Show scoreboard, hide old live bar and last game recap
   wrap.style.display = '';
-  liveBar.style.display = 'none';
-  if (lgWrap) lgWrap.style.display = 'none';
 
   let html = '';
   for (const game of visibleGames) {
@@ -3402,31 +3234,32 @@ async function updateScoreboard() {
     const detailedState = game.status?.detailedState || '';
     const awayTeam = game.teams.away.team;
     const homeTeam = game.teams.home.team;
-    const ls = game.linescore;
+    const awayAbbr = TEAM_ABBR[awayTeam.id] || 'AWY';
+    const homeAbbr = TEAM_ABBR[homeTeam.id] || 'HME';
 
-    if (state === 'Preview' || state === 'Scheduled' || state === 'Pre-Game') {
-      // Pre-game: show matchup and first pitch time
-      const gt = new Date(game.gameDate);
-      const timeStr = gt.toLocaleTimeString('en-US', {timeZone:'America/New_York', hour:'numeric', minute:'2-digit'});
-      html += `<div class="ys-pregame">
-        <div class="ys-pregame-vs">
-          <img src="${teamLogo(awayTeam.id)}" alt="" style="width:28px;height:28px;vertical-align:middle;margin-right:8px;" onerror="this.style.display='none'" />
-          ${TEAM_ABBR[awayTeam.id]||'AWY'} @ ${TEAM_ABBR[homeTeam.id]||'HME'}
-          <img src="${teamLogo(homeTeam.id)}" alt="" style="width:28px;height:28px;vertical-align:middle;margin-left:8px;" onerror="this.style.display='none'" />
+    // ── COUNTDOWN MODE (pre-game, within 90 min) ──
+    if (state !== 'Live' && state !== 'In Progress' && state !== 'Final') {
+      const gameTimeET = new Date(new Date(game.gameDate).toLocaleString('en-US', {timeZone:'America/New_York'}));
+      const timeStr = gameTimeET.toLocaleTimeString('en-US', {hour:'numeric', minute:'2-digit'});
+      html += `<div class="ys-countdown">
+        <div class="ys-teams">
+          <img src="${teamLogo(awayTeam.id)}" alt="" style="width:26px;height:26px;vertical-align:middle;margin-right:6px;" onerror="this.style.display='none'" />
+          ${awayAbbr} @ ${homeAbbr}
+          <img src="${teamLogo(homeTeam.id)}" alt="" style="width:26px;height:26px;vertical-align:middle;margin-left:6px;" onerror="this.style.display='none'" />
         </div>
-        <div class="ys-pregame-time">FIRST PITCH ${timeStr} ET</div>
+        <div class="ys-timer"><span id="ys-countdown-timer" data-gametime="${game.gameDate}">--:--:--</span></div>
+        <div class="ys-label">FIRST PITCH ${timeStr} ET · FIRST PITCH IN</div>
       </div>`;
       continue;
     }
 
-    // Live or Final game — fetch detailed data
+    // ── LIVE / FINAL — fetch detailed data ──
     try {
       const liveData = await fetchJSON(`https://statsapi.mlb.com/api/v1.1/game/${game.gamePk}/feed/live`);
       const ld = liveData?.liveData;
       const lsData = ld?.linescore;
       const plays = ld?.plays;
 
-      // BSO count
       const balls = lsData?.balls ?? 0;
       const strikes = lsData?.strikes ?? 0;
       const outs = lsData?.outs ?? 0;
@@ -3434,14 +3267,18 @@ async function updateScoreboard() {
       const isTop = lsData?.isTopInning ?? true;
       const halfLabel = isTop ? 'TOP' : 'BOT';
 
-      // Current pitcher and batter
       const currentPlay = plays?.currentPlay;
       const pitcher = currentPlay?.matchup?.pitcher;
       const batter = currentPlay?.matchup?.batter;
       const pitcherName = pitcher?.fullName || 'TBD';
       const batterName = batter?.fullName || 'TBD';
 
-      // Inning-by-inning data
+      // Runners on base
+      const offense = lsData?.offense || {};
+      const onFirst = !!offense.first;
+      const onSecond = !!offense.second;
+      const onThird = !!offense.third;
+
       const innings = lsData?.innings || [];
       const totalInnings = Math.max(innings.length, 9);
       const awayRuns = lsData?.teams?.away?.runs ?? 0;
@@ -3453,27 +3290,23 @@ async function updateScoreboard() {
 
       const isFinal = state === 'Final';
 
-      // BSO + at-bat strip (only show for live games)
       if (!isFinal) {
+        // Live: BSO + inning + bases + pitcher/batter
         html += `<div class="ys-atbat-strip">
           <div class="ys-bso">
-            <div class="ys-bso-group">
-              <span class="ys-bso-label">B</span>
-              ${[0,1,2,3].map(i => `<div class="ys-bso-dot ${i < balls ? 'filled-b' : ''}"></div>`).join('')}
-            </div>
-            <div class="ys-bso-group">
-              <span class="ys-bso-label">S</span>
-              ${[0,1,2].map(i => `<div class="ys-bso-dot ${i < strikes ? 'filled-s' : ''}"></div>`).join('')}
-            </div>
-            <div class="ys-bso-group">
-              <span class="ys-bso-label">O</span>
-              ${[0,1,2].map(i => `<div class="ys-bso-dot ${i < outs ? 'filled-o' : ''}"></div>`).join('')}
-            </div>
+            <div class="ys-bso-group"><span class="ys-bso-label">B</span>${[0,1,2,3].map(i=>`<div class="ys-bso-dot ${i<balls?'filled-b':''}"></div>`).join('')}</div>
+            <div class="ys-bso-group"><span class="ys-bso-label">S</span>${[0,1,2].map(i=>`<div class="ys-bso-dot ${i<strikes?'filled-s':''}"></div>`).join('')}</div>
+            <div class="ys-bso-group"><span class="ys-bso-label">O</span>${[0,1,2].map(i=>`<div class="ys-bso-dot ${i<outs?'filled-o':''}"></div>`).join('')}</div>
           </div>
           <div class="ys-inning-indicator">${halfLabel} ${currentInning}</div>
+          <div class="ys-bases"><div class="ys-diamond">
+            <div class="ys-base second${onSecond?' occupied':''}"></div>
+            <div class="ys-base third${onThird?' occupied':''}"></div>
+            <div class="ys-base first${onFirst?' occupied':''}"></div>
+          </div></div>
           <div class="ys-atbat-info">
-            <div><span class="ys-player-label">P: </span><span class="ys-player-name">${bbrefLink(pitcher?.fullName || pitcherName, pitcherName.toUpperCase())}</span></div>
-            <div><span class="ys-player-label">AB: </span><span class="ys-player-name">${bbrefLink(batter?.fullName || batterName, batterName.toUpperCase())}</span></div>
+            <div><span class="ys-player-label">P: </span><span class="ys-player-name">${bbrefLink(pitcher?.fullName||pitcherName, pitcherName.toUpperCase())}</span></div>
+            <div><span class="ys-player-label">AB: </span><span class="ys-player-name">${bbrefLink(batter?.fullName||batterName, batterName.toUpperCase())}</span></div>
           </div>
         </div>`;
       } else {
@@ -3482,42 +3315,30 @@ async function updateScoreboard() {
         </div>`;
       }
 
-      // Line score table
-      html += `<div class="ys-linescore"><table><thead><tr>
-        <th class="ys-team-col"></th>`;
-      for (let i = 1; i <= totalInnings; i++) {
-        html += `<th>${i}</th>`;
-      }
-      html += `<th class="ys-rhe-col">R</th><th class="ys-rhe-col">H</th><th class="ys-rhe-col">E</th>
-        </tr></thead><tbody>`;
+      // Linescore table
+      html += `<div class="ys-linescore"><table><thead><tr><th class="ys-team-col"></th>`;
+      for (let i = 1; i <= totalInnings; i++) html += `<th>${i}</th>`;
+      html += `<th class="ys-rhe-col">R</th><th class="ys-rhe-col">H</th><th class="ys-rhe-col">E</th></tr></thead><tbody>`;
 
-      // Away team row
-      html += `<tr><td class="ys-team-name"><img src="${teamLogo(awayTeam.id)}" alt="${TEAM_ABBR[awayTeam.id]||'AWY'}" style="width:22px;height:22px;vertical-align:middle;" onerror="this.textContent='${TEAM_ABBR[awayTeam.id]||'AWY'}'" /></td>`;
+      html += `<tr><td class="ys-team-name"><img src="${teamLogo(awayTeam.id)}" alt="${awayAbbr}" style="width:22px;height:22px;vertical-align:middle;" onerror="this.textContent='${awayAbbr}'" /></td>`;
       for (let i = 0; i < totalInnings; i++) {
-        const inn = innings[i];
-        const val = inn?.away?.runs ?? '';
-        const isCurrent = !isFinal && i === currentInning - 1 && isTop;
-        html += `<td ${isCurrent ? 'class="ys-current-inn"' : ''}>${val}</td>`;
+        const val = innings[i]?.away?.runs ?? '';
+        const cur = !isFinal && i === currentInning - 1 && isTop;
+        html += `<td${cur?' class="ys-current-inn"':''}>${val}</td>`;
       }
       html += `<td class="ys-rhe">${awayRuns}</td><td class="ys-rhe">${awayHits}</td><td class="ys-rhe">${awayErrors}</td></tr>`;
 
-      // Home team row
-      html += `<tr><td class="ys-team-name"><img src="${teamLogo(homeTeam.id)}" alt="${TEAM_ABBR[homeTeam.id]||'HME'}" style="width:22px;height:22px;vertical-align:middle;" onerror="this.textContent='${TEAM_ABBR[homeTeam.id]||'HME'}'" /></td>`;
+      html += `<tr><td class="ys-team-name"><img src="${teamLogo(homeTeam.id)}" alt="${homeAbbr}" style="width:22px;height:22px;vertical-align:middle;" onerror="this.textContent='${homeAbbr}'" /></td>`;
       for (let i = 0; i < totalInnings; i++) {
-        const inn = innings[i];
-        const val = inn?.home?.runs ?? '';
-        const isCurrent = !isFinal && i === currentInning - 1 && !isTop;
-        html += `<td ${isCurrent ? 'class="ys-current-inn"' : ''}>${val}</td>`;
+        const val = innings[i]?.home?.runs ?? '';
+        const cur = !isFinal && i === currentInning - 1 && !isTop;
+        html += `<td${cur?' class="ys-current-inn"':''}>${val}</td>`;
       }
       html += `<td class="ys-rhe">${homeRuns}</td><td class="ys-rhe">${homeHits}</td><td class="ys-rhe">${homeErrors}</td></tr>`;
-
       html += `</tbody></table></div>`;
+
     } catch(e) {
-      // Fallback if live data fetch fails
-      html += `<div class="ys-pregame">
-        <div class="ys-pregame-vs">${TEAM_ABBR[awayTeam.id]||'AWY'} @ ${TEAM_ABBR[homeTeam.id]||'HME'}</div>
-        <div class="ys-pregame-time">${detailedState.toUpperCase()}</div>
-      </div>`;
+      html += `<div class="ys-pregame"><div class="ys-pregame-vs">${awayAbbr} @ ${homeAbbr}</div><div class="ys-pregame-time">${detailedState.toUpperCase()}</div></div>`;
     }
   }
 
@@ -3527,15 +3348,14 @@ async function updateScoreboard() {
 // ========== INIT ==========
 async function refreshAll(){
   document.getElementById('games-section').innerHTML='<div class="loading-msg"><span class="ldot"></span><span class="ldot"></span><span class="ldot"></span><br><br>LOADING SCHEDULE</div>';
-  await Promise.all([fetchWeather(),fetchStandings(),fetchSchedule(),checkLiveScore(),updateScoreboard(),fetchLastGameRecap()]);
+  await Promise.all([fetchWeather(),fetchStandings(),fetchSchedule(),updateScoreboard(),fetchLastGameRecap()]);
   document.getElementById('last-updated').textContent=new Date().toLocaleString('en-US',{timeZone:'America/New_York',hour:'numeric',minute:'2-digit',second:'2-digit',month:'short',day:'numeric'});
   updateNextGameCountdown();
 }
 
 refreshAll();
 setInterval(updateNextGameCountdown,1000);
-setInterval(checkLiveScore,30000); // refresh live score every 30s
-setInterval(updateScoreboard,15000); // refresh scoreboard every 15s
+setInterval(updateScoreboard,30000); // refresh scoreboard every 30s
 
 // ========== CALENDAR GRID POPUP ==========
 let calMonth = new Date().getMonth(); // 0-indexed
@@ -3787,7 +3607,7 @@ function renderCalendar() {
   // Observe key sections
   setTimeout(() => {
     const sectionsToTrack = [
-      { el: document.getElementById('ys-scoreboard-wrap'), name: 'Live Scoreboard' },
+      { el: document.getElementById('live-bar'), name: 'Live Scoreboard' },
       { el: document.getElementById('last-game-wrap'), name: 'Last Game Recap' },
       { el: document.getElementById('next-game-section'), name: 'Next Game Card' },
       { el: document.querySelector('.standings-section'), name: 'Division Standings' },
