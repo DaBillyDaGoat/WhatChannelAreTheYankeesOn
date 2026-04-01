@@ -3187,159 +3187,220 @@ function toggleLastGame() {
 }
 
 // ========== YANKEE STADIUM SCOREBOARD ==========
-let scoreboardGames = []; // today's games that should show on scoreboard
+let scoreboardGames = [];
+let _sbPollTimer = null;
+
+function scheduleScoreboardPoll(ms) {
+  if (_sbPollTimer) clearTimeout(_sbPollTimer);
+  _sbPollTimer = setTimeout(updateScoreboard, ms);
+}
 
 async function updateScoreboard() {
   const wrap = document.getElementById('live-bar');
   const content = document.getElementById('ys-content');
-  const now = new Date();
-  const nowET = new Date(now.toLocaleString('en-US', {timeZone: 'America/New_York'}));
+  const nowET = new Date(new Date().toLocaleString('en-US', {timeZone: 'America/New_York'}));
 
+  // Fetch today's and yesterday's games
+  let todayGames = [], yesterdayGames = [];
   try {
     const todayStr = fmtDate(today());
     const data = await fetchJSON(`https://statsapi.mlb.com/api/v1/schedule?teamId=${YANKEES_ID}&sportId=1&date=${todayStr}&hydrate=linescore,probablePitcher`);
-    scoreboardGames = [];
-    for (const d of (data.dates || [])) for (const g of (d.games || [])) scoreboardGames.push(g);
-  } catch(e) {
-    scoreboardGames = [];
-  }
+    for (const d of (data.dates || [])) for (const g of (d.games || [])) todayGames.push(g);
+  } catch(e) {}
 
-  if (!scoreboardGames.length) {
-    wrap.style.display = 'none';
-    return;
-  }
+  try {
+    const yd = new Date(today()); yd.setDate(yd.getDate() - 1);
+    const data = await fetchJSON(`https://statsapi.mlb.com/api/v1/schedule?teamId=${YANKEES_ID}&sportId=1&date=${fmtDate(yd)}&hydrate=linescore,probablePitcher`);
+    for (const d of (data.dates || [])) for (const g of (d.games || [])) yesterdayGames.push(g);
+  } catch(e) {}
 
-  // Show scoreboard within 90 min of first pitch (pre/live) or 90 min after game ends (~3hr game + 1.5hr)
-  const visibleGames = scoreboardGames.filter(g => {
-    const gameTimeET = new Date(new Date(g.gameDate).toLocaleString('en-US', {timeZone:'America/New_York'}));
-    const state = g.status?.abstractGameState || '';
-    const minsBefore = (gameTimeET - nowET) / 6e4;
-    const minsAfterStart = (nowET - gameTimeET) / 6e4;
-    if (state === 'Live' || state === 'In Progress') return true;
-    if (state === 'Final' && minsAfterStart <= 270) return true; // ~4.5hr after start
-    if (state !== 'Final' && minsBefore <= 90 && minsBefore >= -270) return true;
-    return false;
+  scoreboardGames = todayGames;
+
+  // Categorize today's games
+  const liveGame = todayGames.find(g => {
+    const s = g.status?.abstractGameState || '';
+    return s === 'Live' || s === 'In Progress';
+  });
+  const todayFinals = todayGames.filter(g => g.status?.abstractGameState === 'Final');
+  const todayFinal = todayFinals.length ? todayFinals[todayFinals.length - 1] : null;
+  const upcomingToday = todayGames.filter(g => {
+    const s = g.status?.abstractGameState || '';
+    return s !== 'Final' && s !== 'Live' && s !== 'In Progress';
   });
 
-  if (!visibleGames.length) {
+  const yesterdayFinals = yesterdayGames.filter(g => g.status?.abstractGameState === 'Final');
+  const lastYesterdayFinal = yesterdayFinals.length ? yesterdayFinals[yesterdayFinals.length - 1] : null;
+
+  // Find next upcoming game (today or within 7 days)
+  let nextGame = upcomingToday.length ? upcomingToday[0] : null;
+  if (!nextGame) {
+    try {
+      const tmrw = new Date(today()); tmrw.setDate(tmrw.getDate() + 1);
+      const end7 = new Date(today()); end7.setDate(end7.getDate() + 7);
+      const data = await fetchJSON(`https://statsapi.mlb.com/api/v1/schedule?teamId=${YANKEES_ID}&sportId=1&startDate=${fmtDate(tmrw)}&endDate=${fmtDate(end7)}&hydrate=linescore`);
+      outer: for (const d of (data.dates || [])) {
+        for (const g of (d.games || [])) { nextGame = g; break outer; }
+      }
+    } catch(e) {}
+  }
+
+  // Minutes until next game (in ET)
+  const minsUntilNext = nextGame
+    ? (new Date(new Date(nextGame.gameDate).toLocaleString('en-US', {timeZone:'America/New_York'})) - nowET) / 6e4
+    : Infinity;
+
+  // Determine display mode (priority order)
+  let mode, gameToShow;
+  if (liveGame) {
+    mode = 'live'; gameToShow = liveGame;
+  } else if (minsUntilNext <= 24 * 60 && nextGame) {
+    mode = 'countdown'; gameToShow = nextGame;
+  } else if (todayFinal) {
+    mode = 'final'; gameToShow = todayFinal;
+  } else if (lastYesterdayFinal) {
+    mode = 'final'; gameToShow = lastYesterdayFinal;
+  } else if (nextGame) {
+    mode = 'nextgame'; gameToShow = nextGame;
+  } else {
+    mode = 'none';
+  }
+
+  // Schedule next poll: 30s live, 60s countdown, 5min otherwise
+  scheduleScoreboardPoll(mode === 'live' ? 30000 : mode === 'countdown' ? 60000 : 300000);
+
+  if (mode === 'none') {
     wrap.style.display = 'none';
     return;
   }
 
   wrap.style.display = '';
 
+  const game = gameToShow;
+  const detailedState = game.status?.detailedState || '';
+  const awayTeam = game.teams.away.team;
+  const homeTeam = game.teams.home.team;
+  const awayAbbr = TEAM_ABBR[awayTeam.id] || 'AWY';
+  const homeAbbr = TEAM_ABBR[homeTeam.id] || 'HME';
   let html = '';
-  for (const game of visibleGames) {
-    const state = game.status?.abstractGameState || '';
-    const detailedState = game.status?.detailedState || '';
-    const awayTeam = game.teams.away.team;
-    const homeTeam = game.teams.home.team;
-    const awayAbbr = TEAM_ABBR[awayTeam.id] || 'AWY';
-    const homeAbbr = TEAM_ABBR[homeTeam.id] || 'HME';
 
-    // ── COUNTDOWN MODE (pre-game, within 90 min) ──
-    if (state !== 'Live' && state !== 'In Progress' && state !== 'Final') {
-      const gameTimeET = new Date(new Date(game.gameDate).toLocaleString('en-US', {timeZone:'America/New_York'}));
-      const timeStr = gameTimeET.toLocaleTimeString('en-US', {hour:'numeric', minute:'2-digit'});
-      html += `<div class="ys-countdown">
-        <div class="ys-teams">
-          <img src="${teamLogo(awayTeam.id)}" alt="" style="width:26px;height:26px;vertical-align:middle;margin-right:6px;" onerror="this.style.display='none'" />
-          ${awayAbbr} @ ${homeAbbr}
-          <img src="${teamLogo(homeTeam.id)}" alt="" style="width:26px;height:26px;vertical-align:middle;margin-left:6px;" onerror="this.style.display='none'" />
+  // ── COUNTDOWN MODE (next game within 24 hours) ──
+  if (mode === 'countdown') {
+    const gameTimeET = new Date(new Date(game.gameDate).toLocaleString('en-US', {timeZone:'America/New_York'}));
+    const timeStr = gameTimeET.toLocaleTimeString('en-US', {hour:'numeric', minute:'2-digit'});
+    html = `<div class="ys-countdown">
+      <div class="ys-teams">
+        <img src="${teamLogo(awayTeam.id)}" alt="" style="width:26px;height:26px;vertical-align:middle;margin-right:6px;" onerror="this.style.display='none'" />
+        ${awayAbbr} @ ${homeAbbr}
+        <img src="${teamLogo(homeTeam.id)}" alt="" style="width:26px;height:26px;vertical-align:middle;margin-left:6px;" onerror="this.style.display='none'" />
+      </div>
+      <div class="ys-timer"><span id="ys-countdown-timer" data-gametime="${game.gameDate}">--:--:--</span></div>
+      <div class="ys-label">FIRST PITCH ${timeStr} ET · FIRST PITCH IN</div>
+    </div>`;
+    content.innerHTML = html;
+    return;
+  }
+
+  // ── NEXT GAME (> 24 hours away) ──
+  if (mode === 'nextgame') {
+    const gameTimeET = new Date(new Date(game.gameDate).toLocaleString('en-US', {timeZone:'America/New_York'}));
+    const dateStr = gameTimeET.toLocaleDateString('en-US', {weekday:'short', month:'short', day:'numeric'});
+    const timeStr = gameTimeET.toLocaleTimeString('en-US', {hour:'numeric', minute:'2-digit'});
+    html = `<div class="ys-countdown">
+      <div class="ys-teams">
+        <img src="${teamLogo(awayTeam.id)}" alt="" style="width:26px;height:26px;vertical-align:middle;margin-right:6px;" onerror="this.style.display='none'" />
+        ${awayAbbr} @ ${homeAbbr}
+        <img src="${teamLogo(homeTeam.id)}" alt="" style="width:26px;height:26px;vertical-align:middle;margin-left:6px;" onerror="this.style.display='none'" />
+      </div>
+      <div class="ys-timer" style="font-size:1.1rem;">${dateStr}</div>
+      <div class="ys-label">NEXT GAME · ${timeStr} ET</div>
+    </div>`;
+    content.innerHTML = html;
+    return;
+  }
+
+  // ── LIVE / FINAL — fetch detailed linescore data ──
+  try {
+    const liveData = await fetchJSON(`https://statsapi.mlb.com/api/v1.1/game/${game.gamePk}/feed/live`);
+    const ld = liveData?.liveData;
+    const lsData = ld?.linescore;
+    const plays = ld?.plays;
+
+    const balls = lsData?.balls ?? 0;
+    const strikes = lsData?.strikes ?? 0;
+    const outs = lsData?.outs ?? 0;
+    const currentInning = lsData?.currentInning || 0;
+    const isTop = lsData?.isTopInning ?? true;
+    const halfLabel = isTop ? 'TOP' : 'BOT';
+
+    const currentPlay = plays?.currentPlay;
+    const pitcher = currentPlay?.matchup?.pitcher;
+    const batter = currentPlay?.matchup?.batter;
+    const pitcherName = pitcher?.fullName || 'TBD';
+    const batterName = batter?.fullName || 'TBD';
+
+    const offense = lsData?.offense || {};
+    const onFirst = !!offense.first;
+    const onSecond = !!offense.second;
+    const onThird = !!offense.third;
+
+    const innings = lsData?.innings || [];
+    const totalInnings = Math.max(innings.length, 9);
+    const awayRuns = lsData?.teams?.away?.runs ?? 0;
+    const awayHits = lsData?.teams?.away?.hits ?? 0;
+    const awayErrors = lsData?.teams?.away?.errors ?? 0;
+    const homeRuns = lsData?.teams?.home?.runs ?? 0;
+    const homeHits = lsData?.teams?.home?.hits ?? 0;
+    const homeErrors = lsData?.teams?.home?.errors ?? 0;
+
+    const isFinal = mode === 'final';
+
+    if (!isFinal) {
+      html += `<div class="ys-atbat-strip">
+        <div class="ys-bso">
+          <div class="ys-bso-group"><span class="ys-bso-label">B</span>${[0,1,2,3].map(i=>`<div class="ys-bso-dot ${i<balls?'filled-b':''}"></div>`).join('')}</div>
+          <div class="ys-bso-group"><span class="ys-bso-label">S</span>${[0,1,2].map(i=>`<div class="ys-bso-dot ${i<strikes?'filled-s':''}"></div>`).join('')}</div>
+          <div class="ys-bso-group"><span class="ys-bso-label">O</span>${[0,1,2].map(i=>`<div class="ys-bso-dot ${i<outs?'filled-o':''}"></div>`).join('')}</div>
         </div>
-        <div class="ys-timer"><span id="ys-countdown-timer" data-gametime="${game.gameDate}">--:--:--</span></div>
-        <div class="ys-label">FIRST PITCH ${timeStr} ET · FIRST PITCH IN</div>
+        <div class="ys-inning-indicator">${halfLabel} ${currentInning}</div>
+        <div class="ys-bases"><div class="ys-diamond">
+          <div class="ys-base second${onSecond?' occupied':''}"></div>
+          <div class="ys-base third${onThird?' occupied':''}"></div>
+          <div class="ys-base first${onFirst?' occupied':''}"></div>
+        </div></div>
+        <div class="ys-atbat-info">
+          <div><span class="ys-player-label">P: </span><span class="ys-player-name">${bbrefLink(pitcher?.fullName||pitcherName, pitcherName.toUpperCase())}</span></div>
+          <div><span class="ys-player-label">AB: </span><span class="ys-player-name">${bbrefLink(batter?.fullName||batterName, batterName.toUpperCase())}</span></div>
+        </div>
       </div>`;
-      continue;
+    } else {
+      html += `<div class="ys-atbat-strip" style="justify-content:center;">
+        <div class="ys-inning-indicator" style="font-size:1rem;">FINAL${innings.length > 9 ? ' (' + innings.length + ')' : ''}</div>
+      </div>`;
     }
 
-    // ── LIVE / FINAL — fetch detailed data ──
-    try {
-      const liveData = await fetchJSON(`https://statsapi.mlb.com/api/v1.1/game/${game.gamePk}/feed/live`);
-      const ld = liveData?.liveData;
-      const lsData = ld?.linescore;
-      const plays = ld?.plays;
+    html += `<div class="ys-linescore"><table><thead><tr><th class="ys-team-col"></th>`;
+    for (let i = 1; i <= totalInnings; i++) html += `<th>${i}</th>`;
+    html += `<th class="ys-rhe-col">R</th><th class="ys-rhe-col">H</th><th class="ys-rhe-col">E</th></tr></thead><tbody>`;
 
-      const balls = lsData?.balls ?? 0;
-      const strikes = lsData?.strikes ?? 0;
-      const outs = lsData?.outs ?? 0;
-      const currentInning = lsData?.currentInning || 0;
-      const isTop = lsData?.isTopInning ?? true;
-      const halfLabel = isTop ? 'TOP' : 'BOT';
-
-      const currentPlay = plays?.currentPlay;
-      const pitcher = currentPlay?.matchup?.pitcher;
-      const batter = currentPlay?.matchup?.batter;
-      const pitcherName = pitcher?.fullName || 'TBD';
-      const batterName = batter?.fullName || 'TBD';
-
-      // Runners on base
-      const offense = lsData?.offense || {};
-      const onFirst = !!offense.first;
-      const onSecond = !!offense.second;
-      const onThird = !!offense.third;
-
-      const innings = lsData?.innings || [];
-      const totalInnings = Math.max(innings.length, 9);
-      const awayRuns = lsData?.teams?.away?.runs ?? 0;
-      const awayHits = lsData?.teams?.away?.hits ?? 0;
-      const awayErrors = lsData?.teams?.away?.errors ?? 0;
-      const homeRuns = lsData?.teams?.home?.runs ?? 0;
-      const homeHits = lsData?.teams?.home?.hits ?? 0;
-      const homeErrors = lsData?.teams?.home?.errors ?? 0;
-
-      const isFinal = state === 'Final';
-
-      if (!isFinal) {
-        // Live: BSO + inning + bases + pitcher/batter
-        html += `<div class="ys-atbat-strip">
-          <div class="ys-bso">
-            <div class="ys-bso-group"><span class="ys-bso-label">B</span>${[0,1,2,3].map(i=>`<div class="ys-bso-dot ${i<balls?'filled-b':''}"></div>`).join('')}</div>
-            <div class="ys-bso-group"><span class="ys-bso-label">S</span>${[0,1,2].map(i=>`<div class="ys-bso-dot ${i<strikes?'filled-s':''}"></div>`).join('')}</div>
-            <div class="ys-bso-group"><span class="ys-bso-label">O</span>${[0,1,2].map(i=>`<div class="ys-bso-dot ${i<outs?'filled-o':''}"></div>`).join('')}</div>
-          </div>
-          <div class="ys-inning-indicator">${halfLabel} ${currentInning}</div>
-          <div class="ys-bases"><div class="ys-diamond">
-            <div class="ys-base second${onSecond?' occupied':''}"></div>
-            <div class="ys-base third${onThird?' occupied':''}"></div>
-            <div class="ys-base first${onFirst?' occupied':''}"></div>
-          </div></div>
-          <div class="ys-atbat-info">
-            <div><span class="ys-player-label">P: </span><span class="ys-player-name">${bbrefLink(pitcher?.fullName||pitcherName, pitcherName.toUpperCase())}</span></div>
-            <div><span class="ys-player-label">AB: </span><span class="ys-player-name">${bbrefLink(batter?.fullName||batterName, batterName.toUpperCase())}</span></div>
-          </div>
-        </div>`;
-      } else {
-        html += `<div class="ys-atbat-strip" style="justify-content:center;">
-          <div class="ys-inning-indicator" style="font-size:1rem;">FINAL${innings.length > 9 ? ' (' + innings.length + ')' : ''}</div>
-        </div>`;
-      }
-
-      // Linescore table
-      html += `<div class="ys-linescore"><table><thead><tr><th class="ys-team-col"></th>`;
-      for (let i = 1; i <= totalInnings; i++) html += `<th>${i}</th>`;
-      html += `<th class="ys-rhe-col">R</th><th class="ys-rhe-col">H</th><th class="ys-rhe-col">E</th></tr></thead><tbody>`;
-
-      html += `<tr><td class="ys-team-name"><img src="${teamLogo(awayTeam.id)}" alt="${awayAbbr}" style="width:22px;height:22px;vertical-align:middle;" onerror="this.textContent='${awayAbbr}'" /></td>`;
-      for (let i = 0; i < totalInnings; i++) {
-        const val = innings[i]?.away?.runs ?? '';
-        const cur = !isFinal && i === currentInning - 1 && isTop;
-        html += `<td${cur?' class="ys-current-inn"':''}>${val}</td>`;
-      }
-      html += `<td class="ys-rhe">${awayRuns}</td><td class="ys-rhe">${awayHits}</td><td class="ys-rhe">${awayErrors}</td></tr>`;
-
-      html += `<tr><td class="ys-team-name"><img src="${teamLogo(homeTeam.id)}" alt="${homeAbbr}" style="width:22px;height:22px;vertical-align:middle;" onerror="this.textContent='${homeAbbr}'" /></td>`;
-      for (let i = 0; i < totalInnings; i++) {
-        const val = innings[i]?.home?.runs ?? '';
-        const cur = !isFinal && i === currentInning - 1 && !isTop;
-        html += `<td${cur?' class="ys-current-inn"':''}>${val}</td>`;
-      }
-      html += `<td class="ys-rhe">${homeRuns}</td><td class="ys-rhe">${homeHits}</td><td class="ys-rhe">${homeErrors}</td></tr>`;
-      html += `</tbody></table></div>`;
-
-    } catch(e) {
-      html += `<div class="ys-pregame"><div class="ys-pregame-vs">${awayAbbr} @ ${homeAbbr}</div><div class="ys-pregame-time">${detailedState.toUpperCase()}</div></div>`;
+    html += `<tr><td class="ys-team-name"><img src="${teamLogo(awayTeam.id)}" alt="${awayAbbr}" style="width:22px;height:22px;vertical-align:middle;" onerror="this.textContent='${awayAbbr}'" /></td>`;
+    for (let i = 0; i < totalInnings; i++) {
+      const val = innings[i]?.away?.runs ?? '';
+      const cur = !isFinal && i === currentInning - 1 && isTop;
+      html += `<td${cur?' class="ys-current-inn"':''}>${val}</td>`;
     }
+    html += `<td class="ys-rhe">${awayRuns}</td><td class="ys-rhe">${awayHits}</td><td class="ys-rhe">${awayErrors}</td></tr>`;
+
+    html += `<tr><td class="ys-team-name"><img src="${teamLogo(homeTeam.id)}" alt="${homeAbbr}" style="width:22px;height:22px;vertical-align:middle;" onerror="this.textContent='${homeAbbr}'" /></td>`;
+    for (let i = 0; i < totalInnings; i++) {
+      const val = innings[i]?.home?.runs ?? '';
+      const cur = !isFinal && i === currentInning - 1 && !isTop;
+      html += `<td${cur?' class="ys-current-inn"':''}>${val}</td>`;
+    }
+    html += `<td class="ys-rhe">${homeRuns}</td><td class="ys-rhe">${homeHits}</td><td class="ys-rhe">${homeErrors}</td></tr>`;
+    html += `</tbody></table></div>`;
+
+  } catch(e) {
+    html = `<div class="ys-pregame"><div class="ys-pregame-vs">${awayAbbr} @ ${homeAbbr}</div><div class="ys-pregame-time">${detailedState.toUpperCase() || 'FINAL'}</div></div>`;
   }
 
   content.innerHTML = html;
@@ -3355,7 +3416,7 @@ async function refreshAll(){
 
 refreshAll();
 setInterval(updateNextGameCountdown,1000);
-setInterval(updateScoreboard,30000); // refresh scoreboard every 30s
+// Scoreboard self-schedules: 30s live, 60s countdown, 5min otherwise
 
 // ========== CALENDAR GRID POPUP ==========
 let calMonth = new Date().getMonth(); // 0-indexed
