@@ -2324,7 +2324,7 @@ const DIVISION_TEAM_ABBR = {
 };
 
 function today() { return new Date(); }
-function fmtDate(d) { return d.toISOString().split('T')[0]; }
+function fmtDate(d) { return d.toLocaleDateString('en-CA', {timeZone:'America/New_York'}); }
 function addDays(d, n) { const r = new Date(d); r.setDate(r.getDate() + n); return r; }
 
 function teamLogo(teamId) {
@@ -3629,103 +3629,4 @@ function renderCalendar() {
     else if (target.classList.contains('load-more-btn')) name = 'Load More Games';
     else if (target.classList.contains('cal-all-btn')) name = 'Add All to Calendar';
     else if (target.classList.contains('last-game-header')) name = 'Last Game Recap Toggle';
-    else if (target.closest('.game-row')) name = 'Game Card Click';
-    else if (target.tagName === 'A') name = 'Link: ' + (target.textContent || target.href || '').substring(0, 40);
-    else if (target.tagName === 'BUTTON') name = 'Button: ' + (target.textContent || '').substring(0, 30);
-    else name = target.className.split(' ')[0] || 'Unknown';
-
-    const data = getAnalytics();
-    if (!data.clicks) data.clicks = {};
-    if (!data.clicks[name]) data.clicks[name] = { count: 0, lastClicked: null };
-    data.clicks[name].count++;
-    data.clicks[name].lastClicked = new Date().toISOString();
-    save(data);
-  });
-
-  // Track section visibility
-  const sectionObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      const name = entry.target.dataset.trackSection;
-      if (!name) return;
-      if (entry.isIntersecting) {
-        entry.target._trackStart = Date.now();
-        const data = getAnalytics();
-        if (!data.sections) data.sections = {};
-        if (!data.sections[name]) data.sections[name] = { views: 0, totalTimeMs: 0 };
-        data.sections[name].views++;
-        save(data);
-      } else if (entry.target._trackStart) {
-        const elapsed = Date.now() - entry.target._trackStart;
-        const data = getAnalytics();
-        if (data.sections && data.sections[name]) {
-          data.sections[name].totalTimeMs += elapsed;
-          save(data);
-        }
-      }
-    });
-  }, { threshold: 0.3 });
-
-  // Observe key sections
-  setTimeout(() => {
-    const sectionsToTrack = [
-      { el: document.getElementById('live-bar'), name: 'Live Scoreboard' },
-      { el: document.getElementById('last-game-wrap'), name: 'Last Game Recap' },
-      { el: document.getElementById('next-game-section'), name: 'Next Game Card' },
-      { el: document.querySelector('.standings-section'), name: 'Division Standings' },
-      { el: document.getElementById('games-section'), name: 'Full Schedule' },
-      { el: document.getElementById('live-bar'), name: 'Live Score Bar' },
-    ];
-    sectionsToTrack.forEach(s => {
-      if (s.el) {
-        s.el.dataset.trackSection = s.name;
-        sectionObserver.observe(s.el);
-      }
-    });
-  }, 2000);
-
-  // Save session on unload
-  window.addEventListener('beforeunload', function() {
-    const duration = Math.round((Date.now() - SESSION_START) / 1000);
-    const data = getAnalytics();
-    const vid = getVisitorId();
-    if (data.visitors && data.visitors[vid]) {
-      data.visitors[vid].sessions.push({
-        date: new Date().toISOString(),
-        duration: duration,
-        clicks: sessionClicks,
-        pageViews: 1,
-        device: getDeviceType(),
-        browser: getBrowser(),
-        referrer: getReferrer()
-      });
-      // Keep only last 100 sessions per visitor
-      if (data.visitors[vid].sessions.length > 100) {
-        data.visitors[vid].sessions = data.visitors[vid].sessions.slice(-100);
-      }
-      save(data);
-    }
-  });
-
-  recordVisit();
-})();
-</script>
-
-<!-- CALENDAR POPUP -->
-<div class="cal-popup-overlay" id="cal-overlay" onclick="if(event.target===this)closeCalendar()">
-  <div class="cal-popup">
-    <div class="cal-popup-header">
-      <span class="cal-popup-title">YANKEES SCHEDULE</span>
-      <button class="cal-popup-close" onclick="closeCalendar()">&times;</button>
-    </div>
-    <div class="cal-month-nav">
-      <button onclick="calPrev()">&#x25C0;</button>
-      <span class="cal-month-label" id="cal-month-label">--</span>
-      <button onclick="calNext()">&#x25B6;</button>
-    </div>
-    <div class="cal-grid" id="cal-grid"></div>
-    <div style="text-align:center;padding:10px 0 0;font-family:'Special Elite',monospace;font-size:0.5rem;color:var(--cream-dim);letter-spacing:1px;">🎁 = GIVEAWAY NIGHT &middot; SCHEDULE VIA MLB STATS API</div>
-  </div>
-</div>
-
-</body>
-</html>
+    else if (targ
