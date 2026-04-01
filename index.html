@@ -2343,7 +2343,6 @@ const CHANNEL_LOGOS = {
   'Peacock':'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 120 48%22%3E%3Crect fill=%22%23000000%22 width=%22120%22 height=%2248%22 rx=%226%22/%3E%3Crect x=%2210%22 y=%2238%22 width=%2218%22 height=%224%22 fill=%22%23E40046%22/%3E%3Crect x=%2228%22 y=%2238%22 width=%2218%22 height=%224%22 fill=%22%23FF7800%22/%3E%3Crect x=%2246%22 y=%2238%22 width=%2218%22 height=%224%22 fill=%22%23FFCC00%22/%3E%3Crect x=%2264%22 y=%2238%22 width=%2218%22 height=%224%22 fill=%22%2300B140%22/%3E%3Crect x=%2282%22 y=%2238%22 width=%2218%22 height=%224%22 fill=%22%230066FF%22/%3E%3Ctext x=%2260%22 y=%2231%22 font-family=%22Arial,sans-serif%22 font-size=%2214%22 fill=%22%23FFFFFF%22 text-anchor=%22middle%22 font-weight=%22bold%22 letter-spacing=%222%22%3EPEACOCK%3C/text%3E%3C/svg%3E',
   'WFAN':'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 120 48%22%3E%3Crect fill=%22%23003087%22 width=%22120%22 height=%2248%22 rx=%226%22/%3E%3Ctext x=%2260%22 y=%2228%22 font-family=%22Arial,sans-serif%22 font-size=%2220%22 fill=%22%23FFFFFF%22 text-anchor=%22middle%22 font-weight=%22bold%22 letter-spacing=%222%22%3EWFAN%3C/text%3E%3Ctext x=%2260%22 y=%2242%22 font-family=%22Arial,sans-serif%22 font-size=%2210%22 fill=%22%23AACCFF%22 text-anchor=%22middle%22 letter-spacing=%221%22%3E660/101.9%3C/text%3E%3C/svg%3E',
 };
-// Short-name aliases for API broadcast names
 CHANNEL_LOGOS['YES'] = CHANNEL_LOGOS['YES Network'];
 CHANNEL_LOGOS['MLBN'] = CHANNEL_LOGOS['MLB Network'];
 CHANNEL_LOGOS['PRIME'] = CHANNEL_LOGOS['Amazon Prime Video'];
@@ -3713,4 +3712,139 @@ function renderCalendar() {
     const browser = getBrowser();
     const referrer = getReferrer();
 
-    
+    // Visitor
+    if (!data.visitors[vid]) {
+      data.visitors[vid] = { id: vid, firstSeen: now.toISOString(), lastSeen: now.toISOString(), visitCount: 0, sessions: [] };
+    }
+    data.visitors[vid].lastSeen = now.toISOString();
+    data.visitors[vid].visitCount = (data.visitors[vid].visitCount || 0) + 1;
+
+    // Daily
+    data.dailyVisits[todayStr] = (data.dailyVisits[todayStr] || 0) + 1;
+
+    // Hourly
+    data.hourlyVisits[hour] = (data.hourlyVisits[hour] || 0) + 1;
+
+    // Referrer
+    data.referrers[referrer] = (data.referrers[referrer] || 0) + 1;
+
+    // Device & Browser
+    data.devices[device] = (data.devices[device] || 0) + 1;
+    data.browsers[browser] = (data.browsers[browser] || 0) + 1;
+
+    save(data);
+  }
+
+  // Track clicks
+  document.addEventListener('click', function(e) {
+    sessionClicks++;
+    const target = e.target.closest('button, a, .game-row, .standings-nav-btn, .standings-dot, .details-btn, .last-game-header, .load-more-btn, .cal-all-btn, .series-header');
+    if (!target) return;
+
+    let name = '';
+    if (target.classList.contains('details-btn')) name = 'Game Details Toggle';
+    else if (target.classList.contains('standings-nav-btn')) name = 'Division Navigation';
+    else if (target.classList.contains('standings-dot')) name = 'Division Dot Navigation';
+    else if (target.classList.contains('load-more-btn')) name = 'Load More Games';
+    else if (target.classList.contains('cal-all-btn')) name = 'Add All to Calendar';
+    else if (target.classList.contains('last-game-header')) name = 'Last Game Recap Toggle';
+    else if (target.closest('.game-row')) name = 'Game Card Click';
+    else if (target.tagName === 'A') name = 'Link: ' + (target.textContent || target.href || '').substring(0, 40);
+    else if (target.tagName === 'BUTTON') name = 'Button: ' + (target.textContent || '').substring(0, 30);
+    else name = target.className.split(' ')[0] || 'Unknown';
+
+    const data = getAnalytics();
+    if (!data.clicks) data.clicks = {};
+    if (!data.clicks[name]) data.clicks[name] = { count: 0, lastClicked: null };
+    data.clicks[name].count++;
+    data.clicks[name].lastClicked = new Date().toISOString();
+    save(data);
+  });
+
+  // Track section visibility
+  const sectionObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      const name = entry.target.dataset.trackSection;
+      if (!name) return;
+      if (entry.isIntersecting) {
+        entry.target._trackStart = Date.now();
+        const data = getAnalytics();
+        if (!data.sections) data.sections = {};
+        if (!data.sections[name]) data.sections[name] = { views: 0, totalTimeMs: 0 };
+        data.sections[name].views++;
+        save(data);
+      } else if (entry.target._trackStart) {
+        const elapsed = Date.now() - entry.target._trackStart;
+        const data = getAnalytics();
+        if (data.sections && data.sections[name]) {
+          data.sections[name].totalTimeMs += elapsed;
+          save(data);
+        }
+      }
+    });
+  }, { threshold: 0.3 });
+
+  // Observe key sections
+  setTimeout(() => {
+    const sectionsToTrack = [
+      { el: document.getElementById('ys-scoreboard-wrap'), name: 'Live Scoreboard' },
+      { el: document.getElementById('last-game-wrap'), name: 'Last Game Recap' },
+      { el: document.getElementById('next-game-section'), name: 'Next Game Card' },
+      { el: document.querySelector('.standings-section'), name: 'Division Standings' },
+      { el: document.getElementById('games-section'), name: 'Full Schedule' },
+      { el: document.getElementById('live-bar'), name: 'Live Score Bar' },
+    ];
+    sectionsToTrack.forEach(s => {
+      if (s.el) {
+        s.el.dataset.trackSection = s.name;
+        sectionObserver.observe(s.el);
+      }
+    });
+  }, 2000);
+
+  // Save session on unload
+  window.addEventListener('beforeunload', function() {
+    const duration = Math.round((Date.now() - SESSION_START) / 1000);
+    const data = getAnalytics();
+    const vid = getVisitorId();
+    if (data.visitors && data.visitors[vid]) {
+      data.visitors[vid].sessions.push({
+        date: new Date().toISOString(),
+        duration: duration,
+        clicks: sessionClicks,
+        pageViews: 1,
+        device: getDeviceType(),
+        browser: getBrowser(),
+        referrer: getReferrer()
+      });
+      // Keep only last 100 sessions per visitor
+      if (data.visitors[vid].sessions.length > 100) {
+        data.visitors[vid].sessions = data.visitors[vid].sessions.slice(-100);
+      }
+      save(data);
+    }
+  });
+
+  recordVisit();
+})();
+</script>
+
+<!-- CALENDAR POPUP -->
+<div class="cal-popup-overlay" id="cal-overlay" onclick="if(event.target===this)closeCalendar()">
+  <div class="cal-popup">
+    <div class="cal-popup-header">
+      <span class="cal-popup-title">YANKEES SCHEDULE</span>
+      <button class="cal-popup-close" onclick="closeCalendar()">&times;</button>
+    </div>
+    <div class="cal-month-nav">
+      <button onclick="calPrev()">&#x25C0;</button>
+      <span class="cal-month-label" id="cal-month-label">--</span>
+      <button onclick="calNext()">&#x25B6;</button>
+    </div>
+    <div class="cal-grid" id="cal-grid"></div>
+    <div style="text-align:center;padding:10px 0 0;font-family:'Special Elite',monospace;font-size:0.5rem;color:var(--cream-dim);letter-spacing:1px;">🎁 = GIVEAWAY NIGHT &middot; SCHEDULE VIA MLB STATS API</div>
+  </div>
+</div>
+
+</body>
+</html>
