@@ -1745,9 +1745,20 @@ body {
 .channel-badge svg, .channel-badge img.net-logo {
   width: 28px;
   height: 18px;
+  max-width: 44px;
+  max-height: 28px;
   object-fit: contain;
   border-radius: 2px;
   flex-shrink: 0;
+}
+.ys-scoreboard img.net-logo, .ys-scoreboard .net-logo {
+  width: 36px !important;
+  height: 22px !important;
+  vertical-align: middle;
+}
+.bcast-logo img.net-logo {
+  width: 36px !important;
+  height: 22px !important;
 }
 .channel-badge .net-text {
   font-family: 'Bebas Neue', sans-serif;
@@ -2228,7 +2239,7 @@ const BROADCAST_LINKS = {
 };
 
 const CHANNEL_LOGOS = {
-  'YES Network':'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 120 48%22%3E%3Crect fill=%22%23001a33%22 stroke=%22%23FFDD00%22 stroke-width=%221.5%22 width=%22120%22 height=%2248%22 rx=%226%22/%3E%3Ctext x=%2260%22 y=%2233%22 font-family=%22Arial,sans-serif%22 font-size=%2226%22 fill=%22%23FFDD00%22 text-anchor=%22middle%22 font-weight=%22bold%22 letter-spacing=%223%22%3EYES%3C/text%3E%3C/svg%3E',
+  'YES Network':'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 120 48%22%3E%3Crect fill=%22%23001B3A%22 width=%22120%22 height=%2248%22 rx=%224%22/%3E%3Ctext x=%2260%22 y=%2230%22 font-family=%22Arial Black%2CImpact%2Csans-serif%22 font-size=%2228%22 fill=%22%23FFFFFF%22 text-anchor=%22middle%22 font-weight=%22900%22 letter-spacing=%221%22%3EYES%3C/text%3E%3Ctext x=%2260%22 y=%2243%22 font-family=%22Arial%2Csans-serif%22 font-size=%228%22 fill=%22%23888888%22 text-anchor=%22middle%22 letter-spacing=%224%22%3ENETWORK%3C/text%3E%3C/svg%3E',
   'ESPN':'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 120 48%22%3E%3Crect fill=%22%23CC0000%22 width=%22120%22 height=%2248%22 rx=%226%22/%3E%3Ctext x=%2260%22 y=%2233%22 font-family=%22Arial,sans-serif%22 font-size=%2222%22 fill=%22%23FFFFFF%22 text-anchor=%22middle%22 font-weight=%22bold%22 letter-spacing=%221%22%3ESPN%3C/text%3E%3C/svg%3E',
   'ESPN2':'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 120 48%22%3E%3Crect fill=%22%23CC0000%22 width=%22120%22 height=%2248%22 rx=%226%22/%3E%3Ctext x=%2260%22 y=%2233%22 font-family=%22Arial,sans-serif%22 font-size=%2220%22 fill=%22%23FFFFFF%22 text-anchor=%22middle%22 font-weight=%22bold%22 letter-spacing=%221%22%3ESPN2%3C/text%3E%3C/svg%3E',
   'FOX':'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 120 48%22%3E%3Crect fill=%22%23003F87%22 width=%22120%22 height=%2248%22 rx=%226%22/%3E%3Ctext x=%2260%22 y=%2233%22 font-family=%22Arial,sans-serif%22 font-size=%2224%22 fill=%22%23FFFFFF%22 text-anchor=%22middle%22 font-weight=%22bold%22 letter-spacing=%223%22%3EFOX%3C/text%3E%3C/svg%3E',
@@ -3284,7 +3295,7 @@ async function updateScoreboard() {
   const tvBcasts = (game.broadcasts||[]).filter(b=>b.type==='TV'||b.type==='National');
   const primaryBcast = tvBcasts.find(b=>b.name.toUpperCase().includes('YES')) || tvBcasts.find(b=>{const u=b.name.toUpperCase();return u.includes('ESPN')||u.includes('FOX')||u.includes('TBS')||u.includes('APPLE')||u.includes('PRIME');}) || tvBcasts[0];
   const bcastLogoHTML = primaryBcast ? getNetworkLogoHTML(primaryBcast.name) : '';
-  const bcastBadge = bcastLogoHTML ? `<span style="display:inline-block;vertical-align:middle;margin-left:10px;">${bcastLogoHTML}</span>` : (primaryBcast ? `<span style="font-family:'Bebas Neue',sans-serif;font-size:0.65rem;color:#FFB800;letter-spacing:2px;margin-left:10px;vertical-align:middle;">${primaryBcast.name}</span>` : '');
+  const bcastBadge = bcastLogoHTML ? `<span style="display:inline-block;vertical-align:middle;margin-left:10px;">${bcastLogoHTML.replace(/(<img\s)/, '$1style="width:36px;height:22px;vertical-align:middle;" ')}</span>` : (primaryBcast ? `<span style="font-family:'Bebas Neue',sans-serif;font-size:0.65rem;color:#FFB800;letter-spacing:2px;margin-left:10px;vertical-align:middle;">${primaryBcast.name}</span>` : '');
   let html = '';
 
   // ── COUNTDOWN MODE (next game within 24 hours) ──
