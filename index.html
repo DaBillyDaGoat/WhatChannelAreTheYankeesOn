@@ -21,7 +21,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Yankees">
-<link href="https://fonts.googleapis.com/css2?family=Special+Elite&family=Oswald:wght@400;500;600;700&family=Bebas+Neue&family=Teko:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Special+Elite&family=Oswald:wght@400;500;600;700&family=Bebas+Neue&family=Teko:wght@400;500;600;700&family=Playfair+Display:wght@900&family=Yellowtail&display=swap" rel="stylesheet">
 <!-- Google AdSense — replace ca-pub-XXXXXXX with your publisher ID -->
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2736588621894448" crossorigin="anonymous"></script>
 <style>
@@ -1861,7 +1861,7 @@ body::before {
   background-image: url('Images/Extra Yankee Logos/R.png');
   background-size: 120px 120px;
   background-repeat: repeat;
-  opacity: 0.018;
+  opacity: 1.0;
   transform: rotate(-15deg) scale(1.4);
   pointer-events: none;
   z-index: 0;
@@ -2108,9 +2108,9 @@ body::before {
     <div class="logo-wrap wcatyo-logo-wrap">
       <img src="Images/Extra Yankee Logos/Yankees channel logo.png" alt="WhatChannelAreTheYankeesOn.com" class="wcatyo-header-logo" />
     </div>
-    <div class="board-title">WHAT CHANNEL ARE THE YANKEES ON<span class="dash">?</span></div>
+    <svg viewBox="0 0 1200 80" style="width:100%;max-width:900px;height:auto;display:block;margin:0 auto;"><text x="600" y="60" font-family="'Playfair Display',Georgia,serif" font-weight="900" font-size="52" fill="#FFFFFF" text-anchor="middle" letter-spacing="4">WHAT CHANNEL ARE THE YANKEES ON?</text></svg>
     <div class="board-subtitle" id="season-sub"></div>
-    <div class="board-subtitle" style="margin-top:2px;letter-spacing:2px;font-size:0.6rem;color:var(--gold-dim);">WHATCHANNELARETHEYANKEESON.COM</div>
+    <svg viewBox="0 0 800 60" style="width:100%;max-width:600px;height:auto;display:block;margin:0 auto;"><text x="400" y="45" font-family="'Yellowtail',cursive" font-size="36" fill="#FFFFFF" text-anchor="middle">WhatChannelAreTheYankeesOn.com</text></svg>
   </div>
 
   <!-- YANKEES SCRIPT DIVIDER -->
@@ -2239,7 +2239,7 @@ const BROADCAST_LINKS = {
 };
 
 const CHANNEL_LOGOS = {
-  'YES Network':'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 120 48%22%3E%3Crect fill=%22%23001B3A%22 width=%22120%22 height=%2248%22 rx=%224%22/%3E%3Ctext x=%2260%22 y=%2230%22 font-family=%22Arial Black%2CImpact%2Csans-serif%22 font-size=%2228%22 fill=%22%23FFFFFF%22 text-anchor=%22middle%22 font-weight=%22900%22 letter-spacing=%221%22%3EYES%3C/text%3E%3Ctext x=%2260%22 y=%2243%22 font-family=%22Arial%2Csans-serif%22 font-size=%228%22 fill=%22%23888888%22 text-anchor=%22middle%22 letter-spacing=%224%22%3ENETWORK%3C/text%3E%3C/svg%3E',
+  'YES Network':'data:image/svg+xml,%3Csvg viewBox%3D%220 0 80 50%22 xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Crect width%3D%2280%22 height%3D%2250%22 rx%3D%224%22 fill%3D%22%230C2340%22%2F%3E%3Crect y%3D%2242%22 width%3D%2280%22 height%3D%228%22 fill%3D%22%231A5DAD%22%2F%3E%3Ctext x%3D%2240%22 y%3D%2234%22 font-family%3D%22Arial Black%2CImpact%2Csans-serif%22 font-weight%3D%22900%22 font-size%3D%2228%22 fill%3D%22%23C0C8D0%22 text-anchor%3D%22middle%22 letter-spacing%3D%222%22%3EYES%3C%2Ftext%3E%3C%2Fsvg%3E',
   'ESPN':'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 120 48%22%3E%3Crect fill=%22%23CC0000%22 width=%22120%22 height=%2248%22 rx=%226%22/%3E%3Ctext x=%2260%22 y=%2233%22 font-family=%22Arial,sans-serif%22 font-size=%2222%22 fill=%22%23FFFFFF%22 text-anchor=%22middle%22 font-weight=%22bold%22 letter-spacing=%221%22%3ESPN%3C/text%3E%3C/svg%3E',
   'ESPN2':'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 120 48%22%3E%3Crect fill=%22%23CC0000%22 width=%22120%22 height=%2248%22 rx=%226%22/%3E%3Ctext x=%2260%22 y=%2233%22 font-family=%22Arial,sans-serif%22 font-size=%2220%22 fill=%22%23FFFFFF%22 text-anchor=%22middle%22 font-weight=%22bold%22 letter-spacing=%221%22%3ESPN2%3C/text%3E%3C/svg%3E',
   'FOX':'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 120 48%22%3E%3Crect fill=%22%23003F87%22 width=%22120%22 height=%2248%22 rx=%226%22/%3E%3Ctext x=%2260%22 y=%2233%22 font-family=%22Arial,sans-serif%22 font-size=%2224%22 fill=%22%23FFFFFF%22 text-anchor=%22middle%22 font-weight=%22bold%22 letter-spacing=%223%22%3EFOX%3C/text%3E%3C/svg%3E',
@@ -2765,8 +2765,8 @@ function renderGames() {
   for(let i=0;i<allGames.length;i++) { if(new Date(allGames[i].gameDate)>now){nextIdx=i;nextGameDate=new Date(allGames[i].gameDate);break;} }
   if(nextIdx===-1) nextIdx = 0;
 
-  // Render next game above standings
-  nextSec.innerHTML = '<div style="padding:10px 12px;">' + buildGameCard(allGames[nextIdx], nextIdx, true) + '</div>';
+  // Next game info is now shown within the scoreboard tile
+  nextSec.innerHTML = '';
 
   // Group all games into series
   const allSeriesGroups = groupBySeries(allGames);
@@ -2776,39 +2776,44 @@ function renderGames() {
   const visibleGames = new Set();
   visibleSeries.forEach(s => s.games.forEach(g => visibleGames.add(g)));
 
-  let html = '';
-  visibleSeries.forEach((series, sIdx) => {
-    const loc = series.atHome ? 'HOME' : 'AWAY';
-    const oppShort = series.oppName.split(' ').pop().toUpperCase();
-    const dateRange = formatSeriesDateRange(series.games);
-
-    html += `<div class="series-group">`;
-    html += `<div class="series-header">
-      <div class="series-header-line"></div>
-      <span class="series-header-text">${series.games.length}-GAME SERIES VS ${oppShort} &middot; ${loc} &middot; ${dateRange}</span>
-      <div class="series-header-line"></div>
-    </div>`;
-
-    series.games.forEach(game => {
-      const realIdx = allGames.indexOf(game);
-      if(realIdx === nextIdx) return; // already shown above standings
-      html += buildGameCard(game, realIdx, false);
-    });
-
-    html += `</div>`;
-
-    // Insert ad after each series except the last visible one
-    if(sIdx < visibleSeries.length - 1) {
-      html += adSlotHTML(sIdx);
-    }
-  });
-
-  // Insert special events (All-Star, HR Derby, etc.) if they fall within visible date range
+  // Build combined list: series + future special events, sorted chronologically
   const now2 = new Date();
-  SPECIAL_EVENTS_2025.forEach(evt => {
-    const evtDate = new Date(evt.date);
-    if (evtDate > now2) {
-      html += buildSpecialEventCard(evt);
+  const futureSpecialEvts = SPECIAL_EVENTS_2025.filter(evt => new Date(evt.date) > now2);
+  const combinedItems = [
+    ...visibleSeries.map(s => ({ type: 'series', data: s, sortDate: new Date(s.games[0].gameDate) })),
+    ...futureSpecialEvts.map(evt => ({ type: 'special', data: evt, sortDate: new Date(evt.date) }))
+  ].sort((a, b) => a.sortDate - b.sortDate);
+
+  let html = '';
+  let adIdx = 0;
+  combinedItems.forEach((item, i) => {
+    if (item.type === 'series') {
+      const series = item.data;
+      const loc = series.atHome ? 'HOME' : 'AWAY';
+      const oppShort = series.oppName.split(' ').pop().toUpperCase();
+      const dateRange = formatSeriesDateRange(series.games);
+
+      html += `<div class="series-group">`;
+      html += `<div class="series-header">
+        <div class="series-header-line"></div>
+        <span class="series-header-text">${series.games.length}-GAME SERIES VS ${oppShort} &middot; ${loc} &middot; ${dateRange}</span>
+        <div class="series-header-line"></div>
+      </div>`;
+
+      series.games.forEach(game => {
+        const realIdx = allGames.indexOf(game);
+        if(realIdx === nextIdx) return; // already shown above standings
+        html += buildGameCard(game, realIdx, false);
+      });
+
+      html += `</div>`;
+
+      // Insert ad after series items (not after the last combined item)
+      if(i < combinedItems.length - 1) {
+        html += adSlotHTML(adIdx++);
+      }
+    } else {
+      html += buildSpecialEventCard(item.data);
     }
   });
 
@@ -3302,14 +3307,25 @@ async function updateScoreboard() {
   if (mode === 'countdown') {
     const gameTimeET = new Date(new Date(game.gameDate).toLocaleString('en-US', {timeZone:'America/New_York'}));
     const timeStr = gameTimeET.toLocaleTimeString('en-US', {hour:'numeric', minute:'2-digit'});
+    const isHomeCtd = homeTeam.id === YANKEES_ID;
+    const oppTeamCtd = isHomeCtd ? awayTeam : homeTeam;
+    const yankeeBcastsCtd = tvBcasts.filter(b => {
+      const u = b.name.toUpperCase();
+      return u.includes('YES') || u.includes('ESPN') || u.includes('FOX') || u.includes('FS1') ||
+             u.includes('TBS') || u.includes('APPLE') || u.includes('PRIME') || u.includes('PEACOCK') || b.type === 'National';
+    }).sort((a,b) => a.name.toUpperCase().includes('YES') ? -1 : b.name.toUpperCase().includes('YES') ? 1 : 0);
+    const yankPCtd = isHomeCtd ? game.teams?.home?.probablePitcher : game.teams?.away?.probablePitcher;
+    const oppPCtd = isHomeCtd ? game.teams?.away?.probablePitcher : game.teams?.home?.probablePitcher;
     html = `<div class="ys-countdown">
       <div class="ys-teams">
         <img src="${teamLogo(awayTeam.id)}" alt="" style="width:26px;height:26px;vertical-align:middle;margin-right:6px;" onerror="this.style.display='none'" />
         ${awayAbbr} @ ${homeAbbr}
-        <img src="${teamLogo(homeTeam.id)}" alt="" style="width:26px;height:26px;vertical-align:middle;margin-left:6px;" onerror="this.style.display='none'" />${bcastBadge}
+        <img src="${teamLogo(homeTeam.id)}" alt="" style="width:26px;height:26px;vertical-align:middle;margin-left:6px;" onerror="this.style.display='none'" />
       </div>
       <div class="ys-timer"><span id="ys-countdown-timer" data-gametime="${game.gameDate}">--:--:--</span></div>
       <div class="ys-label">FIRST PITCH · ${timeStr} ET</div>
+      ${yankeeBcastsCtd.length ? `<div class="channel-badges" style="justify-content:center;margin-top:8px;">${yankeeBcastsCtd.slice(0,3).map(b=>`<div class="channel-badge">${getNetworkLogoHTML(b.name)}<span class="net-text">${b.name}</span></div>`).join('')}</div>` : ''}
+      ${(yankPCtd||oppPCtd) ? `<div style="font-family:'Special Elite',monospace;font-size:0.6rem;color:var(--cream-dim);letter-spacing:2px;margin-top:6px;text-align:center;">NYY: ${yankPCtd ? yankPCtd.fullName.split(' ').pop().toUpperCase() : 'TBD'} &nbsp;&middot;&nbsp; ${oppTeamCtd.name.split(' ').pop().toUpperCase()}: ${oppPCtd ? oppPCtd.fullName.split(' ').pop().toUpperCase() : 'TBD'}</div>` : ''}
     </div>`;
     content.innerHTML = html;
     return;
@@ -3320,14 +3336,25 @@ async function updateScoreboard() {
     const gameTimeET = new Date(new Date(game.gameDate).toLocaleString('en-US', {timeZone:'America/New_York'}));
     const dateStr = gameTimeET.toLocaleDateString('en-US', {weekday:'short', month:'short', day:'numeric'});
     const timeStr = gameTimeET.toLocaleTimeString('en-US', {hour:'numeric', minute:'2-digit'});
+    const isHomeNg = homeTeam.id === YANKEES_ID;
+    const oppTeamNg = isHomeNg ? awayTeam : homeTeam;
+    const yankeeBcastsNg = tvBcasts.filter(b => {
+      const u = b.name.toUpperCase();
+      return u.includes('YES') || u.includes('ESPN') || u.includes('FOX') || u.includes('FS1') ||
+             u.includes('TBS') || u.includes('APPLE') || u.includes('PRIME') || u.includes('PEACOCK') || b.type === 'National';
+    }).sort((a,b) => a.name.toUpperCase().includes('YES') ? -1 : b.name.toUpperCase().includes('YES') ? 1 : 0);
+    const yankPNg = isHomeNg ? game.teams?.home?.probablePitcher : game.teams?.away?.probablePitcher;
+    const oppPNg = isHomeNg ? game.teams?.away?.probablePitcher : game.teams?.home?.probablePitcher;
     html = `<div class="ys-countdown">
       <div class="ys-teams">
         <img src="${teamLogo(awayTeam.id)}" alt="" style="width:26px;height:26px;vertical-align:middle;margin-right:6px;" onerror="this.style.display='none'" />
         ${awayAbbr} @ ${homeAbbr}
-        <img src="${teamLogo(homeTeam.id)}" alt="" style="width:26px;height:26px;vertical-align:middle;margin-left:6px;" onerror="this.style.display='none'" />${bcastBadge}
+        <img src="${teamLogo(homeTeam.id)}" alt="" style="width:26px;height:26px;vertical-align:middle;margin-left:6px;" onerror="this.style.display='none'" />
       </div>
       <div class="ys-timer" style="font-size:1.1rem;">${dateStr}</div>
       <div class="ys-label">NEXT GAME · ${timeStr} ET</div>
+      ${yankeeBcastsNg.length ? `<div class="channel-badges" style="justify-content:center;margin-top:8px;">${yankeeBcastsNg.slice(0,3).map(b=>`<div class="channel-badge">${getNetworkLogoHTML(b.name)}<span class="net-text">${b.name}</span></div>`).join('')}</div>` : ''}
+      ${(yankPNg||oppPNg) ? `<div style="font-family:'Special Elite',monospace;font-size:0.6rem;color:var(--cream-dim);letter-spacing:2px;margin-top:6px;text-align:center;">NYY: ${yankPNg ? yankPNg.fullName.split(' ').pop().toUpperCase() : 'TBD'} &nbsp;&middot;&nbsp; ${oppTeamNg.name.split(' ').pop().toUpperCase()}: ${oppPNg ? oppPNg.fullName.split(' ').pop().toUpperCase() : 'TBD'}</div>` : ''}
     </div>`;
     content.innerHTML = html;
     return;
@@ -3413,6 +3440,30 @@ async function updateScoreboard() {
     }
     html += `<td class="ys-rhe">${homeRuns}</td><td class="ys-rhe">${homeHits}</td><td class="ys-rhe">${homeErrors}</td></tr>`;
     html += `</tbody></table></div>`;
+
+    // ── NEXT UP (shown below linescore when game is final) ──
+    if (isFinal && nextGame) {
+      const nextGameET = new Date(new Date(nextGame.gameDate).toLocaleString('en-US', {timeZone:'America/New_York'}));
+      const nextDateStr = nextGameET.toLocaleDateString('en-US', {weekday:'short', month:'short', day:'numeric'});
+      const nextTimeStr = nextGameET.toLocaleTimeString('en-US', {hour:'numeric', minute:'2-digit'});
+      const nextAway = nextGame.teams.away.team;
+      const nextHome = nextGame.teams.home.team;
+      const nextAwayAbbr = TEAM_ABBR[nextAway.id] || 'AWY';
+      const nextHomeAbbr = TEAM_ABBR[nextHome.id] || 'HME';
+      const nextTvBcasts = (nextGame.broadcasts||[]).filter(b=>b.type==='TV'||b.type==='National');
+      const nextPrimary = nextTvBcasts.find(b=>b.name.toUpperCase().includes('YES')) || nextTvBcasts[0];
+      const nextBcastLogoHTML = nextPrimary ? getNetworkLogoHTML(nextPrimary.name) : '';
+      const nextBcastHTML = nextBcastLogoHTML
+        ? `<span style="display:inline-block;vertical-align:middle;margin-left:8px;">${nextBcastLogoHTML.replace(/(<img\s)/, '$1style="width:30px;height:18px;vertical-align:middle;" ')}</span>`
+        : (nextPrimary ? `<span style="font-family:'Bebas Neue',sans-serif;font-size:0.6rem;color:var(--gold);letter-spacing:2px;margin-left:8px;vertical-align:middle;">${nextPrimary.name}</span>` : '');
+      html += `<div style="margin-top:8px;padding:6px 10px;border-top:1px solid rgba(196,164,74,0.2);text-align:center;">
+        <div style="font-family:'Special Elite',monospace;font-size:0.5rem;letter-spacing:4px;color:var(--gold-dim);margin-bottom:4px;">NEXT UP</div>
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:0.85rem;letter-spacing:2px;color:var(--cream);">
+          <img src="${teamLogo(nextAway.id)}" alt="" style="width:18px;height:18px;vertical-align:middle;margin-right:4px;" onerror="this.style.display='none'" />${nextAwayAbbr} @ ${nextHomeAbbr}<img src="${teamLogo(nextHome.id)}" alt="" style="width:18px;height:18px;vertical-align:middle;margin-left:4px;" onerror="this.style.display='none'" />${nextBcastHTML}
+        </div>
+        <div style="font-family:'Special Elite',monospace;font-size:0.55rem;color:var(--cream-dim);letter-spacing:2px;margin-top:3px;">${nextDateStr} · ${nextTimeStr} ET</div>
+      </div>`;
+    }
 
   } catch(e) {
     html = `<div class="ys-pregame"><div class="ys-pregame-vs">${awayAbbr} @ ${homeAbbr}</div><div class="ys-pregame-time">${detailedState.toUpperCase() || 'FINAL'}</div></div>`;
