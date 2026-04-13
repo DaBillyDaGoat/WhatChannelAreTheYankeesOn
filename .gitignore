@@ -1,0 +1,12 @@
+# Claude Code workspace
+.claude/
+
+# Windows batch scripts
+PUSH_TO_GITHUB.bat
+
+# Dev tools
+color-samples.html
+
+# OS files
+.DS_Store
+Thumbs.db
