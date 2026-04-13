@@ -1,0 +1,21 @@
+{
+  "name": "What Channel Are The Yankees On?",
+  "short_name": "Yankees Channel",
+  "description": "Find out what channel the New York Yankees are on tonight. Live scores, schedule, and where to watch.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#050d18",
+  "theme_color": "#0C2340",
+  "icons": [
+    {
+      "src": "Images/Extra Yankee Logos/Yankees channel logo.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "Images/NYY.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
