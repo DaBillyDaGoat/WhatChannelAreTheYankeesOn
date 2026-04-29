@@ -425,6 +425,48 @@ body {
   border-left-color: var(--gold);
 }
 
+/* Special-event variant: same shape as a game-row, slightly brighter gold accent */
+.game-row.special-event-row {
+  border-left-color: var(--gold-bright);
+  background: linear-gradient(180deg, rgba(255,255,255,0.03), transparent 30%, transparent 70%, rgba(0,0,0,0.1));
+  background-color: rgba(196,164,74,0.04);
+}
+.game-row.special-event-row .at-symbol { font-size: 1rem; letter-spacing: 2px; }
+
+/* Empty-season / offseason placeholder when no games are on the schedule */
+.empty-season {
+  text-align: center;
+  padding: 36px 18px;
+  background: rgba(0,0,0,0.18);
+  border: 1px solid var(--cell-border);
+  border-radius: 4px;
+  margin: 12px auto;
+  max-width: 600px;
+}
+.empty-season-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.4rem;
+  letter-spacing: 6px;
+  color: var(--gold-bright);
+  margin-bottom: 10px;
+  text-shadow: 0 0 12px rgba(196,164,74,0.2);
+}
+.empty-season-sub {
+  font-family: 'Special Elite', monospace;
+  font-size: 0.85rem;
+  letter-spacing: 2px;
+  color: var(--cream);
+  margin-bottom: 12px;
+}
+.empty-season-detail {
+  font-family: 'Oswald', sans-serif;
+  font-size: 0.85rem;
+  color: var(--cream-dim);
+  max-width: 520px;
+  margin: 0 auto;
+  line-height: 1.55;
+}
+
 /* Next game badge */
 .next-game-badge {
   position: absolute;
@@ -561,20 +603,21 @@ body {
   color: var(--cream-dim);
 }
 
-/* Exclusive streaming badge */
+/* Streaming carrier badge — logo only (no redundant text) */
 .exclusive-stream-badge {
   display: flex;
   align-items: center;
-  gap: 10px;
-  padding: 8px 16px;
+  justify-content: flex-start;
+  padding: 6px 16px;
   margin: 0;
   background: linear-gradient(90deg, rgba(0,0,0,0.3), transparent);
   border-bottom: 1px solid rgba(255,255,255,0.04);
 }
 
 .exclusive-stream-badge img {
-  height: 22px;
+  height: 26px;
   width: auto;
+  max-width: 130px;
   object-fit: contain;
   filter: brightness(1.1);
 }
@@ -660,11 +703,15 @@ body {
 }
 
 /* ========== WEATHER STRIP ========== */
+/* Standardized weather placement: always renders under channel badges for home
+   games, with a single, consistent label and data layout across the site. */
 .weather-strip {
-  padding: 0 16px 10px;
+  padding: 6px 16px 10px;
   display: flex;
   align-items: center;
   gap: 10px;
+  flex-wrap: wrap;
+  border-top: 1px dashed rgba(255,255,255,0.04);
 }
 
 .weather-tag {
@@ -672,6 +719,7 @@ body {
   font-size: 0.58rem;
   letter-spacing: 3px;
   color: var(--cream-dim);
+  text-transform: uppercase;
 }
 
 .weather-data {
@@ -1334,6 +1382,163 @@ body {
 .ys-details-key { color: var(--gold-dim); text-transform: uppercase; letter-spacing: 2px; font-size: 0.62rem; }
 .ys-details-val { color: var(--cream); text-align: right; }
 
+/* ========== EXPANDED NEXT-GAME PANEL (pitchers / lineups / weather / venue) ========== */
+.ys-section-label {
+  font-family: 'Special Elite', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 3px;
+  color: var(--gold-dim);
+  text-transform: uppercase;
+  margin: 14px 0 6px;
+  text-align: center;
+  border-top: 1px dashed rgba(196,164,74,0.2);
+  padding-top: 10px;
+}
+.ys-section-label:first-of-type { border-top: none; padding-top: 0; margin-top: 6px; }
+.ys-pitcher-row {
+  display: flex;
+  align-items: stretch;
+  gap: 10px;
+  padding: 4px 0 8px;
+}
+.ys-pitcher {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background: rgba(0,0,0,0.25);
+  border: 1px solid rgba(196,164,74,0.18);
+  border-radius: 4px;
+  padding: 10px 6px;
+  min-width: 0;
+}
+.ys-pitcher.away { border-left: 3px solid var(--cream-dim); }
+.ys-pitcher.home { border-left: 3px solid var(--gold); }
+.ys-pitcher-photo {
+  width: 64px; height: 64px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.05);
+  border: 2px solid rgba(196,164,74,0.3);
+  overflow: hidden;
+  margin-bottom: 6px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.6rem; color: var(--cream-dim);
+}
+.ys-pitcher-photo img { width: 100%; height: 100%; object-fit: cover; }
+.ys-pitcher-photo.placeholder { font-size: 1.8rem; color: var(--cream-dim); }
+.ys-pitcher-name {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 0.85rem;
+  letter-spacing: 1.5px;
+  color: var(--cream);
+  line-height: 1.15;
+  word-break: break-word;
+}
+.ys-pitcher-name.tbd { color: var(--cream-dim); font-style: italic; }
+.ys-pitcher-name a { color: inherit; text-decoration: none; border-bottom: 1px dotted rgba(196,164,74,0.3); }
+.ys-pitcher-meta {
+  font-family: 'Special Elite', monospace;
+  font-size: 0.55rem;
+  letter-spacing: 1.5px;
+  color: var(--gold-dim);
+  margin-top: 3px;
+  text-transform: uppercase;
+}
+.ys-pitcher-vs {
+  flex: 0 0 auto;
+  align-self: center;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.1rem;
+  letter-spacing: 3px;
+  color: var(--gold);
+  padding: 0 4px;
+}
+.ys-lineup-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+.ys-lineup-col {
+  background: rgba(0,0,0,0.2);
+  border: 1px solid rgba(196,164,74,0.15);
+  border-radius: 4px;
+  padding: 6px 4px;
+}
+.ys-lineup-header {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 0.7rem;
+  letter-spacing: 2px;
+  color: var(--gold-bright);
+  text-align: center;
+  padding: 4px 2px 6px;
+  border-bottom: 1px dashed rgba(196,164,74,0.2);
+  margin-bottom: 4px;
+  text-transform: uppercase;
+}
+.ys-lu-row {
+  display: grid;
+  grid-template-columns: 18px 1fr 26px;
+  gap: 4px;
+  align-items: center;
+  padding: 2px 4px;
+  font-family: 'Special Elite', monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.5px;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+}
+.ys-lu-row:last-child { border-bottom: none; }
+.ys-lu-row.blank { color: rgba(232,220,200,0.3); }
+.ys-lu-num { color: var(--gold-dim); font-size: 0.6rem; text-align: center; }
+.ys-lu-name { color: var(--cream); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.ys-lu-name a { color: inherit; text-decoration: none; }
+.ys-lu-pos { color: var(--gold-dim); font-size: 0.55rem; text-align: right; }
+.ys-lineup-note {
+  font-family: 'Special Elite', monospace;
+  font-size: 0.55rem;
+  letter-spacing: 1px;
+  color: var(--cream-dim);
+  text-align: center;
+  margin-top: 4px;
+  font-style: italic;
+}
+.ys-weather-block {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 10px 8px;
+  background: rgba(0,0,0,0.2);
+  border: 1px solid rgba(196,164,74,0.15);
+  border-radius: 4px;
+  font-family: 'Special Elite', monospace;
+  font-size: 0.7rem;
+  color: var(--cream);
+}
+.ys-weather-block.ys-weather-pending { color: var(--cream-dim); font-style: italic; justify-content: center; font-size: 0.65rem; }
+.ys-wx-icon { font-size: 1.1rem; }
+.ys-wx-temp { font-family: 'Bebas Neue', sans-serif; font-size: 1rem; letter-spacing: 1px; color: var(--bulb); }
+.ys-wx-precip { color: #66aadd; }
+.ys-wx-loc { color: var(--cream-dim); font-size: 0.6rem; letter-spacing: 1px; }
+.ys-venue-block {
+  padding: 8px 10px;
+  background: rgba(0,0,0,0.2);
+  border: 1px solid rgba(196,164,74,0.15);
+  border-radius: 4px;
+  font-family: 'Special Elite', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 1px;
+  color: var(--cream);
+  text-align: center;
+}
+@media (max-width: 480px) {
+  .ys-pitcher-photo { width: 54px; height: 54px; }
+  .ys-pitcher-name { font-size: 0.75rem; letter-spacing: 1px; }
+  .ys-lu-row { grid-template-columns: 16px 1fr 22px; font-size: 0.58rem; }
+  .ys-lineup-header { font-size: 0.62rem; letter-spacing: 1.5px; }
+}
+
 /* Next game countdown - centered */
 .next-game-countdown-bar {
   text-align: center;
@@ -1992,19 +2197,25 @@ img.net-logo { max-width: 44px; max-height: 28px; object-fit: contain; }
 }
 
 /* ========== FAINT R.PNG BACKGROUND PATTERN ========== */
+/* Smaller logos preserve aspect ratio (auto sizing) and reduce visible
+   pixelation; opacity tuned down so the pattern reads as texture, not noise */
 body::before {
   content: '';
   position: fixed;
-  top: 0; left: 0; right: 0; bottom: 0;
+  top: -10%; left: -10%; right: -10%; bottom: -10%;
   background-image: url('Images/Extra Yankee Logos/R.png');
-  background-size: 120px 120px;
-  background-repeat: repeat;
-  opacity: 1.0;
-  transform: rotate(-15deg) scale(1.4);
+  background-size: 70px auto;
+  background-repeat: space;
+  opacity: 0.55;
+  transform: rotate(-15deg) scale(1.15);
+  transform-origin: center center;
   pointer-events: none;
   z-index: 0;
-  filter: brightness(2) grayscale(0.5);
+  filter: brightness(1.85) grayscale(0.55) blur(0.3px);
+  image-rendering: -webkit-optimize-contrast;
+  will-change: transform;
 }
+.light-mode body::before { opacity: 0.18; filter: brightness(0.4) grayscale(0.7) blur(0.3px); }
 .scoreboard-outer { position: relative; z-index: 1; }
 .frieze-wrapper { position: relative; z-index: 1; }
 
@@ -2157,21 +2368,150 @@ body::before {
 }
 
 /* ========== LIGHT MODE ========== */
-.light-mode body, .light-mode { background: #d4cec0; }
+/* Designed as a "stadium ticket / cream paper" palette: warm cream background,
+   navy ink for body text, gold for accent. Tuned for AA contrast. */
+.light-mode body, .light-mode { background: #efe7d6; color: #1a2a44; }
+.light-mode {
+  --navy-cell: rgba(255,255,255,0.55);
+  --cell-border: rgba(12,35,64,0.18);
+  --cream: #14253d;        /* primary ink */
+  --cream-dim: #4a5a72;    /* secondary ink */
+  --gold: #8c6b1f;
+  --gold-bright: #b18a2a;
+  --gold-dim: #6e5418;
+  --bulb: #b85a1a;
+  --bulb-glow: #b85a1a;
+  --pinstripe: rgba(12,35,64,0.025);
+  --shadow-inset: inset 0 1px 3px rgba(0,0,0,0.08);
+}
 .light-mode .scoreboard-frame {
-  background: linear-gradient(180deg, #e8e0d0, #ddd6c6 10%, #d4cec0 90%, #c8c2b4);
-  border-color: #a09080;
-  box-shadow: inset 0 0 30px rgba(0,0,0,0.08), 0 0 0 2px #8a7a6a, 0 8px 30px rgba(0,0,0,0.2);
+  background:
+    repeating-linear-gradient(90deg, rgba(12,35,64,0.025) 0px, rgba(12,35,64,0.025) 1px, transparent 1px, transparent 40px),
+    linear-gradient(180deg, #f4ecd8, #ece2cc 50%, #e1d5b9 100%);
+  border-color: #b5a07c;
+  box-shadow: inset 0 0 30px rgba(0,0,0,0.05), 0 0 0 2px #8a7a6a, 0 8px 30px rgba(0,0,0,0.18);
 }
 .light-mode .scoreboard-frame::before { background: repeating-linear-gradient(90deg, rgba(12,35,64,0.02) 0px, rgba(12,35,64,0.02) 1px, transparent 1px, transparent 28px); }
-.light-mode .frieze { background: #2a3a50; }
-.light-mode { --navy-cell: rgba(0,0,0,0.04); --cell-border: rgba(0,0,0,0.08); --cream: #1a1008; --cream-dim: #5a4a3a; }
-.light-mode .board-title { text-shadow: 0 1px 2px rgba(0,0,0,0.15); }
-.light-mode .logo-wrap img { filter: drop-shadow(0 2px 8px rgba(0,0,0,0.25)); }
-.light-mode .gold-trim { background: linear-gradient(90deg, transparent, #a08030 15%, #b0903a 50%, #a08030 85%, transparent); }
-.light-mode .ys-scoreboard { background: linear-gradient(180deg, #e8eaf0 0%, #f0f2f8 100%); border-color: #ccc; }
-.light-mode .game-panel { background: rgba(0,0,0,0.03); }
-.light-mode .game-row { background-color: rgba(255,255,255,0.3); }
+.light-mode .frieze { background: #0C2340; border-bottom-color: #c4a44a; }
+.light-mode .board-title { color: #0C2340; text-shadow: none; }
+.light-mode .board-title .dash { color: #b18a2a; }
+.light-mode .board-subtitle { color: #4a5a72; }
+.light-mode .logo-wrap img { filter: drop-shadow(0 2px 6px rgba(0,0,0,0.2)) brightness(1.0); }
+.light-mode .wcatyo-header-logo { filter: drop-shadow(0 2px 8px rgba(12,35,64,0.25)) !important; }
+.light-mode .gold-trim { background: linear-gradient(90deg, transparent, #a08030 15%, #b18a2a 50%, #a08030 85%, transparent); }
+
+/* Game rows */
+.light-mode .game-row {
+  background: linear-gradient(180deg, rgba(255,255,255,0.5), rgba(255,255,255,0.3));
+  background-color: #fbf6e8;
+  border-color: rgba(12,35,64,0.18);
+  border-left-color: #8c6b1f;
+}
+.light-mode .game-row:hover { border-left-color: #b18a2a; box-shadow: var(--shadow-inset), 0 2px 14px rgba(12,35,64,0.08); }
+.light-mode .team-name-block .t-name { color: #0C2340; }
+.light-mode .t-role.away-tag { color: #4a5a72; }
+.light-mode .t-role.home-tag { color: #8c6b1f; }
+.light-mode .at-symbol { color: #8c6b1f; text-shadow: none; }
+.light-mode .game-datetime-big { color: #0C2340; }
+.light-mode .game-datetime-cell { color: #4a5a72; }
+.light-mode .series-cell { color: #6e5418; }
+
+.light-mode .channel-badge { background: rgba(12,35,64,0.05); border-color: rgba(12,35,64,0.15); color: #0C2340; }
+.light-mode .net-text { color: #0C2340; }
+
+/* Weather */
+.light-mode .weather-strip { border-top-color: rgba(12,35,64,0.08); }
+.light-mode .weather-tag { color: #6e5418; }
+.light-mode .weather-data { background: rgba(255,255,255,0.6); border-color: rgba(12,35,64,0.15); }
+.light-mode .weather-temp { color: #0C2340; }
+.light-mode .rain-prob { color: #1f5fa8; }
+
+/* Game details button + panel */
+.light-mode .details-toggle { background: rgba(12,35,64,0.04); border-top-color: rgba(12,35,64,0.08); }
+.light-mode .details-btn { color: #4a5a72; }
+.light-mode .details-btn:hover { background: rgba(12,35,64,0.05); color: #0C2340; }
+.light-mode .details-btn.active { background: rgba(140,107,31,0.1); color: #8c6b1f; text-shadow: none; }
+.light-mode .game-panel { background: rgba(255,255,255,0.5); }
+.light-mode .panel-section-label { color: #6e5418; }
+
+/* Pitcher panel + lineups in scoreboard */
+.light-mode .ys-pitcher { background: rgba(255,255,255,0.55); border-color: rgba(12,35,64,0.18); }
+.light-mode .ys-pitcher-name { color: #0C2340; }
+.light-mode .ys-pitcher-meta { color: #6e5418; }
+.light-mode .ys-pitcher-vs { color: #8c6b1f; }
+.light-mode .ys-pitcher-photo { background: rgba(12,35,64,0.05); border-color: rgba(140,107,31,0.4); color: #4a5a72; }
+.light-mode .ys-lineup-col { background: rgba(255,255,255,0.55); border-color: rgba(12,35,64,0.15); }
+.light-mode .ys-lineup-header { color: #8c6b1f; border-bottom-color: rgba(12,35,64,0.15); }
+.light-mode .ys-lu-row { border-bottom-color: rgba(12,35,64,0.05); }
+.light-mode .ys-lu-row.blank { color: rgba(12,35,64,0.35); }
+.light-mode .ys-lu-num { color: #6e5418; }
+.light-mode .ys-lu-name { color: #0C2340; }
+.light-mode .ys-lu-pos { color: #6e5418; }
+.light-mode .ys-section-label { color: #6e5418; border-top-color: rgba(12,35,64,0.15); }
+.light-mode .ys-weather-block, .light-mode .ys-venue-block { background: rgba(255,255,255,0.55); border-color: rgba(12,35,64,0.15); color: #0C2340; }
+.light-mode .ys-wx-temp { color: #b85a1a; }
+.light-mode .ys-wx-loc { color: #4a5a72; }
+
+/* Scoreboard */
+.light-mode .ys-scoreboard { background: linear-gradient(180deg, #f4ecd8 0%, #ece2cc 100%); border-color: #b5a07c; box-shadow: var(--shadow-inset), 0 4px 20px rgba(0,0,0,0.1); }
+.light-mode .ys-header { background: #0C2340; color: #f4ecd8; }
+.light-mode .ys-hero { background: rgba(255,255,255,0.55); border-bottom-color: rgba(12,35,64,0.12); }
+.light-mode .ys-hero-label { color: #6e5418; }
+.light-mode .ys-hero-name { color: #0C2340; }
+.light-mode .ys-countdown { background: rgba(12,35,64,0.04); }
+.light-mode .ys-teams { color: #0C2340; }
+.light-mode .ys-timer { color: #b85a1a; text-shadow: none; }
+.light-mode .ys-label { color: #6e5418; }
+.light-mode .ys-details-toggle { background: rgba(140,107,31,0.1); border-color: rgba(140,107,31,0.35); color: #6e5418; }
+.light-mode .ys-details-toggle:hover { background: rgba(140,107,31,0.2); color: #0C2340; }
+.light-mode .ys-details-panel { background: rgba(255,255,255,0.45); border-color: rgba(140,107,31,0.25); }
+.light-mode .ys-details-key { color: #6e5418; }
+.light-mode .ys-details-val { color: #0C2340; }
+.light-mode .ys-refresh-row { color: #6e5418; }
+
+/* Standings - keep the green-monster look distinctly green even in light mode */
+.light-mode .monster-board { box-shadow: inset 0 2px 10px rgba(0,0,0,0.25), 0 4px 14px rgba(0,0,0,0.18); }
+
+/* Last-game recap */
+.light-mode .last-game-board { background: #f4ecd8; border-color: #0C2340; }
+.light-mode .last-game-header { background: #0C2340; color: #f4ecd8; border-bottom-color: rgba(196,164,74,0.5); }
+.light-mode .lg-matchup-text, .light-mode .lg-final-tag, .light-mode .lg-date-text, .light-mode .lg-arrow { color: #f4ecd8; }
+.light-mode .lg-stats-table th { color: #0C2340; background: rgba(12,35,64,0.06); }
+.light-mode .lg-stats-table td { color: #14253d; }
+.light-mode .lg-team-label { color: #8c6b1f; }
+.light-mode .lg-box-title { color: #0C2340; }
+
+/* Editorial / FAQ */
+.light-mode .editorial-title { color: #0C2340; text-shadow: none; }
+.light-mode .editorial-subtitle { color: #6e5418; }
+.light-mode .editorial-body { color: #14253d; opacity: 1; }
+.light-mode .editorial-body h3 { color: #8c6b1f; text-shadow: none; }
+.light-mode .editorial-body strong { color: #0C2340; }
+.light-mode .watch-card { background: #fbf6e8; border-color: rgba(12,35,64,0.15); border-left-color: #8c6b1f; }
+.light-mode .watch-card-name { color: #8c6b1f; }
+.light-mode .watch-card-desc { color: #4a5a72; }
+.light-mode .faq-item { background: #fbf6e8; border-color: rgba(12,35,64,0.15); }
+.light-mode .faq-q { color: #0C2340; }
+.light-mode .faq-q:hover { background: rgba(140,107,31,0.06); }
+.light-mode .faq-a { color: #14253d; }
+
+/* Footer */
+.light-mode .board-footer { background: rgba(12,35,64,0.06); border-top-color: rgba(12,35,64,0.15); }
+.light-mode .footer-stamp, .light-mode .attribution-line, .light-mode .footer-about { color: #4a5a72; }
+.light-mode .board-btn { background: rgba(255,255,255,0.6); color: #0C2340; border-color: rgba(12,35,64,0.2); }
+.light-mode .board-btn:hover { background: #0C2340; color: #f4ecd8; }
+
+/* Empty season state */
+.light-mode .empty-season { background: rgba(255,255,255,0.45); border-color: rgba(12,35,64,0.15); }
+.light-mode .empty-season-title { color: #8c6b1f; text-shadow: none; }
+.light-mode .empty-season-sub { color: #0C2340; }
+.light-mode .empty-season-detail { color: #4a5a72; }
+
+/* Editorial folds */
+.light-mode .editorial-fold { background: #fbf6e8; border-color: rgba(12,35,64,0.15); }
+.light-mode .editorial-fold > summary { color: #8c6b1f; }
+.light-mode .editorial-fold > summary:hover { background: rgba(140,107,31,0.06); }
+.light-mode .editorial-fold > p { color: #14253d; opacity: 1; }
 
 /* ========== RESPONSIVE ========== */
 @media (max-width: 640px) {
@@ -2235,6 +2575,91 @@ body::before {
   .watch-card { padding: 12px; }
   .faq-q { font-size: 0.8rem; padding: 12px 14px; }
   .faq-a { font-size: 0.78rem; padding: 10px 14px; }
+}
+
+/* Narrow phones (standard iPhone, Pixel) — tighten anything that was cutting off */
+@media (max-width: 430px) {
+  /* Tighter outer padding so 16-col grids and tables don't overflow */
+  .scoreboard-outer { padding: 0 2px 14px; }
+  .frieze-wrapper, .scoreboard-frame { border-radius: 0; }
+  .scoreboard-frame { border-left-width: 2px; border-right-width: 2px; }
+  .board-header { padding: 16px 8px 12px; }
+
+  /* Title & headers — keep them inside the viewport */
+  .board-title { letter-spacing: 2px; }
+  .editorial-title { white-space: normal; font-size: 1rem; letter-spacing: 2px; }
+
+  /* Game-row contents */
+  .matchup-line { padding: 10px 8px; gap: 4px; }
+  .team-cell { min-width: 0; }
+  .team-name-block .t-name { font-size: 0.78rem; letter-spacing: 1px; }
+  .team-name-block .t-role { font-size: 0.5rem; }
+  .team-logo-box { width: 36px; height: 36px; }
+  .team-logo-box img { width: 30px; height: 30px; }
+  .at-symbol { font-size: 1rem; width: 22px; }
+  .game-meta { padding: 0 10px 8px; gap: 8px; }
+  .game-datetime-big { font-size: 0.82rem; letter-spacing: 1px; }
+  .channel-badges { padding: 6px 10px 0; gap: 6px; }
+  .next-game-badge { position: static; display: inline-block; margin: 6px 10px 0; }
+  .weather-strip { padding: 6px 10px; gap: 6px; }
+  .weather-tag { font-size: 0.5rem; letter-spacing: 1.5px; }
+
+  /* Scoreboard / pitcher panel */
+  .ys-pitcher { padding: 8px 4px; }
+  .ys-pitcher-photo { width: 50px; height: 50px; }
+  .ys-pitcher-name { font-size: 0.7rem; letter-spacing: 0.5px; }
+  .ys-pitcher-meta { font-size: 0.48rem; letter-spacing: 1px; }
+  .ys-pitcher-vs { font-size: 0.85rem; padding: 0 2px; }
+  .ys-lu-row { grid-template-columns: 14px 1fr 20px; font-size: 0.55rem; gap: 2px; padding: 1px 2px; }
+  .ys-lineup-header { font-size: 0.58rem; letter-spacing: 1px; padding: 3px 0 4px; }
+  .ys-weather-block { font-size: 0.62rem; gap: 8px; padding: 8px 6px; }
+  .ys-wx-loc { display: block; width: 100%; text-align: center; }
+
+  /* Standings */
+  .monster-board { padding: 10px 8px 8px; }
+  .monster-header, .monster-row { grid-template-columns: 1.6fr 32px 32px 42px 44px; padding: 4px 2px; }
+  .monster-num, .monster-gb { font-size: 0.78rem; padding: 2px 0; margin: 0 1px; }
+  .monster-l10 { font-size: 0.65rem; padding: 2px 0; margin: 0 1px; }
+  .monster-team-name { font-size: 0.7rem; letter-spacing: 0.5px; }
+  .monster-team-logo { width: 14px; height: 14px; }
+
+  /* Last-game header — wrap cleanly */
+  .last-game-header { padding: 6px 8px; gap: 4px; }
+  .lg-matchup-text { font-size: 0.78rem; letter-spacing: 1px; }
+  .lg-final-tag { font-size: 0.6rem; letter-spacing: 1px; padding: 2px 5px; }
+
+  /* Hero scoreboard banner */
+  .ys-hero { flex-wrap: wrap; padding: 6px 8px; gap: 4px; }
+  .ys-hero-name { font-size: 0.7rem; }
+  .ys-hero-secondary { width: 100%; justify-content: flex-start; }
+  .ys-countdown { padding: 8px 6px; }
+  .ys-teams { font-size: 0.95rem; letter-spacing: 1px; }
+
+  /* Buttons / footer */
+  .load-more-btn, .cal-all-btn, .cal-open-btn { font-size: 0.7rem; letter-spacing: 1px; padding: 8px 12px; width: 100%; }
+  .footer-controls { flex-wrap: wrap; gap: 6px; }
+  .board-btn { font-size: 0.7rem; padding: 6px 10px; }
+
+  /* Editorial */
+  .editorial-section { padding: 12px 8px; }
+  .editorial-body { font-size: 0.78rem; }
+  .editorial-body h3 { font-size: 0.82rem; letter-spacing: 1.5px; }
+  .faq-q { font-size: 0.75rem; padding: 10px 10px; }
+  .faq-a { font-size: 0.72rem; padding: 8px 10px; }
+
+  /* Tables — let them scroll if too wide */
+  .ys-linescore { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .lg-stats-table { font-size: 0.6rem; }
+  .lg-box-section { overflow-x: auto; }
+}
+
+/* Extra-tight phones (iPhone SE / 360px etc.) */
+@media (max-width: 360px) {
+  .board-title { letter-spacing: 1px; font-size: 1.15rem !important; }
+  .wcatyo-logo-wrap { width: 84px; height: 84px; }
+  .wcatyo-header-logo { width: 100px !important; height: 100px !important; }
+  .ys-lu-name { font-size: 0.5rem; }
+  .monster-header, .monster-row { grid-template-columns: 1.4fr 28px 28px 36px 38px; }
 }
 
 /* ========== EDITORIAL CONTENT SECTIONS ========== */
@@ -2414,6 +2839,52 @@ body::before {
 .light-mode .editorial-body { color: var(--cream); opacity: 0.9; }
 .light-mode .watch-card { background-color: rgba(255,255,255,0.3); }
 .light-mode .faq-item { background: rgba(255,255,255,0.3); }
+
+/* Inline editorial accordions ("How to Watch" sub-sections) */
+.editorial-fold {
+  margin: 8px auto;
+  max-width: 750px;
+  border: 1px solid var(--cell-border);
+  border-radius: 3px;
+  background: var(--navy-cell);
+  box-shadow: var(--shadow-inset);
+  overflow: hidden;
+}
+.editorial-fold > summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 12px 14px;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 0.95rem;
+  letter-spacing: 2.5px;
+  color: var(--gold-bright);
+  text-transform: uppercase;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background 0.2s;
+}
+.editorial-fold > summary::-webkit-details-marker { display: none; }
+.editorial-fold > summary::after {
+  content: '\25BC';
+  font-size: 0.6rem;
+  color: var(--gold-dim);
+  margin-left: 10px;
+  transition: transform 0.25s ease;
+}
+.editorial-fold[open] > summary::after { transform: rotate(180deg); }
+.editorial-fold > summary:hover { background: rgba(196,164,74,0.06); }
+.editorial-fold > p {
+  padding: 0 16px 14px;
+  margin: 0;
+  font-size: 0.85rem;
+  line-height: 1.7;
+  color: var(--cream);
+  opacity: 0.85;
+}
+.light-mode .editorial-fold { background: rgba(255,255,255,0.3); }
+.light-mode .editorial-fold > summary { color: #6b4f1a; }
+.light-mode .editorial-fold > p { color: #1a1008; opacity: 0.95; }
 </style>
 </head>
 <body>
@@ -2535,49 +3006,48 @@ body::before {
     <div class="editorial-subtitle">YOUR COMPLETE GUIDE TO EVERY BROADCAST</div>
 
     <div class="editorial-body">
-      <p>Finding the right channel for tonight's Yankees game can be surprisingly tricky. Between regional sports networks, national broadcasts, and streaming exclusives, the answer changes from game to game. This guide breaks down every way to watch.</p>
-
-      <h3>YES NETWORK &mdash; THE HOME BASE</h3>
-      <p>The vast majority of Yankees games air on the <strong>YES Network</strong>, the team's dedicated regional sports network. YES carries roughly 120+ regular season games each year, including all home games and most road games that aren't picked up by a national broadcaster. YES is available through most major cable and satellite providers in the New York tri-state area, and can also be streamed through the YES app with a valid TV provider login. In 2024, YES Network also became available on Amazon Prime Video as an add-on channel for cord-cutters in the Yankees' home market.</p>
-
-      <h3>NATIONAL BROADCASTS</h3>
-      <p>Throughout the season, select Yankees games are picked up by national networks. <strong>ESPN</strong> features the Yankees regularly on Sunday Night Baseball and Wednesday night games. <strong>FOX</strong> and <strong>FS1</strong> carry Saturday afternoon and prime-time matchups, especially marquee rivalries like Yankees-Red Sox. <strong>TBS</strong> typically airs Tuesday night games. When a game airs nationally, it may be blacked out on YES Network in favor of the national feed.</p>
-
-      <h3>STREAMING-EXCLUSIVE GAMES</h3>
-      <p>Several games each season air exclusively on streaming platforms with no traditional TV broadcast. <strong>Apple TV+</strong> carries Friday Night Baseball games available free on the Apple TV app. <strong>Amazon Prime Video</strong> streams select games for Prime subscribers. <strong>Peacock</strong> also hosts exclusive Sunday morning and afternoon games. This site flags these exclusive broadcasts prominently so you never tune into YES only to find the game isn't there.</p>
+      <p>The short answer: most Yankees games air on the <strong>YES Network</strong>. The full answer depends on the day &mdash; national TV, streaming exclusives, and blackout rules all factor in. Tap any section below for a deeper explainer.</p>
 
       <div class="watch-guide-grid">
-        <div class="watch-card">
-          <div class="watch-card-name">YES NETWORK</div>
-          <div class="watch-card-desc">Primary Yankees channel. ~120+ games/year. Available on most cable providers in the NY market and via Amazon Prime Video add-on.</div>
-        </div>
-        <div class="watch-card">
-          <div class="watch-card-name">ESPN / ESPN2</div>
-          <div class="watch-card-desc">Sunday Night Baseball and select weeknight games. Stream on ESPN+ or with a cable login at ESPN.com.</div>
-        </div>
-        <div class="watch-card">
-          <div class="watch-card-name">FOX / FS1</div>
-          <div class="watch-card-desc">Saturday national games and marquee matchups. Stream on FOXSports.com or the FOX Sports app with a TV provider login.</div>
-        </div>
-        <div class="watch-card">
-          <div class="watch-card-name">APPLE TV+</div>
-          <div class="watch-card-desc">Friday Night Baseball. Free on the Apple TV app, no subscription required for these games.</div>
-        </div>
-        <div class="watch-card">
-          <div class="watch-card-name">AMAZON PRIME VIDEO</div>
-          <div class="watch-card-desc">Select exclusive games for Prime members. Also carries YES Network as a paid add-on channel in the NY market.</div>
-        </div>
-        <div class="watch-card">
-          <div class="watch-card-name">MLB.TV</div>
-          <div class="watch-card-desc">Every out-of-market game, live and on-demand. Blackout restrictions apply for games in your local market. Best for fans outside the NY area.</div>
-        </div>
+        <div class="watch-card"><div class="watch-card-name">YES NETWORK</div><div class="watch-card-desc">Primary Yankees channel. Most regular-season games. Available on cable, satellite, YES app (TV provider login), and as an Amazon Prime Video add-on in the NY market.</div></div>
+        <div class="watch-card"><div class="watch-card-name">ESPN / ESPN2</div><div class="watch-card-desc">Sunday Night Baseball plus select weeknight national games. Stream on ESPN+ or ESPN.com with a cable login.</div></div>
+        <div class="watch-card"><div class="watch-card-name">FOX / FS1</div><div class="watch-card-desc">Saturday national broadcasts and marquee matchups. Stream on FOXSports.com or the FOX Sports app with a TV provider login.</div></div>
+        <div class="watch-card"><div class="watch-card-name">APPLE TV+</div><div class="watch-card-desc">Friday Night Baseball doubleheaders. Free on the Apple TV app for select games &mdash; no subscription required.</div></div>
+        <div class="watch-card"><div class="watch-card-name">AMAZON PRIME VIDEO</div><div class="watch-card-desc">Select exclusive games for Prime members. Also carries YES Network as a paid add-on in the NY market.</div></div>
+        <div class="watch-card"><div class="watch-card-name">MLB.TV</div><div class="watch-card-desc">Every out-of-market game, live and on-demand. Local blackouts apply &mdash; best for fans outside the NY tri-state.</div></div>
       </div>
 
-      <h3>BLACKOUT RULES EXPLAINED</h3>
-      <p>MLB enforces regional blackout restrictions that prevent <strong>MLB.TV</strong> subscribers from watching their local team's games live. If you're in the Yankees' home territory (roughly the New York tri-state area, including parts of Connecticut and northeast Pennsylvania), Yankees games will be blacked out on MLB.TV and you'll need YES Network or a national broadcast to watch live. The game becomes available on MLB.TV after it ends. VPN workarounds exist but violate MLB.TV's terms of service.</p>
+      <details class="editorial-fold">
+        <summary>YES Network &mdash; the home base</summary>
+        <p>The <strong>YES Network</strong> is the Yankees' regional sports network and the home of the vast majority of regular-season games. YES carries the bulk of the schedule each year, including nearly all home games and most road games that aren't picked up by a national broadcaster. It's available through most cable and satellite providers in the tri-state area, can be streamed via the YES app with a valid TV provider login, and is sold as an add-on channel on <strong>Amazon Prime Video</strong> for cord-cutters inside the Yankees' home market.</p>
+      </details>
 
-      <h3>RADIO</h3>
-      <p>Every Yankees game is broadcast on <strong>WFAN 660 AM / 101.9 FM</strong> in the New York market, with John Sterling's legendary home run calls. Spanish-language broadcasts are available on WADO 1280 AM. You can also listen through the MLB app with an MLB Audio subscription.</p>
+      <details class="editorial-fold">
+        <summary>National broadcasts (ESPN, FOX, TBS)</summary>
+        <p>National rights holders pick up select Yankees games throughout the year. <strong>ESPN</strong> carries Sunday Night Baseball and select weeknight games. <strong>FOX/FS1</strong> handle Saturday afternoon and prime-time games, especially Yankees-Red Sox and other marquee matchups. <strong>TBS</strong> airs Tuesday night games during portions of the season and shifts to postseason coverage in October. When a Yankees game airs nationally, it's typically blacked out on YES Network in favor of the national feed.</p>
+      </details>
+
+      <details class="editorial-fold">
+        <summary>Streaming-exclusive games (Apple, Amazon, Peacock)</summary>
+        <p>Several Yankees games each season air exclusively on streaming with no traditional TV broadcast. <strong>Apple TV+</strong> hosts Friday Night Baseball doubleheaders, free on the Apple TV app. <strong>Amazon Prime Video</strong> streams select exclusive games for Prime subscribers. <strong>Peacock</strong> has historically carried Sunday morning exclusives. This site flags streaming-only carriers prominently so you don't tune into YES only to find the game isn't there.</p>
+      </details>
+
+      <details class="editorial-fold">
+        <summary>Blackout rules &mdash; what they actually mean</summary>
+        <p>MLB enforces regional blackouts that prevent <strong>MLB.TV</strong> subscribers from watching their local team live. If you're inside the Yankees' home territory &mdash; roughly the New York tri-state area, including most of Connecticut and parts of northeast Pennsylvania &mdash; Yankees games are blacked out on MLB.TV and you'll need YES Network or a national broadcast to watch live. Replays unlock on MLB.TV shortly after the final out. VPN workarounds exist but violate MLB.TV's Terms of Service.</p>
+      </details>
+
+      <details class="editorial-fold">
+        <summary>Cord-cutter playbook</summary>
+        <p>You don't need cable to watch the Yankees. The simplest paths today: subscribe to <strong>YES Network on Amazon Prime Video</strong> in the NY market for nearly the full schedule, or use a live-TV streaming bundle that carries YES (typically <strong>YouTube TV</strong>, <strong>Hulu + Live TV</strong>, or <strong>FuboTV</strong> &mdash; availability changes frequently, confirm before subscribing). Add <strong>ESPN+</strong> for ESPN games, the free <strong>Apple TV app</strong> for Friday Night Baseball, and an <strong>MLB.TV</strong> single-team subscription if you're outside the NY blackout zone.</p>
+      </details>
+
+      <details class="editorial-fold">
+        <summary>Radio &mdash; English & Spanish</summary>
+        <p>Every Yankees game is on the radio. The flagship English broadcast is <strong>WFAN 660 AM / 101.9 FM</strong> in New York. Spanish-language coverage runs on <strong>WADO 1280 AM</strong>. You can also stream every game on the MLB app with an <strong>MLB Audio</strong> subscription, which is significantly cheaper than MLB.TV.</p>
+      </details>
+
+      <p style="font-size:0.72rem;color:var(--cream-dim);margin-top:14px;text-align:center;">Carrier lineups change season to season &mdash; we keep this page updated with the broadcast pulled directly from MLB's official feed for each game.</p>
     </div>
   </div>
 
@@ -2971,13 +3441,27 @@ function goToDivision(idx) {
 
 // ========== SCHEDULE ==========
 let fullSeasonLoaded = false;
+// Game types: R=regular, F=wild card, D=division, L=LCS, W=World Series, S=spring, A=all-star
+// Including all postseason types keeps the site useful through October & November.
+const GAME_TYPES = 'R,F,D,L,W';
 
 async function fetchSchedule() {
   try {
-    const url = `https://statsapi.mlb.com/api/v1/schedule?teamId=${YANKEES_ID}&sportId=1&gameType=R&startDate=${fmtDate(today())}&endDate=${fmtDate(addDays(today(),14))}&hydrate=broadcasts,probablePitcher,linescore`;
+    // Look ahead up to 60 days so we still surface upcoming games during the
+    // postseason gap between regular season end and playoff start.
+    const url = `https://statsapi.mlb.com/api/v1/schedule?teamId=${YANKEES_ID}&sportId=1&gameType=${GAME_TYPES}&startDate=${fmtDate(today())}&endDate=${fmtDate(addDays(today(),60))}&hydrate=broadcasts,probablePitcher,linescore`;
     const data = await fetchJSON(url);
     allGames = [];
     for(const d of (data.dates||[])) for(const g of (d.games||[])) allGames.push(g);
+    if(!allGames.length) {
+      // Try next year (offseason / pre-schedule release window)
+      const yr = today().getFullYear() + 1;
+      const nextYrUrl = `https://statsapi.mlb.com/api/v1/schedule?teamId=${YANKEES_ID}&sportId=1&gameType=R,S&startDate=${yr}-02-01&endDate=${yr}-04-15&hydrate=broadcasts,probablePitcher`;
+      try {
+        const ny = await fetchJSON(nextYrUrl);
+        for(const d of (ny.dates||[])) for(const g of (d.games||[])) allGames.push(g);
+      } catch(e) {}
+    }
     if(!allGames.length) throw new Error('empty');
   } catch(e) { allGames = getFallbackGames(); }
   seriesDisplayCount = 5;
@@ -2990,11 +3474,25 @@ async function loadMore() {
     btn.textContent = 'LOADING...';
     btn.disabled = true;
     try {
-      const endOfYear = `${today().getFullYear()}-12-31`;
-      const url = `https://statsapi.mlb.com/api/v1/schedule?teamId=${YANKEES_ID}&sportId=1&gameType=R&startDate=${fmtDate(today())}&endDate=${endOfYear}&hydrate=broadcasts,probablePitcher`;
+      // Through the end of the current calendar year covers the regular season
+      // plus the entire postseason window. If empty, also pull next year's
+      // schedule when MLB releases it.
+      const yr = today().getFullYear();
+      const endOfYear = `${yr}-12-31`;
+      const url = `https://statsapi.mlb.com/api/v1/schedule?teamId=${YANKEES_ID}&sportId=1&gameType=${GAME_TYPES}&startDate=${fmtDate(today())}&endDate=${endOfYear}&hydrate=broadcasts,probablePitcher`;
       const data = await fetchJSON(url);
-      allGames = [];
-      for(const d of (data.dates||[])) for(const g of (d.games||[])) allGames.push(g);
+      const collected = [];
+      for(const d of (data.dates||[])) for(const g of (d.games||[])) collected.push(g);
+      // If the current season is over, also fetch next year so the site stays useful
+      if (!collected.length) {
+        const ny = yr + 1;
+        try {
+          const nextYrUrl = `https://statsapi.mlb.com/api/v1/schedule?teamId=${YANKEES_ID}&sportId=1&gameType=R,S&startDate=${ny}-02-01&endDate=${ny}-12-31&hydrate=broadcasts,probablePitcher`;
+          const nyData = await fetchJSON(nextYrUrl);
+          for(const d of (nyData.dates||[])) for(const g of (d.games||[])) collected.push(g);
+        } catch(e) {}
+      }
+      if (collected.length) { allGames = collected; }
       fullSeasonLoaded = true;
     } catch(e) {}
     btn.disabled = false;
@@ -3156,7 +3654,7 @@ function buildGameCard(game, idx, isNextGame) {
     </div>
     ${getExclusiveStreamBadge(yankeesBroadcasts)}
     ${yankeesBroadcasts.length?`<div class="channel-badges">${yankeesBroadcasts.map(b=>`<div class="channel-badge">${getNetworkLogoHTML(b.name)}<span class="net-text">${b.name}</span></div>`).join('')}</div>`:``}
-    ${wx?`<div class="weather-strip"><span class="weather-tag">STADIUM WX</span><div class="weather-data"><span class="weather-icon">${wx.icon}</span><span class="weather-temp">${wx.temp}&deg;F</span><span class="rain-prob">&#x1F4A7; ${wx.precip}%</span></div></div>`:''}
+    ${wx?`<div class="weather-strip"><span class="weather-tag">FIRST PITCH WX &middot; YANKEE STADIUM</span><div class="weather-data"><span class="weather-icon">${wx.icon}</span><span class="weather-temp">${wx.temp}&deg;F</span><span class="rain-prob">&#x1F4A7; ${wx.precip}%</span></div></div>`:''}
     ${wxChartHTML}
     <div class="details-toggle">
       <button class="details-btn" onclick="togglePanel(${idx})">GAME DETAILS <span class="details-arrow">&#x25BC;</span></button>
@@ -3225,7 +3723,13 @@ function renderGames() {
   const sec = document.getElementById('games-section');
   if(!allGames.length){
     nextSec.innerHTML = '';
-    sec.innerHTML='<div class="loading-msg">NO UPCOMING GAMES</div>';
+    const yr = today().getFullYear();
+    sec.innerHTML = `<div class="empty-season">
+      <div class="empty-season-title">SEASON OFFSEASON</div>
+      <div class="empty-season-sub">No upcoming Yankees games on the schedule.</div>
+      <div class="empty-season-detail">The ${yr+1} schedule is typically released by MLB in mid-summer of the prior year. We'll surface it here as soon as it's published.</div>
+      <div class="empty-season-detail" style="margin-top:8px;">In the meantime, check Yankees standings, the latest final game, and the FAQ below.</div>
+    </div>`;
     return;
   }
 
@@ -3248,7 +3752,7 @@ function renderGames() {
 
   // Build combined list: series + future special events, sorted chronologically
   const now2 = new Date();
-  const futureSpecialEvts = SPECIAL_EVENTS_2026.filter(evt => new Date(evt.date) > now2);
+  const futureSpecialEvts = getActiveSpecialEvents().filter(evt => new Date(evt.date) > now2);
   const combinedItems = [
     ...visibleSeries.map(s => ({ type: 'series', data: s, sortDate: new Date(s.games[0].gameDate) })),
     ...futureSpecialEvts.map(evt => ({ type: 'special', data: evt, sortDate: new Date(evt.date) }))
@@ -3268,6 +3772,14 @@ function renderGames() {
         const realIdx = allGames.indexOf(game);
         if (realIdx === nextIdx) return false; // next-up already shown in scoreboard
         if (_sbCurrentGamePk != null && game.gamePk === _sbCurrentGamePk) return false; // live/final already in scoreboard
+        // Final games are surfaced via the scoreboard / last-game recap, never as
+        // a duplicate row in the upcoming schedule below the ad.
+        const absState = game.status?.abstractGameState || '';
+        const detState = (game.status?.detailedState || '').toLowerCase();
+        if (absState === 'Final' || detState.includes('final') || detState === 'completed early' || detState === 'game over') return false;
+        // Also exclude any game that's already past its scheduled start time AND has progressed
+        // (covers edge cases where Final state hasn't propagated yet).
+        if (lastGameData && game.gamePk === lastGameData.gamePk) return false;
         return true;
       });
 
@@ -3368,10 +3880,10 @@ function getExclusiveStreamBadge(broadcasts) {
   for (const [streamName, info] of Object.entries(EXCLUSIVE_STREAMS)) {
     const found = names.find(n => n.toUpperCase().includes(streamName.toUpperCase()));
     if (found && !hasTraditional) {
+      // Logo communicates the exclusive carrier on its own — drop the redundant
+      // "EXCLUSIVE / AMAZON PRIME VIDEO" wordmark per editorial feedback.
       return `<div class="exclusive-stream-badge">
-        <span class="exclusive-stream-label">EXCLUSIVE</span>
         <img src="${info.logo}" alt="${streamName}" onerror="this.style.display='none'" />
-        <span class="exclusive-stream-name">${streamName.toUpperCase()}</span>
       </div>`;
     }
   }
@@ -3438,51 +3950,94 @@ function togglePanel(idx){
 }
 
 // ========== SPECIAL EVENTS (All-Star, HR Derby, Futures Game) ==========
-const SPECIAL_EVENTS_2026 = [
-  {
-    name: 'MLB All-Star Futures Game',
-    date: '2026-07-14T19:00:00-04:00',
-    location: 'Nationals Park, Washington D.C.',
-    logo: 'Images/AL.png',
-    logo2: 'Images/NL.png',
-    type: 'special'
-  },
-  {
-    name: 'MLB Home Run Derby',
-    date: '2026-07-14T20:00:00-04:00',
-    location: 'Nationals Park, Washington D.C.',
-    logo: 'Images/AL.png',
-    logo2: 'Images/NL.png',
-    type: 'special'
-  },
-  {
-    name: 'MLB All-Star Game',
-    date: '2026-07-15T20:00:00-04:00',
-    location: 'Nationals Park, Washington D.C.',
-    logo: 'Images/AL.png',
-    logo2: 'Images/NL.png',
-    broadcast: 'FOX',
-    type: 'special'
-  }
-];
+// Maintained as a year-keyed map so the schedule stays accurate across seasons.
+// Update or extend the entries here when MLB announces dates/venues.
+const SPECIAL_EVENTS_BY_YEAR = {
+  2026: [
+    {
+      name: 'MLB All-Star Futures Game',
+      date: '2026-07-14T19:00:00-04:00',
+      location: 'Nationals Park, Washington D.C.',
+      logo: 'Images/AL.png',
+      logo2: 'Images/NL.png',
+      type: 'special'
+    },
+    {
+      name: 'MLB Home Run Derby',
+      date: '2026-07-14T20:00:00-04:00',
+      location: 'Nationals Park, Washington D.C.',
+      logo: 'Images/AL.png',
+      logo2: 'Images/NL.png',
+      broadcast: 'ESPN',
+      type: 'special'
+    },
+    {
+      name: 'MLB All-Star Game',
+      date: '2026-07-15T20:00:00-04:00',
+      location: 'Nationals Park, Washington D.C.',
+      logo: 'Images/AL.png',
+      logo2: 'Images/NL.png',
+      broadcast: 'FOX',
+      type: 'special'
+    }
+  ],
+  2027: [
+    // Placeholder — All-Star Game 2027 host TBA. Update once MLB announces.
+  ]
+};
+function getActiveSpecialEvents() {
+  const y = today().getFullYear();
+  return [].concat(SPECIAL_EVENTS_BY_YEAR[y] || [], SPECIAL_EVENTS_BY_YEAR[y+1] || []);
+}
+// Back-compat alias for any reference that still expects SPECIAL_EVENTS_2026
+const SPECIAL_EVENTS_2026 = SPECIAL_EVENTS_BY_YEAR[2026];
 
 function buildSpecialEventCard(evt) {
   const gd = new Date(evt.date);
-  const dateStr = gd.toLocaleDateString('en-US', {timeZone:'America/New_York', weekday:'long', month:'short', day:'numeric'});
+  const dateLabel = (() => {
+    const todayDate = new Date();
+    const tomorrowDate = new Date(todayDate); tomorrowDate.setDate(todayDate.getDate()+1);
+    const dStr = gd.toLocaleDateString('en-CA', {timeZone:'America/New_York'});
+    const todayStr = todayDate.toLocaleDateString('en-CA', {timeZone:'America/New_York'});
+    const tomorrowStr = tomorrowDate.toLocaleDateString('en-CA', {timeZone:'America/New_York'});
+    if (dStr === todayStr) return '<span style="color:var(--gold-bright);font-weight:bold;">TODAY</span>';
+    if (dStr === tomorrowStr) return '<span style="color:#ff9999;font-weight:bold;">TOMORROW</span>';
+    return new Intl.DateTimeFormat('en-US',{weekday:'long',timeZone:'America/New_York'}).format(gd).toUpperCase();
+  })();
+  const monthDay = new Intl.DateTimeFormat('en-US',{month:'short',day:'numeric',timeZone:'America/New_York'}).format(gd).toUpperCase();
   const timeStr = gd.toLocaleTimeString('en-US', {timeZone:'America/New_York', hour:'numeric', minute:'2-digit'});
-  return `<div class="game-row" style="border-left-color:#d4b45a;background:linear-gradient(135deg,rgba(196,164,74,0.06),var(--navy-cell));">
-    <div class="matchup-line" style="justify-content:center;">
-      <div style="display:flex;align-items:center;gap:12px;">
-        <img src="${evt.logo}" alt="AL" style="width:36px;height:36px;object-fit:contain;" onerror="this.style.display='none'" />
-        <div style="text-align:center;">
-          <div style="font-family:'Bebas Neue',sans-serif;font-size:1.1rem;letter-spacing:3px;color:var(--gold-bright);text-shadow:0 0 8px rgba(196,164,74,0.3);">${evt.name.toUpperCase()}</div>
-          <div style="font-family:'Special Elite',monospace;font-size:0.65rem;color:var(--cream-dim);letter-spacing:2px;">${dateStr.toUpperCase()} · ${timeStr} ET</div>
-          <div style="font-family:'Special Elite',monospace;font-size:0.55rem;color:var(--cream-dim);letter-spacing:1px;margin-top:2px;">${evt.location}</div>
+  const fullDateLine = `${dateLabel} · ${monthDay} · ${timeStr} ET`;
+
+  // Render the special event with the same skeleton as a regular game-row so it
+  // visually folds into the schedule instead of looking like a separate block.
+  return `
+  <div class="game-row special-event-row">
+    <div class="matchup-line">
+      <div class="team-cell away-cell">
+        <div class="team-name-block">
+          <div class="t-name">AMERICAN LEAGUE</div>
+          <div class="t-role away-tag">AL</div>
         </div>
-        ${evt.logo2 ? `<img src="${evt.logo2}" alt="NL" style="width:36px;height:36px;object-fit:contain;" onerror="this.style.display='none'" />` : ''}
+        <div class="team-logo-box">
+          <img src="${evt.logo}" alt="AL" onerror="this.style.display='none'" />
+        </div>
+      </div>
+      <div class="at-symbol">VS</div>
+      <div class="team-cell home-cell">
+        <div class="team-logo-box">
+          <img src="${evt.logo2 || evt.logo}" alt="NL" onerror="this.style.display='none'" />
+        </div>
+        <div class="team-name-block">
+          <div class="t-name">NATIONAL LEAGUE</div>
+          <div class="t-role home-tag">NL</div>
+        </div>
       </div>
     </div>
-    ${evt.broadcast ? `<div class="channel-badges" style="justify-content:center;"><div class="channel-badge">${getNetworkLogoHTML(evt.broadcast)}<span class="net-text">${evt.broadcast}</span></div></div>` : ''}
+    <div class="game-meta game-meta-prominent">
+      <span class="game-datetime-cell game-datetime-big">${fullDateLine}</span>
+      <span class="series-cell series-cell-clean">${evt.name.toUpperCase()} · ${evt.location.split(',')[0].toUpperCase()}</span>
+    </div>
+    ${evt.broadcast ? `<div class="channel-badges"><div class="channel-badge">${getNetworkLogoHTML(evt.broadcast)}<span class="net-text">${evt.broadcast}</span></div></div>` : ''}
   </div>`;
 }
 
@@ -3730,8 +4285,13 @@ function toggleSbDetails() {
 }
 
 function sbHeroBannerHTML(labelText, isLive, primaryBcast, secondaryBcasts) {
-  const primaryLogo = primaryBcast ? getNetworkLogoHTML(primaryBcast.name) : '';
-  const primaryName = primaryBcast ? primaryBcast.name : 'CHECK LOCAL';
+  // Fall back to YES Network when broadcast unknown — YES carries the vast majority of
+  // Yankees games, so it's a far better default than a generic "CHECK LOCAL" label.
+  const useYesFallback = !primaryBcast;
+  const primaryLogo = useYesFallback
+    ? `<img class="net-logo" src="${CHANNEL_LOGOS['YES Network']}" alt="YES Network" />`
+    : getNetworkLogoHTML(primaryBcast.name);
+  const primaryName = useYesFallback ? 'YES NETWORK' : primaryBcast.name;
   const secondaryHTML = (secondaryBcasts && secondaryBcasts.length)
     ? `<div class="ys-hero-secondary">${secondaryBcasts.map(b=>`<div class="channel-badge">${getNetworkLogoHTML(b.name)}<span class="net-text">${b.name}</span></div>`).join('')}</div>`
     : '';
@@ -3753,12 +4313,113 @@ function sbRefreshIndicatorHTML(mode) {
   </div>`;
 }
 
-function sbDetailsPanelHTML(rows) {
-  if (!rows || !rows.length) return '';
-  const rowsHTML = rows.filter(r => r.val).map(r => `<div class="ys-details-row"><span class="ys-details-key">${r.key}</span><span class="ys-details-val">${r.val}</span></div>`).join('');
-  if (!rowsHTML) return '';
+function sbDetailsPanelHTML(rows, extraHTML) {
+  const rowsHTML = (rows || []).filter(r => r.val).map(r => `<div class="ys-details-row"><span class="ys-details-key">${r.key}</span><span class="ys-details-val">${r.val}</span></div>`).join('');
+  const inner = (rowsHTML || '') + (extraHTML || '');
+  if (!inner) return '';
   return `<button id="ys-details-toggle" class="ys-details-toggle${_sbDetailsOpen?' open':''}" onclick="toggleSbDetails()">GAME DETAILS <span class="ys-details-arrow">&#x25BC;</span></button>
-    <div id="ys-details-panel" class="ys-details-panel${_sbDetailsOpen?' open':''}">${rowsHTML}</div>`;
+    <div id="ys-details-panel" class="ys-details-panel${_sbDetailsOpen?' open':''}">${inner}</div>`;
+}
+
+// Build the expanded "next game" detail block: pitching matchup with headshots,
+// side-by-side starting lineups (empty placeholders when unannounced),
+// weather (home games), and venue.
+function sbExpandedNextGameHTML(game, opts) {
+  const isHome = game.teams.home.team.id === YANKEES_ID;
+  const awayTeam = game.teams.away.team;
+  const homeTeam = game.teams.home.team;
+  const yankP = isHome ? game.teams?.home?.probablePitcher : game.teams?.away?.probablePitcher;
+  const oppP  = isHome ? game.teams?.away?.probablePitcher : game.teams?.home?.probablePitcher;
+  const oppTeam = isHome ? awayTeam : homeTeam;
+
+  // Pitchers with headshots side by side
+  const pHeadshot = (p, fallbackLabel, side) => {
+    if (!p) {
+      return `<div class="ys-pitcher ${side}"><div class="ys-pitcher-photo placeholder">&#9918;</div><div class="ys-pitcher-name tbd">TBD</div><div class="ys-pitcher-meta">${fallbackLabel}</div></div>`;
+    }
+    return `<div class="ys-pitcher ${side}">
+      <div class="ys-pitcher-photo"><img src="https://img.mlbstatic.com/mlb-photos/image/upload/w_213,d_people:generic:headshot:silo:current.png/v1/people/${p.id}/headshot/silo/current" alt="${p.fullName}" onerror="this.parentElement.innerHTML='&#9918;'"/></div>
+      <div class="ys-pitcher-name">${bbrefLink(p.fullName, p.fullName.toUpperCase())}</div>
+      <div class="ys-pitcher-meta">${fallbackLabel}${p.jerseyNumber?` &middot; #${p.jerseyNumber}`:''}</div>
+    </div>`;
+  };
+  const pitchHTML = `<div class="ys-section-label">Pitching Matchup</div>
+    <div class="ys-pitcher-row">
+      ${pHeadshot(isHome ? yankP : oppP, isHome ? 'YANKEES' : oppTeam.name.split(' ').pop().toUpperCase(), 'away')}
+      <div class="ys-pitcher-vs">VS</div>
+      ${pHeadshot(isHome ? oppP : yankP, isHome ? oppTeam.name.split(' ').pop().toUpperCase() : 'YANKEES', 'home')}
+    </div>`;
+
+  // Lineup placeholders — populated async by fetchLineupForScoreboard
+  const blankLineup = (label) => {
+    const rows = [1,2,3,4,5,6,7,8,9].map(n=>`<div class="ys-lu-row blank"><span class="ys-lu-num">${n}</span><span class="ys-lu-name">---</span><span class="ys-lu-pos">--</span></div>`).join('');
+    return `<div class="ys-lineup-col"><div class="ys-lineup-header">${label}</div>${rows}</div>`;
+  };
+  const lineupHTML = `<div class="ys-section-label">Starting Lineups</div>
+    <div class="ys-lineup-grid" id="ys-lineup-grid" data-gamepk="${game.gamePk}">
+      ${blankLineup(awayTeam.name.toUpperCase())}
+      ${blankLineup(homeTeam.name.toUpperCase())}
+    </div>
+    <div class="ys-lineup-note">Lineups typically posted ~3 hrs before first pitch</div>`;
+
+  // Weather — only for home games
+  let weatherHTML = '';
+  if (isHome) {
+    const wx = getWx(game.gameDate);
+    if (wx) {
+      weatherHTML = `<div class="ys-section-label">Game-Day Weather</div>
+        <div class="ys-weather-block">
+          <span class="ys-wx-icon">${wx.icon}</span>
+          <span class="ys-wx-temp">${wx.temp}&deg;F</span>
+          <span class="ys-wx-precip">&#x1F4A7; ${wx.precip}% precip</span>
+          <span class="ys-wx-loc">at Yankee Stadium &middot; first pitch</span>
+        </div>`;
+    } else {
+      weatherHTML = `<div class="ys-section-label">Game-Day Weather</div>
+        <div class="ys-weather-block ys-weather-pending">Forecast not yet available</div>`;
+    }
+  }
+
+  // Venue
+  const venueName = game.venue?.name || (isHome ? 'Yankee Stadium' : (STADIUM_NAMES[oppTeam.id] || 'Opponent Ballpark'));
+  const venueHTML = `<div class="ys-section-label">Venue</div>
+    <div class="ys-venue-block">${venueName}${isHome ? ' &middot; Bronx, NY' : ''}</div>`;
+
+  return pitchHTML + lineupHTML + weatherHTML + venueHTML;
+}
+
+// Async populate the lineup placeholders inside the scoreboard expanded panel
+async function fetchLineupForScoreboard(gamePk) {
+  try {
+    const grid = document.getElementById('ys-lineup-grid');
+    if (!grid || String(grid.dataset.gamepk) !== String(gamePk)) return;
+    const data = await fetchJSON(`https://statsapi.mlb.com/api/v1.1/game/${gamePk}/feed/live`);
+    const teams = data?.liveData?.boxscore?.teams;
+    if (!teams) return;
+    const cols = grid.querySelectorAll('.ys-lineup-col');
+    if (cols.length !== 2) return;
+    const buildOne = (td) => {
+      const order = td?.battingOrder || [];
+      const players = td?.players || {};
+      if (!order.length) return null;
+      return order.map((pid,i)=>{
+        const p = players[`ID${pid}`] || {};
+        const nm = p.person?.fullName || 'Player';
+        const pos = p.position?.abbreviation || '--';
+        return `<div class="ys-lu-row"><span class="ys-lu-num">${i+1}</span><span class="ys-lu-name">${bbrefLink(nm, nm.toUpperCase())}</span><span class="ys-lu-pos">${pos}</span></div>`;
+      }).join('');
+    };
+    const aw = buildOne(teams.away);
+    const hm = buildOne(teams.home);
+    if (aw) {
+      const header = cols[0].querySelector('.ys-lineup-header')?.outerHTML || '';
+      cols[0].innerHTML = header + aw;
+    }
+    if (hm) {
+      const header = cols[1].querySelector('.ys-lineup-header')?.outerHTML || '';
+      cols[1].innerHTML = header + hm;
+    }
+  } catch(e) { /* keep placeholders */ }
 }
 
 function startSbRefreshTicker() {
@@ -3869,7 +4530,7 @@ async function updateScoreboard() {
   if (mode === 'countdown') {
     const gameTimeET = new Date(new Date(game.gameDate).toLocaleString('en-US', {timeZone:'America/New_York'}));
     const timeStr = gameTimeET.toLocaleTimeString('en-US', {hour:'numeric', minute:'2-digit'});
-    const dateStr = gameTimeET.toLocaleDateString('en-US', {weekday:'long', month:'short', day:'numeric'});
+    const dateStrFull = gameTimeET.toLocaleDateString('en-US', {weekday:'long', month:'short', day:'numeric'});
     const isHomeCtd = homeTeam.id === YANKEES_ID;
     const oppTeamCtd = isHomeCtd ? awayTeam : homeTeam;
     const yankeeBcastsCtd = tvBcasts.filter(b => {
@@ -3882,13 +4543,11 @@ async function updateScoreboard() {
     const primaryCtd = yankeeBcastsCtd[0] || primaryBcast;
     const secondaryCtd = yankeeBcastsCtd.slice(1, 3);
     const venueCtd = game.venue?.name || (isHomeCtd ? 'Yankee Stadium' : oppTeamCtd.name + ' Home Venue');
-    const detailRows = [
+    const detailRowsCtd = [
       { key: 'Matchup', val: `${awayTeam.name} @ ${homeTeam.name}` },
-      { key: 'First Pitch', val: `${timeStr} ET · ${dateStr}` },
+      { key: 'First Pitch', val: `${timeStr} ET · ${dateStrFull}` },
       { key: 'Venue', val: venueCtd },
-      { key: 'Yankees SP', val: yankPCtd ? yankPCtd.fullName : 'TBD' },
-      { key: oppTeamCtd.name.split(' ').pop() + ' SP', val: oppPCtd ? oppPCtd.fullName : 'TBD' },
-      { key: 'All Broadcasts', val: yankeeBcastsCtd.length ? yankeeBcastsCtd.map(b=>b.name).join(' · ') : 'Check local listings' }
+      { key: 'All Broadcasts', val: yankeeBcastsCtd.length ? yankeeBcastsCtd.map(b=>b.name).join(' · ') : 'YES Network (default)' }
     ];
     html = sbHeroBannerHTML('UP NEXT', false, primaryCtd, secondaryCtd) + `<div class="ys-countdown">
       <div class="ys-teams">
@@ -3898,8 +4557,9 @@ async function updateScoreboard() {
       </div>
       <div class="ys-timer"><span id="ys-countdown-timer" data-gametime="${game.gameDate}">--:--:--</span></div>
       <div class="ys-label">FIRST PITCH · ${timeStr} ET</div>
-    </div>` + sbDetailsPanelHTML(detailRows) + sbRefreshIndicatorHTML(mode);
+    </div>` + sbDetailsPanelHTML(detailRowsCtd, sbExpandedNextGameHTML(game)) + sbRefreshIndicatorHTML(mode);
     content.innerHTML = html;
+    fetchLineupForScoreboard(game.gamePk);
     _sbLastRefresh = Date.now();
     startSbRefreshTicker();
     if (_sbCurrentGamePk !== game.gamePk) { _sbCurrentGamePk = game.gamePk; if (typeof renderGames === 'function' && allGames.length) renderGames(); }
@@ -3928,9 +4588,7 @@ async function updateScoreboard() {
       { key: 'Matchup', val: `${awayTeam.name} @ ${homeTeam.name}` },
       { key: 'First Pitch', val: `${timeStr} ET · ${dateLong}` },
       { key: 'Venue', val: venueNg },
-      { key: 'Yankees SP', val: yankPNg ? yankPNg.fullName : 'TBD' },
-      { key: oppTeamNg.name.split(' ').pop() + ' SP', val: oppPNg ? oppPNg.fullName : 'TBD' },
-      { key: 'All Broadcasts', val: yankeeBcastsNg.length ? yankeeBcastsNg.map(b=>b.name).join(' · ') : 'Check local listings' }
+      { key: 'All Broadcasts', val: yankeeBcastsNg.length ? yankeeBcastsNg.map(b=>b.name).join(' · ') : 'YES Network (default)' }
     ];
     html = sbHeroBannerHTML('UP NEXT', false, primaryNg, secondaryNg) + `<div class="ys-countdown">
       <div class="ys-teams">
@@ -3940,8 +4598,9 @@ async function updateScoreboard() {
       </div>
       <div class="ys-timer" style="font-size:1.1rem;">${dateStr}</div>
       <div class="ys-label">NEXT GAME · ${timeStr} ET</div>
-    </div>` + sbDetailsPanelHTML(detailRowsNg) + sbRefreshIndicatorHTML(mode);
+    </div>` + sbDetailsPanelHTML(detailRowsNg, sbExpandedNextGameHTML(game)) + sbRefreshIndicatorHTML(mode);
     content.innerHTML = html;
+    fetchLineupForScoreboard(game.gamePk);
     _sbLastRefresh = Date.now();
     startSbRefreshTicker();
     if (_sbCurrentGamePk !== game.gamePk) { _sbCurrentGamePk = game.gamePk; if (typeof renderGames === 'function' && allGames.length) renderGames(); }
@@ -3955,7 +4614,7 @@ async function updateScoreboard() {
     const lsData = ld?.linescore;
     const plays = ld?.plays;
 
-    // Hero banner at top of live/final mode
+    // Hero banner with YES Network fallback
     const heroYankeeBcasts = tvBcasts.filter(b => {
       const u = b.name.toUpperCase();
       return u.includes('YES') || u.includes('ESPN') || u.includes('FOX') || u.includes('FS1') ||
@@ -4002,7 +4661,7 @@ async function updateScoreboard() {
           <div class="ys-bso-group"><span class="ys-bso-label">S</span>${[0,1,2].map(i=>`<div class="ys-bso-dot ${i<strikes?'filled-s':''}"></div>`).join('')}</div>
           <div class="ys-bso-group"><span class="ys-bso-label">O</span>${[0,1,2].map(i=>`<div class="ys-bso-dot ${i<outs?'filled-o':''}"></div>`).join('')}</div>
         </div>
-        <div class="ys-inning-indicator">${halfLabel} ${currentInning}</div>
+        <div class="ys-inning-indicator">${halfLabel} ${currentInning}${bcastBadge}</div>
         <div class="ys-bases"><div class="ys-diamond">
           <div class="ys-base second${onSecond?' occupied':''}"></div>
           <div class="ys-base third${onThird?' occupied':''}"></div>
@@ -4015,7 +4674,7 @@ async function updateScoreboard() {
       </div>`;
     } else {
       html += `<div class="ys-atbat-strip" style="justify-content:center;">
-        <div class="ys-inning-indicator" style="font-size:1rem;">FINAL${innings.length > 9 ? ' (' + innings.length + ')' : ''}</div>
+        <div class="ys-inning-indicator" style="font-size:1rem;">FINAL${innings.length > 9 ? ' (' + innings.length + ')' : ''}${bcastBadge}</div>
       </div>`;
     }
 
@@ -4070,7 +4729,7 @@ async function updateScoreboard() {
     const wind = ld?.boxscore?.info?.find(i => i.label === 'Wind')?.value || '';
     const firstPitchET = new Date(new Date(game.gameDate).toLocaleString('en-US', {timeZone:'America/New_York'}));
     const firstPitchStr = firstPitchET.toLocaleTimeString('en-US', {hour:'numeric', minute:'2-digit'}) + ' ET';
-    const allBcastNames = heroYankeeBcasts.length ? heroYankeeBcasts.map(b=>b.name).join(' · ') : (primaryBcast ? primaryBcast.name : '');
+    const allBcastNames = heroYankeeBcasts.length ? heroYankeeBcasts.map(b=>b.name).join(' · ') : (primaryBcast ? primaryBcast.name : 'YES Network (default)');
     const detailRowsLF = mode === 'live' ? [
       { key: 'At Bat', val: batterName !== 'TBD' ? batterName : '' },
       { key: 'Pitching', val: pitcherName !== 'TBD' ? pitcherName : '' },
@@ -4131,9 +4790,18 @@ async function fetchFullSeasonForCalendar() {
   if (fullSeasonGames.length) return;
   try {
     const yr = new Date().getFullYear();
-    const data = await fetchJSON(`https://statsapi.mlb.com/api/v1/schedule?teamId=${YANKEES_ID}&sportId=1&gameType=R&startDate=${yr}-03-01&endDate=${yr}-11-30&hydrate=broadcasts`);
+    // Pull regular season + postseason for the active year. If empty (offseason),
+    // fall back to the next year so calendar still shows scheduled games.
+    const data = await fetchJSON(`https://statsapi.mlb.com/api/v1/schedule?teamId=${YANKEES_ID}&sportId=1&gameType=${GAME_TYPES}&startDate=${yr}-03-01&endDate=${yr}-11-30&hydrate=broadcasts`);
     fullSeasonGames = [];
     for (const d of (data.dates||[])) for (const g of (d.games||[])) fullSeasonGames.push(g);
+    if (!fullSeasonGames.length) {
+      const ny = yr + 1;
+      try {
+        const nyData = await fetchJSON(`https://statsapi.mlb.com/api/v1/schedule?teamId=${YANKEES_ID}&sportId=1&gameType=R&startDate=${ny}-03-01&endDate=${ny}-11-30&hydrate=broadcasts`);
+        for (const d of (nyData.dates||[])) for (const g of (d.games||[])) fullSeasonGames.push(g);
+      } catch(e) {}
+    }
   } catch(e) { fullSeasonGames = allGames; }
 }
 
@@ -4316,103 +4984,43 @@ function renderCalendar() {
     else if (target.classList.contains('load-more-btn')) name = 'Load More Games';
     else if (target.classList.contains('cal-all-btn')) name = 'Add All to Calendar';
     else if (target.classList.contains('last-game-header')) name = 'Last Game Recap Toggle';
-    else if (target.closest('.game-row')) name = 'Game Card Click';
-    else if (target.tagName === 'A') name = 'Link: ' + (target.textContent || target.href || '').substring(0, 40);
-    else if (target.tagName === 'BUTTON') name = 'Button: ' + (target.textContent || '').substring(0, 30);
-    else name = target.className.split(' ')[0] || 'Unknown';
+    else if (target.classList.contains('cal-open-btn')) name = 'Open Full Calendar';
+    else if (target.classList.contains('series-header')) name = 'Series Header';
+    else if (target.tagName === 'A') name = 'Link: ' + (target.href || target.textContent || 'unknown').slice(0, 80);
+    else if (target.classList.contains('game-row')) name = 'Game Row';
+    else name = (target.tagName || 'el') + (target.className ? ' .' + String(target.className).split(' ')[0] : '');
 
-    const data = getAnalytics();
-    if (!data.clicks) data.clicks = {};
-    if (!data.clicks[name]) data.clicks[name] = { count: 0, lastClicked: null };
-    data.clicks[name].count++;
-    data.clicks[name].lastClicked = new Date().toISOString();
-    save(data);
-  });
-
-  // Track section visibility
-  const sectionObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      const name = entry.target.dataset.trackSection;
-      if (!name) return;
-      if (entry.isIntersecting) {
-        entry.target._trackStart = Date.now();
-        const data = getAnalytics();
-        if (!data.sections) data.sections = {};
-        if (!data.sections[name]) data.sections[name] = { views: 0, totalTimeMs: 0 };
-        data.sections[name].views++;
-        save(data);
-      } else if (entry.target._trackStart) {
-        const elapsed = Date.now() - entry.target._trackStart;
-        const data = getAnalytics();
-        if (data.sections && data.sections[name]) {
-          data.sections[name].totalTimeMs += elapsed;
-          save(data);
-        }
-      }
-    });
-  }, { threshold: 0.3 });
-
-  // Observe key sections
-  setTimeout(() => {
-    const sectionsToTrack = [
-      { el: document.getElementById('live-bar'), name: 'Live Scoreboard' },
-      { el: document.getElementById('last-game-wrap'), name: 'Last Game Recap' },
-      { el: document.getElementById('next-game-section'), name: 'Next Game Card' },
-      { el: document.querySelector('.standings-section'), name: 'Division Standings' },
-      { el: document.getElementById('games-section'), name: 'Full Schedule' },
-      { el: document.getElementById('live-bar'), name: 'Live Score Bar' },
-    ];
-    sectionsToTrack.forEach(s => {
-      if (s.el) {
-        s.el.dataset.trackSection = s.name;
-        sectionObserver.observe(s.el);
-      }
-    });
-  }, 2000);
-
-  // Save session on unload
-  window.addEventListener('beforeunload', function() {
-    const duration = Math.round((Date.now() - SESSION_START) / 1000);
-    const data = getAnalytics();
-    const vid = getVisitorId();
-    if (data.visitors && data.visitors[vid]) {
-      data.visitors[vid].sessions.push({
-        date: new Date().toISOString(),
-        duration: duration,
-        clicks: sessionClicks,
-        pageViews: 1,
-        device: getDeviceType(),
-        browser: getBrowser(),
-        referrer: getReferrer()
-      });
-      // Keep only last 100 sessions per visitor
-      if (data.visitors[vid].sessions.length > 100) {
-        data.visitors[vid].sessions = data.visitors[vid].sessions.slice(-100);
-      }
+    try {
+      const data = getAnalytics();
+      if (!data.clicks) data.clicks = {};
+      data.clicks[name] = (data.clicks[name] || 0) + 1;
       save(data);
-    }
-  });
+    } catch(err) {}
+  }, true);
 
-  recordVisit();
+  // Initial visit + before-unload session save
+  try { recordVisit(); } catch(e) {}
+  window.addEventListener('beforeunload', function() {
+    try {
+      const data = getAnalytics();
+      const vid = getVisitorId();
+      if (data.visitors && data.visitors[vid]) {
+        data.visitors[vid].sessions = data.visitors[vid].sessions || [];
+        data.visitors[vid].sessions.push({
+          start: new Date(SESSION_START).toISOString(),
+          end: new Date().toISOString(),
+          duration: Date.now() - SESSION_START,
+          clicks: sessionClicks,
+        });
+        if (data.visitors[vid].sessions.length > 50) {
+          data.visitors[vid].sessions = data.visitors[vid].sessions.slice(-50);
+        }
+        save(data);
+      }
+    } catch(err) {}
+  });
 })();
 </script>
-
-<!-- CALENDAR POPUP -->
-<div class="cal-popup-overlay" id="cal-overlay" onclick="if(event.target===this)closeCalendar()">
-  <div class="cal-popup">
-    <div class="cal-popup-header">
-      <span class="cal-popup-title">YANKEES SCHEDULE</span>
-      <button class="cal-popup-close" onclick="closeCalendar()">&times;</button>
-    </div>
-    <div class="cal-month-nav">
-      <button onclick="calPrev()">&#x25C0;</button>
-      <span class="cal-month-label" id="cal-month-label">--</span>
-      <button onclick="calNext()">&#x25B6;</button>
-    </div>
-    <div class="cal-grid" id="cal-grid"></div>
-    <div style="text-align:center;padding:10px 0 0;font-family:'Special Elite',monospace;font-size:0.5rem;color:var(--cream-dim);letter-spacing:1px;">🎁 = GIVEAWAY NIGHT &middot; SCHEDULE VIA MLB STATS API</div>
-  </div>
-</div>
 
 </body>
 </html>
