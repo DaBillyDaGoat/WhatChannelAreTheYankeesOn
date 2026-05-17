@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="index, follow, max-image-preview:large">
 <title>What Channel Are The Yankees On? | WhatChannelAreTheYankeesOn.com</title>
 <meta name="description" content="Find out what channel the New York Yankees are on tonight. Live scores, full schedule, pitching matchups, lineups, and where to watch every Yankees game.">
 <meta name="keywords" content="Yankees, what channel, Yankees game tonight, YES Network, Yankees schedule, MLB, New York Yankees, where to watch Yankees">
@@ -10,7 +11,10 @@
 <meta property="og:description" content="Live scores, full schedule, and where to watch every New York Yankees game.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://whatchannelaretheyankeeson.com">
-<meta property="og:image" content="Images/NYY.png">
+<meta property="og:image" content="https://whatchannelaretheyankeeson.com/Images/NYY.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:image" content="https://whatchannelaretheyankeeson.com/Images/NYY.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="What Channel Are The Yankees On?">
 <meta name="twitter:description" content="Live scores, full schedule, and where to watch every Yankees game.">
@@ -275,6 +279,7 @@ body {
     inset 0 0 30px rgba(0,0,0,0.15),
     0 4px 20px rgba(0,0,0,0.4);
   position: relative;
+  min-height: 280px;
 }
 
 /* Outer white border like the Fenway board */
@@ -2886,6 +2891,15 @@ body::before {
 .light-mode .editorial-fold > summary { color: #6b4f1a; }
 .light-mode .editorial-fold > p { color: #1a1008; opacity: 0.95; }
 </style>
+<script type="application/ld+json" id="next-game-schema">
+{
+  "@context": "https://schema.org",
+  "@type": "SportsEvent",
+  "name": "New York Yankees Game",
+  "sport": "Baseball",
+  "url": "https://whatchannelaretheyankeeson.com"
+}
+</script>
 </head>
 <body>
 
@@ -2904,7 +2918,6 @@ body::before {
       <img src="Images/Extra Yankee Logos/Yankees channel logo.png" alt="WhatChannelAreTheYankeesOn.com" class="wcatyo-header-logo" />
     </div>
     <svg viewBox="0 0 1200 80" style="width:100%;max-width:900px;height:auto;display:block;margin:0 auto;"><text x="600" y="60" font-family="'Playfair Display',Georgia,serif" font-weight="900" font-size="52" fill="#FFFFFF" text-anchor="middle" letter-spacing="4">WHAT CHANNEL ARE THE YANKEES ON?</text></svg>
-    <div class="board-subtitle" id="season-sub"></div>
     <svg viewBox="0 0 800 60" style="width:100%;max-width:600px;height:auto;display:block;margin:0 auto;"><text x="400" y="45" font-family="'Yellowtail',cursive" font-size="36" fill="#FFFFFF" text-anchor="middle">WhatChannelAreTheYankeesOn.com</text></svg>
   </div>
 
@@ -2972,11 +2985,19 @@ body::before {
   <!-- REMAINING GAMES -->
   <div class="games-section" id="games-section">
     <div class="loading-msg"><span class="ldot"></span><span class="ldot"></span><span class="ldot"></span><br><br>LOADING SCHEDULE</div>
+    <noscript>
+      <div style="text-align:center;padding:30px 20px;color:var(--cream);font-family:'Oswald',sans-serif;font-size:0.95rem;line-height:1.7;">
+        <strong style="color:var(--gold-bright);font-size:1.1rem;display:block;margin-bottom:8px;">Live schedule requires JavaScript.</strong>
+        Most Yankees games air on the <strong>YES Network</strong>.<br>
+        Select games air on NBC, Peacock, ESPN, FOX, FS1, TBS, Apple TV, Amazon Prime Video, or Netflix.<br>
+        Check the <a href="https://www.mlb.com/yankees/schedule" style="color:var(--gold-bright);">official Yankees schedule on MLB.com</a> for tonight's broadcast.
+      </div>
+    </noscript>
   </div>
 
   <!-- YANKEES LOGO DIVIDER -->
   <div style="text-align:center;padding:10px 0 0;position:relative;z-index:1;">
-    <img src="Images/Extra Yankee Logos/84a4959ee348bab4668881b43ab6d473.png" alt="Yankees" style="width:60px;height:60px;object-fit:contain;opacity:0.12;filter:brightness(1.8) grayscale(0.3);" />
+    <img src="Images/Extra Yankee Logos/84a4959ee348bab4668881b43ab6d473.png" alt="Yankees" style="width:60px;height:60px;object-fit:contain;opacity:0.28;filter:brightness(1.6) grayscale(0.2);" />
   </div>
 
   <!-- LOAD MORE -->
@@ -3009,12 +3030,15 @@ body::before {
       <p>The short answer: most Yankees games air on the <strong>YES Network</strong>. The full answer depends on the day &mdash; national TV, streaming exclusives, and blackout rules all factor in. Tap any section below for a deeper explainer.</p>
 
       <div class="watch-guide-grid">
-        <div class="watch-card"><div class="watch-card-name">YES NETWORK</div><div class="watch-card-desc">Primary Yankees channel. Most regular-season games. Available on cable, satellite, YES app (TV provider login), and as an Amazon Prime Video add-on in the NY market.</div></div>
-        <div class="watch-card"><div class="watch-card-name">ESPN / ESPN2</div><div class="watch-card-desc">Sunday Night Baseball plus select weeknight national games. Stream on ESPN+ or ESPN.com with a cable login.</div></div>
+        <div class="watch-card"><div class="watch-card-name">YES NETWORK</div><div class="watch-card-desc">Primary Yankees channel. Most regular-season games. Available on cable, satellite, the YES app (TV provider login), and as an Amazon Prime Video add-on in the NY market.</div></div>
+        <div class="watch-card"><div class="watch-card-name">NBC / PEACOCK</div><div class="watch-card-desc">Sunday Night Baseball (new in 2026), MLB Sunday Leadoff, and the entire Wild Card round. Peacock also streams one out-of-market game daily. Premium subscription required.</div></div>
+        <div class="watch-card"><div class="watch-card-name">ESPN</div><div class="watch-card-desc">30-game midweek national package (Monday and Wednesday nights), Jackie Robinson Day, and MLB.TV sales. No more Sunday Night Baseball as of 2026.</div></div>
         <div class="watch-card"><div class="watch-card-name">FOX / FS1</div><div class="watch-card-desc">Saturday national broadcasts and marquee matchups. Stream on FOXSports.com or the FOX Sports app with a TV provider login.</div></div>
-        <div class="watch-card"><div class="watch-card-name">APPLE TV+</div><div class="watch-card-desc">Friday Night Baseball doubleheaders. Free on the Apple TV app for select games &mdash; no subscription required.</div></div>
+        <div class="watch-card"><div class="watch-card-name">TBS</div><div class="watch-card-desc">Tuesday Night Baseball during portions of the season, plus one Division Series in October.</div></div>
+        <div class="watch-card"><div class="watch-card-name">APPLE TV</div><div class="watch-card-desc">Friday Night Baseball doubleheaders, every Friday from late March through September. Paid Apple TV subscription required (no longer free).</div></div>
         <div class="watch-card"><div class="watch-card-name">AMAZON PRIME VIDEO</div><div class="watch-card-desc">Select exclusive games for Prime members. Also carries YES Network as a paid add-on in the NY market.</div></div>
-        <div class="watch-card"><div class="watch-card-name">MLB.TV</div><div class="watch-card-desc">Every out-of-market game, live and on-demand. Local blackouts apply &mdash; best for fans outside the NY tri-state.</div></div>
+        <div class="watch-card"><div class="watch-card-name">NETFLIX</div><div class="watch-card-desc">Opening Night exclusive, the Home Run Derby, and the 2026 MLB at Field of Dreams Game. Standard Netflix subscription required.</div></div>
+        <div class="watch-card"><div class="watch-card-name">MLB.TV</div><div class="watch-card-desc">Every out-of-market game, live and on-demand. Sold through ESPN starting in 2026. Local blackouts apply &mdash; best for fans outside the NY tri-state.</div></div>
       </div>
 
       <details class="editorial-fold">
@@ -3023,13 +3047,13 @@ body::before {
       </details>
 
       <details class="editorial-fold">
-        <summary>National broadcasts (ESPN, FOX, TBS)</summary>
-        <p>National rights holders pick up select Yankees games throughout the year. <strong>ESPN</strong> carries Sunday Night Baseball and select weeknight games. <strong>FOX/FS1</strong> handle Saturday afternoon and prime-time games, especially Yankees-Red Sox and other marquee matchups. <strong>TBS</strong> airs Tuesday night games during portions of the season and shifts to postseason coverage in October. When a Yankees game airs nationally, it's typically blacked out on YES Network in favor of the national feed.</p>
+        <summary>National broadcasts (NBC, ESPN, FOX, TBS)</summary>
+        <p>National rights holders pick up select Yankees games throughout the year. As of 2026, the lineup looks different than it did for the previous three decades. <strong>NBC and Peacock</strong> now carry Sunday Night Baseball (the package moved from ESPN after a 35-year run), MLB Sunday Leadoff, and the entire Wild Card round. <strong>ESPN</strong> shifted to a 30-game midweek package &mdash; primarily Monday and Wednesday nights &mdash; plus Jackie Robinson Day. <strong>FOX and FS1</strong> handle Saturday afternoon and prime-time games, especially Yankees-Red Sox and other marquee matchups. <strong>TBS</strong> airs Tuesday Night Baseball during portions of the season and one Division Series in October. When a Yankees game airs nationally, it's typically blacked out on YES Network in favor of the national feed.</p>
       </details>
 
       <details class="editorial-fold">
-        <summary>Streaming-exclusive games (Apple, Amazon, Peacock)</summary>
-        <p>Several Yankees games each season air exclusively on streaming with no traditional TV broadcast. <strong>Apple TV+</strong> hosts Friday Night Baseball doubleheaders, free on the Apple TV app. <strong>Amazon Prime Video</strong> streams select exclusive games for Prime subscribers. <strong>Peacock</strong> has historically carried Sunday morning exclusives. This site flags streaming-only carriers prominently so you don't tune into YES only to find the game isn't there.</p>
+        <summary>Streaming-exclusive games (Apple TV, Peacock, Netflix, Amazon)</summary>
+        <p>A growing share of Yankees games each season airs exclusively on streaming with no traditional cable or broadcast carriage. <strong>Apple TV</strong> hosts Friday Night Baseball doubleheaders every Friday from late March through September &mdash; an Apple TV subscription is required (these games used to be free; that ended after 2024). <strong>Peacock</strong> is now a primary national MLB carrier, with Sunday Night Baseball, MLB Sunday Leadoff, the Wild Card round, and one out-of-market game streamed daily; a Peacock Premium subscription is required. <strong>Netflix</strong> joined the rotation in 2026 with the Opening Night exclusive, the Home Run Derby, and the Field of Dreams Game. <strong>Amazon Prime Video</strong> streams select exclusive games for Prime subscribers and also sells the YES Network as a paid add-on in the NY market. This site flags streaming-only carriers prominently so you don't tune into YES only to find the game isn't there.</p>
       </details>
 
       <details class="editorial-fold">
@@ -3039,7 +3063,7 @@ body::before {
 
       <details class="editorial-fold">
         <summary>Cord-cutter playbook</summary>
-        <p>You don't need cable to watch the Yankees. The simplest paths today: subscribe to <strong>YES Network on Amazon Prime Video</strong> in the NY market for nearly the full schedule, or use a live-TV streaming bundle that carries YES (typically <strong>YouTube TV</strong>, <strong>Hulu + Live TV</strong>, or <strong>FuboTV</strong> &mdash; availability changes frequently, confirm before subscribing). Add <strong>ESPN+</strong> for ESPN games, the free <strong>Apple TV app</strong> for Friday Night Baseball, and an <strong>MLB.TV</strong> single-team subscription if you're outside the NY blackout zone.</p>
+        <p>You don't need cable to watch the Yankees. The simplest paths today: subscribe to <strong>YES Network on Amazon Prime Video</strong> in the NY market for nearly the full schedule, or use a live-TV streaming bundle that carries YES (typically <strong>YouTube TV</strong>, <strong>Hulu + Live TV</strong>, or <strong>FuboTV</strong> &mdash; availability changes frequently, confirm before subscribing). Add <strong>Peacock Premium</strong> for Sunday Night Baseball and Sunday Leadoff, <strong>Apple TV</strong> for Friday Night Baseball, <strong>ESPN's streaming tier</strong> for midweek national games, <strong>Netflix</strong> for the handful of MLB event games, and an <strong>MLB.TV</strong> single-team subscription if you're outside the NY blackout zone.</p>
       </details>
 
       <details class="editorial-fold">
@@ -3078,7 +3102,7 @@ body::before {
     <div style="max-width:750px;margin:0 auto;">
       <div class="faq-item" onclick="this.classList.toggle('open')">
         <div class="faq-q">What channel are the Yankees on tonight?</div>
-        <div class="faq-a">It depends on the day. Most games air on the YES Network, but select games are picked up by ESPN, FOX, FS1, TBS, or streaming platforms like Apple TV+ and Amazon Prime Video. This site shows you the exact channel for every upcoming game in real time, pulled directly from the official MLB schedule, so you always know where to tune in.</div>
+        <div class="faq-a">It depends on the day. Most games air on the YES Network, but select games are picked up by NBC, Peacock, ESPN, FOX, FS1, TBS, or streaming platforms like Apple TV, Amazon Prime Video, and Netflix. This site shows you the exact channel for every upcoming game in real time, pulled directly from the official MLB schedule, so you always know where to tune in.</div>
       </div>
       <div class="faq-item" onclick="this.classList.toggle('open')">
         <div class="faq-q">How can I watch the Yankees without cable?</div>
@@ -3090,7 +3114,7 @@ body::before {
       </div>
       <div class="faq-item" onclick="this.classList.toggle('open')">
         <div class="faq-q">Why is tonight's game not on YES Network?</div>
-        <div class="faq-a">When a game is selected for national broadcast on ESPN, FOX, FS1, or TBS, or is an exclusive streaming game on Apple TV+ or Amazon Prime Video, it's typically blacked out on YES Network. National exclusivity means only one network carries the game. Check the channel badges on each game listing above to see exactly which network has tonight's broadcast.</div>
+        <div class="faq-a">When a game is selected for national broadcast on NBC, ESPN, FOX, FS1, or TBS, or is an exclusive streaming game on Peacock, Apple TV, Amazon Prime Video, or Netflix, it's typically blacked out on YES Network. National exclusivity means only one network carries the game. Check the channel badges on each game listing above to see exactly which network has tonight's broadcast.</div>
       </div>
       <div class="faq-item" onclick="this.classList.toggle('open')">
         <div class="faq-q">Can I watch Yankees games on MLB.TV?</div>
@@ -3176,6 +3200,7 @@ const BROADCAST_LINKS = {
   'TBS':'https://www.tbs.com/watchtbs','YouTube TV':'https://tv.youtube.com',
   'NBC':'https://www.nbc.com/live','Amazon Prime Video':'https://www.amazon.com/gp/video',
   'MLB Network':'https://www.mlb.com/network','WFAN':'https://www.audacy.com/wfan',
+  'Netflix':'https://www.netflix.com',
 };
 
 const CHANNEL_LOGOS = {
@@ -3191,6 +3216,7 @@ const CHANNEL_LOGOS = {
   'Amazon Prime Video':'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 120 48%22%3E%3Crect fill=%22%2300050D%22 width=%22120%22 height=%2248%22 rx=%226%22/%3E%3Ctext x=%2260%22 y=%2226%22 font-family=%22Arial,sans-serif%22 font-size=%2215%22 fill=%22%2300A8E1%22 text-anchor=%22middle%22 font-weight=%22bold%22 letter-spacing=%222%22%3Eprime%3C/text%3E%3Ctext x=%2260%22 y=%2241%22 font-family=%22Arial,sans-serif%22 font-size=%229%22 fill=%22%2300A8E1%22 text-anchor=%22middle%22 letter-spacing=%221%22%3Evideo%3C/text%3E%3C/svg%3E',
   'Peacock':'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 120 48%22%3E%3Crect fill=%22%23000000%22 width=%22120%22 height=%2248%22 rx=%226%22/%3E%3Crect x=%2210%22 y=%2238%22 width=%2218%22 height=%224%22 fill=%22%23E40046%22/%3E%3Crect x=%2228%22 y=%2238%22 width=%2218%22 height=%224%22 fill=%22%23FF7800%22/%3E%3Crect x=%2246%22 y=%2238%22 width=%2218%22 height=%224%22 fill=%22%23FFCC00%22/%3E%3Crect x=%2264%22 y=%2238%22 width=%2218%22 height=%224%22 fill=%22%2300B140%22/%3E%3Crect x=%2282%22 y=%2238%22 width=%2218%22 height=%224%22 fill=%22%230066FF%22/%3E%3Ctext x=%2260%22 y=%2231%22 font-family=%22Arial,sans-serif%22 font-size=%2214%22 fill=%22%23FFFFFF%22 text-anchor=%22middle%22 font-weight=%22bold%22 letter-spacing=%222%22%3EPEACOCK%3C/text%3E%3C/svg%3E',
   'WFAN':'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 120 48%22%3E%3Crect fill=%22%23003087%22 width=%22120%22 height=%2248%22 rx=%226%22/%3E%3Ctext x=%2260%22 y=%2228%22 font-family=%22Arial,sans-serif%22 font-size=%2220%22 fill=%22%23FFFFFF%22 text-anchor=%22middle%22 font-weight=%22bold%22 letter-spacing=%222%22%3EWFAN%3C/text%3E%3Ctext x=%2260%22 y=%2242%22 font-family=%22Arial,sans-serif%22 font-size=%2210%22 fill=%22%23AACCFF%22 text-anchor=%22middle%22 letter-spacing=%221%22%3E660/101.9%3C/text%3E%3C/svg%3E',
+  'Netflix':'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 120 48%22%3E%3Crect fill=%22%23000000%22 width=%22120%22 height=%2248%22 rx=%226%22/%3E%3Ctext x=%2260%22 y=%2233%22 font-family=%22Arial Black%2Csans-serif%22 font-size=%2220%22 fill=%22%23E50914%22 text-anchor=%22middle%22 font-weight=%22900%22 letter-spacing=%221%22%3ENETFLIX%3C/text%3E%3C/svg%3E',
 };
 CHANNEL_LOGOS['YES'] = CHANNEL_LOGOS['YES Network'];
 CHANNEL_LOGOS['MLBN'] = CHANNEL_LOGOS['MLB Network'];
@@ -3217,7 +3243,7 @@ const STADIUM_MAPS = {
   119: 'https://maps.gametime.co/v2/dodger_stadium/mlb_lad/mlb_lad-8.png',
   136: 'https://maps.gametime.co/v2/safeco_field/mlb_sea/mlb_sea-8.png',
   137: 'https://maps.gametime.co/v2/att_park/mlb_sfg/mlb_sfg-8.png',
-  133: 'https://maps.gametime.co/v2/oakland_coliseum/mlb_oak/mlb_oak-8.png',
+  // 133: Sutter Health Park (West Sacramento) — no Gametime map slug as of 2026
   143: 'https://maps.gametime.co/v2/citizens_bank_park/mlb_phi/mlb_phi-8.png',
   120: 'https://maps.gametime.co/v2/nationals_park/baseball/baseball-8.png',
   121: 'https://maps.gametime.co/v2/citi_field/baseball/baseball-8.png',
@@ -3236,9 +3262,9 @@ const STADIUM_MAPS = {
 // Stadium names by team ID
 const STADIUM_NAMES = {
   147:'Yankee Stadium',111:'Fenway Park',139:'Tropicana Field',141:'Rogers Centre',110:'Camden Yards',
-  118:'Kauffman Stadium',116:'Comerica Park',140:'Globe Life Field',142:'Target Field',145:'Guaranteed Rate Field',
+  118:'Kauffman Stadium',116:'Comerica Park',140:'Globe Life Field',142:'Target Field',145:'Rate Field',
   108:'Angel Stadium',109:'Chase Field',117:'Minute Maid Park',119:'Dodger Stadium',136:'T-Mobile Park',
-  137:'Oracle Park',133:'Oakland Coliseum',143:'Citizens Bank Park',120:'Nationals Park',121:'Citi Field',
+  137:'Oracle Park',133:'Sutter Health Park',143:'Citizens Bank Park',120:'Nationals Park',121:'Citi Field',
   144:'Truist Park',146:'loanDepot Park',112:'Wrigley Field',113:'Great American Ball Park',
   158:'American Family Field',134:'PNC Park',138:'Busch Stadium',114:'Progressive Field',
   115:'Coors Field',135:'Petco Park',
@@ -3249,7 +3275,7 @@ const TEAM_FULL_NAMES = {
   147:'New York Yankees',111:'Boston Red Sox',139:'Tampa Bay Rays',141:'Toronto Blue Jays',110:'Baltimore Orioles',
   118:'Kansas City Royals',116:'Detroit Tigers',140:'Texas Rangers',142:'Minnesota Twins',145:'Chicago White Sox',
   108:'Los Angeles Angels',109:'Arizona Diamondbacks',117:'Houston Astros',119:'Los Angeles Dodgers',136:'Seattle Mariners',
-  137:'San Francisco Giants',133:'Oakland Athletics',143:'Philadelphia Phillies',120:'Washington Nationals',121:'New York Mets',
+  137:'San Francisco Giants',133:'Athletics',143:'Philadelphia Phillies',120:'Washington Nationals',121:'New York Mets',
   144:'Atlanta Braves',146:'Miami Marlins',112:'Chicago Cubs',113:'Cincinnati Reds',
   158:'Milwaukee Brewers',134:'Pittsburgh Pirates',138:'St. Louis Cardinals',114:'Cleveland Guardians',
   115:'Colorado Rockies',135:'San Diego Padres',
@@ -3325,8 +3351,6 @@ function formatGameTime(dateStr) {
 function getGameHourET(dateStr) {
   return parseInt(new Intl.DateTimeFormat('en-US',{hour:'numeric',hour12:false,timeZone:'America/New_York'}).format(new Date(dateStr)));
 }
-
-document.getElementById('season-sub').textContent = '';
 
 // ========== THEME ==========
 function toggleTheme() {
@@ -3456,7 +3480,7 @@ async function fetchSchedule() {
     if(!allGames.length) {
       // Try next year (offseason / pre-schedule release window)
       const yr = today().getFullYear() + 1;
-      const nextYrUrl = `https://statsapi.mlb.com/api/v1/schedule?teamId=${YANKEES_ID}&sportId=1&gameType=R,S&startDate=${yr}-02-01&endDate=${yr}-04-15&hydrate=broadcasts,probablePitcher`;
+      const nextYrUrl = `https://statsapi.mlb.com/api/v1/schedule?teamId=${YANKEES_ID}&sportId=1&gameType=R,S&startDate=${yr}-02-15&endDate=${yr}-04-30&hydrate=broadcasts,probablePitcher`;
       try {
         const ny = await fetchJSON(nextYrUrl);
         for(const d of (ny.dates||[])) for(const g of (d.games||[])) allGames.push(g);
@@ -3551,19 +3575,26 @@ function buildGameCard(game, idx, isNextGame) {
   const oppName = isHome ? awayTeam.name : homeTeam.name;
   const seriesText = sn&&st ? `GAME ${sn} OF ${st} VS ${oppName.split(' ').pop().toUpperCase()}` : '';
   const wx = isHome ? getWx(game.gameDate) : null;
-  const tvB = (game.broadcasts||[]).filter(b=>b.type==='TV'||b.type==='National');
+  const tvB = (game.broadcasts||[]).filter(b => {
+    const t = (b.type||'').toUpperCase();
+    return t==='TV' || t==='NATIONAL' || t==='WEB' || t==='STREAMING' || t==='OTT';
+  });
   // Filter: YES first, then national/streaming — exclude opponent RSNs entirely
   const yankeesBroadcasts = tvB.filter(b => {
     const u = b.name.toUpperCase();
     return u.includes('YES') || u.includes('ESPN') || u.includes('FOX') || u.includes('FS1') ||
            u.includes('TBS') || u.includes('NBC') || u.includes('MLB NETWORK') ||
            u.includes('APPLE') || u.includes('AMAZON') || u.includes('PRIME') ||
-           u.includes('PEACOCK') || b.type==='National';
+           u.includes('PEACOCK') || u.includes('NETFLIX') || b.type==='National';
   }).filter(b => {
     const u = b.name.toUpperCase();
-    return !u.includes('NBCS') && !u.includes('NESN') && !u.includes('SNY') &&
-           !u.includes('MASN') && !u.includes('BALLY') && !u.includes('ROOT') &&
-           !u.includes('MARQUEE') && !u.includes('ATT SPORTS');
+    // Exclude opponent RSNs but allow NBCSN (national, carries 2026 SNB/Leadoff overflow).
+    // 'NBC SPORTS' regional brands (NBCSCA, NBCSPHI, etc.) are excluded; NBCSN passes.
+    if (u === 'NBCSN' || u.includes('NBCSN ')) return true;
+    return !u.includes('NBC SPORTS') && !u.includes('NESN') && !u.includes('SNY') &&
+           !u.includes('MASN') && !u.includes('BALLY') && !u.includes('FANDUEL') &&
+           !u.includes('ROOT') && !u.includes('MARQUEE') && !u.includes('SPECTRUM SPORTSNET') &&
+           !u.includes('SPACE CITY') && !u.includes('MARINERS NETWORK');
   }).sort((a, b) => {
     // YES always first
     const aYes = a.name.toUpperCase().includes('YES');
@@ -3834,6 +3865,36 @@ function renderGames() {
   }));
 
   updateLoadMoreBtn();
+
+  // Populate JSON-LD for tonight's game once data is loaded
+  (function injectGameSchema() {
+    const upcoming = allGames.find(g => new Date(g.gameDate) > new Date() && !((g.status?.detailedState||'').toLowerCase().includes('final')));
+    if (!upcoming) return;
+    const away = upcoming.teams.away.team.name;
+    const home = upcoming.teams.home.team.name;
+    const venue = STADIUM_NAMES[upcoming.teams.home.team.id] || 'Yankee Stadium';
+    const tvB = (upcoming.broadcasts||[]).filter(b => {
+      const t = (b.type||'').toUpperCase();
+      return t==='TV'||t==='NATIONAL'||t==='WEB'||t==='STREAMING';
+    });
+    const yankeesNet = tvB.find(b => /YES|ESPN|FOX|FS1|TBS|NBC|APPLE|PEACOCK|AMAZON|PRIME|NETFLIX|MLB NETWORK/i.test(b.name));
+    const schema = {
+      "@context": "https://schema.org",
+      "@type": "SportsEvent",
+      "name": `${away} at ${home}`,
+      "sport": "Baseball",
+      "startDate": upcoming.gameDate,
+      "eventStatus": "https://schema.org/EventScheduled",
+      "eventAttendanceMode": "https://schema.org/MixedEventAttendanceMode",
+      "location": { "@type": "Place", "name": venue },
+      "homeTeam": { "@type": "SportsTeam", "name": home },
+      "awayTeam": { "@type": "SportsTeam", "name": away },
+      "url": "https://whatchannelaretheyankeeson.com",
+      ...(yankeesNet ? { "broadcastOfEvent": { "@type": "BroadcastEvent", "name": yankeesNet.name, "isLiveBroadcast": true } } : {})
+    };
+    const el = document.getElementById('next-game-schema');
+    if (el) el.textContent = JSON.stringify(schema);
+  })();
 }
 
 function formatSeriesDateRange(games) {
@@ -3864,6 +3925,10 @@ const EXCLUSIVE_STREAMS = {
   'Peacock': {
     logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/NBCUniversal_Peacock_Logo.svg/320px-NBCUniversal_Peacock_Logo.svg.png',
     color: '#b4a7d6'
+  },
+  'Netflix': {
+    logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Netflix_2015_logo.svg/320px-Netflix_2015_logo.svg.png',
+    color: '#e50914'
   }
 };
 
@@ -4520,7 +4585,10 @@ async function updateScoreboard() {
   const homeTeam = game.teams.home.team;
   const awayAbbr = TEAM_ABBR[awayTeam.id] || 'AWY';
   const homeAbbr = TEAM_ABBR[homeTeam.id] || 'HME';
-  const tvBcasts = (game.broadcasts||[]).filter(b=>b.type==='TV'||b.type==='National');
+  const tvBcasts = (game.broadcasts||[]).filter(b => {
+    const t = (b.type||'').toUpperCase();
+    return t==='TV' || t==='NATIONAL' || t==='WEB' || t==='STREAMING' || t==='OTT';
+  });
   const primaryBcast = tvBcasts.find(b=>b.name.toUpperCase().includes('YES')) || tvBcasts.find(b=>{const u=b.name.toUpperCase();return u.includes('ESPN')||u.includes('FOX')||u.includes('TBS')||u.includes('APPLE')||u.includes('PRIME');}) || tvBcasts[0];
   const bcastLogoHTML = primaryBcast ? getNetworkLogoHTML(primaryBcast.name) : '';
   const bcastBadge = bcastLogoHTML ? `<span style="display:inline-block;vertical-align:middle;margin-left:10px;">${bcastLogoHTML.replace(/(<img\s)/, '$1style="width:36px;height:22px;vertical-align:middle;" ')}</span>` : (primaryBcast ? `<span style="font-family:'Bebas Neue',sans-serif;font-size:0.65rem;color:#FFB800;letter-spacing:2px;margin-left:10px;vertical-align:middle;">${primaryBcast.name}</span>` : '');
