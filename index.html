@@ -190,6 +190,43 @@ body {
   z-index: 1;
 }
 
+/* ===== POSTSEASON BRACKET ===== */
+.bracket-section { padding: 16px 12px 4px; position: relative; z-index: 1; }
+.bracket-board {
+  max-width: 900px; margin: 0 auto; padding: 14px 12px 16px;
+  background: linear-gradient(180deg, var(--navy-panel), var(--navy-deep));
+  border: 1px solid var(--gold-dim); border-radius: 6px;
+  box-shadow: inset 0 0 30px rgba(0,0,0,0.4);
+}
+.bracket-title {
+  text-align: center; font-family: 'Special Elite', monospace; letter-spacing: 4px;
+  font-size: 0.8rem; color: var(--bulb); text-shadow: 0 0 10px rgba(255,204,51,0.4); margin-bottom: 12px;
+}
+.bracket-round { margin-bottom: 12px; }
+.bracket-round-title {
+  font-family: 'Bebas Neue', sans-serif; letter-spacing: 3px; font-size: 0.85rem;
+  color: var(--gold-bright); border-bottom: 1px solid var(--cell-border); padding-bottom: 3px; margin-bottom: 8px;
+}
+.bracket-series-row { display: flex; gap: 8px; flex-wrap: wrap; }
+.bracket-series {
+  flex: 1; min-width: 160px; background: var(--navy-cell);
+  border: 1px solid var(--cell-border); border-radius: 5px; padding: 7px 8px;
+}
+.bracket-team { display: flex; align-items: center; gap: 6px; padding: 2px 0; font-family: 'Oswald', sans-serif; font-size: 0.82rem; color: var(--cream); }
+.bracket-team img { width: 20px; height: 20px; object-fit: contain; }
+.bracket-team .bt-name { flex: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.bracket-team .bt-wins { font-family: 'Bebas Neue', sans-serif; font-size: 1rem; color: var(--gold-bright); min-width: 14px; text-align: right; }
+.bracket-team.adv { color: var(--white); font-weight: 600; }
+.bracket-team.adv .bt-wins { color: var(--bulb); }
+.bracket-team.elim { opacity: 0.45; text-decoration: line-through; }
+.bracket-team.nyy .bt-name { color: var(--bulb); }
+.bracket-status {
+  margin-top: 4px; padding-top: 4px; border-top: 1px dashed var(--cell-border);
+  font-family: 'Bebas Neue', sans-serif; letter-spacing: 1.5px; font-size: 0.7rem; color: var(--cream-dim); text-align: center;
+}
+.light-mode .bracket-board { background: rgba(255,255,255,0.35); }
+.light-mode .bracket-team { color: #1a1008; }
+
 .standings-nav-wrapper {
   display: flex;
   align-items: center;
@@ -699,6 +736,19 @@ body {
   background: rgba(255,150,50,0.1);
   border-color: rgba(255,150,50,0.2);
   color: #ff9933;
+}
+
+.tag-dh {
+  background: rgba(196,164,74,0.12);
+  border-color: rgba(196,164,74,0.35);
+  color: var(--gold-bright);
+}
+
+.tag-postseason {
+  background: rgba(255,204,51,0.14);
+  border-color: rgba(255,204,51,0.4);
+  color: var(--bulb);
+  text-shadow: 0 0 6px rgba(255,204,51,0.4);
 }
 
 @keyframes blink-red {
@@ -2929,6 +2979,88 @@ body::before {
   }
 }
 </script>
+<script type="application/ld+json" id="faq-schema">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What channel are the Yankees on tonight?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "It depends on the day. Most games air on the YES Network, but select games are picked up by NBC, Peacock, ESPN, FOX, FS1, TBS, or streaming platforms like Apple TV, Amazon Prime Video, and Netflix. This site shows you the exact channel for every upcoming game in real time, pulled directly from the official MLB schedule, so you always know where to tune in."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How can I watch the Yankees without cable?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Several options exist for cord-cutters. Amazon Prime Video offers the YES Network as a paid add-on channel in the New York market, and YES also streams direct-to-consumer through the Gotham Sports app. Live-TV bundles such as YouTube TV, Hulu + Live TV, and FuboTV have carried YES Network, but carriage changes from season to season — confirm YES is included before subscribing. For games outside your market, MLB.TV streams every out-of-market game. Apple TV's Friday Night Baseball requires a paid Apple TV subscription ($12.99/month); these games were free only in their debut 2022 season. You can also listen to every game on the MLB app with an MLB Audio subscription."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the YES Network and how do I get it?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The YES Network is the official regional sports network of the New York Yankees. It airs the majority of regular season games along with pre-game and post-game coverage, Yankees magazine shows, and classic game replays. YES is available through most cable and satellite providers in the tri-state area including Optimum, Verizon Fios, Spectrum, Xfinity, and DirecTV. It's also available as a streaming add-on through Amazon Prime Video."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why is tonight's game not on YES Network?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "When a game is selected for national broadcast on NBC, ESPN, FOX, FS1, or TBS, or is an exclusive streaming game on Peacock, Apple TV, Amazon Prime Video, or Netflix, it's typically blacked out on YES Network. National exclusivity means only one network carries the game. Check the channel badges on each game listing above to see exactly which network has tonight's broadcast."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I watch Yankees games on MLB.TV?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, but with a major caveat. MLB.TV is designed for out-of-market fans. If you're within the Yankees' blackout territory (the New York tri-state area), Yankees games will be blacked out on MLB.TV and won't be available until after the game ends. If you live outside this area, MLB.TV is an excellent way to watch every Yankees game live. A single-team subscription option is also available at a lower cost than the full package."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What are MLB blackout restrictions?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "MLB blackout rules prevent you from watching your local team's games on MLB.TV during the live broadcast. Each team has a defined home territory, and if your location falls within that territory, you're \"in market\" and must watch through the regional sports network (YES for the Yankees) or a national broadcast. The Yankees' blackout territory covers New York, Connecticut, northeast Pennsylvania, and parts of North Jersey. After the game concludes, the replay becomes available on MLB.TV."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What radio station are the Yankees on?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yankees games are broadcast on WFAN 660 AM and 101.9 FM in the New York market. The radio broadcast team calls every game of the season, home and away. Spanish-language coverage is available on WADO 1280 AM. You can also listen to any MLB game through the MLB app with a paid MLB Audio subscription, which costs significantly less than MLB.TV."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Where does this site get its data?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "All schedule, score, standings, and broadcast data comes from the official MLB Stats API, the same source that powers MLB.com. Weather forecasts for home games at Yankee Stadium are provided by Open-Meteo. Lineup data is pulled from the official game feeds. Data refreshes automatically throughout the day and you can manually refresh at any time using the refresh button in the footer."
+      }
+    }
+  ]
+}
+</script>
+<script type="application/ld+json" id="website-schema">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "WhatChannelAreTheYankeesOn.com",
+  "url": "https://whatchannelaretheyankeeson.com",
+  "description": "Find out what channel the New York Yankees are on tonight — live schedule, scores, and where to watch every game."
+}
+</script>
+
 </head>
 <body>
 
@@ -2957,7 +3089,7 @@ body::before {
 
   <!-- SNAPSHOT:START — auto-generated daily by scripts/update-snapshot.mjs; do not hand-edit -->
   <div class="quick-answer" id="quick-answer" style="max-width:900px;margin:8px auto 0;padding:12px 16px;min-height:52px;background:rgba(196,164,74,0.07);border:1px solid var(--cell-border);border-radius:6px;text-align:center;position:relative;z-index:1;">
-    <p style="font-family:'Oswald',sans-serif;font-size:1.02rem;line-height:1.55;color:var(--cream);margin:0;">Today the Yankees play vs. the Pittsburgh Pirates, first pitch 1:05 PM ET. Watch on <strong style="color:var(--gold-bright);">YES Network</strong>. <span style="color:var(--cream-dim);font-size:0.82rem;">Live scoreboard, lineups, and full schedule below.</span></p>
+    <p style="font-family:'Oswald',sans-serif;font-size:1.02rem;line-height:1.55;color:var(--cream);margin:0;">Today the Yankees play vs. the Pittsburgh Pirates, first pitch 1:05 PM ET (doubleheader — Game 1). Watch on <strong style="color:var(--gold-bright);">YES Network</strong>. <span style="color:var(--cream-dim);font-size:0.82rem;">Live scoreboard, lineups, and full schedule below.</span></p>
   </div>
   <!-- SNAPSHOT:END -->
 
@@ -2978,6 +3110,9 @@ body::before {
       <!-- Populated by JS: header + linescore + expandable box score -->
     </div>
   </div>
+
+  <!-- POSTSEASON BRACKET (auto-appears once the regular season ends) -->
+  <div class="bracket-section" id="bracket-section" style="display:none;"></div>
 
   <!-- STANDINGS — FENWAY GREEN MONSTER -->
   <div class="standings-section">
@@ -3195,7 +3330,7 @@ body::before {
 
   <!-- FOOTER -->
   <div class="board-footer">
-    <div class="footer-stamp">UPDATED: <span id="last-updated">Jul 22, 2026, 11:29 AM ET</span></div>
+    <div class="footer-stamp">UPDATED: <span id="last-updated">Jul 22, 2026, 11:57 AM ET</span></div>
     <div class="footer-controls">
       <button class="board-btn" onclick="refreshAll()">&#x27f3; REFRESH</button>
       <button class="board-btn" id="theme-btn" onclick="toggleTheme()">&#x2600; LIGHT</button>
@@ -3610,9 +3745,18 @@ function getNetworkLogoHTML(name) {
 // the game, it is blacked out on YES, so YES must NOT be shown as the channel.
 // (MLB Network is deliberately NOT here: its national "game of the day" is
 // blacked out in the two teams' home markets, where YES carries it instead.)
-const NATIONAL_EXCLUSIVE = ['ESPN','FOX','FS1','TBS','NBC','PEACOCK','APPLE','NETFLIX','ROKU','TNT','MAX'];
+// National-carrier NAME hints (fallback only — the feed's isNational flag and
+// homeAway field are the primary signals). MLB Network is national but does NOT
+// black out YES in-market, so it is handled separately below.
+const NATIONAL_NAME_HINTS = ['ESPN','FOX','FS1','TBS','PEACOCK','APPLE','NETFLIX','ROKU','TNT','MAX','MLB NETWORK'];
 // Opponent regional networks / radio we must never surface on a Yankees telecast.
-const OPP_RSN = ['NESN','SNY','MASN','BALLY','FANDUEL','ROOT','MARQUEE','SPACE CITY','MARINERS','NBC SPORTS','SPECTRUM SPORTSNET','MSG'];
+// NBCS catches NBC Sports regional RSNs (NBCSP=Philadelphia, NBCSCA, NBCSBA,
+// NBCSW, NBCSB) — these are NOT the national NBC broadcast.
+const OPP_RSN = ['NESN','SNY','MASN','BALLY','FANDUEL','ROOT','MARQUEE','SPACE CITY','MARINERS','SPORTSNET','SPECTRUM SPORTSNET','NBCS','NBC SPORTS','MSG'];
+
+// Friendlier display labels for terse call signs the feed sometimes returns.
+const NET_DISPLAY = { 'YES':'YES Network', 'MLBN':'MLB Network', 'SNP':'SportsNet Pittsburgh', 'SNY':'SNY', 'ABC':'ABC' };
+function netDisplay(name) { return NET_DISPLAY[(name||'').toUpperCase()] || name; }
 
 function _isTvEntry(b) {
   const t = (b.type||'').toUpperCase();
@@ -3621,17 +3765,45 @@ function _isTvEntry(b) {
   if (u.includes('WFAN') || u.includes('WADO') || t==='AM' || t==='FM') return false; // radio guard
   return true;
 }
+// National NBC (Sunday Night Baseball) without matching regional NBC Sports RSNs.
+function _nameLooksNational(u) {
+  if (/NBCS/.test(u) || /NBC\s*SPORTS/.test(u)) return false; // regional NBC Sports RSNs (NBCSP, "NBC Sports Philadelphia", ...)
+  if (/(^|[^A-Z])NBC([^A-Z]|$)/.test(u)) return true;         // national NBC (Sunday Night Baseball)
+  return NATIONAL_NAME_HINTS.some(k => u.includes(k));
+}
 function _isNational(b) {
-  const u = (b.name||'').toUpperCase();
   if (b.isNational === true) return true;
   if ((b.homeAway||'').toLowerCase() === 'national') return true;
-  return NATIONAL_EXCLUSIVE.some(k => u.includes(k)) || u.includes('MLB NETWORK');
+  return _nameLooksNational((b.name||'').toUpperCase());
 }
 function _isExclusiveNational(b) {
   const u = (b.name||'').toUpperCase();
-  if (u.includes('MLB NETWORK') || u === 'MLBN') return false; // blacked out in-market
-  if (!_isNational(b)) return false;
-  return NATIONAL_EXCLUSIVE.some(k => u.includes(k)) || b.isNational === true || (b.homeAway||'').toLowerCase()==='national';
+  if (u.includes('MLB NETWORK') || u === 'MLBN') return false; // national but blacked out in-market
+  return _isNational(b);
+}
+
+// ===== Game-status helpers (used everywhere so postponed games never lie) =====
+// A rain-postponed / suspended / cancelled game comes back as abstractGameState
+// "Final" with detailedState "Postponed" and no scores — which naively renders
+// as a false "Final 0-0". These guards keep such games out of Final handling.
+function isPostponedLike(g) {
+  const d = (g.status?.detailedState || '').toLowerCase();
+  const c = (g.status?.codedGameState || '');
+  return d.includes('postpone') || d.includes('suspend') || d.includes('cancel') || c==='D' || c==='C' || c==='U';
+}
+function isRealFinal(g) {
+  return (g.status?.abstractGameState === 'Final') && !isPostponedLike(g);
+}
+function isDoubleheaderGame(g) {
+  return g.doubleHeader && g.doubleHeader !== 'N';
+}
+function isPostseasonGame(g) {
+  return ['F','D','L','W'].includes(g.gameType); // WildCard, DivSeries, LCS, WorldSeries
+}
+function postseasonRoundLabel(g) {
+  const d = g.seriesDescription || '';
+  if (d) return d.replace(/American League/i,'AL').replace(/National League/i,'NL').toUpperCase();
+  return ({F:'WILD CARD SERIES', D:'DIVISION SERIES', L:'CHAMPIONSHIP SERIES', W:'WORLD SERIES'})[g.gameType] || 'POSTSEASON';
 }
 // -> { primary, secondary:[], national:bool, unknown:bool, all:[] }
 function resolveYankeesTV(broadcasts, yankeesAreHome) {
@@ -3670,7 +3842,12 @@ function buildGameCard(game, idx, isNextGame) {
   const isDLY = status.toLowerCase().includes('delay');
   const sn = game.seriesGameNumber, st = game.gamesInSeries;
   const oppName = isHome ? awayTeam.name : homeTeam.name;
-  const seriesText = sn&&st ? `GAME ${sn} OF ${st} VS ${oppName.split(' ').pop().toUpperCase()}` : '';
+  const oppShort = oppName.split(' ').pop().toUpperCase();
+  const isPost = isPostseasonGame(game);
+  const seriesText = isPost
+    ? `${postseasonRoundLabel(game)}${sn?` · GAME ${sn}`:''} VS ${oppShort}`
+    : (sn&&st ? `GAME ${sn} OF ${st} VS ${oppShort}` : '');
+  const dhTag = isDoubleheaderGame(game) ? `DOUBLEHEADER · GAME ${game.gameNumber||''}`.trim() : '';
   const wx = isHome ? getWx(game.gameDate) : null;
   // Single source of truth: national exclusives suppress YES; opponent RSNs/radio dropped.
   const rowRes = resolveYankeesTV(game.broadcasts, isHome);
@@ -3752,11 +3929,13 @@ function buildGameCard(game, idx, isNextGame) {
     <div class="game-meta game-meta-prominent">
       <span class="game-datetime-cell game-datetime-big">${formatGameTime(game.gameDate)}</span>
       ${seriesText?`<span class="series-cell series-cell-clean">${seriesText}</span>`:''}
+      ${dhTag?`<span class="tag tag-dh">${dhTag}</span>`:''}
+      ${isPost?'<span class="tag tag-postseason">POSTSEASON</span>':''}
       ${isPPD?'<span class="tag tag-postponed">PPD</span>':''}
       ${isDLY?'<span class="tag tag-delayed">DLY</span>':''}
     </div>
     ${getExclusiveStreamBadge(yankeesBroadcasts)}
-    ${yankeesBroadcasts.length?`<div class="channel-badges">${yankeesBroadcasts.map(b=>`<div class="channel-badge">${getNetworkLogoHTML(b.name)}<span class="net-text">${b.name}</span></div>`).join('')}</div>`:``}
+    ${yankeesBroadcasts.length?`<div class="channel-badges">${yankeesBroadcasts.map(b=>`<div class="channel-badge">${getNetworkLogoHTML(b.name)}<span class="net-text">${netDisplay(b.name)}</span></div>`).join('')}</div>`:``}
     ${wx?`<div class="weather-strip"><span class="weather-tag">FIRST PITCH WX &middot; YANKEE STADIUM</span><div class="weather-data"><span class="weather-icon">${wx.icon}</span><span class="weather-temp">${wx.temp}&deg;F</span><span class="rain-prob">&#x1F4A7; ${wx.precip}%</span></div></div>`:''}
     ${wxChartHTML}
     <div class="details-toggle">
@@ -4216,7 +4395,7 @@ async function fetchLastGameRecap() {
     let lastFinal = null;
     for (const d of (data.dates || []).reverse()) {
       for (const g of (d.games || []).reverse()) {
-        if (g.status?.abstractGameState === 'Final') {
+        if (isRealFinal(g)) {   // skip postponed/suspended "Final 0-0" ghosts
           lastFinal = g;
           break;
         }
@@ -4426,12 +4605,12 @@ function sbHeroBannerHTML(labelText, isLive, primaryBcast, secondaryBcasts, opts
   const primaryLogo = unknown
     ? `<img class="net-logo" src="${CHANNEL_LOGOS['YES Network']}" alt="YES Network" />`
     : getNetworkLogoHTML(primaryBcast.name);
-  const primaryName = unknown ? 'YES NETWORK' : primaryBcast.name;
+  const primaryName = unknown ? 'YES NETWORK' : netDisplay(primaryBcast.name);
   const caveat = unknown
     ? `<span class="ys-hero-caveat">likely &mdash; confirm on the YES / Gotham Sports app</span>`
-    : (opts.national ? `<span class="ys-hero-caveat">national broadcast &mdash; blacked out on YES</span>` : '');
+    : (opts.national ? `<span class="ys-hero-caveat">${opts.postseason ? 'national postseason broadcast &mdash; not on YES' : 'national broadcast &mdash; blacked out on YES'}</span>` : '');
   const secondaryHTML = (secondaryBcasts && secondaryBcasts.length)
-    ? `<div class="ys-hero-secondary">${secondaryBcasts.map(b=>`<div class="channel-badge">${getNetworkLogoHTML(b.name)}<span class="net-text">${b.name}</span></div>`).join('')}</div>`
+    ? `<div class="ys-hero-secondary">${secondaryBcasts.map(b=>`<div class="channel-badge">${getNetworkLogoHTML(b.name)}<span class="net-text">${netDisplay(b.name)}</span></div>`).join('')}</div>`
     : '';
   return `<div class="ys-hero">
     <div class="ys-hero-left">
@@ -4573,6 +4752,104 @@ function startSbRefreshTicker() {
   }, 1000);
 }
 
+// Compact "both games" strip shown above the hero on doubleheader days.
+function dhStripHTML(games) {
+  const sorted = games.slice().sort((a,b)=> (a.gameNumber||0)-(b.gameNumber||0) || new Date(a.gameDate)-new Date(b.gameDate));
+  const cell = (g,i) => {
+    const yankHome = g.teams.home.team.id === YANKEES_ID;
+    const r = resolveYankeesTV(g.broadcasts, yankHome);
+    const ch = r.unknown ? 'YES (likely)' : netDisplay(r.primary.name);
+    const ls = g.linescore || {};
+    const aS = g.teams.away.score, hS = g.teams.home.score;
+    let statusHTML;
+    if (isPostponedLike(g)) statusHTML = `<span style="color:var(--red-light);">PPD${g.status?.reason?` · ${g.status.reason}`:''}</span>`;
+    else if (isRealFinal(g)) statusHTML = `<span style="color:var(--cream-dim);">FINAL ${aS}&ndash;${hS}</span>`;
+    else if ((g.status?.abstractGameState||'')==='Live' || (g.status?.detailedState||'').toLowerCase().includes('in progress')) statusHTML = `<span style="color:var(--bulb);">LIVE ${aS ?? 0}&ndash;${hS ?? 0}${ls.currentInning?` · ${ls.inningState||''} ${ls.currentInning}`:''}</span>`;
+    else statusHTML = `<span style="color:var(--cream);">${new Intl.DateTimeFormat('en-US',{timeZone:'America/New_York',hour:'numeric',minute:'2-digit'}).format(new Date(g.gameDate))} ET</span>`;
+    return `<div style="flex:1;min-width:150px;padding:8px 10px;background:var(--navy-cell);border:1px solid var(--cell-border);border-radius:5px;">
+      <div style="font-family:'Bebas Neue',sans-serif;letter-spacing:2px;font-size:0.72rem;color:var(--gold-dim);">GAME ${g.gameNumber||i+1}</div>
+      <div style="font-family:'Oswald',sans-serif;font-size:0.9rem;margin:2px 0;">${statusHTML}</div>
+      <div style="display:flex;align-items:center;gap:5px;font-family:'Oswald',sans-serif;font-size:0.8rem;color:var(--gold-bright);">${getNetworkLogoHTML(r.primary?r.primary.name:'YES Network')}<span>${ch}</span></div>
+    </div>`;
+  };
+  return `<div class="dh-strip" style="margin:0 0 10px;">
+    <div style="text-align:center;font-family:'Special Elite',monospace;letter-spacing:3px;font-size:0.6rem;color:var(--gold);margin-bottom:6px;">&#9670; DOUBLEHEADER TODAY &#9670;</div>
+    <div style="display:flex;gap:8px;flex-wrap:wrap;">${sorted.map(cell).join('')}</div>
+  </div>`;
+}
+
+// ========== POSTSEASON BRACKET ==========
+// Appears above the division standings once the regular season ends. Covers ALL
+// teams (not just the Yankees) so you can see who's advanced and who's out.
+// Gated purely on data: MLB's postseason endpoint is empty until October, so
+// this stays hidden all regular season with no date math needed.
+function _seriesLeaderText(ts) {
+  const [a, b] = ts;
+  if (!a || !b) return 'UPCOMING';
+  if (a.w === b.w) return a.w === 0 ? 'UPCOMING' : `SERIES TIED ${a.w}–${b.w}`;
+  const hi = a.w > b.w ? a : b, lo = a.w > b.w ? b : a;
+  return `${hi.name.split(' ').pop().toUpperCase()} LEAD ${hi.w}–${lo.w}`;
+}
+async function loadPostseasonBracket() {
+  const sec = document.getElementById('bracket-section');
+  if (!sec) return;
+  try {
+    const yr = today().getFullYear();
+    const data = await fetchJSON(`https://statsapi.mlb.com/api/v1/schedule/postseason?season=${yr}&sportId=1&hydrate=team`);
+    const games = [];
+    for (const d of (data.dates || [])) for (const g of (d.games || [])) games.push(g);
+    if (!games.length) { sec.style.display = 'none'; return; }
+
+    const need = { F: 2, D: 3, L: 4, W: 4 };
+    const roundName = { F: 'Wild Card Series', D: 'Division Series', L: 'Championship Series', W: 'World Series' };
+    const S = {};
+    for (const g of games) {
+      const ids = [g.teams.away.team.id, g.teams.home.team.id].sort((a, b) => a - b).join('-');
+      const key = g.gameType + '|' + ids;
+      const s = S[key] || (S[key] = { type: g.gameType, desc: g.seriesDescription || roundName[g.gameType], order: games.indexOf(g), teams: {} });
+      const aw = g.teams.away.team, hm = g.teams.home.team;
+      s.teams[aw.id] = s.teams[aw.id] || { id: aw.id, name: aw.name, w: 0 };
+      s.teams[hm.id] = s.teams[hm.id] || { id: hm.id, name: hm.name, w: 0 };
+      if (isRealFinal(g) && g.teams.away.score != null && g.teams.home.score != null) {
+        const w = g.teams.away.score > g.teams.home.score ? aw : hm;
+        s.teams[w.id].w++;
+      }
+    }
+
+    let html = '';
+    for (const rt of ['F', 'D', 'L', 'W']) {
+      const series = Object.values(S).filter(s => s.type === rt).sort((a, b) => a.order - b.order);
+      if (!series.length) continue;
+      let cards = '';
+      for (const s of series) {
+        const ts = Object.values(s.teams);
+        const winner = ts.find(t => t.w >= need[rt]);
+        const rows = ts.map(t => {
+          const won = winner && winner.id === t.id;
+          const elim = winner && winner.id !== t.id;
+          const cls = [won ? 'adv' : '', elim ? 'elim' : '', t.id === YANKEES_ID ? 'nyy' : ''].filter(Boolean).join(' ');
+          return `<div class="bracket-team ${cls}"><img src="${teamLogo(t.id)}" alt="" onerror="this.style.display='none'"/><span class="bt-name">${t.name}</span><span class="bt-wins">${t.w}</span></div>`;
+        }).join('');
+        const status = winner ? `&#10003; ${winner.name.split(' ').pop().toUpperCase()} ADVANCE` : _seriesLeaderText(ts);
+        cards += `<div class="bracket-series">${rows}<div class="bracket-status">${status}</div></div>`;
+      }
+      html += `<div class="bracket-round"><div class="bracket-round-title">${roundName[rt]}</div><div class="bracket-series-row">${cards}</div></div>`;
+    }
+    sec.innerHTML = `<div class="bracket-board"><div class="bracket-title">&#9670; ${yr} POSTSEASON BRACKET &#9670;</div>${html}</div>`;
+    sec.style.display = '';
+  } catch (e) { sec.style.display = 'none'; }
+}
+
+// Small POSTSEASON strip shown above the hero when the featured game is a playoff game.
+function psBannerHTML(game) {
+  const round = postseasonRoundLabel(game);
+  const sn = game.seriesGameNumber, st = game.gamesInSeries;
+  const gameTxt = sn ? ` &middot; GAME ${sn}${st?` OF ${st}`:''}` : '';
+  return `<div style="margin:0 0 10px;text-align:center;background:linear-gradient(90deg,transparent,rgba(255,204,51,0.12),transparent);border-top:1px solid var(--gold-dim);border-bottom:1px solid var(--gold-dim);padding:6px;">
+    <span style="font-family:'Special Elite',monospace;letter-spacing:4px;font-size:0.62rem;color:var(--bulb);text-shadow:0 0 8px rgba(255,204,51,0.5);">&#9670; ${round}${gameTxt} &#9670;</span>
+  </div>`;
+}
+
 async function updateScoreboard() {
   const wrap = document.getElementById('live-bar');
   const content = document.getElementById('ys-content');
@@ -4599,14 +4876,15 @@ async function updateScoreboard() {
     const s = g.status?.abstractGameState || '';
     return s === 'Live' || s === 'In Progress';
   });
-  const todayFinals = todayGames.filter(g => g.status?.abstractGameState === 'Final');
+  const todayFinals = todayGames.filter(isRealFinal);
   const todayFinal = todayFinals.length ? todayFinals[todayFinals.length - 1] : null;
   const upcomingToday = todayGames.filter(g => {
     const s = g.status?.abstractGameState || '';
+    if (isPostponedLike(g)) return false; // a postponed game is not "upcoming today"
     return s !== 'Final' && s !== 'Live' && s !== 'In Progress';
   });
 
-  const yesterdayFinals = yesterdayGames.filter(g => g.status?.abstractGameState === 'Final');
+  const yesterdayFinals = yesterdayGames.filter(isRealFinal);
   const lastYesterdayFinal = yesterdayFinals.length ? yesterdayFinals[yesterdayFinals.length - 1] : null;
 
   // Find next upcoming game (today or within 7 days)
@@ -4654,6 +4932,9 @@ async function updateScoreboard() {
   wrap.style.display = '';
 
   const game = gameToShow;
+  // Doubleheader banner (both games), shown above the hero on DH days.
+  const isDHToday = todayGames.length >= 2 && todayGames.some(isDoubleheaderGame);
+  const dhBanner = (isPostseasonGame(game) ? psBannerHTML(game) : '') + (isDHToday ? dhStripHTML(todayGames) : '');
   const detailedState = game.status?.detailedState || '';
   const awayTeam = game.teams.away.team;
   const homeTeam = game.teams.home.team;
@@ -4687,7 +4968,7 @@ async function updateScoreboard() {
       { key: 'Venue', val: venueCtd },
       { key: 'All Broadcasts', val: yankeeBcastsCtd.length ? yankeeBcastsCtd.map(b=>b.name).join(' · ') : 'YES Network (likely)' }
     ];
-    html = sbHeroBannerHTML('UP NEXT', false, primaryCtd, secondaryCtd, {unknown: rCtd.unknown, national: rCtd.national}) + `<div class="ys-countdown">
+    html = sbHeroBannerHTML('UP NEXT', false, primaryCtd, secondaryCtd, {unknown: rCtd.unknown, national: rCtd.national, postseason: isPostseasonGame(game)}) + `<div class="ys-countdown">
       <div class="ys-teams">
         <img src="${teamLogo(awayTeam.id)}" alt="" style="width:26px;height:26px;vertical-align:middle;margin-right:6px;" onerror="this.style.display='none'" />
         ${awayAbbr} @ ${homeAbbr}
@@ -4696,7 +4977,7 @@ async function updateScoreboard() {
       <div class="ys-timer"><span id="ys-countdown-timer" data-gametime="${game.gameDate}">--:--:--</span></div>
       <div class="ys-label">FIRST PITCH · ${timeStr} ET</div>
     </div>` + sbDetailsPanelHTML(detailRowsCtd, sbExpandedNextGameHTML(game)) + sbRefreshIndicatorHTML(mode);
-    content.innerHTML = html;
+    content.innerHTML = dhBanner + html;
     fetchLineupForScoreboard(game.gamePk);
     _sbLastRefresh = Date.now();
     startSbRefreshTicker();
@@ -4725,7 +5006,7 @@ async function updateScoreboard() {
       { key: 'Venue', val: venueNg },
       { key: 'All Broadcasts', val: yankeeBcastsNg.length ? yankeeBcastsNg.map(b=>b.name).join(' · ') : 'YES Network (likely)' }
     ];
-    html = sbHeroBannerHTML('UP NEXT', false, primaryNg, secondaryNg, {unknown: rNg.unknown, national: rNg.national}) + `<div class="ys-countdown">
+    html = sbHeroBannerHTML('UP NEXT', false, primaryNg, secondaryNg, {unknown: rNg.unknown, national: rNg.national, postseason: isPostseasonGame(game)}) + `<div class="ys-countdown">
       <div class="ys-teams">
         <img src="${teamLogo(awayTeam.id)}" alt="" style="width:26px;height:26px;vertical-align:middle;margin-right:6px;" onerror="this.style.display='none'" />
         ${awayAbbr} @ ${homeAbbr}
@@ -4734,7 +5015,7 @@ async function updateScoreboard() {
       <div class="ys-timer" style="font-size:1.1rem;">${dateStr}</div>
       <div class="ys-label">NEXT GAME · ${timeStr} ET</div>
     </div>` + sbDetailsPanelHTML(detailRowsNg, sbExpandedNextGameHTML(game)) + sbRefreshIndicatorHTML(mode);
-    content.innerHTML = html;
+    content.innerHTML = dhBanner + html;
     fetchLineupForScoreboard(game.gamePk);
     _sbLastRefresh = Date.now();
     startSbRefreshTicker();
@@ -4755,7 +5036,7 @@ async function updateScoreboard() {
     const heroPrimary = rLive.primary;
     const heroSecondary = rLive.secondary;
     const heroLabel = mode === 'live' ? 'ON NOW' : 'JUST FINISHED ON';
-    html = sbHeroBannerHTML(heroLabel, mode === 'live', heroPrimary, heroSecondary, {unknown: rLive.unknown, national: rLive.national});
+    html = sbHeroBannerHTML(heroLabel, mode === 'live', heroPrimary, heroSecondary, {unknown: rLive.unknown, national: rLive.national, postseason: isPostseasonGame(game)});
 
     const balls = lsData?.balls ?? 0;
     const strikes = lsData?.strikes ?? 0;
@@ -4883,7 +5164,7 @@ async function updateScoreboard() {
     html = `<div class="ys-pregame"><div class="ys-pregame-vs">${awayAbbr} @ ${homeAbbr}</div><div class="ys-pregame-time">${detailedState.toUpperCase() || 'FINAL'}</div></div>` + sbRefreshIndicatorHTML(mode);
   }
 
-  content.innerHTML = html;
+  content.innerHTML = dhBanner + html;
   _sbLastRefresh = Date.now();
   startSbRefreshTicker();
   if (_sbCurrentGamePk !== game.gamePk) { _sbCurrentGamePk = game.gamePk; if (typeof renderGames === 'function' && allGames.length) renderGames(); }
@@ -4892,7 +5173,7 @@ async function updateScoreboard() {
 // ========== INIT ==========
 async function refreshAll(){
   document.getElementById('games-section').innerHTML='<div class="loading-msg"><span class="ldot"></span><span class="ldot"></span><span class="ldot"></span><br><br>LOADING SCHEDULE</div>';
-  await Promise.all([fetchWeather(),fetchStandings(),fetchSchedule(),updateScoreboard(),fetchLastGameRecap()]);
+  await Promise.all([fetchWeather(),fetchStandings(),fetchSchedule(),updateScoreboard(),fetchLastGameRecap(),loadPostseasonBracket()]);
   document.getElementById('last-updated').textContent=new Date().toLocaleString('en-US',{timeZone:'America/New_York',hour:'numeric',minute:'2-digit',second:'2-digit',month:'short',day:'numeric'});
   updateNextGameCountdown();
 }

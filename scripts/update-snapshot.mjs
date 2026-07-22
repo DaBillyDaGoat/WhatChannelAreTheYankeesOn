@@ -25,8 +25,8 @@ const INDEX_URL = new URL('../index.html', import.meta.url);
 const TZ = 'America/New_York';
 
 // ---- Broadcast resolution — kept in lockstep with resolveYankeesTV() in index.html ----
-const NATIONAL_EXCLUSIVE = ['ESPN','FOX','FS1','TBS','NBC','PEACOCK','APPLE','NETFLIX','ROKU','TNT','MAX'];
-const OPP_RSN = ['NESN','SNY','MASN','BALLY','FANDUEL','ROOT','MARQUEE','SPACE CITY','MARINERS','NBC SPORTS','SPECTRUM SPORTSNET','MSG'];
+const NATIONAL_NAME_HINTS = ['ESPN','FOX','FS1','TBS','PEACOCK','APPLE','NETFLIX','ROKU','TNT','MAX','MLB NETWORK'];
+const OPP_RSN = ['NESN','SNY','MASN','BALLY','FANDUEL','ROOT','MARQUEE','SPACE CITY','MARINERS','SPORTSNET','SPECTRUM SPORTSNET','NBCS','NBC SPORTS','MSG'];
 
 const isTvEntry = (b) => {
   const t = (b.type || '').toUpperCase();
@@ -35,18 +35,29 @@ const isTvEntry = (b) => {
   if (u.includes('WFAN') || u.includes('WADO') || t === 'AM' || t === 'FM') return false;
   return true;
 };
+const nameLooksNational = (u) => {
+  if (/NBCS/.test(u) || /NBC\s*SPORTS/.test(u)) return false; // regional NBC Sports RSNs
+  if (/(^|[^A-Z])NBC([^A-Z]|$)/.test(u)) return true;         // national NBC
+  return NATIONAL_NAME_HINTS.some((k) => u.includes(k));
+};
 const isNational = (b) => {
-  const u = (b.name || '').toUpperCase();
   if (b.isNational === true) return true;
   if ((b.homeAway || '').toLowerCase() === 'national') return true;
-  return NATIONAL_EXCLUSIVE.some((k) => u.includes(k)) || u.includes('MLB NETWORK');
+  return nameLooksNational((b.name || '').toUpperCase());
 };
 const isExclusiveNational = (b) => {
   const u = (b.name || '').toUpperCase();
   if (u.includes('MLB NETWORK') || u === 'MLBN') return false;
-  if (!isNational(b)) return false;
-  return NATIONAL_EXCLUSIVE.some((k) => u.includes(k)) || b.isNational === true || (b.homeAway || '').toLowerCase() === 'national';
+  return isNational(b);
 };
+// Postponed/suspended/cancelled games come back as abstractGameState "Final" with
+// no scores — never treat them as a real final.
+const isPostponedLike = (g) => {
+  const d = (g.status?.detailedState || '').toLowerCase();
+  const c = g.status?.codedGameState || '';
+  return d.includes('postpone') || d.includes('suspend') || d.includes('cancel') || c === 'D' || c === 'C' || c === 'U';
+};
+const isRealFinal = (g) => g.status?.abstractGameState === 'Final' && !isPostponedLike(g);
 function resolveYankeesTV(broadcasts, yankeesAreHome) {
   const tv = (broadcasts || []).filter(isTvEntry);
   const oppSide = yankeesAreHome ? 'away' : 'home';
@@ -83,15 +94,17 @@ async function getJSON(url) {
 
 function pickGame(games, nowMs) {
   // Prefer a game today that is live or upcoming; otherwise the next scheduled game;
-  // otherwise the most recent final so the answer is never empty.
+  // otherwise the most recent REAL final so the answer is never empty and never a
+  // postponed 0-0 ghost.
   const sorted = games.slice().sort((a, b) => new Date(a.gameDate) - new Date(b.gameDate));
   const upcoming = sorted.find((g) => {
     const state = (g.status?.abstractGameState || '').toLowerCase();
+    if (isPostponedLike(g)) return false;
     return state !== 'final' && new Date(g.gameDate).getTime() >= nowMs - 4 * 3600e3; // include in-progress
   });
   if (upcoming) return upcoming;
-  const finals = sorted.filter((g) => (g.status?.abstractGameState || '').toLowerCase() === 'final');
-  return finals.length ? finals[finals.length - 1] : sorted[0] || null;
+  const finals = sorted.filter(isRealFinal);
+  return finals.length ? finals[finals.length - 1] : sorted.find((g) => !isPostponedLike(g)) || null;
 }
 
 function buildSnapshot(game, nowMs) {
@@ -106,7 +119,8 @@ function buildSnapshot(game, nowMs) {
   const r = resolveYankeesTV(game.broadcasts, yankHome);
   const state = (game.status?.abstractGameState || '').toLowerCase();
   const isLive = state === 'live' || (game.status?.detailedState || '').toLowerCase().includes('in progress');
-  const isFinal = state === 'final';
+  const isFinal = isRealFinal(game);
+  const dhNote = (game.doubleHeader && game.doubleHeader !== 'N') ? ` (doubleheader — Game ${game.gameNumber || ''})`.replace(' )', ')') : '';
   const todayStr = etParts(new Date(nowMs));
   const gameStr = etParts(new Date(game.gameDate));
   const isToday = todayStr === gameStr;
@@ -124,7 +138,7 @@ function buildSnapshot(game, nowMs) {
   else lead = `The next Yankees game is ${fmtDay(game.gameDate)} ${vs}, first pitch ${fmtTime(game.gameDate)} ET`;
 
   const watchVerb = isFinal ? 'It aired on' : 'Watch on';
-  const html = `<p style="font-family:'Oswald',sans-serif;font-size:1.02rem;line-height:1.55;color:var(--cream);margin:0;">${lead}. ${watchVerb} ${channelHtml}. <span style="color:var(--cream-dim);font-size:0.82rem;">Live scoreboard, lineups, and full schedule below.</span></p>`;
+  const html = `<p style="font-family:'Oswald',sans-serif;font-size:1.02rem;line-height:1.55;color:var(--cream);margin:0;">${lead}${dhNote}. ${watchVerb} ${channelHtml}. <span style="color:var(--cream-dim);font-size:0.82rem;">Live scoreboard, lineups, and full schedule below.</span></p>`;
 
   const venue = game.venue?.name || (yankHome ? 'Yankee Stadium' : `${esc(home.name)} ballpark`);
   const schema = {
@@ -188,6 +202,15 @@ async function main() {
   // 3) footer timestamp
   const stamp = new Intl.DateTimeFormat('en-US', { timeZone: TZ, month: 'short', day: 'numeric', year: 'numeric', hour: 'numeric', minute: '2-digit' }).format(now) + ' ET';
   src = src.replace(/(<span id="last-updated">)[^<]*(<\/span>)/, `$1${stamp}$2`);
+
+  // Bump the homepage <lastmod> in sitemap.xml to today (ET) — quiet SEO freshness.
+  try {
+    const SITEMAP_URL = new URL('../sitemap.xml', import.meta.url);
+    const today = etParts(now); // YYYY-MM-DD
+    let sm = await readFile(SITEMAP_URL, 'utf8');
+    const sm2 = sm.replace(/<lastmod>\d{4}-\d{2}-\d{2}<\/lastmod>/, `<lastmod>${today}</lastmod>`);
+    if (sm2 !== sm) { await writeFile(SITEMAP_URL, sm2, 'utf8'); console.log(`[snapshot] sitemap lastmod -> ${today}`); }
+  } catch (e) { /* sitemap optional */ }
 
   if (src === before) { console.log('[snapshot] no change'); return; }
   await writeFile(INDEX_URL, src, 'utf8');

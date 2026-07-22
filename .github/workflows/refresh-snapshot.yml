@@ -35,10 +35,10 @@ jobs:
 
       - name: Commit if changed
         run: |
-          if [[ -n "$(git status --porcelain index.html)" ]]; then
+          if [[ -n "$(git status --porcelain index.html sitemap.xml)" ]]; then
             git config user.name  "snapshot-bot"
             git config user.email "actions@github.com"
-            git add index.html
+            git add index.html sitemap.xml
             git commit -m "chore: refresh tonight's-game snapshot [skip ci]"
             git push
           else
