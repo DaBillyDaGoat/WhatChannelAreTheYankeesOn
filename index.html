@@ -6,7 +6,6 @@
 <meta name="robots" content="index, follow, max-image-preview:large">
 <title>What Channel Are The Yankees On? | WhatChannelAreTheYankeesOn.com</title>
 <meta name="description" content="Find out what channel the New York Yankees are on tonight. Live scores, full schedule, pitching matchups, lineups, and where to watch every Yankees game.">
-<meta name="keywords" content="Yankees, what channel, Yankees game tonight, YES Network, Yankees schedule, MLB, New York Yankees, where to watch Yankees">
 <meta property="og:title" content="What Channel Are The Yankees On?">
 <meta property="og:description" content="Live scores, full schedule, and where to watch every New York Yankees game.">
 <meta property="og:type" content="website">
@@ -1262,7 +1261,17 @@ body {
   border-radius: 6px;
   box-shadow: 0 0 18px rgba(255,184,0,0.15), inset 0 0 14px rgba(0,0,0,0.3);
 }
-.ys-hero-left { display: flex; align-items: center; gap: 12px; }
+.ys-hero-left { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+.ys-hero-caveat {
+  font-family: 'Oswald', sans-serif;
+  font-size: 0.6rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--cream-dim);
+  opacity: 0.85;
+  flex-basis: 100%;
+  margin-top: 2px;
+}
 .ys-hero-label {
   font-family: 'Bebas Neue', sans-serif;
   font-size: 0.7rem;
@@ -2895,9 +2904,29 @@ body::before {
 {
   "@context": "https://schema.org",
   "@type": "SportsEvent",
-  "name": "New York Yankees Game",
+  "name": "Pittsburgh Pirates at New York Yankees",
   "sport": "Baseball",
-  "url": "https://whatchannelaretheyankeeson.com"
+  "startDate": "2026-07-22T17:05:00Z",
+  "eventStatus": "https://schema.org/EventScheduled",
+  "eventAttendanceMode": "https://schema.org/MixedEventAttendanceMode",
+  "location": {
+    "@type": "Place",
+    "name": "Yankee Stadium"
+  },
+  "homeTeam": {
+    "@type": "SportsTeam",
+    "name": "New York Yankees"
+  },
+  "awayTeam": {
+    "@type": "SportsTeam",
+    "name": "Pittsburgh Pirates"
+  },
+  "url": "https://whatchannelaretheyankeeson.com",
+  "broadcastOfEvent": {
+    "@type": "BroadcastEvent",
+    "name": "YES Network",
+    "isLiveBroadcast": true
+  }
 }
 </script>
 </head>
@@ -2925,6 +2954,12 @@ body::before {
   <div style="text-align:center;padding:2px 0 0;position:relative;z-index:1;">
     <img src="Images/Extra Yankee Logos/R.png" alt="New York Yankees" class="yankees-script-divider" />
   </div>
+
+  <!-- SNAPSHOT:START — auto-generated daily by scripts/update-snapshot.mjs; do not hand-edit -->
+  <div class="quick-answer" id="quick-answer" style="max-width:900px;margin:8px auto 0;padding:12px 16px;min-height:52px;background:rgba(196,164,74,0.07);border:1px solid var(--cell-border);border-radius:6px;text-align:center;position:relative;z-index:1;">
+    <p style="font-family:'Oswald',sans-serif;font-size:1.02rem;line-height:1.55;color:var(--cream);margin:0;">Today the Yankees play vs. the Pittsburgh Pirates, first pitch 1:05 PM ET. Watch on <strong style="color:var(--gold-bright);">YES Network</strong>. <span style="color:var(--cream-dim);font-size:0.82rem;">Live scoreboard, lineups, and full schedule below.</span></p>
+  </div>
+  <!-- SNAPSHOT:END -->
 
   <!-- YANKEE STADIUM SCOREBOARD -->
   <div class="ys-scoreboard" id="live-bar" style="display:none;">
@@ -3053,12 +3088,12 @@ body::before {
 
       <details class="editorial-fold">
         <summary>Streaming-exclusive games (Apple TV, Peacock, Netflix, Amazon)</summary>
-        <p>A growing share of Yankees games each season airs exclusively on streaming with no traditional cable or broadcast carriage. <strong>Apple TV</strong> hosts Friday Night Baseball doubleheaders every Friday from late March through September &mdash; an Apple TV subscription is required (these games used to be free; that ended after 2024). <strong>Peacock</strong> is now a primary national MLB carrier, with Sunday Night Baseball, MLB Sunday Leadoff, the Wild Card round, and one out-of-market game streamed daily; a Peacock Premium subscription is required. <strong>Netflix</strong> joined the rotation in 2026 with the Opening Night exclusive, the Home Run Derby, and the Field of Dreams Game. <strong>Amazon Prime Video</strong> streams select exclusive games for Prime subscribers and also sells the YES Network as a paid add-on in the NY market. This site flags streaming-only carriers prominently so you don't tune into YES only to find the game isn't there.</p>
+        <p>A growing share of Yankees games each season airs exclusively on streaming with no traditional cable or broadcast carriage. <strong>Apple TV</strong> hosts Friday Night Baseball doubleheaders every Friday from late March through September &mdash; an Apple TV subscription is required ($12.99/month; these games were free only in their debut 2022 season). <strong>Peacock</strong> is a primary national MLB carrier under the 2026 deal, with Sunday Night Baseball, Sunday-morning games, and the Wild Card round; a Peacock Premium subscription is required. <strong>Netflix</strong> joined the rotation in 2026 with the Opening Night exclusive, the Home Run Derby, and the Field of Dreams Game. <strong>Amazon Prime Video</strong> is no longer a national MLB carrier in 2026, but still sells the YES Network as a paid add-on in the NY market. This site flags streaming-only carriers prominently so you don't tune into YES only to find the game isn't there.</p>
       </details>
 
       <details class="editorial-fold">
         <summary>Blackout rules &mdash; what they actually mean</summary>
-        <p>MLB enforces regional blackouts that prevent <strong>MLB.TV</strong> subscribers from watching their local team live. If you're inside the Yankees' home territory &mdash; roughly the New York tri-state area, including most of Connecticut and parts of northeast Pennsylvania &mdash; Yankees games are blacked out on MLB.TV and you'll need YES Network or a national broadcast to watch live. Replays unlock on MLB.TV shortly after the final out. VPN workarounds exist but violate MLB.TV's Terms of Service.</p>
+        <p>MLB enforces regional blackouts that prevent <strong>MLB.TV</strong> subscribers from watching their local team live. If you're inside the Yankees' home territory &mdash; roughly the New York tri-state area, including most of Connecticut, parts of northeast Pennsylvania, and parts of North Jersey &mdash; Yankees games are blacked out on MLB.TV and you'll need YES Network or a national broadcast to watch live. Replays unlock on MLB.TV shortly after the final out. VPN workarounds exist but violate MLB.TV's Terms of Service.</p>
       </details>
 
       <details class="editorial-fold">
@@ -3106,7 +3141,7 @@ body::before {
       </div>
       <div class="faq-item" onclick="this.classList.toggle('open')">
         <div class="faq-q">How can I watch the Yankees without cable?</div>
-        <div class="faq-a">Several options exist for cord-cutters. Amazon Prime Video now offers the YES Network as a paid add-on channel in the New York market. YouTube TV, Hulu + Live TV, and FuboTV all include YES Network in their channel lineups. For games outside your market, MLB.TV streams every out-of-market game. Apple TV+ Friday Night Baseball games are free with no subscription needed. You can also listen to every game on the MLB app with an MLB Audio subscription.</div>
+        <div class="faq-a">Several options exist for cord-cutters. Amazon Prime Video offers the YES Network as a paid add-on channel in the New York market, and YES also streams direct-to-consumer through the Gotham Sports app. Live-TV bundles such as YouTube TV, Hulu + Live TV, and FuboTV have carried YES Network, but carriage changes from season to season &mdash; confirm YES is included before subscribing. For games outside your market, MLB.TV streams every out-of-market game. Apple TV's Friday Night Baseball requires a paid Apple TV subscription ($12.99/month); these games were free only in their debut 2022 season. You can also listen to every game on the MLB app with an MLB Audio subscription.</div>
       </div>
       <div class="faq-item" onclick="this.classList.toggle('open')">
         <div class="faq-q">What is the YES Network and how do I get it?</div>
@@ -3146,7 +3181,7 @@ body::before {
     </div>
 
     <div class="editorial-body" style="text-align:center;">
-      <p><strong>WhatChannelAreTheYankeesOn.com</strong> was built to answer one simple question that every Yankees fan asks before every game: what channel is the game on tonight? With broadcasts scattered across YES Network, ESPN, FOX, Apple TV+, Amazon Prime Video, and more, it's harder than ever to find where the game is airing.</p>
+      <p><strong>WhatChannelAreTheYankeesOn.com</strong> was built to answer one simple question that every Yankees fan asks before every game: what channel is the game on tonight? With broadcasts scattered across YES Network, ESPN, FOX, NBC, Peacock, Apple TV, Netflix, and more, it's harder than ever to find where the game is airing.</p>
 
       <p>This site pulls real-time data from the official MLB Stats API to show you the upcoming schedule, live scores, probable pitchers, starting lineups, division standings, and game-day weather at Yankee Stadium &mdash; all in one place. No searching through TV guides, no checking three different apps. Just the answer you came for.</p>
 
@@ -3160,7 +3195,7 @@ body::before {
 
   <!-- FOOTER -->
   <div class="board-footer">
-    <div class="footer-stamp">UPDATED: <span id="last-updated">--</span></div>
+    <div class="footer-stamp">UPDATED: <span id="last-updated">Jul 22, 2026, 11:29 AM ET</span></div>
     <div class="footer-controls">
       <button class="board-btn" onclick="refreshAll()">&#x27f3; REFRESH</button>
       <button class="board-btn" id="theme-btn" onclick="toggleTheme()">&#x2600; LIGHT</button>
@@ -3564,6 +3599,68 @@ function getNetworkLogoHTML(name) {
   return '';
 }
 
+// ========== BROADCAST RESOLUTION — single source of truth ==========
+// The bug this fixes: the site used to prefer "YES" whenever it appeared in the
+// feed (or hard-default to YES when broadcast data was missing), so during a
+// nationally-exclusive game it told fans to tune to YES when the game was
+// actually blacked out there. resolveYankeesTV() is the one place that decides
+// what to show, used by BOTH the live scoreboard and the per-game rows.
+//
+// National carriers whose Yankees telecast is EXCLUSIVE — when one of these has
+// the game, it is blacked out on YES, so YES must NOT be shown as the channel.
+// (MLB Network is deliberately NOT here: its national "game of the day" is
+// blacked out in the two teams' home markets, where YES carries it instead.)
+const NATIONAL_EXCLUSIVE = ['ESPN','FOX','FS1','TBS','NBC','PEACOCK','APPLE','NETFLIX','ROKU','TNT','MAX'];
+// Opponent regional networks / radio we must never surface on a Yankees telecast.
+const OPP_RSN = ['NESN','SNY','MASN','BALLY','FANDUEL','ROOT','MARQUEE','SPACE CITY','MARINERS','NBC SPORTS','SPECTRUM SPORTSNET','MSG'];
+
+function _isTvEntry(b) {
+  const t = (b.type||'').toUpperCase();
+  if (!(t==='TV' || t==='NATIONAL' || t==='WEB' || t==='STREAMING' || t==='OTT')) return false;
+  const u = (b.name||'').toUpperCase();
+  if (u.includes('WFAN') || u.includes('WADO') || t==='AM' || t==='FM') return false; // radio guard
+  return true;
+}
+function _isNational(b) {
+  const u = (b.name||'').toUpperCase();
+  if (b.isNational === true) return true;
+  if ((b.homeAway||'').toLowerCase() === 'national') return true;
+  return NATIONAL_EXCLUSIVE.some(k => u.includes(k)) || u.includes('MLB NETWORK');
+}
+function _isExclusiveNational(b) {
+  const u = (b.name||'').toUpperCase();
+  if (u.includes('MLB NETWORK') || u === 'MLBN') return false; // blacked out in-market
+  if (!_isNational(b)) return false;
+  return NATIONAL_EXCLUSIVE.some(k => u.includes(k)) || b.isNational === true || (b.homeAway||'').toLowerCase()==='national';
+}
+// -> { primary, secondary:[], national:bool, unknown:bool, all:[] }
+function resolveYankeesTV(broadcasts, yankeesAreHome) {
+  const tv = (broadcasts||[]).filter(_isTvEntry);
+  const oppSide = yankeesAreHome ? 'away' : 'home';
+  const relevant = tv.filter(b => {
+    const u = (b.name||'').toUpperCase();
+    if (OPP_RSN.some(k => u.includes(k)) && !_isNational(b)) return false;      // opponent RSN
+    if ((b.homeAway||'').toLowerCase() === oppSide && !_isNational(b)) return false; // opponent's local feed
+    return true;
+  });
+  const dedupe = (arr) => { const seen=new Set(), out=[]; for(const b of arr){const k=(b.name||'').toUpperCase(); if(!seen.has(k)){seen.add(k);out.push(b);}} return out; };
+  const exclusives = dedupe(relevant.filter(_isExclusiveNational));
+  const yes = relevant.find(b => (b.name||'').toUpperCase().includes('YES'));
+  if (exclusives.length) {
+    return { primary: exclusives[0], secondary: exclusives.slice(1,3), national: true, unknown: false, all: exclusives };
+  }
+  if (yes) {
+    const others = dedupe(relevant.filter(b => b !== yes));
+    return { primary: yes, secondary: others.slice(0,2), national: false, unknown: false, all: dedupe([yes, ...others]) };
+  }
+  const rel = dedupe(relevant);
+  if (rel.length) {
+    return { primary: rel[0], secondary: rel.slice(1,3), national: _isNational(rel[0]), unknown: false, all: rel };
+  }
+  // No usable broadcast data — do NOT assert a channel. UI shows YES as "likely".
+  return { primary: null, secondary: [], national: false, unknown: true, all: [] };
+}
+
 function buildGameCard(game, idx, isNextGame) {
   const awayTeam = game.teams.away.team;
   const homeTeam = game.teams.home.team;
@@ -3575,34 +3672,9 @@ function buildGameCard(game, idx, isNextGame) {
   const oppName = isHome ? awayTeam.name : homeTeam.name;
   const seriesText = sn&&st ? `GAME ${sn} OF ${st} VS ${oppName.split(' ').pop().toUpperCase()}` : '';
   const wx = isHome ? getWx(game.gameDate) : null;
-  const tvB = (game.broadcasts||[]).filter(b => {
-    const t = (b.type||'').toUpperCase();
-    return t==='TV' || t==='NATIONAL' || t==='WEB' || t==='STREAMING' || t==='OTT';
-  });
-  // Filter: YES first, then national/streaming — exclude opponent RSNs entirely
-  const yankeesBroadcasts = tvB.filter(b => {
-    const u = b.name.toUpperCase();
-    return u.includes('YES') || u.includes('ESPN') || u.includes('FOX') || u.includes('FS1') ||
-           u.includes('TBS') || u.includes('NBC') || u.includes('MLB NETWORK') ||
-           u.includes('APPLE') || u.includes('AMAZON') || u.includes('PRIME') ||
-           u.includes('PEACOCK') || u.includes('NETFLIX') || b.type==='National';
-  }).filter(b => {
-    const u = b.name.toUpperCase();
-    // Exclude opponent RSNs but allow NBCSN (national, carries 2026 SNB/Leadoff overflow).
-    // 'NBC SPORTS' regional brands (NBCSCA, NBCSPHI, etc.) are excluded; NBCSN passes.
-    if (u === 'NBCSN' || u.includes('NBCSN ')) return true;
-    return !u.includes('NBC SPORTS') && !u.includes('NESN') && !u.includes('SNY') &&
-           !u.includes('MASN') && !u.includes('BALLY') && !u.includes('FANDUEL') &&
-           !u.includes('ROOT') && !u.includes('MARQUEE') && !u.includes('SPECTRUM SPORTSNET') &&
-           !u.includes('SPACE CITY') && !u.includes('MARINERS NETWORK');
-  }).sort((a, b) => {
-    // YES always first
-    const aYes = a.name.toUpperCase().includes('YES');
-    const bYes = b.name.toUpperCase().includes('YES');
-    if (aYes && !bYes) return -1;
-    if (!aYes && bYes) return 1;
-    return 0;
-  });
+  // Single source of truth: national exclusives suppress YES; opponent RSNs/radio dropped.
+  const rowRes = resolveYankeesTV(game.broadcasts, isHome);
+  const yankeesBroadcasts = rowRes.all;
   const radioB = (game.broadcasts||[]).filter(b=>b.type==='FM'||b.type==='AM'||b.name?.toUpperCase().includes('WFAN'));
   const yankP = isHome ? game.teams?.home?.probablePitcher : game.teams?.away?.probablePitcher;
   const oppP = isHome ? game.teams?.away?.probablePitcher : game.teams?.home?.probablePitcher;
@@ -3873,11 +3945,7 @@ function renderGames() {
     const away = upcoming.teams.away.team.name;
     const home = upcoming.teams.home.team.name;
     const venue = STADIUM_NAMES[upcoming.teams.home.team.id] || 'Yankee Stadium';
-    const tvB = (upcoming.broadcasts||[]).filter(b => {
-      const t = (b.type||'').toUpperCase();
-      return t==='TV'||t==='NATIONAL'||t==='WEB'||t==='STREAMING';
-    });
-    const yankeesNet = tvB.find(b => /YES|ESPN|FOX|FS1|TBS|NBC|APPLE|PEACOCK|AMAZON|PRIME|NETFLIX|MLB NETWORK/i.test(b.name));
+    const yankeesNet = resolveYankeesTV(upcoming.broadcasts, upcoming.teams.home.team.id === YANKEES_ID).primary;
     const schema = {
       "@context": "https://schema.org",
       "@type": "SportsEvent",
@@ -4349,14 +4417,19 @@ function toggleSbDetails() {
   if (panel) panel.classList.toggle('open', _sbDetailsOpen);
 }
 
-function sbHeroBannerHTML(labelText, isLive, primaryBcast, secondaryBcasts) {
-  // Fall back to YES Network when broadcast unknown — YES carries the vast majority of
-  // Yankees games, so it's a far better default than a generic "CHECK LOCAL" label.
-  const useYesFallback = !primaryBcast;
-  const primaryLogo = useYesFallback
+function sbHeroBannerHTML(labelText, isLive, primaryBcast, secondaryBcasts, opts) {
+  opts = opts || {};
+  // Only fall back to YES when broadcast data is genuinely missing — and label it
+  // "likely" so we never assert a channel we can't confirm. When we DO have data,
+  // we show the real carrier (and flag national exclusives that black out YES).
+  const unknown = opts.unknown || !primaryBcast;
+  const primaryLogo = unknown
     ? `<img class="net-logo" src="${CHANNEL_LOGOS['YES Network']}" alt="YES Network" />`
     : getNetworkLogoHTML(primaryBcast.name);
-  const primaryName = useYesFallback ? 'YES NETWORK' : primaryBcast.name;
+  const primaryName = unknown ? 'YES NETWORK' : primaryBcast.name;
+  const caveat = unknown
+    ? `<span class="ys-hero-caveat">likely &mdash; confirm on the YES / Gotham Sports app</span>`
+    : (opts.national ? `<span class="ys-hero-caveat">national broadcast &mdash; blacked out on YES</span>` : '');
   const secondaryHTML = (secondaryBcasts && secondaryBcasts.length)
     ? `<div class="ys-hero-secondary">${secondaryBcasts.map(b=>`<div class="channel-badge">${getNetworkLogoHTML(b.name)}<span class="net-text">${b.name}</span></div>`).join('')}</div>`
     : '';
@@ -4364,6 +4437,7 @@ function sbHeroBannerHTML(labelText, isLive, primaryBcast, secondaryBcasts) {
     <div class="ys-hero-left">
       <span class="ys-hero-label${isLive?' live-mode':''}">${labelText}</span>
       <div class="ys-hero-primary">${primaryLogo}<span class="ys-hero-name">${primaryName}</span></div>
+      ${caveat}
     </div>
     ${secondaryHTML}
   </div>`;
@@ -4508,13 +4582,13 @@ async function updateScoreboard() {
   let todayGames = [], yesterdayGames = [];
   try {
     const todayStr = fmtDate(today());
-    const data = await fetchJSON(`https://statsapi.mlb.com/api/v1/schedule?teamId=${YANKEES_ID}&sportId=1&date=${todayStr}&hydrate=linescore,probablePitcher`);
+    const data = await fetchJSON(`https://statsapi.mlb.com/api/v1/schedule?teamId=${YANKEES_ID}&sportId=1&date=${todayStr}&hydrate=broadcasts,linescore,probablePitcher`);
     for (const d of (data.dates || [])) for (const g of (d.games || [])) todayGames.push(g);
   } catch(e) {}
 
   try {
     const yd = new Date(today()); yd.setDate(yd.getDate() - 1);
-    const data = await fetchJSON(`https://statsapi.mlb.com/api/v1/schedule?teamId=${YANKEES_ID}&sportId=1&date=${fmtDate(yd)}&hydrate=linescore,probablePitcher`);
+    const data = await fetchJSON(`https://statsapi.mlb.com/api/v1/schedule?teamId=${YANKEES_ID}&sportId=1&date=${fmtDate(yd)}&hydrate=broadcasts,linescore,probablePitcher`);
     for (const d of (data.dates || [])) for (const g of (d.games || [])) yesterdayGames.push(g);
   } catch(e) {}
 
@@ -4541,7 +4615,7 @@ async function updateScoreboard() {
     try {
       const tmrw = new Date(today()); tmrw.setDate(tmrw.getDate() + 1);
       const end7 = new Date(today()); end7.setDate(end7.getDate() + 7);
-      const data = await fetchJSON(`https://statsapi.mlb.com/api/v1/schedule?teamId=${YANKEES_ID}&sportId=1&startDate=${fmtDate(tmrw)}&endDate=${fmtDate(end7)}&hydrate=linescore`);
+      const data = await fetchJSON(`https://statsapi.mlb.com/api/v1/schedule?teamId=${YANKEES_ID}&sportId=1&startDate=${fmtDate(tmrw)}&endDate=${fmtDate(end7)}&hydrate=broadcasts,linescore`);
       outer: for (const d of (data.dates || [])) {
         for (const g of (d.games || [])) { nextGame = g; break outer; }
       }
@@ -4585,11 +4659,10 @@ async function updateScoreboard() {
   const homeTeam = game.teams.home.team;
   const awayAbbr = TEAM_ABBR[awayTeam.id] || 'AWY';
   const homeAbbr = TEAM_ABBR[homeTeam.id] || 'HME';
-  const tvBcasts = (game.broadcasts||[]).filter(b => {
-    const t = (b.type||'').toUpperCase();
-    return t==='TV' || t==='NATIONAL' || t==='WEB' || t==='STREAMING' || t==='OTT';
-  });
-  const primaryBcast = tvBcasts.find(b=>b.name.toUpperCase().includes('YES')) || tvBcasts.find(b=>{const u=b.name.toUpperCase();return u.includes('ESPN')||u.includes('FOX')||u.includes('TBS')||u.includes('APPLE')||u.includes('PRIME');}) || tvBcasts[0];
+  const _sbYankHome = homeTeam.id === YANKEES_ID;
+  const sbResolved = resolveYankeesTV(game.broadcasts, _sbYankHome);
+  const tvBcasts = sbResolved.all;
+  const primaryBcast = sbResolved.primary;
   const bcastLogoHTML = primaryBcast ? getNetworkLogoHTML(primaryBcast.name) : '';
   const bcastBadge = bcastLogoHTML ? `<span style="display:inline-block;vertical-align:middle;margin-left:10px;">${bcastLogoHTML.replace(/(<img\s)/, '$1style="width:36px;height:22px;vertical-align:middle;" ')}</span>` : (primaryBcast ? `<span style="font-family:'Bebas Neue',sans-serif;font-size:0.65rem;color:#FFB800;letter-spacing:2px;margin-left:10px;vertical-align:middle;">${primaryBcast.name}</span>` : '');
   let html = '';
@@ -4601,23 +4674,20 @@ async function updateScoreboard() {
     const dateStrFull = gameTimeET.toLocaleDateString('en-US', {weekday:'long', month:'short', day:'numeric'});
     const isHomeCtd = homeTeam.id === YANKEES_ID;
     const oppTeamCtd = isHomeCtd ? awayTeam : homeTeam;
-    const yankeeBcastsCtd = tvBcasts.filter(b => {
-      const u = b.name.toUpperCase();
-      return u.includes('YES') || u.includes('ESPN') || u.includes('FOX') || u.includes('FS1') ||
-             u.includes('TBS') || u.includes('APPLE') || u.includes('PRIME') || u.includes('PEACOCK') || b.type === 'National';
-    }).sort((a,b) => a.name.toUpperCase().includes('YES') ? -1 : b.name.toUpperCase().includes('YES') ? 1 : 0);
+    const rCtd = resolveYankeesTV(game.broadcasts, isHomeCtd);
+    const yankeeBcastsCtd = rCtd.all;
     const yankPCtd = isHomeCtd ? game.teams?.home?.probablePitcher : game.teams?.away?.probablePitcher;
     const oppPCtd = isHomeCtd ? game.teams?.away?.probablePitcher : game.teams?.home?.probablePitcher;
-    const primaryCtd = yankeeBcastsCtd[0] || primaryBcast;
-    const secondaryCtd = yankeeBcastsCtd.slice(1, 3);
+    const primaryCtd = rCtd.primary;
+    const secondaryCtd = rCtd.secondary;
     const venueCtd = game.venue?.name || (isHomeCtd ? 'Yankee Stadium' : oppTeamCtd.name + ' Home Venue');
     const detailRowsCtd = [
       { key: 'Matchup', val: `${awayTeam.name} @ ${homeTeam.name}` },
       { key: 'First Pitch', val: `${timeStr} ET · ${dateStrFull}` },
       { key: 'Venue', val: venueCtd },
-      { key: 'All Broadcasts', val: yankeeBcastsCtd.length ? yankeeBcastsCtd.map(b=>b.name).join(' · ') : 'YES Network (default)' }
+      { key: 'All Broadcasts', val: yankeeBcastsCtd.length ? yankeeBcastsCtd.map(b=>b.name).join(' · ') : 'YES Network (likely)' }
     ];
-    html = sbHeroBannerHTML('UP NEXT', false, primaryCtd, secondaryCtd) + `<div class="ys-countdown">
+    html = sbHeroBannerHTML('UP NEXT', false, primaryCtd, secondaryCtd, {unknown: rCtd.unknown, national: rCtd.national}) + `<div class="ys-countdown">
       <div class="ys-teams">
         <img src="${teamLogo(awayTeam.id)}" alt="" style="width:26px;height:26px;vertical-align:middle;margin-right:6px;" onerror="this.style.display='none'" />
         ${awayAbbr} @ ${homeAbbr}
@@ -4642,23 +4712,20 @@ async function updateScoreboard() {
     const timeStr = gameTimeET.toLocaleTimeString('en-US', {hour:'numeric', minute:'2-digit'});
     const isHomeNg = homeTeam.id === YANKEES_ID;
     const oppTeamNg = isHomeNg ? awayTeam : homeTeam;
-    const yankeeBcastsNg = tvBcasts.filter(b => {
-      const u = b.name.toUpperCase();
-      return u.includes('YES') || u.includes('ESPN') || u.includes('FOX') || u.includes('FS1') ||
-             u.includes('TBS') || u.includes('APPLE') || u.includes('PRIME') || u.includes('PEACOCK') || b.type === 'National';
-    }).sort((a,b) => a.name.toUpperCase().includes('YES') ? -1 : b.name.toUpperCase().includes('YES') ? 1 : 0);
+    const rNg = resolveYankeesTV(game.broadcasts, isHomeNg);
+    const yankeeBcastsNg = rNg.all;
     const yankPNg = isHomeNg ? game.teams?.home?.probablePitcher : game.teams?.away?.probablePitcher;
     const oppPNg = isHomeNg ? game.teams?.away?.probablePitcher : game.teams?.home?.probablePitcher;
-    const primaryNg = yankeeBcastsNg[0] || primaryBcast;
-    const secondaryNg = yankeeBcastsNg.slice(1, 3);
+    const primaryNg = rNg.primary;
+    const secondaryNg = rNg.secondary;
     const venueNg = game.venue?.name || (isHomeNg ? 'Yankee Stadium' : oppTeamNg.name + ' Home Venue');
     const detailRowsNg = [
       { key: 'Matchup', val: `${awayTeam.name} @ ${homeTeam.name}` },
       { key: 'First Pitch', val: `${timeStr} ET · ${dateLong}` },
       { key: 'Venue', val: venueNg },
-      { key: 'All Broadcasts', val: yankeeBcastsNg.length ? yankeeBcastsNg.map(b=>b.name).join(' · ') : 'YES Network (default)' }
+      { key: 'All Broadcasts', val: yankeeBcastsNg.length ? yankeeBcastsNg.map(b=>b.name).join(' · ') : 'YES Network (likely)' }
     ];
-    html = sbHeroBannerHTML('UP NEXT', false, primaryNg, secondaryNg) + `<div class="ys-countdown">
+    html = sbHeroBannerHTML('UP NEXT', false, primaryNg, secondaryNg, {unknown: rNg.unknown, national: rNg.national}) + `<div class="ys-countdown">
       <div class="ys-teams">
         <img src="${teamLogo(awayTeam.id)}" alt="" style="width:26px;height:26px;vertical-align:middle;margin-right:6px;" onerror="this.style.display='none'" />
         ${awayAbbr} @ ${homeAbbr}
@@ -4683,15 +4750,12 @@ async function updateScoreboard() {
     const plays = ld?.plays;
 
     // Hero banner with YES Network fallback
-    const heroYankeeBcasts = tvBcasts.filter(b => {
-      const u = b.name.toUpperCase();
-      return u.includes('YES') || u.includes('ESPN') || u.includes('FOX') || u.includes('FS1') ||
-             u.includes('TBS') || u.includes('APPLE') || u.includes('PRIME') || u.includes('PEACOCK') || b.type === 'National';
-    }).sort((a,b) => a.name.toUpperCase().includes('YES') ? -1 : b.name.toUpperCase().includes('YES') ? 1 : 0);
-    const heroPrimary = heroYankeeBcasts[0] || primaryBcast;
-    const heroSecondary = heroYankeeBcasts.slice(1, 3);
+    const rLive = resolveYankeesTV(game.broadcasts, _sbYankHome);
+    const heroYankeeBcasts = rLive.all;
+    const heroPrimary = rLive.primary;
+    const heroSecondary = rLive.secondary;
     const heroLabel = mode === 'live' ? 'ON NOW' : 'JUST FINISHED ON';
-    html = sbHeroBannerHTML(heroLabel, mode === 'live', heroPrimary, heroSecondary);
+    html = sbHeroBannerHTML(heroLabel, mode === 'live', heroPrimary, heroSecondary, {unknown: rLive.unknown, national: rLive.national});
 
     const balls = lsData?.balls ?? 0;
     const strikes = lsData?.strikes ?? 0;
@@ -4797,7 +4861,7 @@ async function updateScoreboard() {
     const wind = ld?.boxscore?.info?.find(i => i.label === 'Wind')?.value || '';
     const firstPitchET = new Date(new Date(game.gameDate).toLocaleString('en-US', {timeZone:'America/New_York'}));
     const firstPitchStr = firstPitchET.toLocaleTimeString('en-US', {hour:'numeric', minute:'2-digit'}) + ' ET';
-    const allBcastNames = heroYankeeBcasts.length ? heroYankeeBcasts.map(b=>b.name).join(' · ') : (primaryBcast ? primaryBcast.name : 'YES Network (default)');
+    const allBcastNames = heroYankeeBcasts.length ? heroYankeeBcasts.map(b=>b.name).join(' · ') : (primaryBcast ? primaryBcast.name : 'YES Network (likely)');
     const detailRowsLF = mode === 'live' ? [
       { key: 'At Bat', val: batterName !== 'TBD' ? batterName : '' },
       { key: 'Pitching', val: pitcherName !== 'TBD' ? pitcherName : '' },
