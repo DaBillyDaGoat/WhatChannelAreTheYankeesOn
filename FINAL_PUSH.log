@@ -1,0 +1,104 @@
+=== FINAL_PUSH.bat run Wed 04/29/2026 18:07:58.28 === 
+[1] Clearing stale locks 
+[2] Fetching latest origin/main 
+From https://github.com/DaBillyDaGoat/WhatChannelAreTheYankeesOn
+ * branch            main       -> FETCH_HEAD
+[3] Resetting local main to origin/main while keeping working tree 
+Unstaged changes after reset:
+D	AL.png
+D	ARI.png
+D	ATL.png
+D	BAL.png
+D	BOS.png
+D	CHC.png
+D	CIN.png
+D	CLE.png
+D	COL.png
+D	CWS.png
+D	DET.png
+D	DOM.png
+D	HOU.png
+D	JPN.png
+D	KC.png
+D	LAA.png
+D	LAD.png
+D	MIA.png
+D	MIL.png
+D	MIN.png
+D	NL.png
+D	NYM.png
+D	NYY.png
+D	OAK.png
+D	PHI.png
+D	PIT.png
+D	SD.png
+D	SEA.png
+D	SF.png
+D	STL.png
+D	TB.png
+D	TEX.png
+D	TOR.png
+D	USA.png
+D	VEN.png
+D	WSH.png
+M	index.html
+[4] Restoring my edited index.html from backup 
+        1 file(s) copied.
+[5] Staging only index.html 
+[6] Status before commit 
+ D AL.png
+ D ARI.png
+ D ATL.png
+ D BAL.png
+ D BOS.png
+ D CHC.png
+ D CIN.png
+ D CLE.png
+ D COL.png
+ D CWS.png
+ D DET.png
+ D DOM.png
+ D HOU.png
+ D JPN.png
+ D KC.png
+ D LAA.png
+ D LAD.png
+ D MIA.png
+ D MIL.png
+ D MIN.png
+ D NL.png
+ D NYM.png
+ D NYY.png
+ D OAK.png
+ D PHI.png
+ D PIT.png
+ D SD.png
+ D SEA.png
+ D SF.png
+ D STL.png
+ D TB.png
+ D TEX.png
+ D TOR.png
+ D USA.png
+ D VEN.png
+ D WSH.png
+M  index.html
+?? FINAL_PUSH.bat
+?? FINAL_PUSH.log
+?? "Images/Extra Yankee Logos/Yankee Stadium.webp"
+?? Images/apple-touch-icon.png
+?? Images/icon-192.png
+?? RECOVER_AND_PUSH.bat
+?? index.html.NEW
+[7] Committing 
+[main 3dfe6fe] Major UI refresh: YES fallback, expanded next-game card, dedupe finals, end-of-season prep, mobile fixes, light-mode polish, collapsible How-to-Watch
+ 1 file changed, 842 insertions(+), 234 deletions(-)
+[8] Pushing to origin/main 
+To https://github.com/DaBillyDaGoat/WhatChannelAreTheYankeesOn.git
+   d992770..3dfe6fe  main -> main
+[9] Final state 
+3dfe6fe Major UI refresh: YES fallback, expanded next-game card, dedupe finals, end-of-season prep, mobile fixes, light-mode polish, collapsible How-to-Watch
+d992770 Add files via upload
+4e18215 Add files via upload
+Done. Check FINAL_PUSH.log for full output. 
+=== END === 

@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WCATYO Dev Dashboard</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" type="image/png" href="Images/WCATYO logo/Yankees channel logo.png">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Bebas+Neue&family=Special+Elite&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --navy: #0C2340;
+  --navy-deep: #081a30;
+  --gold: #C4A44A;
+  --gold-bright: #d4b45a;
+  --cream: #e8dcc8;
+  --cream-dim: #9a9080;
+  --red: #ff4444;
+  --green: #4CAF50;
+}
+
+body {
+  font-family: 'Oswald', sans-serif;
+  background: #050d18;
+  color: var(--cream);
+  min-height: 100vh;
+}
+
+/* ========== LOGIN GATE ========== */
+.gate-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: radial-gradient(ellipse at center, #0a1a2e 0%, #050d18 70%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  transition: opacity 0.4s, visibility 0.4s;
+}
+
+.gate-overlay.hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.gate-box {
+  text-align: center;
+  padding: 40px 50px;
+  background: linear-gradient(180deg, rgba(12,35,64,0.9), rgba(8,26,48,0.95));
+  border: 2px solid rgba(196,164,74,0.3);
+  border-radius: 8px;
+  box-shadow: 0 0 60px rgba(0,0,0,0.5), 0 0 20px rgba(196,164,74,0.05);
+}
+
+.gate-logo {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  margin-bottom: 16px;
+  filter: drop-shadow(0 0 20px rgba(0,100,255,0.3));
+}
+
+.gate-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.8rem;
+  letter-spacing: 6px;
+  color: var(--gold);
+  margin-bottom: 6px;
+}
+
+.gate-sub {
+  font-family: 'Special Elite', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 3px;
+  color: var(--cream-dim);
+  margin-bottom: 24px;
+}
+
+.gate-input {
+  display: block;
+  width: 200px;
+  margin: 0 auto 16px;
+  padding: 12px 16px;
+  background: rgba(0,0,0,0.4);
+  border: 1px solid rgba(196,164,74,0.25);
+  border-radius: 4px;
+  color: var(--cream);
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.4rem;
+  letter-spacing: 8px;
+  text-align: center;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.gate-input:focus { border-color: var(--gold); }
+
+.gate-input.error {
+  border-color: var(--red);
+  animation: shake 0.4s;
+}
+
+@keyframes shake {
+  0%,100% { transform: translateX(0); }
+  25% { transform: translateX(-8px); }
+  75% { transform: translateX(8px); }
+}
+
+.gate-btn {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1rem;
+  letter-spacing: 4px;
+  padding: 10px 36px;
+  background: linear-gradient(180deg, rgba(196,164,74,0.2), rgba(196,164,74,0.08));
+  color: var(--gold);
+  border: 1px solid rgba(196,164,74,0.35);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.gate-btn:hover {
+  background: linear-gradient(180deg, rgba(196,164,74,0.3), rgba(196,164,74,0.12));
+  box-shadow: 0 0 12px rgba(196,164,74,0.15);
+}
+
+.gate-error-msg {
+  font-family: 'Special Elite', monospace;
+  font-size: 0.65rem;
+  color: var(--red);
+  letter-spacing: 2px;
+  margin-top: 12px;
+  min-height: 16px;
+}
+
+/* ========== DASHBOARD ========== */
+.dashboard {
+  display: none;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.dashboard.active { display: block; }
+
+.dash-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px 0;
+  border-bottom: 1px solid rgba(196,164,74,0.15);
+  margin-bottom: 24px;
+}
+
+.dash-header img {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+  filter: drop-shadow(0 0 10px rgba(0,100,255,0.25));
+}
+
+.dash-header-text h1 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.6rem;
+  letter-spacing: 5px;
+  color: var(--gold);
+}
+
+.dash-header-text p {
+  font-family: 'Special Elite', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 2px;
+  color: var(--cream-dim);
+}
+
+.back-link {
+  margin-left: auto;
+  font-family: 'Special Elite', monospace;
+  font-size: 0.7rem;
+  color: var(--gold);
+  text-decoration: none;
+  letter-spacing: 2px;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+}
+
+.back-link:hover { opacity: 1; }
+
+/* ========== STATS CARDS ========== */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  margin-bottom: 28px;
+}
+
+.stat-card {
+  background: linear-gradient(180deg, rgba(12,35,64,0.8), rgba(8,26,48,0.9));
+  border: 1px solid rgba(196,164,74,0.15);
+  border-radius: 6px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+}
+
+.stat-card .stat-value {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 2.5rem;
+  color: var(--gold-bright);
+  text-shadow: 0 0 15px rgba(196,164,74,0.3);
+  line-height: 1.1;
+}
+
+.stat-card .stat-label {
+  font-family: 'Special Elite', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 3px;
+  color: var(--cream-dim);
+  margin-top: 6px;
+}
+
+/* ========== SECTIONS ========== */
+.dash-section {
+  background: linear-gradient(180deg, rgba(12,35,64,0.6), rgba(8,26,48,0.7));
+  border: 1px solid rgba(196,164,74,0.1);
+  border-radius: 6px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+}
+
+.dash-section-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.1rem;
+  letter-spacing: 4px;
+  color: var(--gold);
+  margin-bottom: 14px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(196,164,74,0.1);
+}
+
+/* ========== TABLES ========== */
+.dash-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.8rem;
+}
+
+.dash-table th {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 0.75rem;
+  letter-spacing: 2px;
+  color: var(--cream-dim);
+  text-align: left;
+  padding: 8px 10px;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.dash-table td {
+  padding: 8px 10px;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+  font-family: 'Oswald', sans-serif;
+  font-size: 0.78rem;
+  color: var(--cream);
+}
+
+.dash-table tr:hover td {
+  background: rgba(255,255,255,0.02);
+}
+
+.dash-table .num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 0.95rem;
+  color: var(--gold-bright);
+  text-align: center;
+}
+
+/* ========== CHART BAR ========== */
+.bar-chart {
+  display: flex;
+  align-items: flex-end;
+  gap: 4px;
+  height: 120px;
+  padding: 10px 0;
+}
+
+.bar-col {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.bar {
+  width: 100%;
+  max-width: 40px;
+  background: linear-gradient(180deg, var(--gold), rgba(196,164,74,0.4));
+  border-radius: 2px 2px 0 0;
+  min-height: 2px;
+  transition: height 0.5s;
+}
+
+.bar-label {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 0.6rem;
+  color: var(--cream-dim);
+  letter-spacing: 1px;
+}
+
+.bar-value {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 0.7rem;
+  color: var(--gold-bright);
+}
+
+/* ========== LIVE INDICATOR ========== */
+.live-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  background: rgba(76,175,80,0.1);
+  border: 1px solid rgba(76,175,80,0.3);
+  border-radius: 20px;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 0.7rem;
+  letter-spacing: 2px;
+  color: var(--green);
+}
+
+.live-badge::before {
+  content: '';
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--green);
+  animation: pulse-live 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse-live {
+  0%,100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+/* ========== ENGAGEMENT HEATMAP ========== */
+.heatmap-row {
+  display: flex;
+  gap: 3px;
+  margin-bottom: 3px;
+}
+
+.heatmap-cell {
+  width: 14px;
+  height: 14px;
+  border-radius: 2px;
+  background: rgba(196,164,74,0.05);
+  border: 1px solid rgba(255,255,255,0.03);
+}
+
+.heatmap-cell.l1 { background: rgba(196,164,74,0.15); }
+.heatmap-cell.l2 { background: rgba(196,164,74,0.3); }
+.heatmap-cell.l3 { background: rgba(196,164,74,0.5); }
+.heatmap-cell.l4 { background: rgba(196,164,74,0.75); }
+
+.heatmap-label {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 0.55rem;
+  color: var(--cream-dim);
+  letter-spacing: 1px;
+  width: 30px;
+  text-align: right;
+  margin-right: 6px;
+  flex-shrink: 0;
+}
+
+/* ========== CLEAR BTN ========== */
+.clear-btn {
+  font-family: 'Special Elite', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 2px;
+  padding: 8px 20px;
+  background: rgba(255,68,68,0.08);
+  color: var(--red);
+  border: 1px solid rgba(255,68,68,0.2);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.clear-btn:hover {
+  background: rgba(255,68,68,0.15);
+  border-color: rgba(255,68,68,0.4);
+}
+
+.export-btn {
+  font-family: 'Special Elite', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 2px;
+  padding: 8px 20px;
+  background: rgba(196,164,74,0.08);
+  color: var(--gold);
+  border: 1px solid rgba(196,164,74,0.2);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s;
+  margin-right: 10px;
+}
+
+.export-btn:hover {
+  background: rgba(196,164,74,0.15);
+  border-color: rgba(196,164,74,0.4);
+}
+
+@media(max-width:600px) {
+  .stats-grid { grid-template-columns: repeat(2, 1fr); }
+  .stat-card .stat-value { font-size: 1.8rem; }
+  .dashboard { padding: 12px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ========== LOGIN GATE ========== -->
+<div class="gate-overlay" id="gate">
+  <div class="gate-box">
+    <img src="Images/WCATYO logo/Yankees channel logo.png" alt="WCATYO" class="gate-logo" />
+    <div class="gate-title">DEV DASHBOARD</div>
+    <div class="gate-sub">AUTHORIZED ACCESS ONLY</div>
+    <input type="password" class="gate-input" id="gate-code" placeholder="------" maxlength="6" autocomplete="off" />
+    <button class="gate-btn" onclick="tryLogin()">ENTER</button>
+    <div class="gate-error-msg" id="gate-error"></div>
+  </div>
+</div>
+
+<!-- ========== DASHBOARD ========== -->
+<div class="dashboard" id="dashboard">
+  <div class="dash-header">
+    <img src="Images/WCATYO logo/Yankees channel logo.png" alt="WCATYO" />
+    <div class="dash-header-text">
+      <h1>DEV DASHBOARD</h1>
+      <p>WHATCHANNELARETHEYANKEESON.COM ANALYTICS</p>
+    </div>
+    <span class="live-badge" id="live-badge">TRACKING LIVE</span>
+    <a href="index.html" class="back-link">&larr; BACK TO SITE</a>
+  </div>
+
+  <!-- OVERVIEW STATS -->
+  <div class="stats-grid" id="stats-grid">
+    <div class="stat-card"><div class="stat-value" id="stat-total-visits">0</div><div class="stat-label">TOTAL VISITS</div></div>
+    <div class="stat-card"><div class="stat-value" id="stat-unique-visitors">0</div><div class="stat-label">UNIQUE VISITORS</div></div>
+    <div class="stat-card"><div class="stat-value" id="stat-today-visits">0</div><div class="stat-label">TODAY'S VISITS</div></div>
+    <div class="stat-card"><div class="stat-value" id="stat-avg-duration">0s</div><div class="stat-label">AVG SESSION TIME</div></div>
+    <div class="stat-card"><div class="stat-value" id="stat-return-rate">0%</div><div class="stat-label">RETURN RATE</div></div>
+    <div class="stat-card"><div class="stat-value" id="stat-bounce-rate">0%</div><div class="stat-label">BOUNCE RATE</div></div>
+  </div>
+
+  <!-- VISITS OVER TIME -->
+  <div class="dash-section">
+    <div class="dash-section-title">VISITS â LAST 14 DAYS</div>
+    <div class="bar-chart" id="visits-chart"></div>
+  </div>
+
+  <!-- HOURLY HEATMAP -->
+  <div class="dash-section">
+    <div class="dash-section-title">TRAFFIC HEATMAP â HOUR OF DAY (LAST 30 DAYS)</div>
+    <div id="heatmap-container"></div>
+  </div>
+
+  <!-- CLICK ENGAGEMENT -->
+  <div class="dash-section">
+    <div class="dash-section-title">TOP CLICK INTERACTIONS</div>
+    <table class="dash-table" id="clicks-table">
+      <thead><tr><th>ELEMENT</th><th>CLICKS</th><th>LAST CLICKED</th></tr></thead>
+      <tbody id="clicks-body"></tbody>
+    </table>
+  </div>
+
+  <!-- PAGE SECTIONS VIEWED -->
+  <div class="dash-section">
+    <div class="dash-section-title">SECTION ENGAGEMENT</div>
+    <table class="dash-table" id="sections-table">
+      <thead><tr><th>SECTION</th><th>VIEWS</th><th>AVG TIME VISIBLE</th></tr></thead>
+      <tbody id="sections-body"></tbody>
+    </table>
+  </div>
+
+  <!-- RECENT SESSIONS -->
+  <div class="dash-section">
+    <div class="dash-section-title">RECENT SESSIONS</div>
+    <table class="dash-table">
+      <thead><tr><th>VISITOR ID</th><th>DATE</th><th>DURATION</th><th>PAGES</th><th>CLICKS</th><th>DEVICE</th></tr></thead>
+      <tbody id="sessions-body"></tbody>
+    </table>
+  </div>
+
+  <!-- REFERRER SOURCES -->
+  <div class="dash-section">
+    <div class="dash-section-title">TRAFFIC SOURCES</div>
+    <table class="dash-table">
+      <thead><tr><th>SOURCE</th><th>VISITS</th><th>PERCENTAGE</th></tr></thead>
+      <tbody id="referrers-body"></tbody>
+    </table>
+  </div>
+
+  <!-- DEVICE & BROWSER -->
+  <div class="dash-section">
+    <div class="dash-section-title">DEVICES & BROWSERS</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;">
+      <div>
+        <table class="dash-table">
+          <thead><tr><th>DEVICE</th><th>VISITS</th></tr></thead>
+          <tbody id="devices-body"></tbody>
+        </table>
+      </div>
+      <div>
+        <table class="dash-table">
+          <thead><tr><th>BROWSER</th><th>VISITS</th></tr></thead>
+          <tbody id="browsers-body"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- ACTIONS -->
+  <div style="padding:20px 0;display:flex;gap:10px;flex-wrap:wrap;">
+    <button class="export-btn" onclick="exportData()">EXPORT CSV</button>
+    <button class="clear-btn" onclick="clearAllData()">CLEAR ALL DATA</button>
+  </div>
+</div>
+
+<script>
+// ========== DEV CODE AUTH ==========
+const DEV_CODE = '421421';
+
+function tryLogin() {
+  const input = document.getElementById('gate-code');
+  const error = document.getElementById('gate-error');
+  if (input.value === DEV_CODE) {
+    document.getElementById('gate').classList.add('hidden');
+    document.getElementById('dashboard').classList.add('active');
+    sessionStorage.setItem('wcatyo-dev-auth', '1');
+    loadDashboard();
+  } else {
+    input.classList.add('error');
+    error.textContent = 'INVALID ACCESS CODE';
+    setTimeout(() => { input.classList.remove('error'); error.textContent = ''; }, 1500);
+    input.value = '';
+  }
+}
+
+document.getElementById('gate-code').addEventListener('keydown', e => {
+  if (e.key === 'Enter') tryLogin();
+});
+
+// Auto-login if already authenticated this session
+if (sessionStorage.getItem('wcatyo-dev-auth') === '1') {
+  document.getElementById('gate').classList.add('hidden');
+  document.getElementById('dashboard').classList.add('active');
+  setTimeout(loadDashboard, 100);
+}
+
+// ========== ANALYTICS DATA STRUCTURE ==========
+// All data is stored in localStorage under 'wcatyo-analytics'
+// Structure:
+// {
+//   visitors: { visitorId: { firstSeen, lastSeen, visitCount, sessions: [...] } },
+//   clicks: { elementName: { count, lastClicked } },
+//   sections: { sectionName: { views, totalTimeMs } },
+//   dailyVisits: { 'YYYY-MM-DD': count },
+//   hourlyVisits: { '0'-'23': count },
+//   referrers: { source: count },
+//   devices: { type: count },
+//   browsers: { name: count }
+// }
+
+function getAnalytics() {
+  try {
+    return JSON.parse(localStorage.getItem('wcatyo-analytics')) || createEmpty();
+  } catch(e) {
+    return createEmpty();
+  }
+}
+
+function createEmpty() {
+  return {
+    visitors: {},
+    clicks: {},
+    sections: {},
+    dailyVisits: {},
+    hourlyVisits: {},
+    referrers: {},
+    devices: {},
+    browsers: {}
+  };
+}
+
+function saveAnalytics(data) {
+  localStorage.setItem('wcatyo-analytics', JSON.stringify(data));
+}
+
+// ========== LOAD DASHBOARD ==========
+function loadDashboard() {
+  const data = getAnalytics();
+
+  // Overview stats
+  const visitors = Object.values(data.visitors || {});
+  const totalVisits = visitors.reduce((s, v) => s + (v.visitCount || 0), 0);
+  const uniqueVisitors = visitors.length;
+
+  const todayStr = new Date().toISOString().split('T')[0];
+  const todayVisits = data.dailyVisits?.[todayStr] || 0;
+
+  const allSessions = visitors.flatMap(v => v.sessions || []);
+  const avgDuration = allSessions.length
+    ? Math.round(allSessions.reduce((s, sess) => s + (sess.duration || 0), 0) / allSessions.length)
+    : 0;
+
+  const returners = visitors.filter(v => (v.visitCount || 0) > 1).length;
+  const returnRate = uniqueVisitors ? Math.round((returners / uniqueVisitors) * 100) : 0;
+
+  const bouncers = allSessions.filter(s => (s.clicks || 0) <= 1 && (s.duration || 0) < 10).length;
+  const bounceRate = allSessions.length ? Math.round((bouncers / allSessions.length) * 100) : 0;
+
+  document.getElementById('stat-total-visits').textContent = totalVisits.toLocaleString();
+  document.getElementById('stat-unique-visitors').textContent = uniqueVisitors.toLocaleString();
+  document.getElementById('stat-today-visits').textContent = todayVisits.toLocaleString();
+  document.getElementById('stat-avg-duration').textContent = formatDuration(avgDuration);
+  document.getElementById('stat-return-rate').textContent = returnRate + '%';
+  document.getElementById('stat-bounce-rate').textContent = bounceRate + '%';
+
+  // Visits chart (last 14 days)
+  renderVisitsChart(data.dailyVisits || {});
+
+  // Heatmap
+  renderHeatmap(data.hourlyVisits || {});
+
+  // Clicks
+  renderClicks(data.clicks || {});
+
+  // Sections
+  renderSections(data.sections || {});
+
+  // Sessions
+  renderSessions(visitors);
+
+  // Referrers
+  renderReferrers(data.referrers || {});
+
+  // Devices & Browsers
+  renderDevices(data.devices || {}, data.browsers || {});
+}
+
+function formatDuration(secs) {
+  if (secs < 60) return secs + 's';
+  const m = Math.floor(secs / 60);
+  const s = secs % 60;
+  return m + 'm ' + s + 's';
+}
+
+// ========== CHART RENDERING ==========
+function renderVisitsChart(dailyVisits) {
+  const container = document.getElementById('visits-chart');
+  const days = [];
+  for (let i = 13; i >= 0; i--) {
+    const d = new Date();
+    d.setDate(d.getDate() - i);
+    days.push(d.toISOString().split('T')[0]);
+  }
+
+  const max = Math.max(1, ...days.map(d => dailyVisits[d] || 0));
+
+  container.innerHTML = days.map(d => {
+    const count = dailyVisits[d] || 0;
+    const height = Math.max(2, (count / max) * 100);
+    const label = new Date(d + 'T12:00:00').toLocaleDateString('en-US', {month:'short', day:'numeric'});
+    return `<div class="bar-col">
+      <div class="bar-value">${count}</div>
+      <div class="bar" style="height:${height}px"></div>
+      <div class="bar-label">${label.split(' ')[1]}</div>
+    </div>`;
+  }).join('');
+}
+
+function renderHeatmap(hourlyVisits) {
+  const container = document.getElementById('heatmap-container');
+  const dayLabels = ['SUN','MON','TUE','WED','THU','FRI','SAT'];
+  const max = Math.max(1, ...Object.values(hourlyVisits));
+
+  let html = '<div style="display:flex;gap:3px;margin-bottom:6px;padding-left:36px;">';
+  for (let h = 0; h < 24; h++) {
+    html += `<div style="width:14px;text-align:center;font-family:'Bebas Neue';font-size:0.5rem;color:var(--cream-dim);">${h}</div>`;
+  }
+  html += '</div>';
+
+  dayLabels.forEach((day, dayIdx) => {
+    html += '<div class="heatmap-row"><span class="heatmap-label">' + day + '</span>';
+    for (let h = 0; h < 24; h++) {
+      const key = `${dayIdx}-${h}`;
+      const val = hourlyVisits[key] || hourlyVisits[String(h)] || 0;
+      const ratio = val / max;
+      let cls = '';
+      if (ratio > 0.75) cls = 'l4';
+      else if (ratio > 0.5) cls = 'l3';
+      else if (ratio > 0.25) cls = 'l2';
+      else if (ratio > 0) cls = 'l1';
+      html += `<div class="heatmap-cell ${cls}" title="${day} ${h}:00 â ${val} visits"></div>`;
+    }
+    html += '</div>';
+  });
+
+  container.innerHTML = html;
+}
+
+function renderClicks(clicks) {
+  const body = document.getElementById('clicks-body');
+  const sorted = Object.entries(clicks).sort((a, b) => b[1].count - a[1].count);
+
+  if (!sorted.length) {
+    body.innerHTML = '<tr><td colspan="3" style="color:var(--cream-dim);font-style:italic;">No click data yet</td></tr>';
+    return;
+  }
+
+  body.innerHTML = sorted.slice(0, 20).map(([name, data]) => {
+    const lastDate = data.lastClicked ? new Date(data.lastClicked).toLocaleString('en-US', {month:'short', day:'numeric', hour:'numeric', minute:'2-digit'}) : '-';
+    return `<tr><td>${name}</td><td class="num">${data.count}</td><td>${lastDate}</td></tr>`;
+  }).join('');
+}
+
+function renderSections(sections) {
+  const body = document.getElementById('sections-body');
+  const sorted = Object.entries(sections).sort((a, b) => b[1].views - a[1].views);
+
+  if (!sorted.length) {
+    body.innerHTML = '<tr><td colspan="3" style="color:var(--cream-dim);font-style:italic;">No section data yet</td></tr>';
+    return;
+  }
+
+  body.innerHTML = sorted.map(([name, data]) => {
+    const avgTime = data.views ? Math.round(data.totalTimeMs / data.views / 1000) : 0;
+    return `<tr><td>${name}</td><td class="num">${data.views}</td><td>${formatDuration(avgTime)}</td></tr>`;
+  }).join('');
+}
+
+function renderSessions(visitors) {
+  const body = document.getElementById('sessions-body');
+  const allSessions = [];
+  visitors.forEach(v => {
+    (v.sessions || []).forEach(s => {
+      allSessions.push({ ...s, visitorId: v.id || 'unknown' });
+    });
+  });
+
+  allSessions.sort((a, b) => new Date(b.date || 0) - new Date(a.date || 0));
+
+  if (!allSessions.length) {
+    body.innerHTML = '<tr><td colspan="6" style="color:var(--cream-dim);font-style:italic;">No session data yet</td></tr>';
+    return;
+  }
+
+  body.innerHTML = allSessions.slice(0, 50).map(s => {
+    const date = s.date ? new Date(s.date).toLocaleString('en-US', {month:'short', day:'numeric', hour:'numeric', minute:'2-digit'}) : '-';
+    const shortId = (s.visitorId || 'unknown').substring(0, 8);
+    return `<tr>
+      <td style="font-family:monospace;font-size:0.7rem;color:var(--gold-bright);">${shortId}</td>
+      <td>${date}</td>
+      <td>${formatDuration(s.duration || 0)}</td>
+      <td class="num">${s.pageViews || 1}</td>
+      <td class="num">${s.clicks || 0}</td>
+      <td>${s.device || '-'}</td>
+    </tr>`;
+  }).join('');
+}
+
+function renderReferrers(referrers) {
+  const body = document.getElementById('referrers-body');
+  const sorted = Object.entries(referrers).sort((a, b) => b[1] - a[1]);
+  const total = sorted.reduce((s, [, c]) => s + c, 0) || 1;
+
+  if (!sorted.length) {
+    body.innerHTML = '<tr><td colspan="3" style="color:var(--cream-dim);font-style:italic;">No referrer data yet</td></tr>';
+    return;
+  }
+
+  body.innerHTML = sorted.slice(0, 15).map(([src, count]) => {
+    const pct = Math.round((count / total) * 100);
+    return `<tr><td>${src}</td><td class="num">${count}</td><td>${pct}%</td></tr>`;
+  }).join('');
+}
+
+function renderDevices(devices, browsers) {
+  const devBody = document.getElementById('devices-body');
+  const brsBody = document.getElementById('browsers-body');
+
+  const devSorted = Object.entries(devices).sort((a, b) => b[1] - a[1]);
+  const brsSorted = Object.entries(browsers).sort((a, b) => b[1] - a[1]);
+
+  devBody.innerHTML = devSorted.length
+    ? devSorted.map(([d, c]) => `<tr><td>${d}</td><td class="num">${c}</td></tr>`).join('')
+    : '<tr><td colspan="2" style="color:var(--cream-dim);font-style:italic;">No data</td></tr>';
+
+  brsBody.innerHTML = brsSorted.length
+    ? brsSorted.map(([b, c]) => `<tr><td>${b}</td><td class="num">${c}</td></tr>`).join('')
+    : '<tr><td colspan="2" style="color:var(--cream-dim);font-style:italic;">No data</td></tr>';
+}
+
+// ========== EXPORT ==========
+function exportData() {
+  const data = getAnalytics();
+  const visitors = Object.values(data.visitors || {});
+  const allSessions = [];
+  visitors.forEach(v => {
+    (v.sessions || []).forEach(s => {
+      allSessions.push({
+        visitorId: v.id || 'unknown',
+        date: s.date || '',
+        duration: s.duration || 0,
+        clicks: s.clicks || 0,
+        device: s.device || '',
+        browser: s.browser || '',
+        referrer: s.referrer || ''
+      });
+    });
+  });
+
+  let csv = 'Visitor ID,Date,Duration (s),Clicks,Device,Browser,Referrer\n';
+  allSessions.forEach(s => {
+    csv += `${s.visitorId},${s.date},${s.duration},${s.clicks},${s.device},${s.browser},${s.referrer}\n`;
+  });
+
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(new Blob([csv], {type:'text/csv'}));
+  a.download = 'wcatyo-analytics-' + new Date().toISOString().split('T')[0] + '.csv';
+  a.click();
+}
+
+function clearAllData() {
+  if (confirm('Are you sure you want to clear ALL analytics data? This cannot be undone.')) {
+    localStorage.removeItem('wcatyo-analytics');
+    loadDashboard();
+  }
+}
+
+// Auto-refresh every 30 seconds
+setInterval(() => {
+  if (document.getElementById('dashboard').classList.contains('active')) {
+    loadDashboard();
+  }
+}, 30000);
+</script>
+</body>
+</html>
